@@ -3,706 +3,674 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MICROL PHAGE – Product Label</title>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<title>MICROL PHAGE — Label v2 Minimalist</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;800;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+–teal:    #00BFA5;
+–teal-dk: #00897B;
+–ink:     #0D1117;
+–coral:   #FF5252;
+–gold:    #FFD600;
+–white:   #FFFFFF;
+–mist:    #F4F7F6;
+–gray:    #90A4AE;
+–lgray:   #CFD8DC;
+}
 
 body {
-background: #0a0a12;
+background: #e8eceb;
+min-height: 100vh;
 display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: center;
-min-height: 100vh;
-font-family: ‘Rajdhani’, sans-serif;
-padding: 40px 20px;
-gap: 24px;
+padding: 48px 24px;
+font-family: ‘DM Sans’, sans-serif;
+gap: 20px;
 }
 
-.page-title {
-color: #4dd9ac;
-font-family: ‘Share Tech Mono’, monospace;
-font-size: 13px;
-letter-spacing: 3px;
-opacity: 0.7;
+.meta {
+font-family: ‘DM Mono’, monospace;
+font-size: 11px;
+color: #90A4AE;
+letter-spacing: 2px;
 text-transform: uppercase;
 }
 
-/* LABEL CONTAINER — 12:4 ratio */
+/* ═══ LABEL ═══════════════════════════════════════════════════════ */
 .label {
 width: 1200px;
 height: 400px;
+background: var(–white);
+display: flex;
 position: relative;
 overflow: hidden;
-background: linear-gradient(135deg, #020b1a 0%, #040d20 40%, #030c18 100%);
-border: 1.5px solid #1a3a5c;
-border-radius: 6px;
-box-shadow:
-0 0 60px rgba(0,180,255,0.12),
-0 0 120px rgba(0,80,180,0.08),
-inset 0 0 80px rgba(0,0,0,0.6);
+box-shadow: 0 8px 60px rgba(0,0,0,0.18), 0 2px 12px rgba(0,0,0,0.10);
 }
 
-/* ── BACKGROUND SVG PHAGE ILLUSTRATION ── */
-.bg-svg {
-position: absolute;
-inset: 0;
-width: 100%;
-height: 100%;
-opacity: 0.18;
-}
-
-/* ── ANIMATED PARTICLES ── */
-.particles {
-position: absolute;
-inset: 0;
-overflow: hidden;
-}
-.particle {
-position: absolute;
-border-radius: 50%;
-background: radial-gradient(circle, #00d4ff, transparent 70%);
-animation: float linear infinite;
-opacity: 0;
-}
-
-@keyframes float {
-0%   { transform: translateY(0) translateX(0) scale(0.5); opacity: 0; }
-10%  { opacity: 0.6; }
-90%  { opacity: 0.3; }
-100% { transform: translateY(-420px) translateX(30px) scale(1.2); opacity: 0; }
-}
-
-/* ── OCEAN WAVE BOTTOM STRIP ── */
-.wave-strip {
-position: absolute;
-bottom: 0;
-left: 0;
-right: 0;
-height: 6px;
-background: linear-gradient(90deg,
-#003d7a 0%, #0077cc 15%, #00d4ff 30%,
-#4dd9ac 45%, #00d4ff 60%, #0077cc 75%,
-#003d7a 100%);
-animation: wavePulse 3s ease-in-out infinite;
-}
-@keyframes wavePulse {
-0%, 100% { opacity: 1; }
-50% { opacity: 0.6; }
-}
-
-/* ── TOP EDGE LINE ── */
-.top-line {
-position: absolute;
-top: 0;
-left: 0;
-right: 0;
-height: 4px;
-background: linear-gradient(90deg,
-transparent 0%, #0077cc 20%, #00d4ff 50%, #0077cc 80%, transparent 100%);
-}
-
-/* ── LEFT BRAND SECTION ── */
-.brand-section {
-position: absolute;
-left: 0;
-top: 0;
-bottom: 0;
-width: 220px;
-background: linear-gradient(180deg, #001428 0%, #000d1f 60%, #001020 100%);
-border-right: 1px solid #0a3a5c;
+/* ── LEFT PANEL: white, product identity ── */
+.left {
+width: 420px;
+flex-shrink: 0;
+background: var(–white);
 display: flex;
 flex-direction: column;
-align-items: center;
 justify-content: center;
+padding: 32px 36px 32px 40px;
+position: relative;
+z-index: 2;
+}
+
+.brand-row {
+display: flex;
+align-items: center;
 gap: 10px;
-padding: 16px;
+margin-bottom: 8px;
 }
 
-.brand-logo-ring {
-width: 80px;
-height: 80px;
-position: relative;
+.brand-logo {
+width: 30px;
+height: 30px;
+border: 2px solid var(–teal);
+border-radius: 50%;
 display: flex;
 align-items: center;
 justify-content: center;
-}
-
-.brand-logo-ring::before {
-content: ‘’;
-position: absolute;
-inset: 0;
-border-radius: 50%;
-border: 2px solid transparent;
-background: conic-gradient(#00d4ff, #4dd9ac, #0077cc, #00d4ff) border-box;
--webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
--webkit-mask-composite: destination-out;
-mask-composite: exclude;
-animation: spinRing 8s linear infinite;
-}
-
-@keyframes spinRing {
-to { transform: rotate(360deg); }
-}
-
-.brand-logo-inner {
-width: 60px;
-height: 60px;
-border-radius: 50%;
-background: radial-gradient(circle at 35% 35%, #004d99, #001428);
-border: 1px solid #0a4a7a;
-display: flex;
-align-items: center;
-justify-content: center;
-font-family: ‘Orbitron’, monospace;
-font-size: 18px;
+font-family: ‘Barlow Condensed’, sans-serif;
 font-weight: 900;
-color: #00d4ff;
-letter-spacing: -1px;
-text-shadow: 0 0 12px #00d4ff;
+font-size: 15px;
+color: var(–teal);
+flex-shrink: 0;
 }
 
-.brand-name {
-font-family: ‘Orbitron’, monospace;
-font-size: 13px;
+.brand-name-text {
+font-family: ‘Barlow Condensed’, sans-serif;
 font-weight: 700;
-color: #4dd9ac;
+font-size: 13px;
 letter-spacing: 4px;
-text-align: center;
-text-shadow: 0 0 10px rgba(77,217,172,0.5);
+color: var(–ink);
+text-transform: uppercase;
 }
 
-.brand-sub {
-font-family: ‘Rajdhani’, sans-serif;
+.brand-name-text span {
+color: var(–teal);
+}
+
+.product-type {
+font-family: ‘DM Mono’, monospace;
 font-size: 9px;
-font-weight: 400;
-color: #4a7a9b;
-letter-spacing: 2.5px;
-text-align: center;
+letter-spacing: 3px;
+color: var(–teal);
 text-transform: uppercase;
-line-height: 1.5;
+margin-bottom: 6px;
 }
 
-.brand-divider {
-width: 60px;
-height: 1px;
-background: linear-gradient(90deg, transparent, #0077cc, transparent);
-margin: 4px 0;
+.product-name-block {
+line-height: 0.88;
+margin-bottom: 14px;
 }
 
-/* ── CENTER MAIN SECTION ── */
-.center-section {
-position: absolute;
-left: 220px;
-right: 260px;
-top: 0;
-bottom: 0;
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-padding: 20px 30px;
-gap: 6px;
-}
-
-.product-category {
-font-family: ‘Share Tech Mono’, monospace;
-font-size: 10px;
-color: #4dd9ac;
-letter-spacing: 5px;
-text-transform: uppercase;
-opacity: 0.9;
-}
-
-.product-name {
-font-family: ‘Orbitron’, monospace;
-font-size: 68px;
+.pname-micro {
+font-family: ‘Barlow Condensed’, sans-serif;
 font-weight: 900;
-line-height: 0.9;
-text-align: center;
-background: linear-gradient(135deg,
-#ffffff 0%,
-#b8e8ff 25%,
-#00d4ff 50%,
-#4dd9ac 75%,
-#00d4ff 100%);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-background-clip: text;
-filter: drop-shadow(0 0 20px rgba(0,212,255,0.4));
+font-size: 90px;
+color: var(–ink);
 letter-spacing: -2px;
-position: relative;
+display: block;
 }
 
-.product-name span {
-font-size: 42px;
-letter-spacing: 8px;
+.pname-phage {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-weight: 300;
+font-size: 90px;
+color: var(–teal);
+letter-spacing: 10px;
 display: block;
-background: linear-gradient(135deg, #a0d8f0, #4dd9ac, #00d4ff);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-background-clip: text;
 }
 
 .tagline {
-font-family: ‘Rajdhani’, sans-serif;
-font-size: 13px;
-font-weight: 600;
-color: #7ab8d4;
-letter-spacing: 3px;
-text-align: center;
+font-size: 10.5px;
+font-weight: 500;
+color: var(–gray);
+letter-spacing: 1.5px;
 text-transform: uppercase;
-margin-top: 4px;
+border-left: 3px solid var(–teal);
+padding-left: 10px;
+line-height: 1.6;
 }
 
-.deco-line {
+/* vertical rule between left and center */
+.left::after {
+content: ‘’;
+position: absolute;
+right: 0;
+top: 24px;
+bottom: 24px;
+width: 1px;
+background: linear-gradient(180deg, transparent, var(–lgray) 20%, var(–lgray) 80%, transparent);
+}
+
+/* ── CENTER PANEL: phage icon + specs ── */
+.center {
+width: 280px;
+flex-shrink: 0;
+background: var(–white);
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+padding: 20px 16px;
+position: relative;
+gap: 12px;
+}
+
+/* CAA badge top-center */
+.caa-badge {
+position: absolute;
+top: 18px;
+left: 50%;
+transform: translateX(-50%);
+background: var(–coral);
+color: var(–white);
+font-family: ‘Barlow Condensed’, sans-serif;
+font-weight: 800;
+font-size: 8px;
+letter-spacing: 2px;
+text-transform: uppercase;
+padding: 4px 10px;
+border-radius: 2px;
+white-space: nowrap;
+}
+
+/* Phage SVG icon */
+.phage-icon {
+width: 110px;
+height: 130px;
+margin-top: 20px;
+}
+
+/* Specs pills */
+.specs-grid {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 5px;
+width: 100%;
+}
+
+.spec-pill {
+background: var(–mist);
+border-radius: 3px;
+text-align: center;
+padding: 5px 4px 4px;
+}
+
+.spec-pill .sv {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-weight: 700;
+font-size: 13px;
+color: var(–teal-dk);
+display: block;
+letter-spacing: 0.5px;
+}
+
+.spec-pill .sl {
+font-size: 7.5px;
+font-weight: 500;
+color: var(–gray);
+letter-spacing: 1.2px;
+text-transform: uppercase;
+display: block;
+}
+
+/* ── RIGHT PANEL: teal block ── */
+.right {
+flex: 1;
+background: var(–ink);
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+padding: 22px 26px 0 26px;
+position: relative;
+overflow: hidden;
+}
+
+/* teal accent stripe at top */
+.right::before {
+content: ‘’;
+position: absolute;
+top: 0; left: 0; right: 0;
+height: 4px;
+background: linear-gradient(90deg, var(–teal), var(–teal-dk));
+}
+
+/* subtle phage watermark bg */
+.right-bg {
+position: absolute;
+right: -20px;
+top: 50%;
+transform: translateY(-50%);
+opacity: 0.04;
+width: 300px;
+height: 300px;
+}
+
+.right-body {
+display: flex;
+gap: 20px;
+flex: 1;
+}
+
+/* Left column inside right panel */
+.r-col-1 {
+flex: 1;
+display: flex;
+flex-direction: column;
+gap: 11px;
+}
+
+/* Right column inside right panel */
+.r-col-2 {
+width: 148px;
+flex-shrink: 0;
+display: flex;
+flex-direction: column;
+gap: 11px;
+}
+
+.r-section-title {
+font-family: ‘DM Mono’, monospace;
+font-size: 7.5px;
+color: var(–teal);
+letter-spacing: 2.5px;
+text-transform: uppercase;
+margin-bottom: 3px;
 display: flex;
 align-items: center;
-gap: 10px;
-width: 100%;
-margin: 6px 0;
+gap: 6px;
 }
 
-.deco-line::before,
-.deco-line::after {
+.r-section-title::after {
 content: ‘’;
 flex: 1;
 height: 1px;
-background: linear-gradient(90deg, transparent, #0077cc);
+background: rgba(255,255,255,0.06);
 }
 
-.deco-line::after {
-background: linear-gradient(90deg, #0077cc, transparent);
+.r-text {
+font-size: 9.5px;
+font-weight: 400;
+color: rgba(255,255,255,0.65);
+line-height: 1.65;
 }
 
-.deco-diamond {
-width: 6px;
-height: 6px;
-background: #00d4ff;
-transform: rotate(45deg);
-box-shadow: 0 0 8px #00d4ff;
-}
-
-.specs-row {
-display: flex;
-gap: 20px;
-align-items: center;
-}
-
-.spec-item {
-text-align: center;
-}
-
-.spec-val {
-font-family: ‘Orbitron’, monospace;
-font-size: 14px;
-font-weight: 700;
-color: #00d4ff;
-text-shadow: 0 0 8px rgba(0,212,255,0.5);
-}
-
-.spec-label {
-font-size: 8px;
+.r-text strong {
+color: rgba(255,255,255,0.9);
 font-weight: 600;
-color: #4a7a9b;
-letter-spacing: 2px;
-text-transform: uppercase;
-margin-top: 1px;
 }
 
-.spec-dot {
-width: 3px;
-height: 3px;
-background: #0077cc;
-border-radius: 50%;
-margin: 0 auto;
-}
-
-/* ── RIGHT INFO SECTION ── */
-.info-section {
-position: absolute;
-right: 0;
-top: 0;
-bottom: 0;
-width: 260px;
-background: linear-gradient(180deg, #001220 0%, #000d18 60%, #001020 100%);
-border-left: 1px solid #0a3a5c;
-display: flex;
-flex-direction: column;
-justify-content: center;
-padding: 18px 20px;
-gap: 8px;
-}
-
-.info-header {
-font-family: ‘Share Tech Mono’, monospace;
-font-size: 9px;
-color: #4dd9ac;
-letter-spacing: 3px;
-text-transform: uppercase;
-border-bottom: 1px solid #0a3a5c;
-padding-bottom: 6px;
-margin-bottom: 4px;
-}
-
-.info-row {
-display: flex;
-align-items: flex-start;
-gap: 8px;
-}
-
-.info-bullet {
-width: 4px;
-height: 4px;
-background: #00d4ff;
-border-radius: 50%;
-margin-top: 5px;
-flex-shrink: 0;
-box-shadow: 0 0 5px #00d4ff;
-}
-
-.info-text {
-font-family: ‘Rajdhani’, sans-serif;
-font-size: 11px;
-font-weight: 600;
-color: #8ab4cc;
-letter-spacing: 0.5px;
-line-height: 1.4;
-}
-
-.info-text strong {
-color: #b8d8ed;
-font-weight: 700;
-}
-
+/* Dosage highlight box */
 .dosage-box {
-background: rgba(0, 119, 204, 0.08);
-border: 1px solid #0a3a5c;
-border-left: 2px solid #00d4ff;
-border-radius: 3px;
-padding: 8px 10px;
-margin-top: 4px;
+background: var(–teal);
+border-radius: 4px;
+padding: 9px 12px;
 }
 
-.dosage-title {
-font-family: ‘Share Tech Mono’, monospace;
-font-size: 8px;
-color: #4dd9ac;
+.dosage-box .d-label {
+font-family: ‘DM Mono’, monospace;
+font-size: 7.5px;
+color: rgba(255,255,255,0.75);
 letter-spacing: 2px;
 text-transform: uppercase;
+display: block;
 margin-bottom: 3px;
 }
 
-.dosage-val {
-font-family: ‘Orbitron’, monospace;
-font-size: 12px;
-font-weight: 700;
-color: #00d4ff;
-text-shadow: 0 0 8px rgba(0,212,255,0.4);
+.dosage-box .d-val {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-weight: 800;
+font-size: 22px;
+color: var(–white);
+letter-spacing: -0.5px;
+display: block;
+line-height: 1;
 }
 
-.dosage-unit {
-font-size: 9px;
-color: #4a7a9b;
-letter-spacing: 1px;
-margin-top: 1px;
-font-family: ‘Rajdhani’, sans-serif;
+.dosage-box .d-unit {
+font-size: 8.5px;
+color: rgba(255,255,255,0.8);
+font-weight: 500;
+letter-spacing: 0.5px;
+display: block;
+margin-top: 2px;
 }
 
-/* ── CORNER DECORATIONS ── */
-.corner {
-position: absolute;
-width: 20px;
-height: 20px;
+/* compliance tags */
+.tags {
+display: flex;
+flex-direction: column;
+gap: 3px;
 }
-.corner-tl { top: 8px; left: 8px; border-top: 2px solid #00d4ff; border-left: 2px solid #00d4ff; }
-.corner-tr { top: 8px; right: 8px; border-top: 2px solid #00d4ff; border-right: 2px solid #00d4ff; }
-.corner-bl { bottom: 14px; left: 8px; border-bottom: 2px solid #00d4ff; border-left: 2px solid #00d4ff; }
-.corner-br { bottom: 14px; right: 8px; border-bottom: 2px solid #00d4ff; border-right: 2px solid #00d4ff; }
 
-/* ── SCAN CODE ── */
-.scan-code {
-position: absolute;
-bottom: 12px;
-left: 50%;
-transform: translateX(-50%);
-font-family: ‘Share Tech Mono’, monospace;
-font-size: 8px;
-color: #1a4a6a;
-letter-spacing: 2px;
+.tag {
+font-size: 7.5px;
+font-weight: 600;
+color: rgba(255,255,255,0.5);
+letter-spacing: 1.5px;
 text-transform: uppercase;
-}
-
-/* ── GLOW ORBS ── */
-.glow-orb {
-position: absolute;
-border-radius: 50%;
-pointer-events: none;
-animation: orbPulse 4s ease-in-out infinite;
-}
-.glow-orb-1 {
-width: 200px;
-height: 200px;
-background: radial-gradient(circle, rgba(0,212,255,0.06), transparent 70%);
-top: -60px;
-right: 300px;
-animation-delay: 0s;
-}
-.glow-orb-2 {
-width: 150px;
-height: 150px;
-background: radial-gradient(circle, rgba(77,217,172,0.05), transparent 70%);
-bottom: -50px;
-left: 350px;
-animation-delay: -2s;
-}
-
-@keyframes orbPulse {
-0%, 100% { opacity: 0.6; transform: scale(1); }
-50% { opacity: 1; transform: scale(1.15); }
-}
-
-/* Print info */
-.print-note {
-color: #2a4a6a;
-font-family: ‘Share Tech Mono’, monospace;
-font-size: 11px;
-letter-spacing: 2px;
+border: 1px solid rgba(255,255,255,0.08);
+border-radius: 2px;
+padding: 3px 7px;
 text-align: center;
+}
+
+/* batch fill fields */
+.fields {
+display: flex;
+flex-direction: column;
+gap: 3px;
+}
+
+.field-row {
+display: flex;
+align-items: baseline;
+gap: 6px;
+}
+
+.field-lbl {
+font-family: ‘DM Mono’, monospace;
+font-size: 7.5px;
+color: var(–gray);
+letter-spacing: 1px;
+flex-shrink: 0;
+width: 58px;
+}
+
+.field-line {
+flex: 1;
+border-bottom: 1px solid rgba(255,255,255,0.1);
+height: 14px;
+}
+
+/* ── BOTTOM STRIP ── */
+.bottom-strip {
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 6px 0 8px 0;
+border-top: 1px solid rgba(255,255,255,0.07);
 margin-top: 8px;
 }
 
-/* Print styles */
-@media print {
-body { background: white; padding: 0; }
-.label { margin: 0 auto; }
-.page-title, .print-note { display: none; }
+.bottom-text {
+font-size: 7.5px;
+color: rgba(255,255,255,0.3);
+letter-spacing: 1px;
 }
-</style>
 
+.iso-badges {
+display: flex;
+gap: 6px;
+align-items: center;
+}
+
+.iso-badge {
+font-family: ‘DM Mono’, monospace;
+font-size: 6.5px;
+color: rgba(255,255,255,0.3);
+border: 1px solid rgba(255,255,255,0.1);
+border-radius: 2px;
+padding: 2px 5px;
+letter-spacing: 0.5px;
+}
+
+.made-india {
+font-family: ‘Barlow Condensed’, sans-serif;
+font-size: 8px;
+font-weight: 700;
+letter-spacing: 2px;
+color: rgba(255,255,255,0.25);
+text-transform: uppercase;
+}
+
+/* ── LEFT EDGE TEAL STRIPE ── */
+.left-stripe {
+position: absolute;
+left: 0;
+top: 0;
+bottom: 0;
+width: 5px;
+background: linear-gradient(180deg, var(–teal), var(–teal-dk));
+}
+
+</style>
 </head>
 <body>
 
-<div class="page-title">MICROL PHAGE — PRODUCT LABEL PREVIEW @ 1200 × 400 px (12" × 4")</div>
+<div class="meta">MICROL PHAGE — Label v2 Minimalist · 1200 × 400 px (12" × 4")</div>
 
 <div class="label">
 
-  <!-- Background phage SVG illustration -->
+  <div class="left-stripe"></div>
 
-  <svg class="bg-svg" viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg">
-    <!-- Large phage center -->
-    <g transform="translate(580,190)">
-      <!-- Icosahedral head -->
-      <polygon points="0,-70 60,-35 60,35 0,70 -60,35 -60,-35" fill="none" stroke="#00d4ff" stroke-width="1.5"/>
-      <polygon points="0,-50 43,-25 43,25 0,50 -43,25 -43,-25" fill="none" stroke="#00d4ff" stroke-width="0.8" opacity="0.5"/>
-      <line x1="0" y1="-70" x2="0" y2="-50" stroke="#4dd9ac" stroke-width="1"/>
-      <line x1="60" y1="-35" x2="43" y2="-25" stroke="#4dd9ac" stroke-width="1"/>
-      <line x1="60" y1="35" x2="43" y2="25" stroke="#4dd9ac" stroke-width="1"/>
-      <line x1="0" y1="70" x2="0" y2="50" stroke="#4dd9ac" stroke-width="1"/>
-      <line x1="-60" y1="35" x2="-43" y2="25" stroke="#4dd9ac" stroke-width="1"/>
-      <line x1="-60" y1="-35" x2="-43" y2="-25" stroke="#4dd9ac" stroke-width="1"/>
-      <!-- Tail sheath -->
-      <rect x="-10" y="70" width="20" height="55" fill="none" stroke="#00d4ff" stroke-width="1.2"/>
-      <line x1="-10" y1="80" x2="10" y2="80" stroke="#00d4ff" stroke-width="0.6" opacity="0.6"/>
-      <line x1="-10" y1="95" x2="10" y2="95" stroke="#00d4ff" stroke-width="0.6" opacity="0.6"/>
-      <line x1="-10" y1="110" x2="10" y2="110" stroke="#00d4ff" stroke-width="0.6" opacity="0.6"/>
-      <!-- Baseplate -->
-      <polygon points="-16,125 16,125 20,135 -20,135" fill="none" stroke="#4dd9ac" stroke-width="1.2"/>
-      <!-- Tail fibers -->
-      <line x1="-18" y1="130" x2="-50" y2="165" stroke="#4dd9ac" stroke-width="1"/>
-      <line x1="-12" y1="130" x2="-30" y2="175" stroke="#4dd9ac" stroke-width="1"/>
-      <line x1="0" y1="135" x2="0" y2="178" stroke="#4dd9ac" stroke-width="1"/>
-      <line x1="12" y1="130" x2="30" y2="175" stroke="#4dd9ac" stroke-width="1"/>
-      <line x1="18" y1="130" x2="50" y2="165" stroke="#4dd9ac" stroke-width="1"/>
-      <!-- Fiber tips -->
-      <circle cx="-50" cy="167" r="3" fill="#4dd9ac"/>
-      <circle cx="-30" cy="177" r="3" fill="#4dd9ac"/>
-      <circle cx="0" cy="180" r="3" fill="#4dd9ac"/>
-      <circle cx="30" cy="177" r="3" fill="#4dd9ac"/>
-      <circle cx="50" cy="167" r="3" fill="#4dd9ac"/>
-    </g>
-    <!-- Smaller phage top-right -->
-    <g transform="translate(980,90) scale(0.55)">
-      <polygon points="0,-70 60,-35 60,35 0,70 -60,35 -60,-35" fill="none" stroke="#00d4ff" stroke-width="2"/>
-      <rect x="-10" y="70" width="20" height="45" fill="none" stroke="#00d4ff" stroke-width="2"/>
-      <polygon points="-16,115 16,115 20,125 -20,125" fill="none" stroke="#4dd9ac" stroke-width="2"/>
-      <line x1="-16" y1="120" x2="-44" y2="150" stroke="#4dd9ac" stroke-width="1.5"/>
-      <line x1="0" y1="125" x2="0" y2="158" stroke="#4dd9ac" stroke-width="1.5"/>
-      <line x1="16" y1="120" x2="44" y2="150" stroke="#4dd9ac" stroke-width="1.5"/>
-    </g>
-    <!-- Tiny phage lower left -->
-    <g transform="translate(280,300) scale(0.35)">
-      <polygon points="0,-70 60,-35 60,35 0,70 -60,35 -60,-35" fill="none" stroke="#4dd9ac" stroke-width="3"/>
-      <rect x="-10" y="70" width="20" height="40" fill="none" stroke="#4dd9ac" stroke-width="2"/>
-      <polygon points="-14,110 14,110 18,120 -18,120" fill="none" stroke="#00d4ff" stroke-width="2"/>
-      <line x1="-14" y1="115" x2="-38" y2="140" stroke="#00d4ff" stroke-width="2"/>
-      <line x1="0" y1="120" x2="0" y2="148" stroke="#00d4ff" stroke-width="2"/>
-      <line x1="14" y1="115" x2="38" y2="140" stroke="#00d4ff" stroke-width="2"/>
-    </g>
-    <!-- DNA / helix lines background -->
-    <path d="M 700,10 Q 730,40 700,70 Q 670,100 700,130 Q 730,160 700,190" fill="none" stroke="#0055aa" stroke-width="1" opacity="0.6"/>
-    <path d="M 720,10 Q 690,40 720,70 Q 750,100 720,130 Q 690,160 720,190" fill="none" stroke="#0055aa" stroke-width="1" opacity="0.6"/>
-    <!-- Cross-links -->
-    <line x1="700" y1="25" x2="720" y2="25" stroke="#0055aa" stroke-width="0.8" opacity="0.5"/>
-    <line x1="700" y1="55" x2="720" y2="55" stroke="#0055aa" stroke-width="0.8" opacity="0.5"/>
-    <line x1="700" y1="85" x2="720" y2="85" stroke="#0055aa" stroke-width="0.8" opacity="0.5"/>
-    <line x1="700" y1="115" x2="720" y2="115" stroke="#0055aa" stroke-width="0.8" opacity="0.5"/>
-    <line x1="700" y1="145" x2="720" y2="145" stroke="#0055aa" stroke-width="0.8" opacity="0.5"/>
-    <line x1="700" y1="175" x2="720" y2="175" stroke="#0055aa" stroke-width="0.8" opacity="0.5"/>
-    <!-- Grid dots -->
-    <pattern id="dots" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
-      <circle cx="20" cy="20" r="0.8" fill="#003366" opacity="0.6"/>
-    </pattern>
-    <rect width="1200" height="400" fill="url(#dots)"/>
-    <!-- Horizontal scan lines faint -->
-    <line x1="220" y1="133" x2="940" y2="133" stroke="#001a3a" stroke-width="0.5"/>
-    <line x1="220" y1="200" x2="940" y2="200" stroke="#001a3a" stroke-width="0.5"/>
-    <line x1="220" y1="267" x2="940" y2="267" stroke="#001a3a" stroke-width="0.5"/>
-  </svg>
+  <!-- ════ LEFT ════ -->
 
-  <!-- Glow orbs -->
-
-  <div class="glow-orb glow-orb-1"></div>
-  <div class="glow-orb glow-orb-2"></div>
-
-  <!-- Animated particles -->
-
-  <div class="particles" id="particles"></div>
-
-  <!-- Top & bottom edge lines -->
-
-  <div class="top-line"></div>
-  <div class="wave-strip"></div>
-
-  <!-- Corner decorations -->
-
-  <div class="corner corner-tl"></div>
-  <div class="corner corner-tr"></div>
-  <div class="corner corner-bl"></div>
-  <div class="corner corner-br"></div>
-
-  <!-- LEFT: Brand section -->
-
-  <div class="brand-section">
-    <div class="brand-logo-ring">
-      <div class="brand-logo-inner">M</div>
+  <div class="left">
+    <div class="brand-row">
+      <div class="brand-logo">M</div>
+      <div class="brand-name-text">MICROL <span>REMEDIES</span>®</div>
     </div>
-    <div class="brand-name">MICROL</div>
-    <div class="brand-divider"></div>
-    <div class="brand-sub">REMEDIES<br>Aquaculture Healthcare</div>
+    <div class="product-type">Bacteriophage Formulation · Aquaculture</div>
+    <div class="product-name-block">
+      <span class="pname-micro">MICROL</span>
+      <span class="pname-phage">PHAGE</span>
+    </div>
+    <div class="tagline">
+      Precision Bacterial Control<br>for Aquaculture Ponds
+    </div>
   </div>
 
-  <!-- CENTER: Main product name -->
+  <!-- ════ CENTER ════ -->
 
-  <div class="center-section">
-    <div class="product-category">— Bacteriophage Formulation —</div>
+  <div class="center">
+    <div class="caa-badge">✔ CAA Certified · Antibiotic-Free</div>
 
 ```
-<div class="deco-line"><div class="deco-diamond"></div></div>
+<!-- Clean phage line-art SVG -->
+<svg class="phage-icon" viewBox="0 0 110 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Hexagonal head outline -->
+  <polygon points="55,4 95,27 95,73 55,96 15,73 15,27"
+    fill="none" stroke="#00BFA5" stroke-width="2.5"/>
+  <!-- Inner hex -->
+  <polygon points="55,18 81,33 81,63 55,78 29,63 29,33"
+    fill="none" stroke="#00BFA5" stroke-width="1" stroke-dasharray="4 3" opacity="0.4"/>
+  <!-- Head cross-lines -->
+  <line x1="55" y1="4" x2="55" y2="18" stroke="#00BFA5" stroke-width="1.5"/>
+  <line x1="95" y1="27" x2="81" y2="33" stroke="#00BFA5" stroke-width="1.5"/>
+  <line x1="95" y1="73" x2="81" y2="63" stroke="#00BFA5" stroke-width="1.5"/>
+  <line x1="55" y1="96" x2="55" y2="78" stroke="#00BFA5" stroke-width="1.5"/>
+  <line x1="15" y1="73" x2="29" y2="63" stroke="#00BFA5" stroke-width="1.5"/>
+  <line x1="15" y1="27" x2="29" y2="33" stroke="#00BFA5" stroke-width="1.5"/>
+  <!-- DNA dot in center -->
+  <circle cx="55" cy="50" r="6" fill="#00BFA5" opacity="0.15"/>
+  <circle cx="55" cy="50" r="2.5" fill="#00BFA5"/>
+  <!-- Collar / neck -->
+  <rect x="46" y="96" width="18" height="5" rx="1" fill="#00BFA5" opacity="0.7"/>
+  <!-- Tail sheath -->
+  <rect x="49" y="101" width="12" height="22" rx="1"
+    fill="none" stroke="#00BFA5" stroke-width="1.8"/>
+  <!-- Sheath bands -->
+  <line x1="49" y1="108" x2="61" y2="108" stroke="#00BFA5" stroke-width="0.8" opacity="0.5"/>
+  <line x1="49" y1="114" x2="61" y2="114" stroke="#00BFA5" stroke-width="0.8" opacity="0.5"/>
+  <line x1="49" y1="120" x2="61" y2="120" stroke="#00BFA5" stroke-width="0.8" opacity="0.5"/>
+  <!-- Baseplate -->
+  <polygon points="44,123 66,123 70,128 40,128" fill="#00BFA5" opacity="0.8"/>
+  <!-- Tail fibers -->
+  <line x1="42" y1="126" x2="22" y2="142" stroke="#00BFA5" stroke-width="1.5"/>
+  <line x1="48" y1="127" x2="36" y2="142" stroke="#00BFA5" stroke-width="1.5"/>
+  <line x1="55" y1="128" x2="55" y2="143" stroke="#00BFA5" stroke-width="1.5"/>
+  <line x1="62" y1="127" x2="74" y2="142" stroke="#00BFA5" stroke-width="1.5"/>
+  <line x1="68" y1="126" x2="88" y2="142" stroke="#00BFA5" stroke-width="1.5"/>
+  <!-- Fiber tips -->
+  <circle cx="22" cy="143" r="2.5" fill="#00BFA5"/>
+  <circle cx="36" cy="143" r="2.5" fill="#00BFA5"/>
+  <circle cx="55" cy="144" r="2.5" fill="#00BFA5"/>
+  <circle cx="74" cy="143" r="2.5" fill="#00BFA5"/>
+  <circle cx="88" cy="143" r="2.5" fill="#00BFA5"/>
+</svg>
 
-<div class="product-name">
-  MICROL
-  <span>PHAGE</span>
-</div>
-
-<div class="deco-line"><div class="deco-diamond"></div></div>
-
-<div class="tagline">Targeted Bacterial Control for Aquaculture</div>
-
-<div class="specs-row" style="margin-top: 8px;">
-  <div class="spec-item">
-    <div class="spec-val">10⁹</div>
-    <div class="spec-dot"></div>
-    <div class="spec-label">PFU / mL</div>
+<div class="specs-grid">
+  <div class="spec-pill">
+    <span class="sv">10⁹</span>
+    <span class="sl">PFU / mL</span>
   </div>
-  <div class="spec-item">
-    <div class="spec-val">BROAD</div>
-    <div class="spec-dot"></div>
-    <div class="spec-label">Spectrum</div>
+  <div class="spec-pill">
+    <span class="sv">LYTIC</span>
+    <span class="sl">Mode of Action</span>
   </div>
-  <div class="spec-item">
-    <div class="spec-val">LYTIC</div>
-    <div class="spec-dot"></div>
-    <div class="spec-label">Mode</div>
+  <div class="spec-pill">
+    <span class="sv">VIBRIO</span>
+    <span class="sl">Target Pathogen</span>
   </div>
-  <div class="spec-item">
-    <div class="spec-val">SHRIMP</div>
-    <div class="spec-dot"></div>
-    <div class="spec-label">Fish · Prawn</div>
+  <div class="spec-pill">
+    <span class="sv">BROAD</span>
+    <span class="sl">Spectrum</span>
   </div>
-</div>
-```
-
-  </div>
-
-  <!-- RIGHT: Info section -->
-
-  <div class="info-section">
-    <div class="info-header">// Product Info</div>
-
-```
-<div class="info-row">
-  <div class="info-bullet"></div>
-  <div class="info-text"><strong>Vibrio</strong> &amp; Aeromonas control</div>
-</div>
-<div class="info-row">
-  <div class="info-bullet"></div>
-  <div class="info-text">Antibiotic-free <strong>biocontrol</strong></div>
-</div>
-<div class="info-row">
-  <div class="info-bullet"></div>
-  <div class="info-text">Safe for <strong>non-target organisms</strong></div>
-</div>
-<div class="info-row">
-  <div class="info-bullet"></div>
-  <div class="info-text">Pond water &amp; <strong>feed application</strong></div>
-</div>
-
-<div class="dosage-box">
-  <div class="dosage-title">Dosage</div>
-  <div class="dosage-val">1–2 mL / kg</div>
-  <div class="dosage-unit">Feed · 5L / Acre · Pond Water</div>
-</div>
-
-<div style="font-family:'Share Tech Mono',monospace; font-size:8px; color:#1e4a6a; letter-spacing:1.5px; margin-top:6px; line-height:1.6;">
-  STORE: 2–8°C · KEEP DRY<br>
-  FSSAI lic. no: XXXXXXXXXXXXXX<br>
-  MFG: MM/YYYY · EXP: MM/YYYY
 </div>
 ```
 
   </div>
 
-  <!-- Center bottom scan code -->
+  <!-- ════ RIGHT ════ -->
 
-  <div class="scan-code">MICROL-PH-001 · LOT: XXXX · NET: 500 mL</div>
+  <div class="right">
 
+```
+<!-- bg watermark phage -->
+<svg class="right-bg" viewBox="0 0 110 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <polygon points="55,4 95,27 95,73 55,96 15,73 15,27" stroke="white" stroke-width="3"/>
+  <rect x="49" y="96" width="12" height="24" stroke="white" stroke-width="3"/>
+  <polygon points="42,120 68,120 73,128 37,128" fill="white"/>
+  <line x1="42" y1="124" x2="18" y2="145" stroke="white" stroke-width="2"/>
+  <line x1="55" y1="128" x2="55" y2="148" stroke="white" stroke-width="2"/>
+  <line x1="68" y1="124" x2="92" y2="145" stroke="white" stroke-width="2"/>
+</svg>
+
+<div class="right-body">
+  <!-- Column 1: Composition + application + mfg -->
+  <div class="r-col-1">
+
+    <div>
+      <div class="r-section-title">Composition</div>
+      <div class="r-text">
+        Specific lytic bacteriophage active against<br>
+        <strong>Vibrio harveyi, Vibrio parahaemolyticus,</strong><br>
+        <strong>Aeromonas hydrophila</strong> and related spp.
+      </div>
+    </div>
+
+    <div>
+      <div class="r-section-title">Method of Application</div>
+      <div class="r-text">
+        Mix with feed prior to feeding. Ensure uniform coating.<br>
+        For pond application, dilute in fresh water &amp; broadcast<br>
+        evenly. Avoid chlorinated water.
+      </div>
+    </div>
+
+    <div>
+      <div class="r-section-title">Storage &amp; Shelf Life</div>
+      <div class="r-text">
+        Store at <strong>2–8°C</strong> in a cool, dry, shaded place.<br>
+        Best before: <strong>18 months</strong> from date of manufacture.<br>
+        Keep away from direct sunlight and disinfectants.
+      </div>
+    </div>
+
+    <!-- Manufacturer -->
+    <div style="margin-top:auto;">
+      <div class="r-section-title">Manufactured By</div>
+      <div class="r-text" style="line-height:1.7">
+        <strong style="font-size:10px">MICROL REMEDIES</strong><br>
+        5-35/304/1/A, Mythri Nagar, Kukatpally,<br>
+        Hyderabad – 500072, Telangana, <strong>INDIA</strong><br>
+        ☎ 040-23720502 · info@microlremedies.com
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Column 2: Dosage + fields + compliance -->
+  <div class="r-col-2">
+
+    <!-- Dosage -->
+    <div class="dosage-box">
+      <span class="d-label">Dosage · Feed Mix</span>
+      <span class="d-val">5–10 g</span>
+      <span class="d-unit">per kg of feed</span>
+    </div>
+
+    <!-- Batch fields -->
+    <div>
+      <div class="r-section-title">Batch Details</div>
+      <div class="fields">
+        <div class="field-row">
+          <span class="field-lbl">CAA No</span>
+          <div class="field-line"></div>
+        </div>
+        <div class="field-row">
+          <span class="field-lbl">Batch No</span>
+          <div class="field-line"></div>
+        </div>
+        <div class="field-row">
+          <span class="field-lbl">MRP (₹)</span>
+          <div class="field-line"></div>
+        </div>
+        <div class="field-row">
+          <span class="field-lbl">Mfg Date</span>
+          <div class="field-line"></div>
+        </div>
+        <div class="field-row">
+          <span class="field-lbl">Exp Date</span>
+          <div class="field-line"></div>
+        </div>
+        <div class="field-row">
+          <span class="field-lbl">Net Qty</span>
+          <div class="field-line"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Compliance tags -->
+    <div class="tags" style="margin-top:4px;">
+      <div class="tag">FOR AQUACULTURE USE ONLY</div>
+      <div class="tag">NOT FOR HUMAN USE</div>
+      <div class="tag">NO ANTIBIOTICS</div>
+      <div class="tag">NO HORMONES</div>
+    </div>
+
+  </div>
 </div>
 
-<div class="print-note">↑ Exact label at 1200 × 400 px — represents 12" × 4" at 100 DPI</div>
+<!-- Bottom strip -->
+<div class="bottom-strip">
+  <div class="iso-badges">
+    <div class="iso-badge">ISO 9001:2015</div>
+    <div class="iso-badge">ISO 10002:2014</div>
+    <div class="iso-badge">ISO 14001:2015</div>
+  </div>
+  <div class="bottom-text">An ISO 9001:2015, ISO 10002:2014, ISO 14001:2015 Certified Company</div>
+  <div class="made-india">🇮🇳 Made in India</div>
+</div>
+```
 
-<script>
-  // Generate floating particles
-  const container = document.getElementById('particles');
-  const colors = ['#00d4ff', '#4dd9ac', '#0077cc'];
-  for (let i = 0; i < 22; i++) {
-    const p = document.createElement('div');
-    p.className = 'particle';
-    const size = Math.random() * 4 + 2;
-    p.style.cssText = `
-      width: ${size}px;
-      height: ${size}px;
-      left: ${220 + Math.random() * 720}px;
-      bottom: ${Math.random() * 50}px;
-      background: radial-gradient(circle, ${colors[Math.floor(Math.random()*3)]}, transparent 70%);
-      animation-duration: ${6 + Math.random() * 10}s;
-      animation-delay: ${-Math.random() * 12}s;
-    `;
-    container.appendChild(p);
-  }
-</script>
+  </div><!-- /right -->
+
+</div><!-- /label -->
+
+<div class="meta" style="color:#78909C; font-size:10px">Print at 100 DPI for exact 12" × 4" · © Microl Remedies</div>
 
 </body>
 </html>
