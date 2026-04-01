@@ -3,13 +3,13 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>MICROL PHAGE — Corporate Label</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<title>MICROL PHAGE — Label v5</title>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Nunito+Sans:wght@300;400;600;700;800;900&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-background: #C8D0D5;
+background: #B8C8D0;
 min-height: 100vh;
 display: flex;
 flex-direction: column;
@@ -17,556 +17,535 @@ align-items: center;
 justify-content: center;
 padding: 48px 24px;
 gap: 14px;
-font-family: ‘Inter’, sans-serif;
+font-family: ‘Nunito Sans’, sans-serif;
 }
 
 .note {
-font-family: ‘Inter’, sans-serif;
-font-size: 10px;
+font-family: ‘Source Code Pro’, monospace;
+font-size: 9px;
 color: #7A8E96;
-letter-spacing: 1.5px;
+letter-spacing: 2px;
 text-transform: uppercase;
 }
 
-/* ═══════════════════════════════════════════════════
+/* ═══════════════════════════════════════════
 LABEL  1200 × 400
-═══════════════════════════════════════════════════ */
+═══════════════════════════════════════════ */
 .label {
 width: 1200px;
 height: 400px;
 display: flex;
-background: #FFFFFF;
-border: 1px solid #D0D8DC;
-box-shadow: 0 8px 40px rgba(0,0,0,0.18), 0 2px 8px rgba(0,0,0,0.10);
+overflow: hidden;
+box-shadow:
+0 2px 0 rgba(255,255,255,0.6) inset,
+0 20px 60px rgba(0,0,0,0.28),
+0 4px 12px rgba(0,0,0,0.15);
+border-radius: 3px;
+}
+
+/* ═══ PANEL LEFT — 400px — Deep Prussian Blue ═══ */
+.pl {
+width: 400px;
+flex-shrink: 0;
+background: #0A2540;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
 position: relative;
 overflow: hidden;
 }
 
-/* ── top colour band ── */
-.label::before {
+/* aqua left border accent */
+.pl::before {
 content: ‘’;
 position: absolute;
-top: 0; left: 0; right: 0;
-height: 6px;
-background: linear-gradient(90deg, #00527A 0%, #007BAD 50%, #00527A 100%);
-z-index: 10;
+top: 0; left: 0; bottom: 0;
+width: 5px;
+background: linear-gradient(180deg, #00D4C8, #0095A8);
 }
 
-/* ── bottom colour band ── */
-.label::after {
+/* subtle grid texture */
+.pl::after {
 content: ‘’;
 position: absolute;
-bottom: 0; left: 0; right: 0;
-height: 5px;
-background: #00527A;
-z-index: 10;
+inset: 0;
+background-image:
+linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+background-size: 32px 32px;
+pointer-events: none;
 }
 
-/* ═══════════════════════════════════════════════════
-LEFT PANEL  — 380px — White + Navy header
-═══════════════════════════════════════════════════ */
-.left {
-width: 380px;
-flex-shrink: 0;
-display: flex;
-flex-direction: column;
-border-right: 1px solid #DDE4E8;
+/* — brand header area — */
+.pl-brand {
+padding: 22px 24px 0 28px;
 position: relative;
+z-index: 1;
 }
 
-/* navy top header inside left */
-.left-header {
-background: #00527A;
-padding: 14px 22px 12px;
+.brand-row {
+display: flex;
+align-items: center;
+gap: 10px;
+margin-bottom: 14px;
+}
+
+.logo-ring {
+width: 38px;
+height: 38px;
+border-radius: 50%;
+border: 1.5px solid rgba(0,212,200,0.5);
+display: flex;
+align-items: center;
+justify-content: center;
+flex-shrink: 0;
+background: rgba(0,212,200,0.06);
+}
+
+.logo-ring svg { width: 20px; height: 20px; }
+
+.brand-stack { display: flex; flex-direction: column; gap: 1px; }
+
+.brand-name {
+font-family: ‘Rajdhani’, sans-serif;
+font-weight: 700;
+font-size: 14px;
+letter-spacing: 3px;
+color: #FFFFFF;
+text-transform: uppercase;
+}
+
+.brand-name span { color: #00D4C8; }
+
+.brand-sub {
+font-size: 8px;
+font-weight: 400;
+color: rgba(255,255,255,0.4);
+letter-spacing: 2px;
+text-transform: uppercase;
+}
+
+/* — product name — */
+.pl-product {
+position: relative;
+z-index: 1;
+}
+
+.product-eyebrow {
+font-family: ‘Source Code Pro’, monospace;
+font-size: 8px;
+color: #00D4C8;
+letter-spacing: 3px;
+text-transform: uppercase;
+padding: 0 24px 0 28px;
+margin-bottom: 4px;
+display: flex;
+align-items: center;
+gap: 8px;
+}
+
+.product-eyebrow::after {
+content: ‘’;
+flex: 1;
+height: 1px;
+background: rgba(0,212,200,0.3);
+}
+
+.product-name-wrap {
+padding: 0 24px 0 28px;
+line-height: 0.88;
+}
+
+.pn1 {
+font-family: ‘Nunito Sans’, sans-serif;
+font-weight: 900;
+font-size: 76px;
+color: #FFFFFF;
+letter-spacing: -2px;
+display: block;
+}
+
+.pn2 {
+font-family: ‘Nunito Sans’, sans-serif;
+font-weight: 300;
+font-size: 76px;
+color: #00D4C8;
+letter-spacing: 12px;
+display: block;
+}
+
+/* — bottom stat strip — */
+.pl-stats {
+position: relative;
+z-index: 1;
+padding: 0 24px 18px 28px;
+}
+
+.dosage-highlight {
+background: rgba(0, 212, 200, 0.1);
+border: 1px solid rgba(0, 212, 200, 0.25);
+border-radius: 3px;
+padding: 9px 14px;
+margin-bottom: 10px;
 display: flex;
 align-items: center;
 gap: 12px;
 }
 
-.logo-circle {
-width: 36px;
-height: 36px;
+.dh-icon {
+width: 32px;
+height: 32px;
 border-radius: 50%;
-border: 2px solid rgba(255,255,255,0.5);
+background: rgba(0,212,200,0.15);
 display: flex;
 align-items: center;
 justify-content: center;
 flex-shrink: 0;
 }
 
-.logo-circle svg { width: 22px; height: 22px; }
+.dh-right { display: flex; flex-direction: column; }
 
-.brand-col {
-display: flex;
-flex-direction: column;
-}
-
-.brand-title {
-font-family: ‘Montserrat’, sans-serif;
-font-weight: 800;
-font-size: 13px;
-color: #FFFFFF;
+.dh-label {
+font-family: ‘Source Code Pro’, monospace;
+font-size: 7px;
+color: rgba(255,255,255,0.4);
 letter-spacing: 2px;
 text-transform: uppercase;
-line-height: 1;
 }
 
-.brand-tagline {
-font-size: 8px;
-font-weight: 400;
-color: rgba(255,255,255,0.65);
-letter-spacing: 1.5px;
-text-transform: uppercase;
-margin-top: 3px;
-}
-
-/* left body */
-.left-body {
-flex: 1;
-padding: 16px 22px 14px;
-display: flex;
-flex-direction: column;
-justify-content: space-between;
-}
-
-/* product name block */
-.product-name {
-display: flex;
-flex-direction: column;
-line-height: 1;
-margin-bottom: 10px;
-}
-
-.pn-line1 {
-font-family: ‘Montserrat’, sans-serif;
+.dh-value {
+font-family: ‘Nunito Sans’, sans-serif;
 font-weight: 900;
-font-size: 68px;
-color: #0D2B3E;
-letter-spacing: -2px;
-line-height: 0.9;
+font-size: 22px;
+color: #00D4C8;
+line-height: 1.1;
+letter-spacing: -0.5px;
 }
 
-.pn-line2 {
-font-family: ‘Montserrat’, sans-serif;
-font-weight: 300;
-font-size: 68px;
-color: #007BAD;
-letter-spacing: 8px;
-line-height: 0.9;
+.dh-unit {
+font-size: 9px;
+color: rgba(255,255,255,0.6);
+font-weight: 400;
 }
 
-.product-sub {
-font-size: 8.5px;
-font-weight: 600;
-color: #7A9BAD;
-letter-spacing: 2.5px;
-text-transform: uppercase;
-margin-top: 8px;
-}
-
-/* spec chips row */
-.chips {
+.pills-row {
 display: flex;
 gap: 5px;
 flex-wrap: wrap;
-margin-top: 6px;
 }
 
-.chip {
-font-size: 7.5px;
-font-weight: 700;
+.pill {
+font-family: ‘Source Code Pro’, monospace;
+font-size: 7px;
+font-weight: 600;
 letter-spacing: 1px;
 text-transform: uppercase;
 border-radius: 2px;
-padding: 3px 9px;
+padding: 3px 8px;
 }
 
-.chip-primary {
-background: #E8F4FA;
-color: #00527A;
-border: 1px solid #B8D8EA;
-}
+.pill-aqua { background: rgba(0,212,200,0.15); color: #00D4C8; border: 1px solid rgba(0,212,200,0.3); }
+.pill-white { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.7); border: 1px solid rgba(255,255,255,0.12); }
+.pill-red { background: #C0392B; color: #fff; border: 1px solid #E74C3C; }
 
-.chip-accent {
-background: #00527A;
-color: #FFFFFF;
-}
-
-.chip-red {
-background: #D32F2F;
-color: #FFFFFF;
-}
-
-/* dosage box */
-.dosage-card {
-background: #F0F8FF;
-border: 1px solid #B8D8EA;
-border-left: 4px solid #007BAD;
-border-radius: 3px;
-padding: 9px 14px;
-display: flex;
-align-items: baseline;
-gap: 8px;
-}
-
-.dosage-val {
-font-family: ‘Montserrat’, sans-serif;
-font-weight: 800;
-font-size: 26px;
-color: #00527A;
-letter-spacing: -0.5px;
-white-space: nowrap;
-}
-
-.dosage-info {
-display: flex;
-flex-direction: column;
-}
-
-.dosage-unit {
-font-size: 10px;
-font-weight: 600;
-color: #3A7090;
-}
-
-.dosage-sub {
-font-size: 7.5px;
-color: #8AAAC0;
-letter-spacing: 0.5px;
-margin-top: 1px;
-}
-
-/* ═══════════════════════════════════════════════════
-CENTER PANEL — 400px — White, phage illustration
-═══════════════════════════════════════════════════ */
-.center {
+/* ═══ PANEL CENTER — 400px — White ═══ */
+.pc {
 width: 400px;
 flex-shrink: 0;
+background: #FFFFFF;
 display: flex;
 flex-direction: column;
-border-right: 1px solid #DDE4E8;
-position: relative;
-}
-
-.center-header {
-background: #F5F9FB;
-border-bottom: 1px solid #DDE4E8;
-padding: 10px 22px;
-display: flex;
 align-items: center;
-justify-content: space-between;
+border-left: 1px solid #E0E8EC;
+border-right: 1px solid #E0E8EC;
+position: relative;
+overflow: hidden;
 }
 
-.center-header-title {
-font-size: 8px;
-font-weight: 600;
-color: #7A9BAD;
-letter-spacing: 2px;
-text-transform: uppercase;
+/* top aqua strip */
+.pc-topbar {
+width: 100%;
+height: 5px;
+background: linear-gradient(90deg, #00D4C8, #0095A8);
+flex-shrink: 0;
 }
 
-.caa-badge {
-background: #D32F2F;
-color: #fff;
-font-size: 7px;
-font-weight: 700;
-letter-spacing: 1px;
-text-transform: uppercase;
-padding: 3px 9px;
-border-radius: 2px;
-}
-
-.center-body {
+.pc-body {
 flex: 1;
+width: 100%;
 display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: center;
-padding: 8px 22px 16px;
+padding: 10px 28px 16px;
 gap: 10px;
 }
 
-/* phage SVG */
-.phage-svg-wrap {
-width: 120px;
-}
-
-/* composition text */
-.comp-block {
+.pc-section-head {
 width: 100%;
+display: flex;
+align-items: center;
+gap: 8px;
 }
 
-.block-head {
+.pc-sh-text {
+font-family: ‘Source Code Pro’, monospace;
 font-size: 7.5px;
-font-weight: 700;
-color: #00527A;
-letter-spacing: 2px;
+color: #0A2540;
+letter-spacing: 2.5px;
 text-transform: uppercase;
-border-bottom: 1px solid #DDE4E8;
-padding-bottom: 4px;
-margin-bottom: 6px;
+font-weight: 600;
+white-space: nowrap;
 }
 
-.comp-text {
-font-size: 9.5px;
-color: #445F6E;
-line-height: 1.7;
+.pc-sh-line {
+flex: 1;
+height: 1px;
+background: #E0E8EC;
 }
 
-.comp-text strong { color: #0D2B3E; font-weight: 600; }
+/* phage illustration */
+.phage-illustration { width: 130px; flex-shrink: 0; }
 
-/* mechanism points */
-.mech-grid {
+/* mechanism 2×2 grid */
+.mech-4 {
 width: 100%;
 display: grid;
 grid-template-columns: 1fr 1fr;
 gap: 5px;
 }
 
-.mech-point {
+.m4-item {
+background: #F4F9FB;
+border: 1px solid #E0ECF2;
+border-radius: 3px;
+padding: 7px 9px;
 display: flex;
 align-items: flex-start;
-gap: 6px;
+gap: 7px;
 }
 
-.mpoint-icon {
-width: 14px;
-height: 14px;
+.m4-dot {
+width: 6px;
+height: 6px;
 border-radius: 50%;
-background: #E8F4FA;
-border: 1px solid #B8D8EA;
-display: flex;
-align-items: center;
-justify-content: center;
+background: #0A2540;
 flex-shrink: 0;
-margin-top: 1px;
+margin-top: 3px;
 }
 
-.mpoint-icon svg { width: 7px; height: 7px; }
-
-.mpoint-txt {
+.m4-text {
 font-size: 8.5px;
-color: #526E7C;
+color: #2A4A5A;
 line-height: 1.45;
 }
 
-.mpoint-txt strong { color: #0D2B3E; font-weight: 600; }
+.m4-text strong { color: #0A2540; font-weight: 700; }
 
-/* stat row bottom of center */
-.stat-row {
+/* stat bar */
+.stat-strip {
 width: 100%;
 display: flex;
 gap: 4px;
 }
 
-.stat-box {
+.stat-tile {
 flex: 1;
-background: #00527A;
-border-radius: 3px;
-padding: 7px 6px;
 text-align: center;
+border-radius: 3px;
+padding: 7px 4px;
 }
 
-.stat-box-v {
-font-family: ‘Montserrat’, sans-serif;
-font-weight: 800;
+.st-dark { background: #0A2540; }
+.st-mid  { background: #0095A8; }
+.st-lite { background: #E8F6F8; border: 1px solid #C0DDE6; }
+
+.stv {
+font-family: ‘Rajdhani’, sans-serif;
+font-weight: 700;
 font-size: 13px;
-color: #FFFFFF;
 display: block;
 line-height: 1;
-letter-spacing: 0.5px;
 }
 
-.stat-box-l {
+.st-dark .stv, .st-mid .stv { color: #fff; }
+.st-lite .stv { color: #0A2540; }
+
+.stl {
 font-size: 6.5px;
-font-weight: 500;
-color: rgba(255,255,255,0.65);
 letter-spacing: 1px;
 text-transform: uppercase;
 display: block;
 margin-top: 2px;
 }
 
-.stat-box-alt {
-background: #E8F4FA;
-border: 1px solid #B8D8EA;
+.st-dark .stl, .st-mid .stl { color: rgba(255,255,255,0.6); }
+.st-lite .stl { color: #5A8899; }
+
+/* bottom bar */
+.pc-botbar {
+width: 100%;
+height: 5px;
+background: #0A2540;
+flex-shrink: 0;
 }
 
-.stat-box-alt .stat-box-v { color: #00527A; }
-.stat-box-alt .stat-box-l { color: #7AAABB; }
-
-/* ═══════════════════════════════════════════════════
-RIGHT PANEL — remaining — Light grey
-═══════════════════════════════════════════════════ */
-.right {
+/* ═══ PANEL RIGHT — 400px — Warm Off-White ═══ */
+.pr {
 flex: 1;
-background: #F5F9FB;
+background: #F4F7F8;
 display: flex;
 flex-direction: column;
 }
 
-.right-header {
-background: #00527A;
+/* header band */
+.pr-header {
+background: #0A2540;
 padding: 10px 20px;
 display: flex;
 align-items: center;
 justify-content: space-between;
+flex-shrink: 0;
 }
 
-.right-header-title {
-font-size: 8px;
-font-weight: 600;
-color: rgba(255,255,255,0.7);
+.pr-ht {
+font-family: ‘Source Code Pro’, monospace;
+font-size: 7.5px;
+color: rgba(255,255,255,0.5);
+letter-spacing: 2.5px;
+text-transform: uppercase;
+}
+
+.pr-hb {
+font-family: ‘Rajdhani’, sans-serif;
+font-weight: 700;
+font-size: 11px;
+color: #00D4C8;
 letter-spacing: 2px;
 text-transform: uppercase;
 }
 
-.right-header-mfr {
-font-size: 8px;
-font-weight: 700;
-color: #fff;
-letter-spacing: 1px;
-}
-
-.right-body {
+/* body grid */
+.pr-grid {
 flex: 1;
 display: grid;
 grid-template-columns: 1fr 1fr;
-gap: 0;
+grid-template-rows: 1fr 1fr;
 }
 
-.r-cell {
-padding: 12px 18px;
-border-bottom: 1px solid #DDE4E8;
+.pr-cell {
+padding: 12px 16px;
+border-bottom: 1px solid #DDE6EA;
 display: flex;
 flex-direction: column;
 gap: 4px;
 }
 
-.r-cell:nth-child(odd) {
-border-right: 1px solid #DDE4E8;
-}
+.pr-cell:nth-child(odd) { border-right: 1px solid #DDE6EA; }
+.pr-cell:nth-child(3),
+.pr-cell:nth-child(4)   { border-bottom: none; }
 
-.r-cell-title {
-font-size: 7.5px;
-font-weight: 700;
-color: #00527A;
+.pr-ctitle {
+font-family: ‘Source Code Pro’, monospace;
+font-size: 7px;
+font-weight: 600;
+color: #0A2540;
 letter-spacing: 2px;
 text-transform: uppercase;
-margin-bottom: 3px;
-display: flex;
-align-items: center;
-gap: 5px;
+padding-bottom: 4px;
+border-bottom: 1.5px solid #00D4C8;
+margin-bottom: 4px;
+display: inline-block;
 }
 
-.r-cell-title::after {
-content: ‘’;
-flex: 1;
-height: 1px;
-background: #DDE4E8;
-}
-
-.r-text {
+.pr-text {
 font-size: 9.5px;
-color: #3A5564;
-line-height: 1.65;
+color: #3A5464;
+line-height: 1.7;
 }
 
-.r-text strong { color: #0D2B3E; font-weight: 600; }
+.pr-text strong { color: #0A2540; font-weight: 700; }
 
 /* batch fields */
-.batch-fields {
-display: flex;
-flex-direction: column;
-gap: 5px;
-margin-top: 2px;
-}
+.bf { display: flex; flex-direction: column; gap: 4px; }
 
 .bf-row {
 display: flex;
 align-items: center;
-gap: 8px;
+gap: 6px;
 }
 
-.bf-lbl {
-font-size: 8px;
-font-weight: 600;
+.bf-l {
+font-family: ‘Source Code Pro’, monospace;
+font-size: 7.5px;
 color: #7A9BAD;
-width: 62px;
+width: 58px;
 flex-shrink: 0;
-letter-spacing: 0.5px;
 }
 
 .bf-line {
 flex: 1;
-border-bottom: 1px solid #B8CCDA;
-height: 16px;
+border-bottom: 1px solid #C0D0D8;
+height: 14px;
 }
 
 /* compliance tags */
-.comp-tags {
-display: flex;
-flex-direction: column;
-gap: 4px;
-margin-top: 2px;
-}
+.ctags { display: flex; flex-direction: column; gap: 3px; margin-top: 5px; }
 
-.comp-tag {
+.ctag {
 font-size: 7.5px;
-font-weight: 600;
-color: #4A6E80;
+font-weight: 700;
+color: #4A6A7A;
 letter-spacing: 1px;
 text-transform: uppercase;
-border: 1px solid #C8D8E2;
+border: 1px solid #C0D0DA;
 border-radius: 2px;
-padding: 3px 9px;
+padding: 3px 8px;
 text-align: center;
 background: #fff;
 }
 
-/* mfg address */
-.mfg-addr {
-font-size: 9px;
-color: #3A5564;
-line-height: 1.75;
-}
+/* mfg */
+.mfg { font-size: 9px; color: #3A5464; line-height: 1.75; }
+.mfg strong { color: #0A2540; font-weight: 700; font-size: 9.5px; }
 
-.mfg-addr strong { color: #0D2B3E; font-weight: 700; font-size: 9.5px; }
-
-/* bottom footer */
-.right-footer {
-background: #E8EFF3;
-border-top: 1px solid #C8D8E2;
-padding: 6px 18px;
+/* footer */
+.pr-footer {
+background: #E4EDF0;
+border-top: 1px solid #C8D8DC;
+padding: 6px 16px;
 display: flex;
 align-items: center;
 justify-content: space-between;
+flex-shrink: 0;
 }
 
-.iso-group { display: flex; gap: 5px; }
+.iso-group { display: flex; gap: 4px; }
 
 .iso-chip {
-font-size: 6.5px;
-font-weight: 600;
-color: #5A7A8A;
-border: 1px solid #B8CCDA;
+font-family: ‘Source Code Pro’, monospace;
+font-size: 6px;
+color: #4A6A7A;
+border: 1px solid #B0C8D0;
 border-radius: 2px;
-padding: 2px 6px;
+padding: 2px 5px;
 background: #fff;
-letter-spacing: 0.5px;
+letter-spacing: 0.3px;
 }
 
-.fssai-text {
-font-size: 7.5px;
+.fssai-txt {
+font-family: ‘Source Code Pro’, monospace;
+font-size: 7px;
 color: #7A9BAD;
 letter-spacing: 1px;
 }
 
-.india-text {
-font-size: 8px;
+.india-txt {
+font-family: ‘Rajdhani’, sans-serif;
 font-weight: 700;
-color: #4A6E80;
-letter-spacing: 1.5px;
+font-size: 9px;
+color: #4A6A7A;
+letter-spacing: 2px;
 text-transform: uppercase;
 }
 </style>
@@ -574,207 +553,213 @@ text-transform: uppercase;
 </head>
 <body>
 
-<div class="note">MICROL PHAGE · Corporate Label · 1200 × 400 px (12" × 4")</div>
+<div class="note">MICROL PHAGE · Option 5 · 1200 × 400 px (12" × 4")</div>
 
 <div class="label">
 
-  <!-- ══════ LEFT ══════ -->
+  <!-- ══ LEFT ══ -->
 
-  <div class="left">
-    <div class="left-header">
-      <div class="logo-circle">
-        <!-- M logo SVG -->
-        <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="11" cy="11" r="10" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/>
-          <text x="11" y="15.5" font-family="Montserrat,sans-serif" font-weight="900" font-size="13" fill="white" text-anchor="middle">M</text>
-        </svg>
-      </div>
-      <div class="brand-col">
-        <div class="brand-title">Microl Remedies®</div>
-        <div class="brand-tagline">Aquaculture Healthcare · Hyderabad</div>
-      </div>
-    </div>
+  <div class="pl">
 
 ```
-<div class="left-body">
-  <div>
-    <div class="product-name">
-      <span class="pn-line1">MICROL</span>
-      <span class="pn-line2">PHAGE</span>
+<div class="pl-brand">
+  <div class="brand-row">
+    <div class="logo-ring">
+      <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="10" cy="10" r="9" stroke="#00D4C8" stroke-width="1.5"/>
+        <text x="10" y="14.5" font-family="Nunito Sans,sans-serif" font-weight="900" font-size="12" fill="#00D4C8" text-anchor="middle">M</text>
+      </svg>
     </div>
-    <div class="product-sub">Bacteriophage Formulation · Aquaculture</div>
-    <div class="chips" style="margin-top:10px;">
-      <span class="chip chip-accent">Antibiotic-Free</span>
-      <span class="chip chip-primary">Lytic Mode</span>
-      <span class="chip chip-primary">10⁹ PFU/mL</span>
-      <span class="chip chip-red">CAA Certified</span>
+    <div class="brand-stack">
+      <div class="brand-name">MICROL <span>REMEDIES</span>®</div>
+      <div class="brand-sub">Aquaculture Healthcare · Hyderabad</div>
     </div>
   </div>
+</div>
 
-  <div class="dosage-card">
-    <div class="dosage-val">5–10 g</div>
-    <div class="dosage-info">
-      <div class="dosage-unit">per kg of feed</div>
-      <div class="dosage-sub">DOSAGE · Mixed with Feed</div>
+<div class="pl-product">
+  <div class="product-eyebrow">Bacteriophage Formulation</div>
+  <div class="product-name-wrap">
+    <span class="pn1">MICROL</span>
+    <span class="pn2">PHAGE</span>
+  </div>
+</div>
+
+<div class="pl-stats">
+  <div class="dosage-highlight">
+    <div class="dh-icon">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <circle cx="8" cy="8" r="7" stroke="#00D4C8" stroke-width="1.5"/>
+        <line x1="8" y1="5" x2="8" y2="11" stroke="#00D4C8" stroke-width="2" stroke-linecap="round"/>
+        <line x1="5" y1="8" x2="11" y2="8" stroke="#00D4C8" stroke-width="2" stroke-linecap="round"/>
+      </svg>
     </div>
+    <div class="dh-right">
+      <span class="dh-label">Dosage · Mixed with Feed</span>
+      <span class="dh-value">5–10 <span style="font-size:14px;font-weight:600;">g</span></span>
+      <span class="dh-unit">per kg of feed</span>
+    </div>
+  </div>
+  <div class="pills-row">
+    <span class="pill pill-aqua">10⁹ PFU/mL</span>
+    <span class="pill pill-aqua">Lytic Mode</span>
+    <span class="pill pill-white">Broad Spectrum</span>
+    <span class="pill pill-white">Vibrio</span>
+    <span class="pill pill-red">CAA Certified</span>
+    <span class="pill pill-white">Antibiotic-Free</span>
   </div>
 </div>
 ```
 
   </div>
 
-  <!-- ══════ CENTER ══════ -->
+  <!-- ══ CENTER ══ -->
 
-  <div class="center">
-    <div class="center-header">
-      <div class="center-header-title">Mechanism of Action</div>
-      <div class="caa-badge">✔ CAA Certified</div>
-    </div>
+  <div class="pc">
+    <div class="pc-topbar"></div>
 
 ```
-<div class="center-body">
+<div class="pc-body">
 
-  <!-- Phage illustration -->
-  <div class="phage-svg-wrap">
-    <svg viewBox="0 0 120 148" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <!-- head outer hex -->
-      <polygon points="60,5 103,29 103,78 60,102 17,78 17,29"
-        fill="#EEF7FB" stroke="#007BAD" stroke-width="2.5"/>
-      <!-- head inner hex dashed -->
-      <polygon points="60,22 86,38 86,68 60,84 34,68 34,38"
-        fill="none" stroke="#B8D8EA" stroke-width="1.2" stroke-dasharray="4 3"/>
-      <!-- vertical lines inside head -->
-      <line x1="60" y1="5"  x2="60" y2="22"  stroke="#007BAD" stroke-width="1.5"/>
-      <line x1="103" y1="29" x2="86" y2="38"  stroke="#007BAD" stroke-width="1.5"/>
-      <line x1="103" y1="78" x2="86" y2="68"  stroke="#007BAD" stroke-width="1.5"/>
-      <line x1="60"  y1="102" x2="60" y2="84" stroke="#007BAD" stroke-width="1.5"/>
-      <line x1="17"  y1="78"  x2="34" y2="68" stroke="#007BAD" stroke-width="1.5"/>
-      <line x1="17"  y1="29"  x2="34" y2="38" stroke="#007BAD" stroke-width="1.5"/>
-      <!-- DNA dot center -->
-      <circle cx="60" cy="54" r="8" fill="#B8D8EA" opacity="0.5"/>
-      <circle cx="60" cy="54" r="4" fill="#007BAD"/>
+  <div class="pc-section-head">
+    <div class="pc-sh-text">Mechanism of Action</div>
+    <div class="pc-sh-line"></div>
+  </div>
+
+  <!-- Phage SVG — blue tones on white -->
+  <div class="phage-illustration">
+    <svg viewBox="0 0 130 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- outer hex shadow -->
+      <polygon points="65,7 110,33 110,84 65,110 20,84 20,33"
+        fill="#EBF5F8" stroke="#B0CED8" stroke-width="1"/>
+      <!-- main hex -->
+      <polygon points="65,7 110,33 110,84 65,110 20,84 20,33"
+        fill="none" stroke="#0095A8" stroke-width="2.5"/>
+      <!-- inner hex -->
+      <polygon points="65,26 92,42 92,74 65,90 38,74 38,42"
+        fill="none" stroke="#0A2540" stroke-width="1.2" stroke-dasharray="4 3" opacity="0.3"/>
+      <!-- vertex connectors -->
+      <line x1="65" y1="7"   x2="65" y2="26"  stroke="#0095A8" stroke-width="1.5"/>
+      <line x1="110" y1="33" x2="92" y2="42"  stroke="#0095A8" stroke-width="1.5"/>
+      <line x1="110" y1="84" x2="92" y2="74"  stroke="#0095A8" stroke-width="1.5"/>
+      <line x1="65" y1="110" x2="65" y2="90"  stroke="#0095A8" stroke-width="1.5"/>
+      <line x1="20" y1="84"  x2="38" y2="74"  stroke="#0095A8" stroke-width="1.5"/>
+      <line x1="20" y1="33"  x2="38" y2="42"  stroke="#0095A8" stroke-width="1.5"/>
+      <!-- DNA center -->
+      <circle cx="65" cy="59" r="10" fill="#EBF5F8" stroke="#0095A8" stroke-width="1.5"/>
+      <circle cx="65" cy="59" r="4.5" fill="#0A2540"/>
       <!-- collar -->
-      <rect x="50" y="102" width="20" height="6" rx="1.5" fill="#00527A"/>
+      <rect x="55" y="110" width="20" height="7" rx="1.5" fill="#0A2540"/>
       <!-- tail sheath -->
-      <rect x="53" y="108" width="14" height="22" rx="1.5"
-        fill="#EEF7FB" stroke="#007BAD" stroke-width="2"/>
+      <rect x="58" y="117" width="14" height="24" rx="1.5"
+        fill="#EBF5F8" stroke="#0095A8" stroke-width="2"/>
       <!-- sheath bands -->
-      <line x1="53" y1="114" x2="67" y2="114" stroke="#B8D8EA" stroke-width="1"/>
-      <line x1="53" y1="120" x2="67" y2="120" stroke="#B8D8EA" stroke-width="1"/>
-      <line x1="53" y1="126" x2="67" y2="126" stroke="#B8D8EA" stroke-width="1"/>
+      <line x1="58" y1="124" x2="72" y2="124" stroke="#B0CED8" stroke-width="1.2"/>
+      <line x1="58" y1="130" x2="72" y2="130" stroke="#B0CED8" stroke-width="1.2"/>
+      <line x1="58" y1="136" x2="72" y2="136" stroke="#B0CED8" stroke-width="1.2"/>
       <!-- baseplate -->
-      <polygon points="47,130 73,130 78,138 42,138" fill="#00527A"/>
+      <polygon points="51,141 79,141 84,150 46,150" fill="#0A2540"/>
       <!-- tail fibers -->
-      <line x1="44"  y1="134" x2="26"  y2="150" stroke="#007BAD" stroke-width="2"/>
-      <line x1="51"  y1="137" x2="38"  y2="152" stroke="#007BAD" stroke-width="2"/>
-      <line x1="60"  y1="138" x2="60"  y2="154" stroke="#007BAD" stroke-width="2"/>
-      <line x1="69"  y1="137" x2="82"  y2="152" stroke="#007BAD" stroke-width="2"/>
-      <line x1="76"  y1="134" x2="94"  y2="150" stroke="#007BAD" stroke-width="2"/>
-      <!-- fiber tips -->
-      <circle cx="26"  cy="151" r="3.5" fill="#007BAD"/>
-      <circle cx="38"  cy="153" r="3.5" fill="#007BAD"/>
-      <circle cx="60"  cy="155" r="3.5" fill="#007BAD"/>
-      <circle cx="82"  cy="153" r="3.5" fill="#007BAD"/>
-      <circle cx="94"  cy="151" r="3.5" fill="#007BAD"/>
+      <line x1="48"  y1="146" x2="28"  y2="163" stroke="#0095A8" stroke-width="2.2"/>
+      <line x1="56"  y1="149" x2="43"  y2="165" stroke="#0095A8" stroke-width="2.2"/>
+      <line x1="65"  y1="150" x2="65"  y2="167" stroke="#0095A8" stroke-width="2.2"/>
+      <line x1="74"  y1="149" x2="87"  y2="165" stroke="#0095A8" stroke-width="2.2"/>
+      <line x1="82"  y1="146" x2="102" y2="163" stroke="#0095A8" stroke-width="2.2"/>
+      <!-- tips -->
+      <circle cx="28"  cy="164" r="4" fill="#0095A8"/>
+      <circle cx="43"  cy="166" r="4" fill="#0095A8"/>
+      <circle cx="65"  cy="168" r="4" fill="#0095A8"/>
+      <circle cx="87"  cy="166" r="4" fill="#0095A8"/>
+      <circle cx="102" cy="164" r="4" fill="#0095A8"/>
     </svg>
   </div>
 
-  <div class="mech-grid">
-    <div class="mech-point">
-      <div class="mpoint-icon">
-        <svg viewBox="0 0 8 8" fill="#007BAD"><circle cx="4" cy="4" r="3"/></svg>
-      </div>
-      <div class="mpoint-txt"><strong>Infects &amp; lyses</strong> target bacteria specifically</div>
+  <div class="mech-4">
+    <div class="m4-item">
+      <div class="m4-dot"></div>
+      <div class="m4-text"><strong>Infects &amp; lyses</strong> target bacteria specifically</div>
     </div>
-    <div class="mech-point">
-      <div class="mpoint-icon">
-        <svg viewBox="0 0 8 8" fill="#007BAD"><circle cx="4" cy="4" r="3"/></svg>
-      </div>
-      <div class="mpoint-txt"><strong>No harm</strong> to non-target organisms</div>
+    <div class="m4-item">
+      <div class="m4-dot"></div>
+      <div class="m4-text"><strong>Self-amplifying</strong> at site of infection</div>
     </div>
-    <div class="mech-point">
-      <div class="mpoint-icon">
-        <svg viewBox="0 0 8 8" fill="#007BAD"><circle cx="4" cy="4" r="3"/></svg>
-      </div>
-      <div class="mpoint-txt"><strong>Self-amplifying</strong> at infection site</div>
+    <div class="m4-item">
+      <div class="m4-dot"></div>
+      <div class="m4-text"><strong>No harm</strong> to non-target organisms</div>
     </div>
-    <div class="mech-point">
-      <div class="mpoint-icon">
-        <svg viewBox="0 0 8 8" fill="#007BAD"><circle cx="4" cy="4" r="3"/></svg>
-      </div>
-      <div class="mpoint-txt">Safe for shrimp, fish &amp; <strong>pond ecosystem</strong></div>
+    <div class="m4-item">
+      <div class="m4-dot"></div>
+      <div class="m4-text">Safe for <strong>pond ecosystem</strong></div>
     </div>
   </div>
 
-  <div class="stat-row">
-    <div class="stat-box"><span class="stat-box-v">10⁹</span><span class="stat-box-l">PFU / mL</span></div>
-    <div class="stat-box stat-box-alt"><span class="stat-box-v">LYTIC</span><span class="stat-box-l">Mode of Action</span></div>
-    <div class="stat-box stat-box-alt"><span class="stat-box-v">BROAD</span><span class="stat-box-l">Spectrum</span></div>
-    <div class="stat-box"><span class="stat-box-v">VIBRIO</span><span class="stat-box-l">Target Pathogen</span></div>
+  <div class="stat-strip">
+    <div class="stat-tile st-dark"><span class="stv">10⁹</span><span class="stl">PFU / mL</span></div>
+    <div class="stat-tile st-mid"><span class="stv">LYTIC</span><span class="stl">Mode of Action</span></div>
+    <div class="stat-tile st-lite"><span class="stv">VIBRIO</span><span class="stl">Target</span></div>
+    <div class="stat-tile st-dark"><span class="stv">BROAD</span><span class="stl">Spectrum</span></div>
   </div>
 
 </div>
+
+<div class="pc-botbar"></div>
 ```
 
   </div>
 
-  <!-- ══════ RIGHT ══════ -->
+  <!-- ══ RIGHT ══ -->
 
-  <div class="right">
+  <div class="pr">
 
 ```
-<div class="right-header">
-  <div class="right-header-title">Product Information</div>
-  <div class="right-header-mfr">Microl Remedies® · Hyderabad</div>
+<div class="pr-header">
+  <div class="pr-ht">Product &amp; Statutory Information</div>
+  <div class="pr-hb">Microl Remedies®</div>
 </div>
 
-<div class="right-body">
+<div class="pr-grid">
 
-  <!-- Composition -->
-  <div class="r-cell">
-    <div class="r-cell-title">Composition</div>
-    <div class="r-text">
+  <div class="pr-cell">
+    <div class="pr-ctitle">Composition</div>
+    <div class="pr-text">
       Specific lytic bacteriophages active against<br>
       <strong>Vibrio harveyi, V. parahaemolyticus,</strong><br>
       <strong>Aeromonas hydrophila</strong> and related spp.
     </div>
   </div>
 
-  <!-- Method of Application -->
-  <div class="r-cell">
-    <div class="r-cell-title">Method of Application</div>
-    <div class="r-text">
+  <div class="pr-cell">
+    <div class="pr-ctitle">Method of Application</div>
+    <div class="pr-text">
       Mix uniformly with feed before feeding.<br>
-      Pond: dilute in fresh water, broadcast evenly.<br>
-      <strong>Avoid chlorinated water.</strong>
+      Pond water: dilute in fresh water &amp;<br>
+      broadcast evenly. <strong>Avoid chlorinated water.</strong>
     </div>
   </div>
 
-  <!-- Storage -->
-  <div class="r-cell" style="border-bottom:none;">
-    <div class="r-cell-title">Storage &amp; Shelf Life</div>
-    <div class="r-text">
+  <div class="pr-cell">
+    <div class="pr-ctitle">Storage &amp; Shelf Life</div>
+    <div class="pr-text">
       Store at <strong>2–8°C</strong>, cool dry shaded place.<br>
       Keep away from direct sunlight.<br>
       Best before: <strong>18 months</strong> from Mfg. date.
     </div>
-    <div class="comp-tags" style="margin-top:8px;">
-      <div class="comp-tag">For Aquaculture Use Only · Not for Human Use</div>
-      <div class="comp-tag">No Antibiotics · No Hormones</div>
+    <div class="ctags">
+      <div class="ctag">For Aquaculture Use Only · Not for Human Use</div>
+      <div class="ctag">No Antibiotics · No Hormones</div>
     </div>
   </div>
 
-  <!-- Batch + Mfg -->
-  <div class="r-cell" style="border-bottom:none;">
-    <div class="r-cell-title">Batch Details</div>
-    <div class="batch-fields">
-      <div class="bf-row"><span class="bf-lbl">CAA No</span><div class="bf-line"></div></div>
-      <div class="bf-row"><span class="bf-lbl">Batch No</span><div class="bf-line"></div></div>
-      <div class="bf-row"><span class="bf-lbl">MRP (₹)</span><div class="bf-line"></div></div>
-      <div class="bf-row"><span class="bf-lbl">Mfg Date</span><div class="bf-line"></div></div>
-      <div class="bf-row"><span class="bf-lbl">Exp Date</span><div class="bf-line"></div></div>
+  <div class="pr-cell">
+    <div class="pr-ctitle">Batch Details</div>
+    <div class="bf">
+      <div class="bf-row"><span class="bf-l">CAA No</span><div class="bf-line"></div></div>
+      <div class="bf-row"><span class="bf-l">Batch No</span><div class="bf-line"></div></div>
+      <div class="bf-row"><span class="bf-l">MRP (₹)</span><div class="bf-line"></div></div>
+      <div class="bf-row"><span class="bf-l">Mfg Date</span><div class="bf-line"></div></div>
+      <div class="bf-row"><span class="bf-l">Exp Date</span><div class="bf-line"></div></div>
     </div>
-    <div class="mfg-addr" style="margin-top:8px;">
+    <div class="mfg" style="margin-top:7px;">
       <strong>MICROL REMEDIES</strong><br>
       5-35/304/1/A, Mythri Nagar, Kukatpally,<br>
       Hyderabad – 500072, Telangana, <strong>INDIA</strong><br>
@@ -784,14 +769,14 @@ text-transform: uppercase;
 
 </div>
 
-<div class="right-footer">
+<div class="pr-footer">
   <div class="iso-group">
     <div class="iso-chip">ISO 9001:2015</div>
     <div class="iso-chip">ISO 10002:2014</div>
     <div class="iso-chip">ISO 14001:2015</div>
   </div>
-  <div class="fssai-text">FSSAI Lic. No: _______________</div>
-  <div class="india-text">🇮🇳 Made in India</div>
+  <div class="fssai-txt">FSSAI Lic. No: _______________</div>
+  <div class="india-txt">🇮🇳 Made in India</div>
 </div>
 ```
 
@@ -799,8 +784,8 @@ text-transform: uppercase;
 
 </div>
 
-<div class="note" style="color:#9AAAB2; font-size:9px;">
-  Print at 100 DPI for exact 12" × 4" · Net Qty: ___________ · © Microl Remedies, Hyderabad
+<div class="note" style="color:#8AAAB2; font-size:9px;">
+  Print at 100 DPI · 12" × 4" · Net Qty: ___________ · © Microl Remedies, Hyderabad
 </div>
 
 </body>
