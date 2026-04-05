@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arata Nutraceuticals – Letterhead</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+–ink:       #1a1f2e;
+–ink-light: #4a5068;
+–rule:      #c8cdd8;
+–accent:    #2c4a7c;
+–paper:     #ffffff;
+–serif:     ‘EB Garamond’, Georgia, serif;
+–sans:      ‘Montserrat’, sans-serif;
+}
+
+body {
+background: #e9ebef;
+font-family: var(–serif);
+color: var(–ink);
+min-height: 100vh;
+padding: 32px 16px 48px;
+}
+
+/* ── Toolbar ── */
+.toolbar {
+max-width: 794px;
+margin: 0 auto 14px;
+display: flex;
+justify-content: flex-end;
+gap: 8px;
+}
+
+.btn {
+font-family: var(–sans);
+font-size: 11px;
+font-weight: 600;
+letter-spacing: 0.08em;
+text-transform: uppercase;
+border: none;
+cursor: pointer;
+padding: 8px 20px;
+border-radius: 2px;
+transition: background 0.15s;
+}
+.btn-primary { background: var(–accent); color: #fff; }
+.btn-primary:hover { background: #1f3560; }
+.btn-ghost { background: transparent; color: var(–ink-light); border: 1px solid var(–rule); }
+.btn-ghost:hover { background: #fff; }
+
+/* ── A4 page ── */
+.page {
+background: var(–paper);
+width: 794px;
+min-height: 1123px;
+margin: 0 auto;
+display: flex;
+flex-direction: column;
+box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+}
+
+/* ── Header ── */
+.lh-header {
+padding: 34px 52px 20px;
+}
+
+.lh-top {
+display: flex;
+align-items: flex-start;
+justify-content: space-between;
+}
+
+.brand-name {
+font-family: var(–sans);
+font-weight: 700;
+font-size: 21px;
+letter-spacing: 0.18em;
+text-transform: uppercase;
+color: var(–ink);
+line-height: 1;
+}
+.brand-sub {
+font-family: var(–sans);
+font-weight: 300;
+font-size: 8px;
+letter-spacing: 0.36em;
+text-transform: uppercase;
+color: var(–accent);
+margin-top: 5px;
+}
+
+.contact-block {
+text-align: right;
+}
+.contact-block p {
+font-family: var(–sans);
+font-size: 8.5px;
+font-weight: 400;
+color: var(–ink-light);
+line-height: 1.9;
+letter-spacing: 0.02em;
+}
+.contact-block .cl {
+font-weight: 600;
+color: var(–ink);
+letter-spacing: 0.08em;
+text-transform: uppercase;
+font-size: 7px;
+}
+
+.header-rule {
+display: flex;
+align-items: center;
+margin-top: 16px;
+}
+.rule-accent { height: 2px; width: 48px; background: var(–accent); flex-shrink: 0; }
+.rule-thin   { height: 1px; background: var(–rule); flex: 1; }
+
+/* ── Free body ── */
+.lh-body {
+flex: 1;
+padding: 28px 52px 28px;
+display: flex;
+flex-direction: column;
+}
+
+.free-area {
+flex: 1;
+width: 100%;
+outline: none;
+border: none;
+resize: none;
+font-family: var(–serif);
+font-size: 13px;
+color: var(–ink);
+line-height: 1.85;
+background: transparent;
+min-height: 880px;
+/* Subtle lined guide — hidden on print */
+background-image: repeating-linear-gradient(
+to bottom,
+transparent,
+transparent calc(1.85em - 1px),
+#edf0f5 calc(1.85em - 1px),
+#edf0f5 1.85em
+);
+background-attachment: local;
+}
+
+.free-area:focus { outline: none; }
+
+/* Placeholder */
+.free-area:empty::before {
+content: “Start typing your letter here…”;
+color: #b0b6c8;
+font-style: italic;
+pointer-events: none;
+}
+
+/* ── Footer ── */
+.lh-footer {
+border-top: 1px solid var(–rule);
+padding: 13px 52px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+}
+.footer-left {
+font-family: var(–sans);
+font-size: 8px;
+color: var(–ink-light);
+letter-spacing: 0.05em;
+}
+.footer-center {
+display: flex;
+align-items: center;
+gap: 6px;
+}
+.footer-dot {
+width: 3.5px; height: 3.5px;
+border-radius: 50%;
+background: var(–accent);
+}
+.footer-center span {
+font-family: var(–sans);
+font-size: 7.5px;
+font-weight: 700;
+letter-spacing: 0.18em;
+text-transform: uppercase;
+color: var(–accent);
+}
+.footer-right {
+font-family: var(–sans);
+font-size: 8px;
+color: var(–ink-light);
+letter-spacing: 0.04em;
+}
+.footer-stripe { height: 4px; background: var(–accent); }
+
+/* ── Print ── */
+@media print {
+body { background: #fff; padding: 0; }
+.toolbar { display: none !important; }
+.page { width: 100%; min-height: 100vh; box-shadow: none; margin: 0; }
+.free-area { background-image: none; }
+@page { size: A4; margin: 0; }
+}
+</style>
+
+</head>
+<body>
+
+<div class="toolbar">
+  <button class="btn btn-ghost" onclick="document.getElementById('body').innerHTML=''">Clear</button>
+  <button class="btn btn-primary" onclick="window.print()">⎙&nbsp; Print</button>
+</div>
+
+<div class="page">
+
+  <!-- HEADER -->
+
+  <div class="lh-header">
+    <div class="lh-top">
+      <div class="brand">
+        <div class="brand-name">Arata</div>
+        <div class="brand-sub">Nutraceuticals</div>
+      </div>
+      <div class="contact-block">
+        <p>
+          Flat No. 107, Vasantha Green View Apartment<br>
+          Sy No. 79 of Hafeezpet, Hyderabad – 500049, Telangana
+        </p>
+        <p style="margin-top:7px;">
+          <span class="cl">Ph</span>&nbsp; +91 88971 37117
+          &nbsp;&nbsp;&nbsp;
+          <span class="cl">E</span>&nbsp; aratanutra@gmail.com
+        </p>
+      </div>
+    </div>
+    <div class="header-rule">
+      <div class="rule-accent"></div>
+      <div class="rule-thin"></div>
+    </div>
+  </div>
+
+  <!-- FREE BODY -->
+
+  <div class="lh-body">
+    <div id="body" class="free-area" contenteditable="true" spellcheck="true"></div>
+  </div>
+
+  <!-- FOOTER -->
+
+  <div class="lh-footer">
+    <div class="footer-left">Hyderabad · Telangana</div>
+    <div class="footer-center">
+      <div class="footer-dot"></div>
+      <span>Arata Nutraceuticals</span>
+      <div class="footer-dot"></div>
+    </div>
+    <div class="footer-right">aratanutra@gmail.com</div>
+  </div>
+  <div class="footer-stripe"></div>
+
+</div>
+
+</body>
+</html>
