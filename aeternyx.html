@@ -1,210 +1,1028 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AETERNYX™️ – Cellular Longevity Complex</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-
+<title>AETERNYX™ — Cellular Longevity Complex</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Josefin+Sans:wght@100;200;300;400&family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
 <style>
-    body {
-        margin: 0;
-        font-family: 'Inter', sans-serif;
-        background-color: #0A0A0A;
-        color: #EAEAEA;
-        line-height: 1.6;
-    }
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C97A;
+    --gold-dim: #7a6330;
+    --black: #050505;
+    --deep: #0D0D0D;
+    --panel: #111111;
+    --border: rgba(201,168,76,0.18);
+    --text: #D8D0C4;
+    --muted: #7a7168;
+    --white: #F5F0E8;
+  }
 
-    .container {
-        max-width: 1100px;
-        margin: auto;
-        padding: 40px 20px;
-    }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    h1, h2, h3 {
-        font-family: 'Playfair Display', serif;
-        color: #D4AF37;
-        margin-bottom: 10px;
-    }
+html { scroll-behavior: smooth; }
 
-    h1 {
-        font-size: 48px;
-        letter-spacing: 2px;
-    }
+body {
+background: var(–black);
+color: var(–text);
+font-family: ‘Josefin Sans’, sans-serif;
+font-weight: 300;
+overflow-x: hidden;
+cursor: default;
+}
 
-    h2 {
-        font-size: 28px;
-        margin-top: 40px;
-    }
+/* ── NOISE TEXTURE OVERLAY ── */
+body::before {
+content: ‘’;
+position: fixed;
+inset: 0;
+background-image: url(“data:image/svg+xml,%3Csvg viewBox=‘0 0 256 256’ xmlns=‘http://www.w3.org/2000/svg’%3E%3Cfilter id=‘noise’%3E%3CfeTurbulence type=‘fractalNoise’ baseFrequency=‘0.9’ numOctaves=‘4’ stitchTiles=‘stitch’/%3E%3C/filter%3E%3Crect width=‘100%25’ height=‘100%25’ filter=‘url(%23noise)’ opacity=‘0.03’/%3E%3C/svg%3E”);
+pointer-events: none;
+z-index: 9999;
+opacity: 0.4;
+}
 
-    h3 {
-        font-size: 20px;
-        margin-top: 20px;
-    }
+/* ── SLIDE SYSTEM ── */
+.slide {
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+justify-content: center;
+position: relative;
+overflow: hidden;
+}
 
-    p {
-        color: #CCCCCC;
-        font-size: 15px;
-    }
+/* ── DECORATIVE LINES ── */
+.rule {
+width: 60px;
+height: 1px;
+background: var(–gold);
+margin: 24px 0;
+}
 
-    .hero {
-        text-align: center;
-        padding: 80px 20px;
-        border-bottom: 1px solid #222;
-    }
+.rule-h {
+width: 100%;
+height: 1px;
+background: linear-gradient(90deg, transparent, var(–gold-dim), transparent);
+margin: 0;
+}
 
-    .tagline {
-        font-size: 18px;
-        color: #aaa;
-        margin-top: 10px;
-    }
+/* ── SLIDE 1: COVER ── */
+#cover {
+background: var(–black);
+align-items: center;
+text-align: center;
+padding: 80px 40px;
+}
 
-    .section {
-        margin-top: 50px;
-    }
+#cover::after {
+content: ‘’;
+position: absolute;
+width: 600px;
+height: 600px;
+border-radius: 50%;
+background: radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 70%);
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+pointer-events: none;
+}
 
-    .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 20px;
-    }
+.cover-eyebrow {
+font-family: ‘Josefin Sans’, sans-serif;
+font-weight: 100;
+font-size: 11px;
+letter-spacing: 8px;
+color: var(–gold);
+text-transform: uppercase;
+margin-bottom: 40px;
+animation: fadeUp 1s ease both;
+}
 
-    .card {
-        background: #111;
-        padding: 20px;
-        border: 1px solid #222;
-        border-radius: 10px;
-        transition: 0.3s;
-    }
+.cover-logo {
+font-family: ‘Cormorant Garamond’, serif;
+font-weight: 300;
+font-size: clamp(72px, 12vw, 140px);
+letter-spacing: 16px;
+color: var(–white);
+line-height: 1;
+animation: fadeUp 1s 0.2s ease both;
+position: relative;
+}
 
-    .card:hover {
-        border-color: #D4AF37;
-        transform: translateY(-5px);
-    }
+.cover-logo span {
+color: var(–gold);
+}
 
-    .highlight {
-        color: #D4AF37;
-        font-weight: 500;
-    }
+.cover-tm {
+font-size: 18px;
+vertical-align: super;
+color: var(–gold-dim);
+font-family: ‘Josefin Sans’, sans-serif;
+font-weight: 100;
+}
 
-    .quote {
-        text-align: center;
-        font-size: 22px;
-        font-family: 'Playfair Display', serif;
-        margin: 60px 0;
-        color: #D4AF37;
-    }
+.cover-sub {
+font-family: ‘Josefin Sans’, sans-serif;
+font-weight: 100;
+font-size: 13px;
+letter-spacing: 6px;
+color: var(–muted);
+text-transform: uppercase;
+margin-top: 20px;
+animation: fadeUp 1s 0.4s ease both;
+}
 
-    .footer {
-        text-align: center;
-        padding: 40px 20px;
-        border-top: 1px solid #222;
-        font-size: 14px;
-        color: #777;
-    }
+.cover-tagline {
+font-family: ‘Cormorant Garamond’, serif;
+font-style: italic;
+font-size: clamp(18px, 3vw, 26px);
+color: var(–gold-light);
+margin-top: 50px;
+animation: fadeUp 1s 0.6s ease both;
+max-width: 600px;
+}
 
+.cover-divider {
+width: 1px;
+height: 80px;
+background: linear-gradient(180deg, transparent, var(–gold), transparent);
+margin: 50px auto 0;
+animation: fadeUp 1s 0.8s ease both;
+}
+
+/* ── SLIDE 2: PHILOSOPHY ── */
+#philosophy {
+padding: 100px 8vw;
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 80px;
+align-items: center;
+}
+
+.slide-number {
+font-family: ‘Josefin Sans’, sans-serif;
+font-weight: 100;
+font-size: 10px;
+letter-spacing: 6px;
+color: var(–gold-dim);
+text-transform: uppercase;
+margin-bottom: 16px;
+}
+
+.slide-label {
+font-family: ‘Josefin Sans’, sans-serif;
+font-weight: 100;
+font-size: 10px;
+letter-spacing: 8px;
+color: var(–gold);
+text-transform: uppercase;
+margin-bottom: 24px;
+}
+
+.slide-heading {
+font-family: ‘Cormorant Garamond’, serif;
+font-weight: 300;
+font-size: clamp(36px, 5vw, 58px);
+line-height: 1.1;
+color: var(–white);
+margin-bottom: 30px;
+}
+
+.slide-heading em {
+font-style: italic;
+color: var(–gold-light);
+}
+
+.slide-body {
+font-family: ‘EB Garamond’, serif;
+font-size: 18px;
+color: var(–text);
+line-height: 1.9;
+max-width: 520px;
+}
+
+.philosophy-visual {
+display: flex;
+align-items: center;
+justify-content: center;
+position: relative;
+}
+
+.orbit-ring {
+position: absolute;
+border-radius: 50%;
+border: 1px solid var(–border);
+}
+
+.orbit-1 { width: 320px; height: 320px; animation: spin 30s linear infinite; }
+.orbit-2 { width: 220px; height: 220px; animation: spin 20s linear infinite reverse; border-style: dashed; }
+.orbit-3 { width: 120px; height: 120px; animation: spin 10s linear infinite; }
+
+.core-circle {
+width: 70px;
+height: 70px;
+border-radius: 50%;
+background: radial-gradient(circle, var(–gold) 0%, var(–gold-dim) 60%, transparent 100%);
+box-shadow: 0 0 60px rgba(201,168,76,0.3);
+position: relative;
+z-index: 2;
+}
+
+/* ── SLIDE 3: BENEFITS ── */
+#benefits {
+padding: 100px 8vw;
+background: var(–deep);
+}
+
+.benefits-header {
+text-align: center;
+margin-bottom: 70px;
+}
+
+.benefits-grid {
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: 2px;
+}
+
+.benefit-card {
+background: var(–panel);
+padding: 48px 32px;
+border-top: 1px solid var(–border);
+position: relative;
+overflow: hidden;
+transition: all 0.4s ease;
+}
+
+.benefit-card::before {
+content: ‘’;
+position: absolute;
+top: 0; left: 0;
+width: 100%;
+height: 2px;
+background: linear-gradient(90deg, var(–gold-dim), var(–gold));
+transform: scaleX(0);
+transform-origin: left;
+transition: transform 0.4s ease;
+}
+
+.benefit-card:hover::before { transform: scaleX(1); }
+.benefit-card:hover { background: #161616; }
+
+.benefit-icon {
+font-size: 28px;
+margin-bottom: 24px;
+opacity: 0.85;
+}
+
+.benefit-title {
+font-family: ‘Josefin Sans’, sans-serif;
+font-weight: 200;
+font-size: 13px;
+letter-spacing: 4px;
+color: var(–gold);
+text-transform: uppercase;
+margin-bottom: 16px;
+}
+
+.benefit-desc {
+font-family: ‘EB Garamond’, serif;
+font-size: 16px;
+color: var(–muted);
+line-height: 1.8;
+}
+
+.benefit-num {
+position: absolute;
+bottom: 24px;
+right: 28px;
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 60px;
+color: rgba(201,168,76,0.05);
+font-weight: 300;
+line-height: 1;
+}
+
+/* ── SLIDE 4: FORMULA ── */
+#formula {
+padding: 100px 8vw;
+}
+
+.formula-layout {
+display: grid;
+grid-template-columns: 1fr 2fr;
+gap: 80px;
+align-items: start;
+margin-top: 60px;
+}
+
+.formula-left {
+position: sticky;
+top: 100px;
+}
+
+.formula-descriptor {
+font-family: ‘EB Garamond’, serif;
+font-style: italic;
+font-size: 19px;
+color: var(–muted);
+line-height: 1.8;
+margin-top: 20px;
+}
+
+.formula-count {
+margin-top: 40px;
+display: flex;
+flex-direction: column;
+gap: 4px;
+}
+
+.count-num {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 80px;
+color: var(–gold);
+font-weight: 300;
+line-height: 1;
+}
+
+.count-label {
+font-family: ‘Josefin Sans’, sans-serif;
+font-weight: 100;
+font-size: 10px;
+letter-spacing: 6px;
+color: var(–muted);
+text-transform: uppercase;
+}
+
+.ingredient-list {
+display: flex;
+flex-direction: column;
+gap: 0;
+}
+
+.ingredient-row {
+display: grid;
+grid-template-columns: 2fr 1fr 3fr;
+align-items: center;
+padding: 22px 0;
+border-bottom: 1px solid rgba(201,168,76,0.08);
+gap: 24px;
+transition: all 0.3s ease;
+}
+
+.ingredient-row:hover {
+padding-left: 12px;
+border-bottom-color: rgba(201,168,76,0.25);
+}
+
+.ing-name {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 20px;
+color: var(–white);
+font-weight: 400;
+}
+
+.ing-dose {
+font-family: ‘Josefin Sans’, sans-serif;
+font-weight: 100;
+font-size: 11px;
+letter-spacing: 3px;
+color: var(–gold);
+text-align: right;
+white-space: nowrap;
+}
+
+.ing-role {
+font-family: ‘EB Garamond’, serif;
+font-style: italic;
+font-size: 15px;
+color: var(–muted);
+}
+
+/* ── SLIDE 5: SYNERGY ── */
+#synergy {
+padding: 100px 8vw;
+background: var(–deep);
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 80px;
+align-items: center;
+}
+
+.synergy-visual {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 2px;
+}
+
+.syn-box {
+padding: 32px 24px;
+background: var(–panel);
+border: 1px solid transparent;
+transition: border-color 0.3s ease;
+}
+
+.syn-box:hover { border-color: var(–border); }
+
+.syn-box-num {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 42px;
+color: var(–gold);
+font-weight: 300;
+line-height: 1;
+margin-bottom: 8px;
+}
+
+.syn-box-label {
+font-family: ‘Josefin Sans’, sans-serif;
+font-weight: 100;
+font-size: 10px;
+letter-spacing: 5px;
+color: var(–muted);
+text-transform: uppercase;
+}
+
+/* ── SLIDE 6: QUOTE ── */
+#pullquote {
+padding: 120px 8vw;
+text-align: center;
+background: var(–black);
+position: relative;
+}
+
+#pullquote::before {
+content: ‘❝’;
+position: absolute;
+top: 60px;
+left: 50%;
+transform: translateX(-50%);
+font-size: 80px;
+color: rgba(201,168,76,0.08);
+font-family: ‘Cormorant Garamond’, serif;
+line-height: 1;
+}
+
+.pullquote-text {
+font-family: ‘Cormorant Garamond’, serif;
+font-style: italic;
+font-size: clamp(28px, 4vw, 52px);
+color: var(–white);
+line-height: 1.3;
+max-width: 900px;
+margin: 0 auto;
+}
+
+.pullquote-text em {
+color: var(–gold-light);
+font-style: normal;
+}
+
+.pullquote-attr {
+margin-top: 40px;
+font-family: ‘Josefin Sans’, sans-serif;
+font-weight: 100;
+font-size: 10px;
+letter-spacing: 6px;
+color: var(–gold-dim);
+text-transform: uppercase;
+}
+
+/* ── SLIDE 7: TARGET & USAGE ── */
+#audience {
+padding: 100px 8vw;
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 80px;
+align-items: center;
+}
+
+.audience-tags {
+display: flex;
+flex-wrap: wrap;
+gap: 12px;
+margin-top: 30px;
+}
+
+.tag {
+padding: 10px 22px;
+border: 1px solid var(–border);
+font-family: ‘Josefin Sans’, sans-serif;
+font-weight: 200;
+font-size: 11px;
+letter-spacing: 3px;
+color: var(–gold);
+text-transform: uppercase;
+transition: all 0.3s ease;
+}
+
+.tag:hover {
+background: var(–gold);
+color: var(–black);
+}
+
+.usage-box {
+background: var(–panel);
+border: 1px solid var(–border);
+padding: 48px;
+position: relative;
+}
+
+.usage-box::before {
+content: ‘’;
+position: absolute;
+top: -1px; left: 0;
+width: 60px;
+height: 2px;
+background: var(–gold);
+}
+
+.usage-heading {
+font-family: ‘Josefin Sans’, sans-serif;
+font-weight: 100;
+font-size: 10px;
+letter-spacing: 7px;
+color: var(–gold);
+text-transform: uppercase;
+margin-bottom: 24px;
+}
+
+.usage-instruction {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 22px;
+color: var(–white);
+line-height: 1.7;
+}
+
+/* ── SLIDE 8: CLOSING ── */
+#closing {
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+text-align: center;
+padding: 80px 40px;
+background: var(–deep);
+position: relative;
+overflow: hidden;
+}
+
+#closing::before {
+content: ‘AETERNYX’;
+position: absolute;
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 22vw;
+color: rgba(201,168,76,0.025);
+font-weight: 300;
+letter-spacing: 8px;
+pointer-events: none;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+white-space: nowrap;
+}
+
+.closing-eyebrow {
+font-family: ‘Josefin Sans’, sans-serif;
+font-weight: 100;
+font-size: 10px;
+letter-spacing: 8px;
+color: var(–gold-dim);
+text-transform: uppercase;
+margin-bottom: 30px;
+}
+
+.closing-heading {
+font-family: ‘Cormorant Garamond’, serif;
+font-weight: 300;
+font-size: clamp(32px, 5vw, 60px);
+color: var(–white);
+line-height: 1.2;
+max-width: 700px;
+margin-bottom: 20px;
+}
+
+.closing-sub {
+font-family: ‘Josefin Sans’, sans-serif;
+font-weight: 100;
+font-size: 11px;
+letter-spacing: 6px;
+color: var(–muted);
+text-transform: uppercase;
+margin-top: 10px;
+}
+
+.closing-logo {
+font-family: ‘Cormorant Garamond’, serif;
+font-weight: 300;
+font-size: 52px;
+letter-spacing: 12px;
+color: var(–gold);
+margin-top: 60px;
+}
+
+.closing-line {
+width: 1px;
+height: 100px;
+background: linear-gradient(180deg, var(–gold), transparent);
+margin: 50px auto 0;
+}
+
+/* ── SLIDE DIVIDERS ── */
+.slide-divider {
+height: 1px;
+background: linear-gradient(90deg, transparent, var(–gold-dim), transparent);
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+from { opacity: 0; transform: translateY(30px); }
+to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spin {
+from { transform: rotate(0deg); }
+to   { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+0%, 100% { box-shadow: 0 0 60px rgba(201,168,76,0.2); }
+50% { box-shadow: 0 0 100px rgba(201,168,76,0.4); }
+}
+
+.core-circle { animation: pulse 4s ease-in-out infinite; }
+
+/* ── SCROLL REVEAL ── */
+.reveal {
+opacity: 0;
+transform: translateY(40px);
+transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.visible {
+opacity: 1;
+transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+
+/* ── NAV DOTS ── */
+.nav-dots {
+position: fixed;
+right: 30px;
+top: 50%;
+transform: translateY(-50%);
+display: flex;
+flex-direction: column;
+gap: 14px;
+z-index: 100;
+}
+
+.nav-dot {
+width: 6px;
+height: 6px;
+border-radius: 50%;
+background: var(–gold-dim);
+cursor: pointer;
+transition: all 0.3s ease;
+}
+
+.nav-dot.active {
+background: var(–gold);
+box-shadow: 0 0 10px var(–gold);
+transform: scale(1.5);
+}
+
+/* ── PAGE NUMBER ── */
+.page-num {
+position: absolute;
+bottom: 40px;
+right: 8vw;
+font-family: ‘Josefin Sans’, sans-serif;
+font-weight: 100;
+font-size: 10px;
+letter-spacing: 5px;
+color: var(–gold-dim);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+#philosophy, #synergy, #audience { grid-template-columns: 1fr; gap: 50px; }
+.formula-layout { grid-template-columns: 1fr; }
+.formula-left { position: static; }
+.benefits-grid { grid-template-columns: 1fr 1fr; }
+.ingredient-row { grid-template-columns: 2fr 1fr; }
+.ing-role { display: none; }
+}
 </style>
-</head>
 
+</head>
 <body>
 
-<!-- HERO -->
-<section class="hero">
-    <h1>AETERNYX™️</h1>
-    <p class="tagline">Cellular Longevity Complex</p>
-    <p class="tagline">Aging is no longer inevitable. It’s programmable.</p>
+<!-- NAV DOTS -->
+
+<nav class="nav-dots">
+  <div class="nav-dot active" onclick="scrollToSlide(0)"></div>
+  <div class="nav-dot" onclick="scrollToSlide(1)"></div>
+  <div class="nav-dot" onclick="scrollToSlide(2)"></div>
+  <div class="nav-dot" onclick="scrollToSlide(3)"></div>
+  <div class="nav-dot" onclick="scrollToSlide(4)"></div>
+  <div class="nav-dot" onclick="scrollToSlide(5)"></div>
+  <div class="nav-dot" onclick="scrollToSlide(6)"></div>
+  <div class="nav-dot" onclick="scrollToSlide(7)"></div>
+</nav>
+
+<!-- SLIDE 1: COVER -->
+
+<section class="slide" id="cover" data-slide="0">
+  <div class="cover-eyebrow">Confidential Presentation — Premium Longevity Science</div>
+  <div class="cover-logo">AETERNYX<span class="cover-tm">™</span></div>
+  <div class="cover-sub">Cellular Longevity Complex</div>
+  <div class="cover-tagline">Aging is no longer inevitable.<br>It is programmable.</div>
+  <div class="cover-divider"></div>
+  <div class="page-num">01 / 08</div>
 </section>
 
-<div class="container">
+<div class="slide-divider"></div>
 
-<!-- PHILOSOPHY -->
-<section class="section">
-    <h2>The Philosophy</h2>
-    <p>
-        Aging begins at the cellular level—driven by oxidative stress, mitochondrial decline, 
-        and chronic inflammation. AETERNYX™️ is engineered to interrupt this cycle and 
-        deliver multi-layer protection across your cellular systems.
+<!-- SLIDE 2: PHILOSOPHY -->
+
+<section class="slide" id="philosophy" data-slide="1">
+  <div>
+    <div class="slide-label reveal">The Science</div>
+    <h2 class="slide-heading reveal reveal-delay-1">Where Longevity<br><em>Begins.</em></h2>
+    <p class="slide-body reveal reveal-delay-2">
+      Aging originates at the cellular level — driven by oxidative stress, mitochondrial decline,
+      and chronic systemic inflammation. AETERNYX™ is engineered to interrupt this cycle and
+      deliver multi-layer protection across your entire cellular architecture.
+      <br><br>
+      This is not supplementation. This is cellular intelligence.
     </p>
+    <div class="rule reveal reveal-delay-3"></div>
+    <p style="font-family:'Josefin Sans';font-weight:100;font-size:11px;letter-spacing:4px;color:var(--muted);text-transform:uppercase;" class="reveal reveal-delay-4">
+      Multi-pathway · Synergistic · Precision-dosed
+    </p>
+  </div>
+  <div class="philosophy-visual reveal reveal-delay-2">
+    <div class="orbit-ring orbit-1"></div>
+    <div class="orbit-ring orbit-2"></div>
+    <div class="orbit-ring orbit-3"></div>
+    <div class="core-circle"></div>
+  </div>
+  <div class="page-num">02 / 08</div>
 </section>
 
-<!-- BENEFITS -->
-<section class="section">
-    <h2>Core Benefits</h2>
-    <div class="grid">
-        <div class="card">
-            <h3>Mitochondrial Power</h3>
-            <p>Sustains ATP production and cellular energy.</p>
-        </div>
-        <div class="card">
-            <h3>Antioxidant Defense</h3>
-            <p>Neutralizes free radicals across multiple pathways.</p>
-        </div>
-        <div class="card">
-            <h3>Longevity Activation</h3>
-            <p>Supports healthy cellular aging and DNA protection.</p>
-        </div>
-        <div class="card">
-            <h3>Heart & Circulation</h3>
-            <p>Enhances cardiovascular and vascular function.</p>
-        </div>
+<div class="slide-divider"></div>
+
+<!-- SLIDE 3: BENEFITS -->
+
+<section class="slide" id="benefits" data-slide="2">
+  <div class="container" style="max-width:100%;padding:0 8vw;">
+    <div class="benefits-header">
+      <div class="slide-label reveal">Core Benefits</div>
+      <h2 class="slide-heading reveal reveal-delay-1" style="text-align:center;">Four Pillars of<br><em>Cellular Defence</em></h2>
     </div>
-</section>
-
-<!-- FORMULA -->
-<section class="section">
-    <h2>The Formula</h2>
-
-    <div class="grid">
-        <div class="card"><span class="highlight">Astaxanthin 4 mg</span><br>Powerful mitochondrial antioxidant</div>
-        <div class="card"><span class="highlight">Lycopene 4 mg</span><br>Supports heart & systemic protection</div>
-        <div class="card"><span class="highlight">Trans-Resveratrol 100 mg</span><br>Longevity molecule</div>
-        <div class="card"><span class="highlight">Tocotrienols 20 mg</span><br>Advanced Vitamin E complex</div>
-        <div class="card"><span class="highlight">Alpha Lipoic Acid 50 mg</span><br>Regenerates antioxidants</div>
-        <div class="card"><span class="highlight">CoQ10 100 mg</span><br>Mitochondrial energy support</div>
-        <div class="card"><span class="highlight">Vitamin C 40 mg</span><br>Immune & collagen support</div>
-        <div class="card"><span class="highlight">Vitamin D3 600 IU</span><br>Hormonal & immune regulation</div>
-        <div class="card"><span class="highlight">Vitamin K2 45 mcg</span><br>Calcium direction & heart health</div>
-        <div class="card"><span class="highlight">Selenium 40 mcg</span><br>Boosts antioxidant enzymes</div>
+    <div class="benefits-grid">
+      <div class="benefit-card reveal reveal-delay-1">
+        <div class="benefit-icon">⚡</div>
+        <div class="benefit-title">Mitochondrial Power</div>
+        <p class="benefit-desc">Sustains peak ATP production and cellular energy metabolism at every age.</p>
+        <div class="benefit-num">01</div>
+      </div>
+      <div class="benefit-card reveal reveal-delay-2">
+        <div class="benefit-icon">🛡</div>
+        <div class="benefit-title">Antioxidant Defence</div>
+        <p class="benefit-desc">Neutralises free radicals across multiple biochemical pathways simultaneously.</p>
+        <div class="benefit-num">02</div>
+      </div>
+      <div class="benefit-card reveal reveal-delay-3">
+        <div class="benefit-icon">🧬</div>
+        <div class="benefit-title">Longevity Activation</div>
+        <p class="benefit-desc">Supports healthy cellular aging mechanisms and active DNA protection.</p>
+        <div class="benefit-num">03</div>
+      </div>
+      <div class="benefit-card reveal reveal-delay-4">
+        <div class="benefit-icon">♥</div>
+        <div class="benefit-title">Heart & Circulation</div>
+        <p class="benefit-desc">Enhances cardiovascular function and systemic vascular integrity.</p>
+        <div class="benefit-num">04</div>
+      </div>
     </div>
+  </div>
+  <div class="page-num">03 / 08</div>
 </section>
 
-<!-- SYNERGY -->
-<section class="section">
-    <h2>Synergistic Intelligence</h2>
-    <p>
-        Each ingredient is precisely selected and dosed to create regenerative antioxidant cycles, 
-        enhanced bioavailability, and multi-pathway cellular protection.
+<div class="slide-divider"></div>
+
+<!-- SLIDE 4: FORMULA -->
+
+<section class="slide" id="formula" data-slide="3" style="padding: 100px 8vw; min-height:auto;">
+  <div class="slide-label reveal">The Formula</div>
+  <h2 class="slide-heading reveal reveal-delay-1">Precision Ingredient<br><em>Architecture</em></h2>
+  <div class="formula-layout">
+    <div class="formula-left">
+      <p class="formula-descriptor">Each molecule is precisely selected and dosed to create regenerative antioxidant cycles with enhanced bioavailability.</p>
+      <div class="formula-count">
+        <div class="count-num">10</div>
+        <div class="count-label">Active Compounds</div>
+      </div>
+      <div class="rule" style="margin-top:30px;"></div>
+      <p style="font-family:'Josefin Sans';font-weight:100;font-size:10px;letter-spacing:4px;color:var(--muted);text-transform:uppercase;margin-top:8px;">One capsule. Daily.</p>
+    </div>
+    <div class="ingredient-list reveal reveal-delay-2">
+      <div class="ingredient-row">
+        <span class="ing-name">Astaxanthin</span>
+        <span class="ing-dose">4 mg</span>
+        <span class="ing-role">Mitochondrial antioxidant powerhouse</span>
+      </div>
+      <div class="ingredient-row">
+        <span class="ing-name">Lycopene</span>
+        <span class="ing-dose">4 mg</span>
+        <span class="ing-role">Systemic & cardiovascular protection</span>
+      </div>
+      <div class="ingredient-row">
+        <span class="ing-name">Trans-Resveratrol</span>
+        <span class="ing-dose">100 mg</span>
+        <span class="ing-role">The longevity molecule</span>
+      </div>
+      <div class="ingredient-row">
+        <span class="ing-name">Tocotrienols</span>
+        <span class="ing-dose">20 mg</span>
+        <span class="ing-role">Advanced Vitamin E complex</span>
+      </div>
+      <div class="ingredient-row">
+        <span class="ing-name">Alpha Lipoic Acid</span>
+        <span class="ing-dose">50 mg</span>
+        <span class="ing-role">Antioxidant regeneration cycle</span>
+      </div>
+      <div class="ingredient-row">
+        <span class="ing-name">CoQ10</span>
+        <span class="ing-dose">100 mg</span>
+        <span class="ing-role">Core mitochondrial energy support</span>
+      </div>
+      <div class="ingredient-row">
+        <span class="ing-name">Vitamin C</span>
+        <span class="ing-dose">40 mg</span>
+        <span class="ing-role">Immune defence & collagen synthesis</span>
+      </div>
+      <div class="ingredient-row">
+        <span class="ing-name">Vitamin D3</span>
+        <span class="ing-dose">600 IU</span>
+        <span class="ing-role">Hormonal & immune regulation</span>
+      </div>
+      <div class="ingredient-row">
+        <span class="ing-name">Vitamin K2</span>
+        <span class="ing-dose">45 mcg</span>
+        <span class="ing-role">Calcium direction & cardiac health</span>
+      </div>
+      <div class="ingredient-row">
+        <span class="ing-name">Selenium</span>
+        <span class="ing-dose">40 mcg</span>
+        <span class="ing-role">Antioxidant enzyme amplification</span>
+      </div>
+    </div>
+  </div>
+  <div class="page-num">04 / 08</div>
+</section>
+
+<div class="slide-divider"></div>
+
+<!-- SLIDE 5: SYNERGY -->
+
+<section class="slide" id="synergy" data-slide="4">
+  <div>
+    <div class="slide-label reveal">Synergistic Intelligence</div>
+    <h2 class="slide-heading reveal reveal-delay-1">Beyond<br><em>Individual Action.</em></h2>
+    <p class="slide-body reveal reveal-delay-2">
+      The AETERNYX™ matrix is designed so each ingredient amplifies the others.
+      Fat-soluble antioxidants are regenerated by water-soluble ones. Mitochondrial
+      energisers activate longevity pathways. The result is a self-reinforcing system
+      of cellular protection that no single compound can achieve alone.
     </p>
+    <div class="rule reveal reveal-delay-3"></div>
+  </div>
+  <div class="synergy-visual reveal reveal-delay-2">
+    <div class="syn-box">
+      <div class="syn-box-num">4×</div>
+      <div class="syn-box-label">Antioxidant<br>Pathways</div>
+    </div>
+    <div class="syn-box">
+      <div class="syn-box-num">360°</div>
+      <div class="syn-box-label">Cellular<br>Coverage</div>
+    </div>
+    <div class="syn-box">
+      <div class="syn-box-num">1</div>
+      <div class="syn-box-label">Daily<br>Capsule</div>
+    </div>
+    <div class="syn-box">
+      <div class="syn-box-num">∞</div>
+      <div class="syn-box-label">Compounding<br>Benefit</div>
+    </div>
+  </div>
+  <div class="page-num">05 / 08</div>
 </section>
 
-<!-- QUOTE -->
-<div class="quote">
-    “Not anti-aging. Age-defying.”
-</div>
+<div class="slide-divider"></div>
 
-<!-- TARGET -->
-<section class="section">
-    <h2>Who It’s For</h2>
-    <p>
-        High-performance individuals, longevity-focused consumers, clinical practices, 
-        and those who demand the highest standard in preventive health.
+<!-- SLIDE 6: PULL QUOTE -->
+
+<section class="slide" id="pullquote" data-slide="5">
+  <div class="pullquote-text reveal">
+    Not anti-aging.<br><em>Age-defying.</em>
+  </div>
+  <div class="pullquote-attr reveal reveal-delay-2">AETERNYX™ — Cellular Longevity Complex</div>
+  <div class="page-num">06 / 08</div>
+</section>
+
+<div class="slide-divider"></div>
+
+<!-- SLIDE 7: AUDIENCE + USAGE -->
+
+<section class="slide" id="audience" data-slide="6">
+  <div>
+    <div class="slide-label reveal">Who It's For</div>
+    <h2 class="slide-heading reveal reveal-delay-1">Designed for<br><em>The Exceptional.</em></h2>
+    <p class="slide-body reveal reveal-delay-2">
+      AETERNYX™ is positioned for those who refuse to accept decline as default —
+      from high-performance individuals to longevity-driven consumers and clinical practitioners.
     </p>
+    <div class="audience-tags reveal reveal-delay-3">
+      <span class="tag">High-Performance Individuals</span>
+      <span class="tag">Longevity Enthusiasts</span>
+      <span class="tag">Clinical Practices</span>
+      <span class="tag">UHNWI</span>
+      <span class="tag">Preventive Health</span>
+    </div>
+  </div>
+  <div class="reveal reveal-delay-2">
+    <div class="usage-box">
+      <div class="usage-heading">Suggested Usage</div>
+      <div class="usage-instruction">
+        1 capsule daily after meals<br>
+        or as directed by your<br>healthcare professional.
+      </div>
+      <div class="rule" style="margin-top:32px;"></div>
+      <p style="font-family:'Josefin Sans';font-weight:100;font-size:10px;letter-spacing:4px;color:var(--muted);text-transform:uppercase;margin-top:12px;">
+        Premium Longevity Science<br>
+        Engineered for cellular supremacy
+      </p>
+    </div>
+  </div>
+  <div class="page-num">07 / 08</div>
 </section>
 
-<!-- USAGE -->
-<section class="section">
-    <h2>Suggested Usage</h2>
-    <p>1 capsule daily after meals or as directed by your healthcare professional.</p>
+<div class="slide-divider"></div>
+
+<!-- SLIDE 8: CLOSING -->
+
+<section class="slide" id="closing" data-slide="7">
+  <div class="closing-eyebrow reveal">Premium Longevity Science</div>
+  <div class="closing-heading reveal reveal-delay-1">
+    Engineered for<br>Cellular Supremacy.
+  </div>
+  <div class="closing-sub reveal reveal-delay-2">Confidential · For Professional Use</div>
+  <div class="closing-logo reveal reveal-delay-3">AETERNYX™</div>
+  <div class="closing-line reveal reveal-delay-4"></div>
+  <div class="page-num">08 / 08</div>
 </section>
 
-<!-- FOOTER -->
-</div>
+<script>
+  // ── SCROLL REVEAL ──
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); }
+    });
+  }, { threshold: 0.15 });
+  reveals.forEach(el => observer.observe(el));
 
-<div class="footer">
-    AETERNYX™️ ©️ Premium Longevity Science<br>
-    Engineered for Cellular Supremacy
-</div>
+  // ── NAV DOTS ──
+  const slides = document.querySelectorAll('[data-slide]');
+  const dots = document.querySelectorAll('.nav-dot');
+
+  const slideObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting && e.intersectionRatio > 0.3) {
+        const idx = e.target.dataset.slide;
+        dots.forEach(d => d.classList.remove('active'));
+        dots[idx]?.classList.add('active');
+      }
+    });
+  }, { threshold: 0.3 });
+
+  slides.forEach(s => slideObserver.observe(s));
+
+  function scrollToSlide(idx) {
+    slides[idx]?.scrollIntoView({ behavior: 'smooth' });
+  }
+</script>
 
 </body>
 </html>
