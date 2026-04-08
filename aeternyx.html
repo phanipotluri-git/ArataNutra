@@ -36,6 +36,7 @@ color: var(–text);
 font-family: ‘Josefin Sans’, sans-serif;
 font-weight: 300;
 overflow-x: hidden;
+min-height: 100vh; /* FIX 2: ensures body background fills viewport */
 }
 
 /* ── NOISE OVERLAY ── */
@@ -43,10 +44,10 @@ body::before {
 content: ‘’;
 position: fixed;
 inset: 0;
-background-image: url(“data:image/svg+xml,%3Csvg viewBox=‘0 0 256 256’ xmlns=‘http://www.w3.org/2000/svg’%3E%3Cfilter id=‘n’%3E%3CfeTurbulence type=‘fractalNoise’ baseFrequency=‘0.9’ numOctaves=‘4’ stitchTiles=‘stitch’/%3E%3C/filter%3E%3Crect width=‘100%25’ height=‘100%25’ filter=‘url(%23n)’ opacity=‘0.03’/%3E%3C/svg%3E”);
+background-image: url(“data:image/svg+xml,%3Csvg viewBox=%270 0 256 256%27 xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cfilter id=%27n%27%3E%3CfeTurbulence type=%27fractalNoise%27 baseFrequency=%270.9%27 numOctaves=%274%27 stitchTiles=%27stitch%27/%3E%3C/filter%3E%3Crect width=%27100%25%27 height=%27100%25%27 filter=%27url(%23n)%27 opacity=%270.04%27/%3E%3C/svg%3E”);
 pointer-events: none;
-z-index: 9999;
-opacity: 0.4;
+z-index: -1;   /* FIX 1: was 9999 — now safely behind all content */
+opacity: 1;    /* FIX 1: opacity now on the element, not compounding */
 }
 
 /* ── SLIDE SYSTEM ── */
@@ -57,6 +58,8 @@ flex-direction: column;
 justify-content: center;
 position: relative;
 overflow: hidden;
+z-index: 1; /* FIX 3: ensures slides sit above body::before (z-index:-1) */
+background: var(–black); /* FIX 4: explicit black fallback for ALL slides */
 }
 
 .slide-divider {
@@ -1141,7 +1144,7 @@ to   { transform: rotate(360deg); }
 
 <!-- ══ SLIDE 2: PHILOSOPHY ══ -->
 
-<section class="slide" id="philosophy" data-slide="1">
+<section class="slide" id="philosophy" data-slide="1" style="background:var(--black)">
   <div>
     <div class="slide-label reveal">The Science</div>
     <h2 class="slide-heading reveal reveal-delay-1">Where Longevity<br><em>Begins.</em></h2>
@@ -1235,7 +1238,7 @@ to   { transform: rotate(360deg); }
 
 <!-- ══ SLIDE 4: FORMULA ══ -->
 
-<section class="slide" id="formula" data-slide="3">
+<section class="slide" id="formula" data-slide="3" style="background:var(--black)">
   <div class="slide-label reveal">The Formula</div>
   <h2 class="slide-heading reveal reveal-delay-1">Precision Ingredient<br><em>Architecture</em></h2>
   <div class="formula-layout">
@@ -1405,7 +1408,7 @@ to   { transform: rotate(360deg); }
 
 <!-- ══ SLIDE 6: CLINICAL EVIDENCE ══ -->
 
-<section class="slide" id="evidence" data-slide="5">
+<section class="slide" id="evidence" data-slide="5" style="background:var(--black)">
   <div class="evidence-header">
     <div class="slide-label reveal">Clinical Validation</div>
     <h2 class="slide-heading reveal reveal-delay-1" style="text-align:center;">The Evidence Is<br><em>Unambiguous.</em></h2>
@@ -1507,7 +1510,7 @@ to   { transform: rotate(360deg); }
 
 <!-- ══ SLIDE 8: DRUG INTERACTIONS ══ -->
 
-<section class="slide" id="interactions" data-slide="7" style="min-height:auto;padding:100px 8vw;">
+<section class="slide" id="interactions" data-slide="7" style="min-height:auto;padding:100px 8vw;" style="background:var(--black)">
   <div style="text-align:center;margin-bottom:60px;">
     <div class="slide-label reveal" style="text-align:center;">Prescribing Safety</div>
     <h2 class="slide-heading reveal reveal-delay-1" style="text-align:center;">Clinical Cautions &amp;<br><em>Drug Interactions</em></h2>
@@ -1582,7 +1585,7 @@ to   { transform: rotate(360deg); }
 
 <!-- ══ SLIDE 10: AUDIENCE ══ -->
 
-<section class="slide" id="audience" data-slide="9">
+<section class="slide" id="audience" data-slide="9" style="background:var(--black)">
   <div>
     <div class="slide-label reveal">Who It's For</div>
     <h2 class="slide-heading reveal reveal-delay-1">Designed for<br><em>The Exceptional.</em></h2>
