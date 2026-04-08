@@ -4,41 +4,46 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AETERNYX™ — Cellular Longevity Complex</title>
+<title>AETERNYX™ — Cellular Longevity Complex | Arata Nutraceuticals</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Josefin+Sans:wght@100;200;300;400&family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --gold: #C9A84C;
-    --gold-light: #E8C97A;
-    --gold-dim: #7a6330;
-    --black: #050505;
-    --deep: #0D0D0D;
-    --panel: #111111;
-    --border: rgba(201,168,76,0.18);
-    --text: #D8D0C4;
-    --muted: #7a7168;
-    --white: #F5F0E8;
-  }
+/* ── DESIGN TOKENS ── */
+:root {
+  --gold: #C9A84C;
+  --gold-light: #E8C97A;
+  --gold-dim: #7a6330;
+  --gold-pale: rgba(201,168,76,0.08);
+  --black: #050505;
+  --deep: #0D0D0D;
+  --panel: #111111;
+  --panel-2: #161616;
+  --border: rgba(201,168,76,0.18);
+  --border-strong: rgba(201,168,76,0.35);
+  --text: #D8D0C4;
+  --muted: #7a7168;
+  --white: #F5F0E8;
+  --green: #2d6a4f;
+  --green-light: #52b788;
+  --amber: #c77b2a;
+  --red-dim: #6b2020;
+}
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
 html { scroll-behavior: smooth; }
-
 body {
 background: var(–black);
 color: var(–text);
 font-family: ‘Josefin Sans’, sans-serif;
 font-weight: 300;
 overflow-x: hidden;
-cursor: default;
 }
 
-/* ── NOISE TEXTURE OVERLAY ── */
+/* ── NOISE OVERLAY ── */
 body::before {
 content: ‘’;
 position: fixed;
 inset: 0;
-background-image: url(“data:image/svg+xml,%3Csvg viewBox=‘0 0 256 256’ xmlns=‘http://www.w3.org/2000/svg’%3E%3Cfilter id=‘noise’%3E%3CfeTurbulence type=‘fractalNoise’ baseFrequency=‘0.9’ numOctaves=‘4’ stitchTiles=‘stitch’/%3E%3C/filter%3E%3Crect width=‘100%25’ height=‘100%25’ filter=‘url(%23noise)’ opacity=‘0.03’/%3E%3C/svg%3E”);
+background-image: url(“data:image/svg+xml,%3Csvg viewBox=‘0 0 256 256’ xmlns=‘http://www.w3.org/2000/svg’%3E%3Cfilter id=‘n’%3E%3CfeTurbulence type=‘fractalNoise’ baseFrequency=‘0.9’ numOctaves=‘4’ stitchTiles=‘stitch’/%3E%3C/filter%3E%3Crect width=‘100%25’ height=‘100%25’ filter=‘url(%23n)’ opacity=‘0.03’/%3E%3C/svg%3E”);
 pointer-events: none;
 z-index: 9999;
 opacity: 0.4;
@@ -54,124 +59,15 @@ position: relative;
 overflow: hidden;
 }
 
-/* ── DECORATIVE LINES ── */
-.rule {
-width: 60px;
-height: 1px;
-background: var(–gold);
-margin: 24px 0;
-}
-
-.rule-h {
-width: 100%;
+.slide-divider {
 height: 1px;
 background: linear-gradient(90deg, transparent, var(–gold-dim), transparent);
-margin: 0;
 }
 
-/* ── SLIDE 1: COVER ── */
-#cover {
-background: var(–black);
-align-items: center;
-text-align: center;
-padding: 80px 40px;
-}
+.rule { width: 60px; height: 1px; background: var(–gold); margin: 24px 0; }
+.rule-center { width: 60px; height: 1px; background: var(–gold); margin: 24px auto; }
 
-#cover::after {
-content: ‘’;
-position: absolute;
-width: 600px;
-height: 600px;
-border-radius: 50%;
-background: radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 70%);
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
-pointer-events: none;
-}
-
-.cover-eyebrow {
-font-family: ‘Josefin Sans’, sans-serif;
-font-weight: 100;
-font-size: 11px;
-letter-spacing: 8px;
-color: var(–gold);
-text-transform: uppercase;
-margin-bottom: 40px;
-animation: fadeUp 1s ease both;
-}
-
-.cover-logo {
-font-family: ‘Cormorant Garamond’, serif;
-font-weight: 300;
-font-size: clamp(72px, 12vw, 140px);
-letter-spacing: 16px;
-color: var(–white);
-line-height: 1;
-animation: fadeUp 1s 0.2s ease both;
-position: relative;
-}
-
-.cover-logo span {
-color: var(–gold);
-}
-
-.cover-tm {
-font-size: 18px;
-vertical-align: super;
-color: var(–gold-dim);
-font-family: ‘Josefin Sans’, sans-serif;
-font-weight: 100;
-}
-
-.cover-sub {
-font-family: ‘Josefin Sans’, sans-serif;
-font-weight: 100;
-font-size: 13px;
-letter-spacing: 6px;
-color: var(–muted);
-text-transform: uppercase;
-margin-top: 20px;
-animation: fadeUp 1s 0.4s ease both;
-}
-
-.cover-tagline {
-font-family: ‘Cormorant Garamond’, serif;
-font-style: italic;
-font-size: clamp(18px, 3vw, 26px);
-color: var(–gold-light);
-margin-top: 50px;
-animation: fadeUp 1s 0.6s ease both;
-max-width: 600px;
-}
-
-.cover-divider {
-width: 1px;
-height: 80px;
-background: linear-gradient(180deg, transparent, var(–gold), transparent);
-margin: 50px auto 0;
-animation: fadeUp 1s 0.8s ease both;
-}
-
-/* ── SLIDE 2: PHILOSOPHY ── */
-#philosophy {
-padding: 100px 8vw;
-display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 80px;
-align-items: center;
-}
-
-.slide-number {
-font-family: ‘Josefin Sans’, sans-serif;
-font-weight: 100;
-font-size: 10px;
-letter-spacing: 6px;
-color: var(–gold-dim);
-text-transform: uppercase;
-margin-bottom: 16px;
-}
-
+/* ── TYPOGRAPHY CLASSES ── */
 .slide-label {
 font-family: ‘Josefin Sans’, sans-serif;
 font-weight: 100;
@@ -185,16 +81,12 @@ margin-bottom: 24px;
 .slide-heading {
 font-family: ‘Cormorant Garamond’, serif;
 font-weight: 300;
-font-size: clamp(36px, 5vw, 58px);
+font-size: clamp(34px, 4.5vw, 56px);
 line-height: 1.1;
 color: var(–white);
-margin-bottom: 30px;
+margin-bottom: 28px;
 }
-
-.slide-heading em {
-font-style: italic;
-color: var(–gold-light);
-}
+.slide-heading em { font-style: italic; color: var(–gold-light); }
 
 .slide-body {
 font-family: ‘EB Garamond’, serif;
@@ -204,113 +96,273 @@ line-height: 1.9;
 max-width: 520px;
 }
 
+.page-num {
+position: absolute;
+bottom: 40px;
+right: 8vw;
+font-family: ‘Josefin Sans’, sans-serif;
+font-weight: 100;
+font-size: 10px;
+letter-spacing: 5px;
+color: var(–gold-dim);
+}
+
+/* ── SCROLL REVEAL ── */
+.reveal {
+opacity: 0;
+transform: translateY(36px);
+transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+
+/* ── NAV DOTS ── */
+.nav-dots {
+position: fixed;
+right: 28px;
+top: 50%;
+transform: translateY(-50%);
+display: flex;
+flex-direction: column;
+gap: 12px;
+z-index: 200;
+}
+.nav-dot {
+width: 5px;
+height: 5px;
+border-radius: 50%;
+background: var(–gold-dim);
+cursor: pointer;
+transition: all 0.3s ease;
+border: none;
+padding: 0;
+}
+.nav-dot.active {
+background: var(–gold);
+box-shadow: 0 0 10px var(–gold);
+transform: scale(1.6);
+}
+
+/* ══════════════════════════════════════════
+SLIDE 1: COVER
+══════════════════════════════════════════ */
+#cover {
+background: var(–black);
+align-items: center;
+text-align: center;
+padding: 80px 40px;
+}
+#cover::after {
+content: ‘’;
+position: absolute;
+width: 700px; height: 700px;
+border-radius: 50%;
+background: radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 70%);
+top: 50%; left: 50%;
+transform: translate(-50%, -50%);
+pointer-events: none;
+}
+.cover-eyebrow {
+font-family: ‘Josefin Sans’, sans-serif;
+font-weight: 100;
+font-size: 11px;
+letter-spacing: 8px;
+color: var(–gold);
+text-transform: uppercase;
+margin-bottom: 40px;
+animation: fadeUp 1s ease both;
+}
+.cover-logo {
+font-family: ‘Cormorant Garamond’, serif;
+font-weight: 300;
+font-size: clamp(72px, 12vw, 140px);
+letter-spacing: 16px;
+color: var(–white);
+line-height: 1;
+animation: fadeUp 1s 0.2s ease both;
+}
+.cover-logo span { color: var(–gold); }
+.cover-tm {
+font-size: 18px;
+vertical-align: super;
+color: var(–gold-dim);
+font-family: ‘Josefin Sans’, sans-serif;
+font-weight: 100;
+}
+.cover-sub {
+font-family: ‘Josefin Sans’, sans-serif;
+font-weight: 100;
+font-size: 13px;
+letter-spacing: 6px;
+color: var(–muted);
+text-transform: uppercase;
+margin-top: 20px;
+animation: fadeUp 1s 0.4s ease both;
+}
+.cover-tagline {
+font-family: ‘Cormorant Garamond’, serif;
+font-style: italic;
+font-size: clamp(18px, 2.8vw, 26px);
+color: var(–gold-light);
+margin-top: 50px;
+animation: fadeUp 1s 0.6s ease both;
+max-width: 600px;
+line-height: 1.6;
+}
+.cover-divider {
+width: 1px; height: 80px;
+background: linear-gradient(180deg, transparent, var(–gold), transparent);
+margin: 50px auto 0;
+animation: fadeUp 1s 0.8s ease both;
+}
+.cover-brand {
+font-family: ‘Josefin Sans’, sans-serif;
+font-weight: 100;
+font-size: 10px;
+letter-spacing: 5px;
+color: var(–gold-dim);
+text-transform: uppercase;
+margin-top: 24px;
+animation: fadeUp 1s 1s ease both;
+}
+
+/* ══════════════════════════════════════════
+SLIDE 2: PHILOSOPHY
+══════════════════════════════════════════ */
+#philosophy {
+padding: 100px 8vw;
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 80px;
+align-items: center;
+}
 .philosophy-visual {
 display: flex;
 align-items: center;
 justify-content: center;
-position: relative;
+position: relative;        /* FIX: was missing */
+min-height: 360px;         /* FIX: explicit height for absolute children */
 }
-
+.orbit-wrap {
+position: relative;        /* FIX: separation of centering from spin */
+width: 320px; height: 320px;
+display: flex;
+align-items: center;
+justify-content: center;
+}
 .orbit-ring {
 position: absolute;
 border-radius: 50%;
 border: 1px solid var(–border);
+top: 50%; left: 50%;
+transform: translate(-50%, -50%);  /* FIX: centering separate from spin */
 }
-
-.orbit-1 { width: 320px; height: 320px; animation: spin 30s linear infinite; }
-.orbit-2 { width: 220px; height: 220px; animation: spin 20s linear infinite reverse; border-style: dashed; }
-.orbit-3 { width: 120px; height: 120px; animation: spin 10s linear infinite; }
-
+.orbit-1 { width: 320px; height: 320px; }
+.orbit-2 { width: 220px; height: 220px; border-style: dashed; }
+.orbit-3 { width: 120px; height: 120px; }
+/* Spin via wrapper — avoids transform conflict */
+.spin-1 { animation: spin 30s linear infinite; }
+.spin-2 { animation: spin 20s linear infinite reverse; }
+.spin-3 { animation: spin 10s linear infinite; }
+.orbit-dot {
+position: absolute;
+width: 6px; height: 6px;
+border-radius: 50%;
+background: var(–gold);
+top: -3px; left: calc(50% - 3px);
+}
 .core-circle {
-width: 70px;
-height: 70px;
+width: 70px; height: 70px;
 border-radius: 50%;
 background: radial-gradient(circle, var(–gold) 0%, var(–gold-dim) 60%, transparent 100%);
 box-shadow: 0 0 60px rgba(201,168,76,0.3);
+animation: pulse 4s ease-in-out infinite;
 position: relative;
 z-index: 2;
 }
 
-/* ── SLIDE 3: BENEFITS ── */
-#benefits {
+/* ══════════════════════════════════════════
+SLIDE 3: HALLMARKS
+══════════════════════════════════════════ */
+#hallmarks {
 padding: 100px 8vw;
 background: var(–deep);
 }
-
-.benefits-header {
-text-align: center;
-margin-bottom: 70px;
-}
-
-.benefits-grid {
+.hallmarks-header { text-align: center; margin-bottom: 60px; }
+.hallmarks-grid {
 display: grid;
-grid-template-columns: repeat(4, 1fr);
+grid-template-columns: repeat(3, 1fr);
 gap: 2px;
 }
-
-.benefit-card {
+.hallmark-card {
 background: var(–panel);
-padding: 48px 32px;
+padding: 40px 28px;
 border-top: 1px solid var(–border);
 position: relative;
 overflow: hidden;
 transition: all 0.4s ease;
 }
-
-.benefit-card::before {
+.hallmark-card::before {
 content: ‘’;
 position: absolute;
 top: 0; left: 0;
-width: 100%;
-height: 2px;
+width: 100%; height: 2px;
 background: linear-gradient(90deg, var(–gold-dim), var(–gold));
 transform: scaleX(0);
 transform-origin: left;
 transition: transform 0.4s ease;
 }
-
-.benefit-card:hover::before { transform: scaleX(1); }
-.benefit-card:hover { background: #161616; }
-
-.benefit-icon {
-font-size: 28px;
-margin-bottom: 24px;
-opacity: 0.85;
-}
-
-.benefit-title {
+.hallmark-card:hover::before { transform: scaleX(1); }
+.hallmark-card:hover { background: var(–panel-2); }
+.hm-icon { font-size: 26px; margin-bottom: 20px; opacity: 0.85; }
+.hm-title {
 font-family: ‘Josefin Sans’, sans-serif;
 font-weight: 200;
-font-size: 13px;
+font-size: 11px;
 letter-spacing: 4px;
 color: var(–gold);
 text-transform: uppercase;
-margin-bottom: 16px;
+margin-bottom: 12px;
 }
-
-.benefit-desc {
+.hm-desc {
 font-family: ‘EB Garamond’, serif;
-font-size: 16px;
+font-size: 15.5px;
 color: var(–muted);
 line-height: 1.8;
+margin-bottom: 12px;
 }
-
-.benefit-num {
+.hm-evidence {
+font-family: ‘Josefin Sans’, sans-serif;
+font-weight: 100;
+font-size: 9px;
+letter-spacing: 3px;
+color: var(–gold-dim);
+text-transform: uppercase;
+border-top: 1px solid rgba(201,168,76,0.1);
+padding-top: 10px;
+margin-top: 8px;
+}
+.hm-num {
 position: absolute;
-bottom: 24px;
-right: 28px;
+bottom: 20px; right: 22px;
 font-family: ‘Cormorant Garamond’, serif;
-font-size: 60px;
-color: rgba(201,168,76,0.05);
+font-size: 54px;
+color: rgba(201,168,76,0.04);
 font-weight: 300;
 line-height: 1;
 }
 
-/* ── SLIDE 4: FORMULA ── */
+/* ══════════════════════════════════════════
+SLIDE 4: FORMULA (10 INGREDIENTS)
+══════════════════════════════════════════ */
 #formula {
 padding: 100px 8vw;
+min-height: auto;  /* override: this slide is naturally long */
 }
-
 .formula-layout {
 display: grid;
 grid-template-columns: 1fr 2fr;
@@ -318,36 +370,25 @@ gap: 80px;
 align-items: start;
 margin-top: 60px;
 }
-
-.formula-left {
-position: sticky;
-top: 100px;
+.formula-left { /* FIX: removed sticky — no scroll context */
+padding-top: 8px;
 }
-
 .formula-descriptor {
 font-family: ‘EB Garamond’, serif;
 font-style: italic;
-font-size: 19px;
+font-size: 18px;
 color: var(–muted);
-line-height: 1.8;
-margin-top: 20px;
+line-height: 1.85;
+margin-top: 16px;
 }
-
-.formula-count {
-margin-top: 40px;
-display: flex;
-flex-direction: column;
-gap: 4px;
-}
-
+.formula-count { margin-top: 36px; }
 .count-num {
 font-family: ‘Cormorant Garamond’, serif;
-font-size: 80px;
+font-size: 76px;
 color: var(–gold);
 font-weight: 300;
 line-height: 1;
 }
-
 .count-label {
 font-family: ‘Josefin Sans’, sans-serif;
 font-weight: 100;
@@ -356,53 +397,75 @@ letter-spacing: 6px;
 color: var(–muted);
 text-transform: uppercase;
 }
-
-.ingredient-list {
-display: flex;
-flex-direction: column;
-gap: 0;
+.formula-note {
+margin-top: 28px;
+padding: 20px;
+border: 1px solid var(–border);
+font-family: ‘EB Garamond’, serif;
+font-style: italic;
+font-size: 15px;
+color: var(–muted);
+line-height: 1.75;
 }
-
-.ingredient-row {
-display: grid;
-grid-template-columns: 2fr 1fr 3fr;
-align-items: center;
-padding: 22px 0;
-border-bottom: 1px solid rgba(201,168,76,0.08);
-gap: 24px;
-transition: all 0.3s ease;
-}
-
-.ingredient-row:hover {
-padding-left: 12px;
-border-bottom-color: rgba(201,168,76,0.25);
-}
-
-.ing-name {
-font-family: ‘Cormorant Garamond’, serif;
-font-size: 20px;
-color: var(–white);
+.formula-note strong {
+font-style: normal;
+color: var(–gold);
 font-weight: 400;
 }
-
+.ingredient-list { display: flex; flex-direction: column; gap: 0; }
+.ingredient-row {
+display: grid;
+grid-template-columns: 190px 80px 1fr;
+align-items: start;
+padding: 20px 0;
+border-bottom: 1px solid rgba(201,168,76,0.08);
+gap: 20px;
+transition: all 0.3s ease;
+cursor: default;
+}
+.ingredient-row:hover {
+padding-left: 0;    /* FIX: removed padding-left shift to avoid grid jump */
+border-bottom-color: rgba(201,168,76,0.25);
+background: rgba(201,168,76,0.02);
+}
+.ingredient-row:hover .ing-name { color: var(–gold-light); }
+.ing-name {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 19px;
+color: var(–white);
+font-weight: 400;
+transition: color 0.3s ease;
+}
 .ing-dose {
 font-family: ‘Josefin Sans’, sans-serif;
 font-weight: 100;
 font-size: 11px;
-letter-spacing: 3px;
+letter-spacing: 2px;
 color: var(–gold);
-text-align: right;
 white-space: nowrap;
+padding-top: 3px;
 }
-
+.ing-detail { display: flex; flex-direction: column; gap: 3px; padding-top: 2px; }
 .ing-role {
 font-family: ‘EB Garamond’, serif;
 font-style: italic;
 font-size: 15px;
 color: var(–muted);
+line-height: 1.5;
+}
+.ing-science {
+font-family: ‘Josefin Sans’, sans-serif;
+font-weight: 100;
+font-size: 9.5px;
+letter-spacing: 2px;
+color: rgba(201,168,76,0.45);
+text-transform: uppercase;
+margin-top: 2px;
 }
 
-/* ── SLIDE 5: SYNERGY ── */
+/* ══════════════════════════════════════════
+SLIDE 5: SYNERGY
+══════════════════════════════════════════ */
 #synergy {
 padding: 100px 8vw;
 background: var(–deep);
@@ -411,75 +474,361 @@ grid-template-columns: 1fr 1fr;
 gap: 80px;
 align-items: center;
 }
-
-.synergy-visual {
+.synergy-stacks { display: flex; flex-direction: column; gap: 20px; }
+.syn-stack {
+border: 1px solid var(–border);
+padding: 24px 26px;
+background: var(–panel);
+position: relative;
+overflow: hidden;
+transition: border-color 0.3s ease;
+}
+.syn-stack::before {
+content: ‘’;
+position: absolute;
+top: 0; left: 0;
+width: 2px; height: 100%;
+background: linear-gradient(to bottom, var(–gold), transparent);
+}
+.syn-stack:hover { border-color: var(–border-strong); }
+.syn-title {
+font-family: ‘Josefin Sans’, sans-serif;
+font-weight: 200;
+font-size: 10px;
+letter-spacing: 5px;
+color: var(–gold);
+text-transform: uppercase;
+margin-bottom: 8px;
+}
+.syn-members {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 18px;
+color: var(–white);
+margin-bottom: 8px;
+font-weight: 400;
+}
+.syn-body {
+font-family: ‘EB Garamond’, serif;
+font-size: 15px;
+color: var(–muted);
+line-height: 1.75;
+}
+.ala-cycle-box {
+border: 1px solid var(–border-strong);
+padding: 28px;
+background: var(–panel);
+text-align: center;
+position: relative;
+}
+.ala-cycle-box::before {
+content: ‘’;
+position: absolute;
+top: 0; left: 0; right: 0;
+height: 1.5px;
+background: linear-gradient(90deg, transparent, var(–gold), transparent);
+}
+.ala-title {
+font-family: ‘Josefin Sans’, sans-serif;
+font-weight: 100;
+font-size: 9px;
+letter-spacing: 5px;
+color: var(–gold-dim);
+text-transform: uppercase;
+margin-bottom: 14px;
+}
+.ala-chain {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 20px;
+color: var(–gold-light);
+font-weight: 300;
+line-height: 1.6;
+}
+.ala-desc {
+font-family: ‘EB Garamond’, serif;
+font-size: 14px;
+color: var(–muted);
+font-style: italic;
+line-height: 1.7;
+margin-top: 12px;
+}
+.synergy-stats {
 display: grid;
 grid-template-columns: 1fr 1fr;
 gap: 2px;
+margin-top: 20px;
 }
-
-.syn-box {
-padding: 32px 24px;
+.syn-stat {
+padding: 24px 18px;
 background: var(–panel);
 border: 1px solid transparent;
-transition: border-color 0.3s ease;
+transition: border-color 0.3s;
+text-align: center;
 }
-
-.syn-box:hover { border-color: var(–border); }
-
-.syn-box-num {
+.syn-stat:hover { border-color: var(–border); }
+.syn-stat-num {
 font-family: ‘Cormorant Garamond’, serif;
-font-size: 42px;
+font-size: 40px;
 color: var(–gold);
 font-weight: 300;
 line-height: 1;
-margin-bottom: 8px;
+margin-bottom: 6px;
 }
-
-.syn-box-label {
+.syn-stat-label {
 font-family: ‘Josefin Sans’, sans-serif;
 font-weight: 100;
-font-size: 10px;
-letter-spacing: 5px;
+font-size: 9px;
+letter-spacing: 4px;
 color: var(–muted);
 text-transform: uppercase;
 }
 
-/* ── SLIDE 6: QUOTE ── */
+/* ══════════════════════════════════════════
+SLIDE 6: CLINICAL EVIDENCE
+══════════════════════════════════════════ */
+#evidence {
+padding: 100px 8vw;
+min-height: auto;
+}
+.evidence-header { text-align: center; margin-bottom: 60px; }
+.evidence-grid {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 2px;
+margin-bottom: 48px;
+}
+.ev-card {
+background: var(–panel);
+padding: 36px 26px;
+position: relative;
+overflow: hidden;
+border-top: 1px solid var(–border);
+}
+.ev-card::before {
+content: ‘’;
+position: absolute;
+top: 0; left: 0; right: 0;
+height: 1.5px;
+background: linear-gradient(90deg, transparent, var(–gold), transparent);
+}
+.ev-num {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 54px;
+font-style: italic;
+color: var(–gold-light);
+font-weight: 300;
+line-height: 1;
+display: block;
+margin-bottom: 6px;
+}
+.ev-title {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 17px;
+color: var(–white);
+font-weight: 400;
+margin-bottom: 6px;
+}
+.ev-source {
+font-family: ‘Josefin Sans’, sans-serif;
+font-weight: 100;
+font-size: 9px;
+letter-spacing: 2.5px;
+color: var(–gold);
+text-transform: uppercase;
+display: block;
+margin-bottom: 10px;
+opacity: 0.7;
+}
+.ev-body {
+font-family: ‘EB Garamond’, serif;
+font-size: 14.5px;
+color: var(–muted);
+line-height: 1.7;
+}
+/* Hallmarks strip */
+.hallmarks-strip {
+display: grid;
+grid-template-columns: repeat(6, 1fr);
+gap: 2px;
+}
+.hm-strip-card {
+background: var(–panel);
+padding: 20px 16px;
+border-top: 1px solid var(–border);
+text-align: center;
+}
+.hm-strip-icon { font-size: 20px; display: block; margin-bottom: 8px; }
+.hm-strip-name {
+font-family: ‘Josefin Sans’, sans-serif;
+font-weight: 100;
+font-size: 9px;
+letter-spacing: 2px;
+color: var(–muted);
+text-transform: uppercase;
+line-height: 1.5;
+}
+
+/* ══════════════════════════════════════════
+SLIDE 7: 17 SPECIALTIES
+══════════════════════════════════════════ */
+#specialties {
+padding: 100px 8vw;
+background: var(–deep);
+min-height: auto;
+}
+.spec-layout {
+display: grid;
+grid-template-columns: 1fr 2fr;
+gap: 80px;
+align-items: start;
+margin-top: 50px;
+}
+.spec-grid {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 2px;
+}
+.spec-card {
+background: var(–panel);
+padding: 22px 18px;
+border-top: 1px solid var(–border);
+cursor: default;
+transition: all 0.3s ease;
+position: relative;
+}
+.spec-card:hover { background: var(–panel-2); border-top-color: var(–gold); }
+.spec-icon { font-size: 18px; margin-bottom: 8px; display: block; }
+.spec-name {
+font-family: ‘Josefin Sans’, sans-serif;
+font-weight: 200;
+font-size: 10px;
+letter-spacing: 3px;
+color: var(–gold);
+text-transform: uppercase;
+margin-bottom: 6px;
+}
+.spec-ind {
+font-family: ‘EB Garamond’, serif;
+font-size: 13px;
+color: var(–muted);
+line-height: 1.55;
+}
+.spec-left-note {
+font-family: ‘EB Garamond’, serif;
+font-style: italic;
+font-size: 17px;
+color: var(–muted);
+line-height: 1.85;
+margin-top: 20px;
+}
+.ev-legend {
+margin-top: 24px;
+display: flex;
+flex-direction: column;
+gap: 8px;
+}
+.ev-leg-row {
+display: flex;
+align-items: center;
+gap: 10px;
+font-family: ‘Josefin Sans’, sans-serif;
+font-weight: 100;
+font-size: 9px;
+letter-spacing: 2.5px;
+color: var(–muted);
+text-transform: uppercase;
+}
+.ev-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.ev-dot.s { background: var(–green-light); }
+.ev-dot.m { background: var(–gold); }
+.ev-dot.e { background: var(–red-dim); background: #8b5c2a; }
+
+/* ══════════════════════════════════════════
+SLIDE 8: INTERACTIONS (for doctors)
+══════════════════════════════════════════ */
+#interactions {
+padding: 100px 8vw;
+min-height: auto;
+}
+.ix-grid {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 2px;
+margin-top: 50px;
+}
+.ix-card {
+background: var(–panel);
+padding: 30px 24px;
+border-top: 2px solid;
+position: relative;
+}
+.ix-card.critical { border-top-color: #8b2020; }
+.ix-card.caution  { border-top-color: var(–gold-dim); }
+.ix-level {
+font-family: ‘Josefin Sans’, sans-serif;
+font-weight: 100;
+font-size: 8.5px;
+letter-spacing: 4px;
+text-transform: uppercase;
+margin-bottom: 10px;
+display: block;
+}
+.ix-card.critical .ix-level { color: #c0392b; }
+.ix-card.caution  .ix-level { color: var(–gold); }
+.ix-title {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 18px;
+color: var(–white);
+font-weight: 400;
+margin-bottom: 10px;
+}
+.ix-body {
+font-family: ‘EB Garamond’, serif;
+font-size: 14.5px;
+color: var(–muted);
+line-height: 1.72;
+}
+.ix-safe {
+margin-top: 10px;
+font-family: ‘Josefin Sans’, sans-serif;
+font-weight: 100;
+font-size: 9px;
+letter-spacing: 2px;
+color: rgba(82,183,136,0.7);
+text-transform: uppercase;
+}
+
+/* ══════════════════════════════════════════
+SLIDE 9: PULL QUOTE
+══════════════════════════════════════════ */
 #pullquote {
 padding: 120px 8vw;
 text-align: center;
 background: var(–black);
 position: relative;
 }
-
 #pullquote::before {
 content: ‘❝’;
 position: absolute;
-top: 60px;
-left: 50%;
+top: 60px; left: 50%;
 transform: translateX(-50%);
 font-size: 80px;
-color: rgba(201,168,76,0.08);
+color: rgba(201,168,76,0.06);
 font-family: ‘Cormorant Garamond’, serif;
 line-height: 1;
 }
-
 .pullquote-text {
 font-family: ‘Cormorant Garamond’, serif;
 font-style: italic;
-font-size: clamp(28px, 4vw, 52px);
+font-size: clamp(28px, 4vw, 50px);
 color: var(–white);
 line-height: 1.3;
-max-width: 900px;
+max-width: 860px;
 margin: 0 auto;
 }
-
 .pullquote-text em {
-color: var(–gold-light);
 font-style: normal;
+color: var(–gold-light);
 }
-
 .pullquote-attr {
 margin-top: 40px;
 font-family: ‘Josefin Sans’, sans-serif;
@@ -490,7 +839,9 @@ color: var(–gold-dim);
 text-transform: uppercase;
 }
 
-/* ── SLIDE 7: TARGET & USAGE ── */
+/* ══════════════════════════════════════════
+SLIDE 10: AUDIENCE + USAGE
+══════════════════════════════════════════ */
 #audience {
 padding: 100px 8vw;
 display: grid;
@@ -498,47 +849,33 @@ grid-template-columns: 1fr 1fr;
 gap: 80px;
 align-items: center;
 }
-
-.audience-tags {
-display: flex;
-flex-wrap: wrap;
-gap: 12px;
-margin-top: 30px;
-}
-
+.audience-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
 .tag {
-padding: 10px 22px;
+padding: 9px 20px;
 border: 1px solid var(–border);
 font-family: ‘Josefin Sans’, sans-serif;
 font-weight: 200;
-font-size: 11px;
+font-size: 10px;
 letter-spacing: 3px;
 color: var(–gold);
 text-transform: uppercase;
 transition: all 0.3s ease;
+cursor: default;
 }
-
-.tag:hover {
-background: var(–gold);
-color: var(–black);
-}
-
+.tag:hover { background: var(–gold); color: var(–black); }
 .usage-box {
 background: var(–panel);
 border: 1px solid var(–border);
-padding: 48px;
+padding: 44px;
 position: relative;
 }
-
 .usage-box::before {
 content: ‘’;
 position: absolute;
 top: -1px; left: 0;
-width: 60px;
-height: 2px;
+width: 60px; height: 2px;
 background: var(–gold);
 }
-
 .usage-heading {
 font-family: ‘Josefin Sans’, sans-serif;
 font-weight: 100;
@@ -546,17 +883,111 @@ font-size: 10px;
 letter-spacing: 7px;
 color: var(–gold);
 text-transform: uppercase;
-margin-bottom: 24px;
+margin-bottom: 22px;
 }
-
 .usage-instruction {
 font-family: ‘Cormorant Garamond’, serif;
 font-size: 22px;
 color: var(–white);
 line-height: 1.7;
+margin-bottom: 20px;
+}
+.usage-note {
+font-family: ‘EB Garamond’, serif;
+font-size: 15px;
+color: var(–muted);
+font-style: italic;
+line-height: 1.75;
 }
 
-/* ── SLIDE 8: CLOSING ── */
+/* ══════════════════════════════════════════
+SLIDE 11: VALUE PROPOSITION
+══════════════════════════════════════════ */
+#value {
+padding: 100px 8vw;
+background: var(–deep);
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 80px;
+align-items: center;
+}
+.value-compare { display: flex; flex-direction: column; gap: 0; }
+.value-row {
+display: grid;
+grid-template-columns: 1fr auto 1fr;
+align-items: center;
+gap: 20px;
+padding: 22px 0;
+border-bottom: 1px solid rgba(201,168,76,0.08);
+}
+.value-row:last-of-type { border-bottom: none; }
+.v-item { text-align: center; }
+.v-price {
+font-family: ‘Cormorant Garamond’, serif;
+font-size: 34px;
+font-style: italic;
+color: var(–white);
+display: block;
+line-height: 1;
+}
+.v-price.dim { color: var(–muted); }
+.v-label {
+font-family: ‘Josefin Sans’, sans-serif;
+font-weight: 100;
+font-size: 9px;
+letter-spacing: 2px;
+color: var(–gold-dim);
+text-transform: uppercase;
+margin-top: 4px;
+line-height: 1.5;
+}
+.v-vs {
+font-family: ‘Josefin Sans’, sans-serif;
+font-weight: 100;
+font-size: 9px;
+letter-spacing: 3px;
+color: var(–gold-dim);
+text-transform: uppercase;
+}
+.value-note {
+margin-top: 28px;
+padding: 22px;
+border: 1px solid var(–border);
+background: var(–panel);
+}
+.value-note p {
+font-family: ‘EB Garamond’, serif;
+font-style: italic;
+font-size: 16px;
+color: var(–muted);
+line-height: 1.8;
+}
+.value-note strong {
+font-style: normal;
+color: var(–gold-light);
+font-weight: 400;
+}
+.value-list { list-style: none; display: flex; flex-direction: column; gap: 18px; }
+.value-list li {
+display: flex;
+align-items: flex-start;
+gap: 16px;
+font-family: ‘EB Garamond’, serif;
+font-size: 17px;
+color: var(–text);
+line-height: 1.7;
+}
+.v-bullet {
+flex-shrink: 0;
+width: 20px;
+height: 1px;
+background: var(–gold);
+margin-top: 14px;
+}
+
+/* ══════════════════════════════════════════
+SLIDE 12: CLOSING
+══════════════════════════════════════════ */
 #closing {
 min-height: 100vh;
 display: flex;
@@ -569,22 +1000,19 @@ background: var(–deep);
 position: relative;
 overflow: hidden;
 }
-
 #closing::before {
 content: ‘AETERNYX’;
 position: absolute;
 font-family: ‘Cormorant Garamond’, serif;
-font-size: 22vw;
-color: rgba(201,168,76,0.025);
+font-size: clamp(120px, 18vw, 380px); /* FIX: was 22vw with no cap */
+color: rgba(201,168,76,0.022);
 font-weight: 300;
 letter-spacing: 8px;
 pointer-events: none;
-top: 50%;
-left: 50%;
+top: 50%; left: 50%;
 transform: translate(-50%, -50%);
 white-space: nowrap;
 }
-
 .closing-eyebrow {
 font-family: ‘Josefin Sans’, sans-serif;
 font-weight: 100;
@@ -594,27 +1022,23 @@ color: var(–gold-dim);
 text-transform: uppercase;
 margin-bottom: 30px;
 }
-
 .closing-heading {
 font-family: ‘Cormorant Garamond’, serif;
 font-weight: 300;
-font-size: clamp(32px, 5vw, 60px);
+font-size: clamp(32px, 4.5vw, 58px);
 color: var(–white);
 line-height: 1.2;
 max-width: 700px;
-margin-bottom: 20px;
+margin-bottom: 16px;
 }
-
 .closing-sub {
 font-family: ‘Josefin Sans’, sans-serif;
 font-weight: 100;
-font-size: 11px;
+font-size: 10px;
 letter-spacing: 6px;
 color: var(–muted);
 text-transform: uppercase;
-margin-top: 10px;
 }
-
 .closing-logo {
 font-family: ‘Cormorant Garamond’, serif;
 font-weight: 300;
@@ -623,18 +1047,21 @@ letter-spacing: 12px;
 color: var(–gold);
 margin-top: 60px;
 }
-
 .closing-line {
-width: 1px;
-height: 100px;
+width: 1px; height: 100px;
 background: linear-gradient(180deg, var(–gold), transparent);
 margin: 50px auto 0;
 }
-
-/* ── SLIDE DIVIDERS ── */
-.slide-divider {
-height: 1px;
-background: linear-gradient(90deg, transparent, var(–gold-dim), transparent);
+.closing-disclaimer {
+margin-top: 30px;
+font-family: ‘Josefin Sans’, sans-serif;
+font-weight: 100;
+font-size: 9px;
+letter-spacing: 3px;
+color: rgba(122,113,104,0.5);
+text-transform: uppercase;
+max-width: 500px;
+line-height: 1.8;
 }
 
 /* ── ANIMATIONS ── */
@@ -642,84 +1069,36 @@ background: linear-gradient(90deg, transparent, var(–gold-dim), transparent);
 from { opacity: 0; transform: translateY(30px); }
 to   { opacity: 1; transform: translateY(0); }
 }
-
 @keyframes spin {
 from { transform: rotate(0deg); }
 to   { transform: rotate(360deg); }
 }
-
 @keyframes pulse {
 0%, 100% { box-shadow: 0 0 60px rgba(201,168,76,0.2); }
-50% { box-shadow: 0 0 100px rgba(201,168,76,0.4); }
-}
-
-.core-circle { animation: pulse 4s ease-in-out infinite; }
-
-/* ── SCROLL REVEAL ── */
-.reveal {
-opacity: 0;
-transform: translateY(40px);
-transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.reveal.visible {
-opacity: 1;
-transform: translateY(0);
-}
-
-.reveal-delay-1 { transition-delay: 0.1s; }
-.reveal-delay-2 { transition-delay: 0.2s; }
-.reveal-delay-3 { transition-delay: 0.3s; }
-.reveal-delay-4 { transition-delay: 0.4s; }
-.reveal-delay-5 { transition-delay: 0.5s; }
-
-/* ── NAV DOTS ── */
-.nav-dots {
-position: fixed;
-right: 30px;
-top: 50%;
-transform: translateY(-50%);
-display: flex;
-flex-direction: column;
-gap: 14px;
-z-index: 100;
-}
-
-.nav-dot {
-width: 6px;
-height: 6px;
-border-radius: 50%;
-background: var(–gold-dim);
-cursor: pointer;
-transition: all 0.3s ease;
-}
-
-.nav-dot.active {
-background: var(–gold);
-box-shadow: 0 0 10px var(–gold);
-transform: scale(1.5);
-}
-
-/* ── PAGE NUMBER ── */
-.page-num {
-position: absolute;
-bottom: 40px;
-right: 8vw;
-font-family: ‘Josefin Sans’, sans-serif;
-font-weight: 100;
-font-size: 10px;
-letter-spacing: 5px;
-color: var(–gold-dim);
+50%       { box-shadow: 0 0 100px rgba(201,168,76,0.42); }
 }
 
 /* ── RESPONSIVE ── */
+@media (max-width: 1100px) {
+.hallmarks-grid { grid-template-columns: repeat(2, 1fr); }  /* FIX: added breakpoint */
+.evidence-grid  { grid-template-columns: repeat(2, 1fr); }
+.hallmarks-strip{ grid-template-columns: repeat(3, 1fr); }
+}
 @media (max-width: 900px) {
-#philosophy, #synergy, #audience { grid-template-columns: 1fr; gap: 50px; }
+#philosophy, #synergy, #audience, #value { grid-template-columns: 1fr; gap: 50px; }
 .formula-layout { grid-template-columns: 1fr; }
-.formula-left { position: static; }
-.benefits-grid { grid-template-columns: 1fr 1fr; }
-.ingredient-row { grid-template-columns: 2fr 1fr; }
-.ing-role { display: none; }
+.hallmarks-grid, .evidence-grid { grid-template-columns: 1fr 1fr; }
+.spec-layout { grid-template-columns: 1fr; }
+.spec-grid { grid-template-columns: 1fr 1fr; }
+.ix-grid { grid-template-columns: 1fr 1fr; }
+.ingredient-row { grid-template-columns: 1fr 70px; }
+.ing-detail { display: none; }
+.hallmarks-strip { grid-template-columns: repeat(3, 1fr); }
+.nav-dots { display: none; }
+}
+@media (max-width: 600px) {
+.hallmarks-grid, .evidence-grid, .spec-grid, .ix-grid { grid-template-columns: 1fr; }
+.synergy-stats { grid-template-columns: 1fr 1fr; }
 }
 </style>
 
@@ -728,173 +1107,239 @@ color: var(–gold-dim);
 
 <!-- NAV DOTS -->
 
-<nav class="nav-dots">
-  <div class="nav-dot active" onclick="scrollToSlide(0)"></div>
-  <div class="nav-dot" onclick="scrollToSlide(1)"></div>
-  <div class="nav-dot" onclick="scrollToSlide(2)"></div>
-  <div class="nav-dot" onclick="scrollToSlide(3)"></div>
-  <div class="nav-dot" onclick="scrollToSlide(4)"></div>
-  <div class="nav-dot" onclick="scrollToSlide(5)"></div>
-  <div class="nav-dot" onclick="scrollToSlide(6)"></div>
-  <div class="nav-dot" onclick="scrollToSlide(7)"></div>
+<nav class="nav-dots" aria-label="Page navigation">
+  <button class="nav-dot active" onclick="scrollToSlide(0)" title="Cover"></button>
+  <button class="nav-dot" onclick="scrollToSlide(1)" title="Philosophy"></button>
+  <button class="nav-dot" onclick="scrollToSlide(2)" title="Hallmarks"></button>
+  <button class="nav-dot" onclick="scrollToSlide(3)" title="Formula"></button>
+  <button class="nav-dot" onclick="scrollToSlide(4)" title="Synergy"></button>
+  <button class="nav-dot" onclick="scrollToSlide(5)" title="Evidence"></button>
+  <button class="nav-dot" onclick="scrollToSlide(6)" title="Specialties"></button>
+  <button class="nav-dot" onclick="scrollToSlide(7)" title="Interactions"></button>
+  <button class="nav-dot" onclick="scrollToSlide(8)" title="Philosophy Quote"></button>
+  <button class="nav-dot" onclick="scrollToSlide(9)" title="Audience"></button>
+  <button class="nav-dot" onclick="scrollToSlide(10)" title="Value"></button>
+  <button class="nav-dot" onclick="scrollToSlide(11)" title="Closing"></button>
 </nav>
 
-<!-- SLIDE 1: COVER -->
+<!-- ══ SLIDE 1: COVER ══ -->
 
 <section class="slide" id="cover" data-slide="0">
-  <div class="cover-eyebrow">Confidential Presentation — Premium Longevity Science</div>
+  <div class="cover-eyebrow">Confidential Clinical Presentation — Arata Nutraceuticals</div>
   <div class="cover-logo">AETERNYX<span class="cover-tm">™</span></div>
-  <div class="cover-sub">Cellular Longevity Complex</div>
-  <div class="cover-tagline">Aging is no longer inevitable.<br>It is programmable.</div>
+  <div class="cover-sub">Cellular Longevity Complex · 10 Actives · Once Daily</div>
+  <div class="cover-tagline">
+    Aging is no longer inevitable.<br>
+    It is programmable.
+  </div>
   <div class="cover-divider"></div>
-  <div class="page-num">01 / 08</div>
+  <div class="cover-brand">Arata Nutraceuticals · For Healthcare Professionals Only</div>
+  <div class="page-num">01 / 12</div>
 </section>
 
 <div class="slide-divider"></div>
 
-<!-- SLIDE 2: PHILOSOPHY -->
+<!-- ══ SLIDE 2: PHILOSOPHY ══ -->
 
 <section class="slide" id="philosophy" data-slide="1">
   <div>
     <div class="slide-label reveal">The Science</div>
     <h2 class="slide-heading reveal reveal-delay-1">Where Longevity<br><em>Begins.</em></h2>
     <p class="slide-body reveal reveal-delay-2">
-      Aging originates at the cellular level — driven by oxidative stress, mitochondrial decline,
-      and chronic systemic inflammation. AETERNYX™ is engineered to interrupt this cycle and
-      deliver multi-layer protection across your entire cellular architecture.
+      Aging originates at the cellular level — driven by oxidative stress, mitochondrial
+      decline, and chronic systemic inflammation. AETERNYX™ is engineered to interrupt
+      this cycle across six of the nine recognised Hallmarks of Ageing simultaneously.
       <br><br>
-      This is not supplementation. This is cellular intelligence.
+      This is not supplementation. This is cellular intelligence — one capsule, ten
+      precision-dosed actives, a self-renewing antioxidant system.
     </p>
     <div class="rule reveal reveal-delay-3"></div>
-    <p style="font-family:'Josefin Sans';font-weight:100;font-size:11px;letter-spacing:4px;color:var(--muted);text-transform:uppercase;" class="reveal reveal-delay-4">
-      Multi-pathway · Synergistic · Precision-dosed
+    <p style="font-family:'Josefin Sans';font-weight:100;font-size:10px;letter-spacing:4px;color:var(--muted);text-transform:uppercase;" class="reveal reveal-delay-4">
+      Multi-pathway · Synergistic · Precision-dosed · Self-renewing
     </p>
   </div>
   <div class="philosophy-visual reveal reveal-delay-2">
-    <div class="orbit-ring orbit-1"></div>
-    <div class="orbit-ring orbit-2"></div>
-    <div class="orbit-ring orbit-3"></div>
-    <div class="core-circle"></div>
+    <div class="orbit-wrap">
+      <div class="spin-1" style="position:absolute;width:320px;height:320px;top:0;left:0;">
+        <div class="orbit-ring orbit-1"><div class="orbit-dot"></div></div>
+      </div>
+      <div class="spin-2" style="position:absolute;width:320px;height:320px;top:0;left:0;display:flex;align-items:center;justify-content:center;">
+        <div class="orbit-ring orbit-2" style="position:relative;top:auto;left:auto;transform:none;"><div class="orbit-dot"></div></div>
+      </div>
+      <div class="spin-3" style="position:absolute;width:320px;height:320px;top:0;left:0;display:flex;align-items:center;justify-content:center;">
+        <div class="orbit-ring orbit-3" style="position:relative;top:auto;left:auto;transform:none;"><div class="orbit-dot"></div></div>
+      </div>
+      <div class="core-circle" style="position:relative;z-index:5;"></div>
+    </div>
   </div>
-  <div class="page-num">02 / 08</div>
+  <div class="page-num">02 / 12</div>
 </section>
 
 <div class="slide-divider"></div>
 
-<!-- SLIDE 3: BENEFITS -->
+<!-- ══ SLIDE 3: HALLMARKS ══ -->
 
-<section class="slide" id="benefits" data-slide="2">
-  <div class="container" style="max-width:100%;padding:0 8vw;">
-    <div class="benefits-header">
-      <div class="slide-label reveal">Core Benefits</div>
-      <h2 class="slide-heading reveal reveal-delay-1" style="text-align:center;">Four Pillars of<br><em>Cellular Defence</em></h2>
+<section class="slide" id="hallmarks" data-slide="2" style="min-height:auto;padding:100px 8vw;">
+  <div class="hallmarks-header">
+    <div class="slide-label reveal">Core Benefits</div>
+    <h2 class="slide-heading reveal reveal-delay-1" style="text-align:center;">Six Hallmarks of Ageing.<br><em>One Capsule.</em></h2>
+  </div>
+  <div class="hallmarks-grid">
+    <div class="hallmark-card reveal reveal-delay-1">
+      <div class="hm-icon">⚡</div>
+      <div class="hm-title">Mitochondrial Restoration</div>
+      <p class="hm-desc">CoQ10 (Q-SYMBIO RCT: 43% reduced cardiac events) restores Complex I–III. ALA regenerates mitochondrial antioxidants. Resveratrol activates PGC-1α biogenesis.</p>
+      <div class="hm-evidence">CoQ10 Q-SYMBIO RCT · n=420</div>
+      <div class="hm-num">01</div>
     </div>
-    <div class="benefits-grid">
-      <div class="benefit-card reveal reveal-delay-1">
-        <div class="benefit-icon">⚡</div>
-        <div class="benefit-title">Mitochondrial Power</div>
-        <p class="benefit-desc">Sustains peak ATP production and cellular energy metabolism at every age.</p>
-        <div class="benefit-num">01</div>
-      </div>
-      <div class="benefit-card reveal reveal-delay-2">
-        <div class="benefit-icon">🛡</div>
-        <div class="benefit-title">Antioxidant Defence</div>
-        <p class="benefit-desc">Neutralises free radicals across multiple biochemical pathways simultaneously.</p>
-        <div class="benefit-num">02</div>
-      </div>
-      <div class="benefit-card reveal reveal-delay-3">
-        <div class="benefit-icon">🧬</div>
-        <div class="benefit-title">Longevity Activation</div>
-        <p class="benefit-desc">Supports healthy cellular aging mechanisms and active DNA protection.</p>
-        <div class="benefit-num">03</div>
-      </div>
-      <div class="benefit-card reveal reveal-delay-4">
-        <div class="benefit-icon">♥</div>
-        <div class="benefit-title">Heart & Circulation</div>
-        <p class="benefit-desc">Enhances cardiovascular function and systemic vascular integrity.</p>
-        <div class="benefit-num">04</div>
-      </div>
+    <div class="hallmark-card reveal reveal-delay-2">
+      <div class="hm-icon">🧬</div>
+      <div class="hm-title">Epigenetic & SIRT1 Longevity</div>
+      <p class="hm-desc">Resveratrol activates SIRT1 — identical to the molecular mechanism of caloric restriction. Phase II Alzheimer's RCT confirmed CSF Abeta-40 reduction. FOXO longevity gene upregulation.</p>
+      <div class="hm-evidence">Georgetown Phase II AD RCT · SIRT1 pathway</div>
+      <div class="hm-num">02</div>
+    </div>
+    <div class="hallmark-card reveal reveal-delay-3">
+      <div class="hm-icon">🛡</div>
+      <div class="hm-title">Five-Layer Antioxidant Defence</div>
+      <p class="hm-desc">Enzymatic (Selenium GPx), water-soluble (Vit C + ALA), fat-soluble (Tocotrienol 40–60× vs tocopherols), membrane-penetrating (Astaxanthin — only BBB carotenoid), and self-recycling (ALA cycle).</p>
+      <div class="hm-evidence">5 independent antioxidant pathways</div>
+      <div class="hm-num">03</div>
+    </div>
+    <div class="hallmark-card reveal reveal-delay-1">
+      <div class="hm-icon">❤️</div>
+      <div class="hm-title">Cardiovascular Protection</div>
+      <p class="hm-desc">Rotterdam Study (n=4,807): K2 MK-7 associated with 57% reduced coronary mortality and 52% reduced aortic calcification. Finnish cohort: Lycopene associated with 55% reduced stroke risk.</p>
+      <div class="hm-evidence">Rotterdam Study · n=4,807 · 10-year follow-up</div>
+      <div class="hm-num">04</div>
+    </div>
+    <div class="hallmark-card reveal reveal-delay-2">
+      <div class="hm-icon">🎗️</div>
+      <div class="hm-title">Anti-Cancer Triple Shield</div>
+      <p class="hm-desc">NPC Trial (RCT): Selenium reduced total cancer incidence 37%, mortality 50%, prostate cancer 63% vs placebo. Lycopene inhibits IGF-1/Akt/mTOR. Resveratrol suppresses Wnt/β-catenin.</p>
+      <div class="hm-evidence">NPC Trial RCT · n=1,312 · JAMA</div>
+      <div class="hm-num">05</div>
+    </div>
+    <div class="hallmark-card reveal reveal-delay-3">
+      <div class="hm-icon">🧠</div>
+      <div class="hm-title">Neurological & Immune Defence</div>
+      <p class="hm-desc">Astaxanthin (only BBB carotenoid) + ALA (AChE inhibitor) + Resveratrol cross the blood-brain barrier. D3: BMJ meta-analysis (n=11,321) — 42% reduced respiratory infections in deficient individuals.</p>
+      <div class="hm-evidence">BMJ meta-analysis · n=11,321 · Vitamin D3</div>
+      <div class="hm-num">06</div>
     </div>
   </div>
-  <div class="page-num">03 / 08</div>
+  <div class="page-num">03 / 12</div>
 </section>
 
 <div class="slide-divider"></div>
 
-<!-- SLIDE 4: FORMULA -->
+<!-- ══ SLIDE 4: FORMULA ══ -->
 
-<section class="slide" id="formula" data-slide="3" style="padding: 100px 8vw; min-height:auto;">
+<section class="slide" id="formula" data-slide="3">
   <div class="slide-label reveal">The Formula</div>
   <h2 class="slide-heading reveal reveal-delay-1">Precision Ingredient<br><em>Architecture</em></h2>
   <div class="formula-layout">
-    <div class="formula-left">
-      <p class="formula-descriptor">Each molecule is precisely selected and dosed to create regenerative antioxidant cycles with enhanced bioavailability.</p>
+    <div class="formula-left reveal">
+      <p class="formula-descriptor">Each molecule is precisely selected and dosed to create regenerative antioxidant cycles with maximal synergistic bioavailability. Every dose is evidenced. Every combination is intentional.</p>
       <div class="formula-count">
         <div class="count-num">10</div>
         <div class="count-label">Active Compounds</div>
       </div>
-      <div class="rule" style="margin-top:30px;"></div>
-      <p style="font-family:'Josefin Sans';font-weight:100;font-size:10px;letter-spacing:4px;color:var(--muted);text-transform:uppercase;margin-top:8px;">One capsule. Daily.</p>
+      <div class="rule" style="margin-top:28px;"></div>
+      <p style="font-family:'Josefin Sans';font-weight:100;font-size:10px;letter-spacing:4px;color:var(--muted);text-transform:uppercase;margin-top:8px;">One capsule. Every morning.</p>
+      <div class="formula-note" style="margin-top:28px;">
+        <strong>The ALA Principle:</strong> Alpha Lipoic Acid continuously recycles Vitamin C, Tocotrienol, CoQ10 and Glutathione from their oxidised forms — making the entire formula self-renewing. No collection of individual supplements replicates this.
+      </div>
     </div>
     <div class="ingredient-list reveal reveal-delay-2">
       <div class="ingredient-row">
         <span class="ing-name">Astaxanthin</span>
         <span class="ing-dose">4 mg</span>
-        <span class="ing-role">Mitochondrial antioxidant powerhouse</span>
+        <div class="ing-detail">
+          <span class="ing-role">Only carotenoid crossing the blood-brain AND blood-retinal barrier</span>
+          <span class="ing-science">MMP-1/MMP-12 inhibition · 40× singlet O₂ quenching · RCT: VO2 max improvement</span>
+        </div>
       </div>
       <div class="ingredient-row">
         <span class="ing-name">Lycopene</span>
-        <span class="ing-dose">4 mg</span>
-        <span class="ing-role">Systemic & cardiovascular protection</span>
+        <span class="ing-dose">4000 mcg</span>
+        <div class="ing-detail">
+          <span class="ing-role">Most potent dietary singlet O₂ quencher. Concentrates in LDL, liver, prostate</span>
+          <span class="ing-science">Finnish cohort: 55% reduced stroke risk · IGF-1/Akt/mTOR inhibition</span>
+        </div>
       </div>
       <div class="ingredient-row">
         <span class="ing-name">Trans-Resveratrol</span>
         <span class="ing-dose">100 mg</span>
-        <span class="ing-role">The longevity molecule</span>
+        <div class="ing-detail">
+          <span class="ing-role">The longevity molecule — activates SIRT1/PGC-1α · same pathway as caloric restriction</span>
+          <span class="ing-science">Phase II Alzheimer's RCT · PCOS RCT: testosterone &amp; insulin reduction · ⚠ CYP3A4</span>
+        </div>
       </div>
       <div class="ingredient-row">
         <span class="ing-name">Tocotrienols</span>
         <span class="ing-dose">20 mg</span>
-        <span class="ing-role">Advanced Vitamin E complex</span>
+        <div class="ing-detail">
+          <span class="ing-role">40–60× superior neuroprotection vs tocopherols. Only Vitamin E with MRI white matter evidence</span>
+          <span class="ing-science">NIAID/BARDA radioprotection · HMG-CoA inhibition without CoQ10 depletion</span>
+        </div>
       </div>
       <div class="ingredient-row">
         <span class="ing-name">Alpha Lipoic Acid</span>
         <span class="ing-dose">50 mg</span>
-        <span class="ing-role">Antioxidant regeneration cycle</span>
+        <div class="ing-detail">
+          <span class="ing-role">Both water and fat-soluble. Continuously recycles Vit C, Vit E, CoQ10 and GSH</span>
+          <span class="ing-science">SYDNEY-2 RCT: DPN symptom reduction · BBB-penetrating heavy metal chelator · ⚠ antidiabetics</span>
+        </div>
       </div>
       <div class="ingredient-row">
-        <span class="ing-name">CoQ10</span>
+        <span class="ing-name">Co-enzyme Q10</span>
         <span class="ing-dose">100 mg</span>
-        <span class="ing-role">Core mitochondrial energy support</span>
+        <div class="ing-detail">
+          <span class="ing-role">Rate-limiting mitochondrial Complex I–III electron carrier. Declines 65% age 20 to 80</span>
+          <span class="ing-science">Q-SYMBIO RCT (n=420): 43% reduced cardiac events · Standard statin co-prescription</span>
+        </div>
       </div>
       <div class="ingredient-row">
         <span class="ing-name">Vitamin C</span>
         <span class="ing-dose">40 mg</span>
-        <span class="ing-role">Immune defence & collagen synthesis</span>
+        <div class="ing-detail">
+          <span class="ing-role">Collagen prolyl hydroxylase cofactor. 50× plasma concentration in aqueous humor</span>
+          <span class="ing-science">29 RCT meta-analysis: ~5 mmHg SBP reduction · Histamine metabolism · Uricosuric activity</span>
+        </div>
       </div>
       <div class="ingredient-row">
         <span class="ing-name">Vitamin D3</span>
         <span class="ing-dose">600 IU</span>
-        <span class="ing-role">Hormonal & immune regulation</span>
+        <div class="ing-detail">
+          <span class="ing-role">VDR expressed on every immune cell type. Most pleiotropic vitamin in human physiology</span>
+          <span class="ing-science">BMJ meta-analysis (n=11,321): 12–42% reduced respiratory infections · VITAL trial: cancer mortality reduction</span>
+        </div>
       </div>
       <div class="ingredient-row">
-        <span class="ing-name">Vitamin K2</span>
+        <span class="ing-name">Vitamin K2 MK-7</span>
         <span class="ing-dose">45 mcg</span>
-        <span class="ing-role">Calcium direction & cardiac health</span>
+        <div class="ing-detail">
+          <span class="ing-role">Activates Matrix Gla Protein — prevents vascular calcification and directs calcium to bone</span>
+          <span class="ing-science">Rotterdam Study (n=4,807): 57% reduced CVD mortality · Japanese HCC recurrence RCTs · ⚠ Warfarin</span>
+        </div>
       </div>
       <div class="ingredient-row">
         <span class="ing-name">Selenium</span>
         <span class="ing-dose">40 mcg</span>
-        <span class="ing-role">Antioxidant enzyme amplification</span>
+        <div class="ing-detail">
+          <span class="ing-role">GPx1/GPx2/GPx4 enzymatic antioxidant system. T4→T3 deiodinase activation</span>
+          <span class="ing-science">NPC Trial RCT (JAMA): 37% cancer incidence reduction · Only nutrient with Hashimoto's antibody RCT evidence</span>
+        </div>
       </div>
     </div>
   </div>
-  <div class="page-num">04 / 08</div>
+  <div class="page-num">04 / 12</div>
 </section>
 
 <div class="slide-divider"></div>
 
-<!-- SLIDE 5: SYNERGY -->
+<!-- ══ SLIDE 5: SYNERGY ══ -->
 
 <section class="slide" id="synergy" data-slide="4">
   <div>
@@ -903,49 +1348,241 @@ color: var(–gold-dim);
     <p class="slide-body reveal reveal-delay-2">
       The AETERNYX™ matrix is designed so each ingredient amplifies the others.
       Fat-soluble antioxidants are regenerated by water-soluble ones. Mitochondrial
-      energisers activate longevity pathways. The result is a self-reinforcing system
-      of cellular protection that no single compound can achieve alone.
+      energisers activate longevity pathways. ALA makes the entire formula
+      self-renewing. No individual supplement achieves this.
     </p>
     <div class="rule reveal reveal-delay-3"></div>
+    <div class="synergy-stats reveal reveal-delay-4">
+      <div class="syn-stat">
+        <div class="syn-stat-num">5×</div>
+        <div class="syn-stat-label">Antioxidant<br>Layers</div>
+      </div>
+      <div class="syn-stat">
+        <div class="syn-stat-num">17</div>
+        <div class="syn-stat-label">Medical<br>Specialties</div>
+      </div>
+      <div class="syn-stat">
+        <div class="syn-stat-num">6/9</div>
+        <div class="syn-stat-label">Ageing<br>Hallmarks</div>
+      </div>
+      <div class="syn-stat">
+        <div class="syn-stat-num">∞</div>
+        <div class="syn-stat-label">ALA Renewal<br>Cycle</div>
+      </div>
+    </div>
   </div>
-  <div class="synergy-visual reveal reveal-delay-2">
-    <div class="syn-box">
-      <div class="syn-box-num">4×</div>
-      <div class="syn-box-label">Antioxidant<br>Pathways</div>
+  <div class="synergy-stacks reveal reveal-delay-2">
+    <div class="ala-cycle-box">
+      <div class="ala-title">The Self-Renewal Cycle</div>
+      <div class="ala-chain">ALA → regenerates → GSH · Vit C · Tocotrienol · CoQ10</div>
+      <div class="ala-desc">Alpha Lipoic Acid is both water and fat-soluble — the only antioxidant that can recycle all others from their oxidised forms continuously. This makes the entire formula perpetually active.</div>
     </div>
-    <div class="syn-box">
-      <div class="syn-box-num">360°</div>
-      <div class="syn-box-label">Cellular<br>Coverage</div>
+    <div class="syn-stack">
+      <div class="syn-title">Cardiac Triple Pillar</div>
+      <div class="syn-members">CoQ10 + K2 MK-7 + Selenium</div>
+      <div class="syn-body">Q-SYMBIO cardiac energy (CoQ10) · Rotterdam vascular calcification prevention via MGP (K2) · cardiomyocyte GPx1 oxidative protection (Selenium). Three pillars: energy, structure, defence.</div>
     </div>
-    <div class="syn-box">
-      <div class="syn-box-num">1</div>
-      <div class="syn-box-label">Daily<br>Capsule</div>
+    <div class="syn-stack">
+      <div class="syn-title">BBB-Penetrating Neurological Triad</div>
+      <div class="syn-members">Astaxanthin + ALA + Resveratrol</div>
+      <div class="syn-body">All three cross the blood-brain barrier. NLRP3 microglial inhibition (Astaxanthin) · AChE inhibition + GSH recycling (ALA) · SIRT1/BDNF hippocampal neurogenesis (Resveratrol — Phase II AD RCT data).</div>
     </div>
-    <div class="syn-box">
-      <div class="syn-box-num">∞</div>
-      <div class="syn-box-label">Compounding<br>Benefit</div>
+    <div class="syn-stack">
+      <div class="syn-title">Anti-Cancer Triple Shield</div>
+      <div class="syn-members">Selenium + Lycopene + Resveratrol</div>
+      <div class="syn-body">NPC Trial GPx-mediated DNA protection (Selenium: 37% reduced incidence) · IGF-1/Akt/mTOR (Lycopene: 63% prostate) · Wnt/β-catenin + p53 activation (Resveratrol). Covers initiation, promotion, progression.</div>
+    </div>
+    <div class="syn-stack">
+      <div class="syn-title">D3 + K2 Gold Standard</div>
+      <div class="syn-members">Vitamin D3 + Vitamin K2 MK-7</div>
+      <div class="syn-body">D3 promotes calcium absorption and osteoblast function. K2 osteocalcin carboxylation directs absorbed calcium into bone, not arteries. Without K2, D3-enhanced calcium may accelerate arterial calcification.</div>
     </div>
   </div>
-  <div class="page-num">05 / 08</div>
+  <div class="page-num">05 / 12</div>
 </section>
 
 <div class="slide-divider"></div>
 
-<!-- SLIDE 6: PULL QUOTE -->
+<!-- ══ SLIDE 6: CLINICAL EVIDENCE ══ -->
 
-<section class="slide" id="pullquote" data-slide="5">
+<section class="slide" id="evidence" data-slide="5">
+  <div class="evidence-header">
+    <div class="slide-label reveal">Clinical Validation</div>
+    <h2 class="slide-heading reveal reveal-delay-1" style="text-align:center;">The Evidence Is<br><em>Unambiguous.</em></h2>
+  </div>
+  <div class="evidence-grid">
+    <div class="ev-card reveal reveal-delay-1">
+      <span class="ev-num">43%</span>
+      <div class="ev-title">Cardiac Event Reduction</div>
+      <span class="ev-source">Q-SYMBIO RCT · n=420 CHF · CoQ10</span>
+      <div class="ev-body">Reduced major cardiac events AND all-cause mortality by 43% and 42% vs placebo. The strongest nutraceutical RCT in heart failure. Published in JACC Heart Failure.</div>
+    </div>
+    <div class="ev-card reveal reveal-delay-2">
+      <span class="ev-num">57%</span>
+      <div class="ev-title">CVD Mortality Reduction</div>
+      <span class="ev-source">Rotterdam Study · n=4,807 · K2 MK-7 · 10yr</span>
+      <div class="ev-body">Highest dietary K2 tertile — 57% reduced coronary heart disease mortality and 52% reduced aortic calcification score vs lowest tertile.</div>
+    </div>
+    <div class="ev-card reveal reveal-delay-3">
+      <span class="ev-num">37%</span>
+      <div class="ev-title">Cancer Incidence Reduction</div>
+      <span class="ev-source">NPC Trial RCT · n=1,312 · Selenium · JAMA</span>
+      <div class="ev-body">Randomised, double-blind, placebo-controlled. Selenium reduced total cancer incidence 37%, cancer mortality 50%, prostate cancer 63% vs placebo.</div>
+    </div>
+    <div class="ev-card reveal reveal-delay-1">
+      <span class="ev-num">42%</span>
+      <div class="ev-title">Respiratory Infection Reduction</div>
+      <span class="ev-source">BMJ Meta-analysis · n=11,321 · Vitamin D3</span>
+      <div class="ev-body">Individual participant data meta-analysis of 25 RCTs. D3 reduced acute respiratory tract infections by 12–42% in deficient individuals (NNT=33).</div>
+    </div>
+    <div class="ev-card reveal reveal-delay-2">
+      <span class="ev-num">55%</span>
+      <div class="ev-title">Stroke Risk Reduction</div>
+      <span class="ev-source">Finnish Cohort · n=1,031 · Lycopene · 12yr</span>
+      <div class="ev-body">Men in the highest lycopene tertile had 55% lower risk of stroke vs lowest tertile over 12 years of follow-up. Measured by serum biomarker — objective dietary evidence.</div>
+    </div>
+    <div class="ev-card reveal reveal-delay-3">
+      <span class="ev-num">26%</span>
+      <div class="ev-title">Fall Risk Reduction in Elderly</div>
+      <span class="ev-source">Meta-analysis · >90,000 subjects · Vitamin D3</span>
+      <div class="ev-body">D3 supplementation reduces fall risk by 19–26%. VDR in skeletal muscle regulates Type II fast-twitch fibre synthesis — the most cost-effective single geriatric intervention in EBM.</div>
+    </div>
+  </div>
+  <h3 style="font-family:'Cormorant Garamond';font-weight:300;font-size:22px;text-align:center;margin:46px 0 20px;color:var(--white);">Hallmarks of Ageing Addressed</h3>
+  <div class="hallmarks-strip reveal">
+    <div class="hm-strip-card"><span class="hm-strip-icon">🔥</span><div class="hm-strip-name">Mitochondrial Dysfunction</div></div>
+    <div class="hm-strip-card"><span class="hm-strip-icon">🧬</span><div class="hm-strip-name">Epigenetic Alterations</div></div>
+    <div class="hm-strip-card"><span class="hm-strip-icon">🛡️</span><div class="hm-strip-name">Altered Cell Communication</div></div>
+    <div class="hm-strip-card"><span class="hm-strip-icon">⚡</span><div class="hm-strip-name">Deregulated Nutrient Sensing</div></div>
+    <div class="hm-strip-card"><span class="hm-strip-icon">🔬</span><div class="hm-strip-name">Cellular Senescence</div></div>
+    <div class="hm-strip-card"><span class="hm-strip-icon">🧪</span><div class="hm-strip-name">Oxidative Stress</div></div>
+  </div>
+  <div class="page-num">06 / 12</div>
+</section>
+
+<div class="slide-divider"></div>
+
+<!-- ══ SLIDE 7: 17 SPECIALTIES ══ -->
+
+<section class="slide" id="specialties" data-slide="6">
+  <div class="slide-label reveal">Clinical Applications</div>
+  <h2 class="slide-heading reveal reveal-delay-1">Validated Across<br><em>17 Medical Specialties</em></h2>
+  <div class="spec-layout">
+    <div class="reveal reveal-delay-1">
+      <p class="spec-left-note">AETERNYX™ has documented clinical relevance across the full breadth of internal medicine — from cardiology to reproductive health, from oncology to sports medicine.</p>
+      <div class="rule" style="margin-top:28px;"></div>
+      <div class="ev-legend">
+        <div class="ev-leg-row"><div class="ev-dot s"></div>Strong RCT / Cohort Evidence</div>
+        <div class="ev-leg-row"><div class="ev-dot m"></div>Moderate Observational / Mechanistic</div>
+        <div class="ev-leg-row"><div class="ev-dot e"></div>Emerging / Preclinical</div>
+      </div>
+      <div class="formula-note" style="margin-top:28px;">
+        <strong>Key note for prescribers:</strong> Full specialty-specific indication matrices, synergy combinations, and drug interaction profiles are available in the separate clinical reference document for each department.
+      </div>
+    </div>
+    <div class="spec-grid reveal reveal-delay-2">
+      <div class="spec-card"><span class="spec-icon">❤️</span><div class="spec-name">Cardiology</div><div class="spec-ind">HF · CAD Prevention · Statin Support · Hypertension · Atrial Fibrillation</div></div>
+      <div class="spec-card"><span class="spec-icon">🧠</span><div class="spec-name">Neurology</div><div class="spec-ind">Alzheimer's · Parkinson's · Migraine Prophylaxis · MS · DPN</div></div>
+      <div class="spec-card"><span class="spec-icon">⚗️</span><div class="spec-name">Endocrinology</div><div class="spec-ind">T2DM · Hashimoto's · Metabolic Syndrome · PCOS</div></div>
+      <div class="spec-card"><span class="spec-icon">🫁</span><div class="spec-name">Gastroenterology</div><div class="spec-ind">NAFLD / NASH · IBD · CRC Prevention · Liver Fibrosis</div></div>
+      <div class="spec-card"><span class="spec-icon">🫘</span><div class="spec-name">Nephrology</div><div class="spec-ind">Diabetic Nephropathy · CKD-MBD · CIN Prevention · Dialysis</div></div>
+      <div class="spec-card"><span class="spec-icon">🦴</span><div class="spec-name">Rheumatology</div><div class="spec-ind">GIOP · RA adjunct · OA · Fibromyalgia · Gout</div></div>
+      <div class="spec-card"><span class="spec-icon">👁️</span><div class="spec-name">Ophthalmology</div><div class="spec-ind">AMD · Cataract Prevention · Glaucoma · Diabetic Retinopathy</div></div>
+      <div class="spec-card"><span class="spec-icon">💨</span><div class="spec-name">Pulmonology</div><div class="spec-ind">COPD · Asthma · Post-COVID · IPF · PAH</div></div>
+      <div class="spec-card"><span class="spec-icon">🌿</span><div class="spec-name">Dermatology</div><div class="spec-ind">Photoaging · Melasma · Atopic Dermatitis · Skin Cancer Prevention</div></div>
+      <div class="spec-card"><span class="spec-icon">⚕️</span><div class="spec-name">Oncology</div><div class="spec-ind">Prevention · Cardioprotection · CRF · Platinum Neuropathy</div></div>
+      <div class="spec-card"><span class="spec-icon">🛡️</span><div class="spec-name">Immunology</div><div class="spec-ind">Recurrent Infections · Asthma · Atopic March · Long COVID</div></div>
+      <div class="spec-card"><span class="spec-icon">🌸</span><div class="spec-name">Reproductive Health</div><div class="spec-ind">IVF Optimisation · PCOS · Menopause · Endometriosis</div></div>
+      <div class="spec-card"><span class="spec-icon">💭</span><div class="spec-name">Psychiatry</div><div class="spec-ind">MDD adjunct · Anxiety · Cognitive Impairment · Sleep</div></div>
+      <div class="spec-card"><span class="spec-icon">🏃</span><div class="spec-name">Sports Medicine</div><div class="spec-ind">VO2 Max · DOMS · Injury Prevention · Overtraining Recovery</div></div>
+      <div class="spec-card"><span class="spec-icon">🫀</span><div class="spec-name">Hepatology</div><div class="spec-ind">NAFLD · Cirrhosis · Fibrosis · HCC Surveillance</div></div>
+      <div class="spec-card"><span class="spec-icon">🔬</span><div class="spec-name">Post-Surgery</div><div class="spec-ind">Cardiac · Orthopaedic · Wound Healing · Rehabilitation</div></div>
+      <div class="spec-card"><span class="spec-icon">🏥</span><div class="spec-name">Geriatrics</div><div class="spec-ind">Osteoporosis · Sarcopenia · Cognitive Decline · Frailty</div></div>
+    </div>
+  </div>
+  <div class="page-num">07 / 12</div>
+</section>
+
+<div class="slide-divider"></div>
+
+<!-- ══ SLIDE 8: DRUG INTERACTIONS ══ -->
+
+<section class="slide" id="interactions" data-slide="7" style="min-height:auto;padding:100px 8vw;">
+  <div style="text-align:center;margin-bottom:60px;">
+    <div class="slide-label reveal" style="text-align:center;">Prescribing Safety</div>
+    <h2 class="slide-heading reveal reveal-delay-1" style="text-align:center;">Clinical Cautions &amp;<br><em>Drug Interactions</em></h2>
+  </div>
+  <div class="ix-grid">
+    <div class="ix-card critical reveal reveal-delay-1">
+      <span class="ix-level">⚠ Critical — All Specialties</span>
+      <div class="ix-title">K2 MK-7 × Warfarin / VKAs</div>
+      <p class="ix-body">K2 MK-7 DIRECTLY interacts with warfarin and all vitamin K antagonists — INR will be affected. Mandatory disclosure, INR monitoring, and dose adjustment required.</p>
+      <div class="ix-safe">✓ Safe with all NOACs — apixaban, rivaroxaban, dabigatran</div>
+    </div>
+    <div class="ix-card critical reveal reveal-delay-2">
+      <span class="ix-level">⚠ Critical — Endocrinology · Cardiology</span>
+      <div class="ix-title">ALA × Insulin / All Antidiabetics</div>
+      <p class="ix-body">ALA potentiates ALL insulin and oral antidiabetics via AMPK/GLUT4. Mandatory blood glucose monitoring at initiation. Highest risk in fasted insulin-dependent patients.</p>
+    </div>
+    <div class="ix-card critical reveal reveal-delay-3">
+      <span class="ix-level">⚠ Critical — Mandatory Screen</span>
+      <div class="ix-title">Resveratrol × CYP3A4 / CYP2C9</div>
+      <p class="ix-body">Resveratrol inhibits CYP3A4 (&gt;50%), CYP2C9, and CYP1A2. Affected drugs: immunosuppressants (tacrolimus, cyclosporin), antivirals (DAAs), statins, warfarin, amiodarone, antiepileptics (phenytoin).</p>
+    </div>
+    <div class="ix-card critical reveal reveal-delay-1">
+      <span class="ix-level">⚠ Critical — Reproductive</span>
+      <div class="ix-title">Resveratrol × Pregnancy</div>
+      <p class="ix-body">NOT recommended during pregnancy or breastfeeding. Stop at least 1 month before planned conception. Replace with dedicated prenatal supplement (folate 5mg, iron, iodine, calcium).</p>
+    </div>
+    <div class="ix-card critical reveal reveal-delay-2">
+      <span class="ix-level">⚠ Critical — Transplant Patients</span>
+      <div class="ix-title">Resveratrol × Calcineurin Inhibitors</div>
+      <p class="ix-body">AVOID in transplant patients on tacrolimus or cyclosporin. CYP3A4 inhibition may dangerously elevate immunosuppressant levels — risk of rejection or nephrotoxicity/CNS toxicity.</p>
+    </div>
+    <div class="ix-card critical reveal reveal-delay-3">
+      <span class="ix-level">⚠ Critical — All Surgical Patients</span>
+      <div class="ix-title">Perioperative Protocol</div>
+      <p class="ix-body">STOP 7–14 days pre-op: Resveratrol, Tocotrienol, CoQ10. STOP 24–48 hrs: ALA (disclose to anaesthesiologist). SAFE: Vitamin C, Selenium, D3, K2. RESUME Day 5–7 post-haemostasis.</p>
+    </div>
+    <div class="ix-card caution reveal reveal-delay-1">
+      <span class="ix-level">⚡ Caution — Nephrology CKD 3b+</span>
+      <div class="ix-title">Vitamin C × Advanced CKD</div>
+      <p class="ix-body">40 mg dose safe for CKD stages 1–3a. In CKD 3b–5 and dialysis: Vitamin C metabolises to oxalate — accumulates in renal failure. Limit total Vitamin C ≤100 mg/day in advanced CKD.</p>
+    </div>
+    <div class="ix-card caution reveal reveal-delay-2">
+      <span class="ix-level">⚡ Caution — Granulomatous Disease</span>
+      <div class="ix-title">D3 × Sarcoidosis / Active TB</div>
+      <p class="ix-body">Activated macrophages in granulomatous disease produce unregulated 1,25-OH D3 causing hypercalcaemia. Exogenous D3 can worsen this — monitor serum calcium before supplementing.</p>
+    </div>
+    <div class="ix-card caution reveal reveal-delay-3">
+      <span class="ix-level">⚡ Caution — Oncology</span>
+      <div class="ix-title">Antioxidants × Chemotherapy</div>
+      <p class="ix-body">Avoid all antioxidants within 24–48 hours of chemotherapy infusion unless specifically cleared by the treating oncologist. Resveratrol CYP3A4 may alter sorafenib and tamoxifen plasma levels.</p>
+    </div>
+  </div>
+  <div class="page-num">08 / 12</div>
+</section>
+
+<div class="slide-divider"></div>
+
+<!-- ══ SLIDE 9: PULL QUOTE ══ -->
+
+<section class="slide" id="pullquote" data-slide="8">
   <div class="pullquote-text reveal">
-    Not anti-aging.<br><em>Age-defying.</em>
+    Not anti-aging.<br>
+    <em>Age-defying.</em><br>
+    Not a supplement.<br>
+    <em>Cellular intelligence.</em>
   </div>
-  <div class="pullquote-attr reveal reveal-delay-2">AETERNYX™ — Cellular Longevity Complex</div>
-  <div class="page-num">06 / 08</div>
+  <div class="pullquote-attr reveal reveal-delay-2">AETERNYX™ — Cellular Longevity Complex by Arata Nutraceuticals</div>
+  <div class="page-num">09 / 12</div>
 </section>
 
 <div class="slide-divider"></div>
 
-<!-- SLIDE 7: AUDIENCE + USAGE -->
+<!-- ══ SLIDE 10: AUDIENCE ══ -->
 
-<section class="slide" id="audience" data-slide="6">
+<section class="slide" id="audience" data-slide="9">
   <div>
     <div class="slide-label reveal">Who It's For</div>
     <h2 class="slide-heading reveal reveal-delay-1">Designed for<br><em>The Exceptional.</em></h2>
@@ -954,74 +1591,128 @@ color: var(–gold-dim);
       from high-performance individuals to longevity-driven consumers and clinical practitioners.
     </p>
     <div class="audience-tags reveal reveal-delay-3">
-      <span class="tag">High-Performance Individuals</span>
+      <span class="tag">Ultra High Net Worth</span>
       <span class="tag">Longevity Enthusiasts</span>
+      <span class="tag">Fitness Athletes</span>
       <span class="tag">Clinical Practices</span>
-      <span class="tag">UHNWI</span>
+      <span class="tag">Urban Professionals</span>
+      <span class="tag">High Stress Lifestyles</span>
+      <span class="tag">Anti-Pollution</span>
       <span class="tag">Preventive Health</span>
     </div>
   </div>
   <div class="reveal reveal-delay-2">
     <div class="usage-box">
-      <div class="usage-heading">Suggested Usage</div>
+      <div class="usage-heading">Dosing Protocol</div>
       <div class="usage-instruction">
-        1 capsule daily after meals<br>
-        or as directed by your<br>healthcare professional.
+        1 capsule daily with morning meal<br>
+        containing fat for optimal absorption.<br>
+        Size 00 HPMC · 433mg active fill.
       </div>
-      <div class="rule" style="margin-top:32px;"></div>
-      <p style="font-family:'Josefin Sans';font-weight:100;font-size:10px;letter-spacing:4px;color:var(--muted);text-transform:uppercase;margin-top:12px;">
-        Premium Longevity Science<br>
-        Engineered for cellular supremacy
+      <div class="rule" style="margin-top:24px;"></div>
+      <p class="usage-note">
+        Fat-soluble actives (Astaxanthin, Lycopene, Tocotrienol, CoQ10, D3, K2) require dietary fat for optimal tissue bioavailability. Morning dosing aligns with SIRT1 circadian clock gene regulation.
+        <br><br>
+        For individuals with high oxidative burden — urban pollution, heavy exercise, high-stress environments — a second capsule with dinner may be considered after physician assessment.
       </p>
     </div>
   </div>
-  <div class="page-num">07 / 08</div>
+  <div class="page-num">10 / 12</div>
 </section>
 
 <div class="slide-divider"></div>
 
-<!-- SLIDE 8: CLOSING -->
+<!-- ══ SLIDE 11: VALUE ══ -->
 
-<section class="slide" id="closing" data-slide="7">
-  <div class="closing-eyebrow reveal">Premium Longevity Science</div>
+<section class="slide" id="value" data-slide="10">
+  <div>
+    <div class="slide-label reveal">The Investment Case</div>
+    <h2 class="slide-heading reveal reveal-delay-1">₹120.<br><em>The Smartest Decision.</em></h2>
+    <p class="slide-body reveal reveal-delay-2">
+      Your patients invest in business-class flights, premium skincare, and personal training.
+      At ₹120 per day, AETERNYX™ is not an expense. It is the highest-ROI health
+      investment available — 10 precision-dosed actives in one capsule.
+    </p>
+    <div class="rule reveal reveal-delay-3"></div>
+    <ul class="value-list reveal reveal-delay-4">
+      <li><div class="v-bullet"></div><span>One capsule replaces 10 separate premium supplements — purchased individually: ₹3,500–₹8,000 per month with uncertain ingredient interactions</span></li>
+      <li><div class="v-bullet"></div><span>Every ingredient is dosed at the clinical evidence threshold — not at trace "proprietary blend" quantities designed only to justify label claims</span></li>
+      <li><div class="v-bullet"></div><span>The ALA self-renewal cycle means the formula is continuously active — protection compounds over time like a long-term biological investment</span></li>
+      <li><div class="v-bullet"></div><span>Addresses 6 of the 9 Hallmarks of Ageing — no single pharmaceutical drug at any price achieves this breadth of biological protection</span></li>
+    </ul>
+  </div>
+  <div class="reveal reveal-delay-2">
+    <div class="value-compare">
+      <div class="value-row">
+        <div class="v-item"><span class="v-price">₹120</span><span class="v-label">Aeternyx™<br>Per Day</span></div>
+        <div class="v-vs">vs</div>
+        <div class="v-item"><span class="v-price dim">₹3,500+</span><span class="v-label">10 Separate Premium<br>Supplements Per Day</span></div>
+      </div>
+      <div class="value-row">
+        <div class="v-item"><span class="v-price">₹120</span><span class="v-label">Aeternyx™<br>Per Day</span></div>
+        <div class="v-vs">vs</div>
+        <div class="v-item"><span class="v-price dim">₹1,200</span><span class="v-label">One Whisky at a<br>Premium Hotel Bar</span></div>
+      </div>
+      <div class="value-row">
+        <div class="v-item"><span class="v-price">₹120</span><span class="v-label">Aeternyx™<br>Per Day</span></div>
+        <div class="v-vs">vs</div>
+        <div class="v-item"><span class="v-price dim">₹8,000</span><span class="v-label">One IV Micronutrient<br>Drip at Wellness Clinic</span></div>
+      </div>
+    </div>
+    <div class="value-note">
+      <p><strong>India's most advanced single-capsule formulation.</strong> No comparable product in the Indian market combines these 10 actives at these evidence-based dosages with pharmaceutical-grade specifications (Trans-Resveratrol 98%, R-ALA 99%, CoQ10 micronised 98%) in a single Size 00 capsule.</p>
+    </div>
+  </div>
+  <div class="page-num">11 / 12</div>
+</section>
+
+<div class="slide-divider"></div>
+
+<!-- ══ SLIDE 12: CLOSING ══ -->
+
+<section class="slide" id="closing" data-slide="11">
+  <div class="closing-eyebrow reveal">Premium Longevity Science · Arata Nutraceuticals</div>
   <div class="closing-heading reveal reveal-delay-1">
     Engineered for<br>Cellular Supremacy.
   </div>
-  <div class="closing-sub reveal reveal-delay-2">Confidential · For Professional Use</div>
+  <div class="closing-sub reveal reveal-delay-2">10 Actives · 17 Specialties · 433mg · Once Daily</div>
   <div class="closing-logo reveal reveal-delay-3">AETERNYX™</div>
   <div class="closing-line reveal reveal-delay-4"></div>
-  <div class="page-num">08 / 08</div>
+  <div class="closing-disclaimer reveal reveal-delay-5">
+    For healthcare professional use only · Not for patient distribution<br>
+    All indications are adjunctive to standard-of-care pharmacological therapy<br>
+    Key interactions: K2 × Warfarin · ALA × Antidiabetics · Resveratrol × CYP3A4 · Contraindicated in pregnancy
+  </div>
+  <div class="page-num">12 / 12</div>
 </section>
 
 <script>
-  // ── SCROLL REVEAL ──
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('visible'); }
-    });
-  }, { threshold: 0.15 });
-  reveals.forEach(el => observer.observe(el));
+// ── SCROLL REVEAL ──
+const reveals = document.querySelectorAll('.reveal');
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.12 });
+reveals.forEach(el => revealObs.observe(el));
 
-  // ── NAV DOTS ──
-  const slides = document.querySelectorAll('[data-slide]');
-  const dots = document.querySelectorAll('.nav-dot');
+// ── NAV DOTS ──
+const slides = document.querySelectorAll('[data-slide]');
+const dots   = document.querySelectorAll('.nav-dot');
 
-  const slideObserver = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting && e.intersectionRatio > 0.3) {
-        const idx = e.target.dataset.slide;
-        dots.forEach(d => d.classList.remove('active'));
-        dots[idx]?.classList.add('active');
-      }
-    });
-  }, { threshold: 0.3 });
+const slideObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting && e.intersectionRatio > 0.3) {
+      dots.forEach(d => d.classList.remove('active'));
+      const idx = e.target.dataset.slide;
+      if (dots[idx]) dots[idx].classList.add('active');
+    }
+  });
+}, { threshold: 0.3 });
 
-  slides.forEach(s => slideObserver.observe(s));
+slides.forEach(s => slideObs.observe(s));
 
-  function scrollToSlide(idx) {
-    slides[idx]?.scrollIntoView({ behavior: 'smooth' });
-  }
+function scrollToSlide(idx) {
+  slides[idx]?.scrollIntoView({ behavior: 'smooth' });
+}
 </script>
 
 </body>
