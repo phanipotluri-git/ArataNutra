@@ -286,13 +286,14 @@ border-color: #2a6068 !important;
 background: #0c0c28 !important;
 border-color: #5028a0 !important;
 }
-/* Language visibility — default: Bengali shown */
-.te-card { display: none; }
-.bn-card { display: flex; }
-[data-lang=“te”] .bn-card { display: none; }
-[data-lang=“te”] .te-card { display: flex; }
-[data-lang=“bn”] .bn-card { display: flex; }
-[data-lang=“bn”] .te-card { display: none; }
+/* Language visibility — default Bengali, JS overrides via injected style */
+.te-card { display: none !important; }
+.bn-card { display: flex !important; flex-direction: column; }
+/* CSS fallback for attribute selectors (JS injection is primary) */
+body[data-lang=“te”] .bn-card { display: none !important; }
+body[data-lang=“te”] .te-card { display: flex !important; flex-direction: column; }
+body[data-lang=“bn”] .bn-card { display: flex !important; flex-direction: column; }
+body[data-lang=“bn”] .te-card { display: none !important; }
 
 /* Card head */
 .ch {
@@ -2254,24 +2255,71 @@ body[data-print=“a5”] .advisory { page-break-inside: avoid; break-inside: av
 
 <script>
 /* Language switcher */
+/* ── Language switcher ──────────────────────────────── */
 function setLang(lang) {
+  // 1. Set data attribute (CSS fallback)
   document.body.setAttribute('data-lang', lang);
+
+  // 2. Inject a <style> — beats ANY external CSS including GitHub's overrides
+  var el = document.getElementById('lang-style');
+  if (!el) {
+    el = document.createElement('style');
+    el.id = 'lang-style';
+    document.head.appendChild(el);
+  }
+  if (lang === 'te') {
+    el.textContent =
+      '.bn-card{display:none!important;}' +
+      '.te-card{display:flex!important;flex-direction:column!important;}' +
+      // advisory/header spans
+      '.advisory-head .bn{display:none!important;}' +
+      '.advisory-head .te{display:inline!important;}' +
+      '.season-head .bn{display:none!important;}' +
+      '.season-head .te{display:inline!important;}' +
+      '.adv-item p .bn{display:none!important;}' +
+      '.adv-item p .te{display:block!important;}' +
+      '.sec-label-text .bn{display:none!important;}' +
+      '.sec-label-text .te{display:inline!important;}' +
+      '.sp-tag .bn{display:none!important;}' +
+      '.sp-tag .te{display:inline!important;}';
+  } else {
+    el.textContent =
+      '.te-card{display:none!important;}' +
+      '.bn-card{display:flex!important;flex-direction:column!important;}' +
+      '.advisory-head .te{display:none!important;}' +
+      '.advisory-head .bn{display:inline!important;}' +
+      '.season-head .te{display:none!important;}' +
+      '.season-head .bn{display:inline!important;}' +
+      '.adv-item p .te{display:none!important;}' +
+      '.adv-item p .bn{display:block!important;}' +
+      '.sec-label-text .te{display:none!important;}' +
+      '.sec-label-text .bn{display:inline!important;}' +
+      '.sp-tag .te{display:none!important;}' +
+      '.sp-tag .bn{display:inline!important;}';
+  }
+
+  // 3. Update pill button active state
   document.querySelectorAll('.ls-btn').forEach(function(b) {
     b.classList.toggle('active', b.getAttribute('data-lang') === lang);
   });
-  localStorage.setItem('imc-lang', lang);
+
+  // 4. Save preference (wrapped — localStorage may be blocked on some hosts)
+  try { localStorage.setItem('imc-lang', lang); } catch(e) {}
 }
-/* Restore saved preference */
+
+/* ── Restore saved preference on load ── */
 (function() {
-  var saved = localStorage.getItem('imc-lang') || 'bn';
+  var saved = 'bn';
+  try { saved = localStorage.getItem('imc-lang') || 'bn'; } catch(e) {}
   setLang(saved);
 })();
 
 function triggerPrint(size) {
-  const prev = document.getElementById('dyn-page');
+  // Remove previous dynamic page-size rule
+  var prev = document.getElementById('dyn-page');
   if (prev) prev.remove();
 
-  const st = document.createElement('style');
+  var st = document.createElement('style');
   st.id = 'dyn-page';
   st.textContent = size === 'a5'
     ? '@media print { @page { size: A5 portrait; margin: 8mm 7mm; } }'
