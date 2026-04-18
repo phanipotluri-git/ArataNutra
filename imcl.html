@@ -3,2323 +3,359 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IMC Fish Health Management </title>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Sans+Telugu:wght@400;500;600;700&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>IMC Bengal — Fish Health Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&family=IBM+Plex+Sans:wght@400;600;700&family=Hind+Siliguri:wght@400;600;700&family=Noto+Sans+Telugu:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-/* ═══════════════════════════════════════════
-   GITHUB PAGES / HOST OVERRIDE PROTECTION
-   Must be first so specificity beats injected CSS
-═══════════════════════════════════════════ */
-html {
-  background-color: #060d18 !important;
-  color: #ddeeff !important;
-  color-scheme: dark !important;
+:root{
+  --bg:#060d18;--panel:#0c1628;--p2:#091430;--bd:#1a3060;
+  --teal:#12c4d0;--gold:#e6b020;--red:#f06060;--orange:#f08840;
+  --green:#44d488;--purple:#9b6cff;--sky:#48ccff;--pink:#ff7ab0;
+  --txt:#ddeeff;--mid:#8ab2cc;--dim:#4a7090;
 }
-body {
-  background-color: #060d18 !important;
-  color: #ddeeff !important;
-}
+html,body{background:#060d18;overflow-x:hidden;color:var(--txt);font-size:14px;line-height:1.5}
+body.L-en{font-family:'IBM Plex Sans',sans-serif}
+body.L-bn{font-family:'Hind Siliguri',sans-serif}
+body.L-te{font-family:'Noto Sans Telugu',sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
 
-/* ═══════════════════════════════════════════
-DESIGN TOKENS
-═══════════════════════════════════════════ */
-:root {
-–bg:           #060d18;
-–panel:        #0c1628;
-–panel2:       #091430;
-–border:       #1a3060;
-–border-lite:  rgba(26,48,96,0.5);
-–teal:         #12c4d0;
-–gold:         #e6b020;
-–red:          #f06060;
-–green:        #44d488;
-–orange:       #f08840;
-–purple:       #9b6cff;
-–sky:          #48ccff;
-–text:         #ddeeff;
-–text-dim:     #4a7090;
-–text-mid:     #8ab2cc;
-–warn-bg:      #1e1000;
-–warn-bdr:     #a05010;
-–warn-txt:     #ffd060;
-–ban-bg:       #180000;
-–ban-bdr:      #901020;
-–ban-txt:      #ffb0b0;
-–tip-bg:       rgba(18,196,208,0.09);
-–tip-bdr:      rgba(18,196,208,0.28);
-–tip-txt:      #78d8e0;
-–bn-accent:    #5cd4dc;
-–bn-panel:     #081826;
-–te-accent:    #c090ff;
-–te-panel:     #0c0c28;
-}
+/* TOPBAR */
+#bar{background:var(–panel);border-bottom:2px solid var(–teal);padding:10px 12px 9px}
+.r1{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.logo{font-family:‘IBM Plex Mono’,monospace;font-size:11px;font-weight:700;letter-spacing:2px;color:var(–teal);text-transform:uppercase}
+.logo span{color:var(–dim);font-weight:400}
+.lps{display:flex;background:var(–p2);border:1px solid var(–bd);border-radius:20px;padding:2px;gap:2px}
+.lb{padding:4px 12px;border-radius:18px;border:none;background:transparent;cursor:pointer;font-size:13px;font-weight:700;color:var(–dim)}
+.lb.on{background:var(–teal);color:#000}
+.lb[data-l=“te”].on{background:var(–purple);color:#fff}
+#srch{width:100%;background:var(–p2);border:1px solid var(–bd);border-radius:8px;padding:7px 12px 7px 34px;color:var(–txt);font-size:14px;outline:none;-webkit-appearance:none}
+#srch::placeholder{color:var(–dim)}
+.sw{position:relative}
+.si{position:absolute;left:10px;top:50%;transform:translateY(-50%);font-size:14px;pointer-events:none}
 
-/* ═══════════════════════════════════════════
-RESET & BASE
-═══════════════════════════════════════════ */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+/* INFO STRIP */
+#strip{background:var(–p2);border-bottom:1px solid var(–bd);padding:7px 14px;font-size:11px;color:var(–dim);font-family:‘IBM Plex Mono’,monospace;letter-spacing:.5px;display:flex;align-items:center;gap:8px}
+#strip-icon{font-size:14px}
 
-body {
-background: #060d18 !important;
-background-color: #060d18 !important;
-color: #ddeeff !important;
-font-family: ‘IBM Plex Sans’, sans-serif;
-font-size: 13px;
-line-height: 1.65;
-padding: 28px 16px 64px;
-}
+/* CARD LIST */
+#list{padding:10px 12px 80px;min-height:200px}
+.card{display:flex;align-items:center;gap:10px;background:var(–panel);border:1px solid var(–bd);border-left:3px solid var(–teal);border-radius:10px;margin-bottom:9px;padding:11px 12px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.card:active{opacity:.7}
+.ci{font-size:22px;flex-shrink:0;width:32px;text-align:center}
+.cb{flex:1;min-width:0}
+.ct{font-size:13px;font-weight:700;color:var(–txt);line-height:1.3;margin-bottom:2px}
+.cs{font-size:11px;color:var(–dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:4px}
+.ctg{display:flex;gap:3px;flex-wrap:wrap}
+.tg{font-family:‘IBM Plex Mono’,monospace;font-size:8px;letter-spacing:.5px;text-transform:uppercase;padding:1px 5px;border-radius:3px;font-weight:700}
+.ca{color:var(–dim);font-size:18px;flex-shrink:0}
+/* card accents */
+.ac-red{border-left-color:var(–red)}.ac-orange{border-left-color:var(–orange)}
+.ac-purple{border-left-color:var(–purple)}.ac-teal{border-left-color:var(–teal)}
+.ac-sky{border-left-color:var(–sky)}.ac-green{border-left-color:var(–green)}
+.ac-gold{border-left-color:var(–gold)}.ac-pink{border-left-color:var(–pink)}
+/* tag colours */
+.tk{background:rgba(240,96,96,.2);color:#ff8080}
+.tb2{background:rgba(240,144,64,.15);color:#ffb070}
+.tp{background:rgba(155,108,255,.15);color:#c090ff}
+.tw{background:rgba(18,196,208,.12);color:var(–teal)}
+.tf{background:rgba(232,176,32,.12);color:var(–gold)}
+.tg2{background:rgba(68,212,136,.12);color:var(–green)}
+.te2{background:rgba(72,204,255,.12);color:var(–sky)}
+#nores{display:none;text-align:center;padding:60px 20px;color:var(–dim);font-size:13px}
 
-.bn { font-family: ‘Hind Siliguri’, sans-serif; }
-.te { font-family: ‘Noto Sans Telugu’, sans-serif; display: none; }
-/* .bn shown by default until JS sets lang */
-.eyebrow .bn, .header .bn, .bn-title, .sub .bn,
-.sp-tag .bn, .season-head .bn, .s-name .bn, .s-months .bn,
-.sec-label-text .bn, .advisory-head .bn, .adv-head .bn,
-.adv-item p .bn, footer .bn, footer p.bn,
-.ls-label .bn, .print-label .bn { display: inline; }
-footer p.bn { display: block; }
-.adv-item p .bn { display: block; }
-/* Sec-label language display */
-.sec-label-text .bn,
-.sec-label-text .te { display: none; }
-[data-lang=“bn”] .sec-label-text .bn { display: inline; }
-[data-lang=“te”] .sec-label-text .te { display: inline; }
-/* Advisory head language display */
-.advisory-head .bn,
-.advisory-head .te { display: none !important; }
-[data-lang=“bn”] .advisory-head .bn { display: inline !important; }
-[data-lang=“te”] .advisory-head .te { display: inline !important; }
-/* Season head */
-.season-head .bn,
-.season-head .te { display: none; }
-[data-lang=“bn”] .season-head .bn { display: inline; }
-[data-lang=“te”] .season-head .te { display: inline; }
+/* DETAIL PANEL — display:none default, @keyframes on open */
+@keyframes slideIn{from{transform:translateX(100%)}to{transform:translateX(0)}}
+#det{display:none;position:fixed;top:0;left:0;width:100%;height:100%;z-index:9999;background:#060d18;flex-direction:column;overflow:hidden}
+#det.open{display:flex;animation:slideIn .25s ease-out forwards}
+#dh{background:var(–panel);border-bottom:2px solid var(–teal);padding:12px 14px 10px;flex-shrink:0}
+#back{display:flex;align-items:center;gap:6px;background:none;border:none;color:var(–teal);font-size:14px;font-weight:700;cursor:pointer;padding:0;margin-bottom:8px}
+#dico{font-size:26px;margin-bottom:3px}
+#dtit{font-size:16px;font-weight:700;line-height:1.3;color:var(–txt)}
+#dsub{font-size:10px;color:var(–dim);margin-top:2px;font-family:‘IBM Plex Mono’,monospace;letter-spacing:.5px}
+#dscr{flex:1;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:14px 14px 80px}
+#dbody{}
 
-/* ═══════════════════════════════════════════
-HEADER
-═══════════════════════════════════════════ */
-.header {
-text-align: center;
-margin-bottom: 36px;
-}
-.header-rule {
-height: 2px;
-background: linear-gradient(90deg, transparent 0%, var(–teal) 40%, var(–gold) 60%, transparent 100%);
-margin-bottom: 26px;
-border-radius: 2px;
-}
-.eyebrow {
-font-family: ‘IBM Plex Mono’, monospace;
-font-size: 10px;
-letter-spacing: 3px;
-color: var(–teal);
-text-transform: uppercase;
-margin-bottom: 10px;
-}
-.header h1 {
-font-family: ‘IBM Plex Mono’, monospace;
-font-size: 22px;
-font-weight: 700;
-color: #fff;
-margin-bottom: 4px;
-line-height: 1.3;
-}
-.header h1 .bn-title {
-font-family: ‘Hind Siliguri’, sans-serif;
-font-size: 19px;
-font-weight: 600;
-color: var(–bn-accent);
-}
-.header .sub {
-font-size: 12px;
-color: var(–text-dim);
-font-style: italic;
-margin-bottom: 16px;
-}
-.species-row {
-display: flex;
-justify-content: center;
-gap: 8px;
-flex-wrap: wrap;
-margin-bottom: 4px;
-}
-.sp-tag {
-background: #081818 !important;
-border: 1px solid #1a6068 !important;
-border-radius: 4px;
-padding: 2px 11px;
-font-size: 11px;
-color: var(–sky);
-font-family: ‘IBM Plex Mono’, monospace;
-}
-.sp-tag .bn {
-font-family: ‘Hind Siliguri’, sans-serif;
-font-size: 12px;
-color: var(–bn-accent);
-display: none;
-}
-.sp-tag .te {
-font-family: ‘Noto Sans Telugu’, sans-serif;
-font-size: 12px;
-color: var(–te-accent);
-display: none;
-}
-[data-lang=“bn”] .sp-tag .bn { display: inline; }
-[data-lang=“te”] .sp-tag .te { display: inline; }
-.header-rule-bottom {
-height: 1px;
-background: #1a3060 !important;
-margin-top: 22px;
-}
-
-/* ═══════════════════════════════════════════
-SEASON CALENDAR
-═══════════════════════════════════════════ */
-.season-wrap {
-background: #091430 !important;
-border: 1px solid #1a3060 !important;
-border-radius: 10px;
-padding: 14px 18px 16px;
-margin-bottom: 28px;
-}
-.season-head {
-font-family: ‘IBM Plex Mono’, monospace;
-font-size: 9px;
-letter-spacing: 2px;
-color: var(–text-dim);
-text-transform: uppercase;
-margin-bottom: 12px;
-display: flex;
-justify-content: space-between;
-align-items: center;
-}
-.season-head .bn {
-font-size: 11px;
-color: var(–text-dim);
-letter-spacing: 0;
-font-family: ‘Hind Siliguri’, sans-serif;
-}
-.seasons {
-display: grid;
-grid-template-columns: repeat(4, 1fr);
-gap: 8px;
-}
-.s-item {
-background: #0c1628 !important;
-border-radius: 7px;
-padding: 9px 11px;
-border-left: 3px solid var(–border);
-}
-.s-item.eus   { border-left-color: var(–red); }
-.s-item.arg   { border-left-color: var(–orange); }
-.s-item.gill  { border-left-color: var(–purple); }
-.s-item.gen   { border-left-color: var(–green); }
-
-.s-label {
-font-family: ‘IBM Plex Mono’, monospace;
-font-size: 8.5px;
-letter-spacing: 1px;
-margin-bottom: 3px;
-}
-.eus .s-label  { color: var(–red); }
-.arg .s-label  { color: var(–orange); }
-.gill .s-label { color: var(–purple); }
-.gen .s-label  { color: var(–green); }
-
-.s-name { font-size: 12px; font-weight: 600; color: var(–text); }
-.s-name .bn { font-size: 11.5px; font-weight: 600; font-family: ‘Hind Siliguri’, sans-serif; color: var(–bn-accent); display: block; }
-.s-months { font-size: 10.5px; color: var(–text-dim); margin-top: 3px; }
-.s-months .bn { font-family: ‘Hind Siliguri’, sans-serif; font-size: 10px; display: block; }
-
-/* ═══════════════════════════════════════════
-SECTION LABELS
-═══════════════════════════════════════════ */
-.sec-label {
-display: flex;
-align-items: center;
-gap: 12px;
-margin: 30px 0 14px;
-}
-.sec-label-text {
-font-family: ‘IBM Plex Mono’, monospace;
-font-size: 9.5px;
-letter-spacing: 2.5px;
-color: var(–text-dim);
-text-transform: uppercase;
-white-space: nowrap;
-}
-.sec-label-text .bn {
-font-family: ‘Hind Siliguri’, sans-serif;
-font-size: 11px;
-letter-spacing: 0;
-color: var(–text-dim);
-font-weight: 500;
-margin-left: 6px;
-}
-.sec-label::after {
-content: ‘’;
-flex: 1;
-height: 1px;
-background: #1a3060 !important;
-}
-
-/* ═══════════════════════════════════════════
-CARD PAIR — the bilingual side-by-side unit
-═══════════════════════════════════════════ */
-.pair {
-display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 12px;
-margin-bottom: 14px;
-align-items: stretch;
-}
-
-/* ═══════════════════════════════════════════
-BASE CARD
-═══════════════════════════════════════════ */
-.card {
-background: #0c1628 !important;
-border: 1px solid #1a3060 !important;
-border-radius: 10px;
-overflow: visible;
-display: flex;
-flex-direction: column;
-min-height: 0;
-}
-.card.bn-card {
-background: #081826 !important;
-border-color: #2a6068 !important;
-}
-.card.te-card {
-background: #0c0c28 !important;
-border-color: #5028a0 !important;
-}
-/* Language visibility — default Bengali, JS overrides via injected style */
-.te-card { display: none !important; }
-.bn-card { display: flex !important; flex-direction: column; }
-/* CSS fallback for attribute selectors (JS injection is primary) */
-body[data-lang=“te”] .bn-card { display: none !important; }
-body[data-lang=“te”] .te-card { display: flex !important; flex-direction: column; }
-body[data-lang=“bn”] .bn-card { display: flex !important; flex-direction: column; }
-body[data-lang=“bn”] .te-card { display: none !important; }
-
-/* Card head */
-.ch {
-padding: 9px 14px 8px;
-display: flex;
-align-items: flex-start;
-gap: 9px;
-border-bottom: 1px solid var(–border-lite);
-flex-wrap: wrap;
-}
-.bn-card .ch {
-border-bottom-color: rgba(79,195,201,0.15);
-}
-.ch-icon {
-font-size: 15px;
-line-height: 1;
-flex-shrink: 0;
-}
-.ch-title {
-font-family: ‘IBM Plex Mono’, monospace;
-font-size: 11px;
-font-weight: 700;
-letter-spacing: 0.3px;
-text-transform: uppercase;
-flex: 1;
-line-height: 1.3;
-min-width: 0;
-word-break: break-word;
-}
-.bn-card .ch-title {
-font-family: ‘Hind Siliguri’, sans-serif;
-font-size: 13px;
-font-weight: 700;
-text-transform: none;
-letter-spacing: 0;
-color: var(–bn-accent);
-}
-.te-card .ch-title {
-font-family: ‘Noto Sans Telugu’, sans-serif;
-font-size: 13px;
-font-weight: 700;
-text-transform: none;
-letter-spacing: 0;
-color: var(–te-accent);
-}
-.ch-badge {
-font-family: ‘IBM Plex Mono’, monospace;
-font-size: 8.5px;
-padding: 2px 6px;
-border-radius: 3px;
-border: 1px solid;
-letter-spacing: 0.8px;
-white-space: nowrap;
-flex-shrink: 0;
-}
-.bn-card .ch-badge {
-font-family: ‘Hind Siliguri’, sans-serif;
-font-size: 10px;
-letter-spacing: 0;
-}
-.b-bact   { background:rgba(224,90,90,.1);   border-color:var(–red);    color:var(–red); }
-.b-para   { background:rgba(224,125,60,.1);  border-color:var(–orange); color:var(–orange); }
-.b-fung   { background:rgba(139,92,246,.1);  border-color:var(–purple); color:var(–purple); }
-.b-water  { background:rgba(14,165,176,.1);  border-color:var(–teal);   color:var(–teal); }
-.b-nut    { background:rgba(60,186,122,.1);  border-color:var(–green);  color:var(–green); }
-.b-crit   { background:rgba(224,90,90,.2);   border-color:var(–red);    color:var(–red); }
-.b-myx    { background:rgba(139,92,246,.12); border-color:var(–purple); color:var(–purple); }
-
-/* Card colour accents on header — solid pre-blended (rgba fails on github white bg) */
-.cc-red    .ch { background:#1c0f10 !important; }
-.cc-red    .ch-title { color:#ff8080 !important; }
-.cc-orange .ch { background:#1c1208 !important; }
-.cc-orange .ch-title { color:#ffaa60 !important; }
-.cc-purple .ch { background:#130f24 !important; }
-.cc-purple .ch-title { color:#c090ff !important; }
-.cc-teal   .ch { background:#081c1e !important; }
-.cc-teal   .ch-title { color:#40e0ea !important; }
-.cc-green  .ch { background:#091710 !important; }
-.cc-green  .ch-title { color:#60ee98 !important; }
-.cc-gold   .ch { background:#1a1508 !important; }
-.cc-gold   .ch-title { color:#ffcc30 !important; }
-.cc-sky    .ch { background:#081820 !important; }
-.cc-sky    .ch-title { color:#60d8ff !important; }
-
-/* Card body */
-.cb {
-padding: 12px 14px;
-flex: 1;
-overflow-wrap: break-word;
-word-wrap: break-word;
-word-break: break-word;
-min-width: 0;
-}
-
-/* Causative agent */
-.cause {
-font-size: 11.5px;
-color: #8ab2cc;
-font-style: italic;
-margin-bottom: 9px;
-padding-bottom: 9px;
-border-bottom: 1px solid #1a3060 !important;
-line-height: 1.5;
-overflow-wrap: break-word;
-word-break: break-word;
-}
-.cause strong { color: #80a4c8; font-style: normal; font-size: 10px; letter-spacing: 0.5px; }
-.bn-card .cause {
-font-family: ‘Hind Siliguri’, sans-serif;
-font-style: normal;
-font-size: 12px;
-color: var(–text-mid);
-}
-.bn-card .cause strong {
-font-family: ‘Hind Siliguri’, sans-serif;
-font-size: 12px;
-color: #6baecf;
-letter-spacing: 0;
-}
-
-/* Symptom box */
-.symp {
-background: #0e1e38 !important;
-border-left: 2px solid #1a3060 !important;
-border-radius: 4px;
-padding: 7px 10px;
-margin-bottom: 10px;
-font-size: 11.5px;
-color: var(–text-mid);
-line-height: 1.5;
-}
-.symp-head {
-font-family: ‘IBM Plex Mono’, monospace;
-font-size: 9px;
-letter-spacing: 1px;
-color: var(–text-dim);
-text-transform: uppercase;
-display: block;
-margin-bottom: 3px;
-}
-.bn-card .symp { font-family: ‘Hind Siliguri’, sans-serif; font-size: 12px; }
-.bn-card .symp-head { font-family: ‘IBM Plex Mono’, monospace; }
-
-/* Step labels */
-.step {
-font-family: ‘IBM Plex Mono’, monospace;
-font-size: 9px;
-letter-spacing: 1px;
-color: var(–text-dim);
-text-transform: uppercase;
-margin: 10px 0 5px;
-}
-.bn-card .step { font-size: 9px; }
-
-/* Dose list */
-.dl { list-style: none; }
-.dl li {
-display: flex;
-gap: 8px;
-padding: 4px 0;
-border-bottom: 1px solid #1a3060 !important;
-align-items: flex-start;
-font-size: 12px;
-flex-wrap: wrap;
-}
-.dl li:last-child { border-bottom: none; }
-.dl-chem { flex: 1; color: var(–text); font-weight: 600; line-height: 1.4; }
-.dl-qty {
-font-family: ‘IBM Plex Mono’, monospace;
-font-size: 10.5px;
-color: var(–gold);
-white-space: normal;
-word-break: break-word;
-flex-shrink: 0;
-text-align: right;
-line-height: 1.4;
-max-width: 45%;
-}
-.dl-note {
-display: block;
-font-size: 10.5px;
-color: var(–text-dim);
-font-weight: 400;
-font-style: italic;
-margin-top: 1px;
-font-family: ‘IBM Plex Sans’, sans-serif;
-}
-.bn-card .dl li { font-size: 12px; }
-.bn-card .dl-chem { font-family: ‘Hind Siliguri’, sans-serif; font-size: 12.5px; font-weight: 600; }
-.bn-card .dl-qty { font-family: ‘IBM Plex Mono’, monospace; font-size: 10.5px; }
-.bn-card .dl-note { font-family: ‘Hind Siliguri’, sans-serif; font-size: 11px; font-style: normal; }
-.te-card .cause { font-family: ‘Noto Sans Telugu’, sans-serif; font-style: normal; font-size: 12px; color: var(–text-mid); }
-.te-card .cause strong { font-family: ‘Noto Sans Telugu’, sans-serif; font-size: 12px; color: #a080e8; letter-spacing: 0; }
-.te-card .symp { font-family: ‘Noto Sans Telugu’, sans-serif; font-size: 12px; }
-.te-card .dl li { font-size: 12px; }
-.te-card .dl-chem { font-family: ‘Noto Sans Telugu’, sans-serif; font-size: 12.5px; font-weight: 600; }
-.te-card .dl-qty { font-family: ‘IBM Plex Mono’, monospace; font-size: 10.5px; }
-.te-card .dl-note { font-family: ‘Noto Sans Telugu’, sans-serif; font-size: 11px; font-style: normal; }
-.te-card .warn-box,
-.te-card .ban-box,
-.te-card .tip-box { font-family: ‘Noto Sans Telugu’, sans-serif; font-size: 12px; }
-.te-card .ch-badge { font-family: ‘Noto Sans Telugu’, sans-serif; font-size: 10px; letter-spacing: 0; }
-
-/* Info boxes */
-.warn-box {
-background: #1e1000 !important;
-border: 1px solid #a05010 !important;
-border-radius: 5px;
-padding: 8px 11px;
-font-size: 11.5px;
-color: var(–warn-txt);
-margin-top: 10px;
-line-height: 1.5;
-}
-.warn-box .bx-head {
-font-weight: 700;
-font-size: 10px;
-letter-spacing: 0.5px;
-margin-bottom: 3px;
-display: block;
-}
-.ban-box {
-background: #180000 !important;
-border: 1px solid #901020 !important;
-border-radius: 5px;
-padding: 8px 11px;
-font-size: 11.5px;
-color: var(–ban-txt);
-margin-top: 10px;
-line-height: 1.5;
-}
-.ban-box .bx-head {
-font-weight: 700;
-font-size: 10px;
-letter-spacing: 0.5px;
-margin-bottom: 3px;
-display: block;
-}
-.tip-box {
-background: #081818 !important;
-border: 1px solid #0a8888 !important;
-border-radius: 5px;
-padding: 8px 11px;
-font-size: 11.5px;
-color: var(–tip-txt);
-margin-top: 10px;
-line-height: 1.5;
-}
-.tip-box .bx-head {
-font-family: ‘IBM Plex Mono’, monospace;
-font-size: 9px;
-letter-spacing: 1px;
-color: var(–teal);
-text-transform: uppercase;
-margin-bottom: 3px;
-display: block;
-}
-.bn-card .warn-box,
-.bn-card .ban-box,
-.bn-card .tip-box {
-font-family: ‘Hind Siliguri’, sans-serif;
-font-size: 12px;
-}
-
-/* ═══════════════════════════════════════════
-ADVISORY PANEL
-═══════════════════════════════════════════ */
-.advisory {
-background: #091430 !important;
-border: 1px solid #1a3060 !important;
-border-radius: 10px;
-padding: 20px 22px;
-margin-top: 32px;
-}
-.advisory-head {
-font-family: ‘IBM Plex Mono’, monospace;
-font-size: 10px;
-letter-spacing: 2px;
-color: var(–gold);
-text-transform: uppercase;
-margin-bottom: 16px;
-display: flex;
-justify-content: space-between;
-align-items: center;
-}
-.advisory-head .bn {
-font-family: ‘Hind Siliguri’, sans-serif;
-font-size: 13px;
-color: var(–gold);
-letter-spacing: 0;
-font-weight: 600;
-}
-.adv-grid {
-display: grid;
-grid-template-columns: repeat(3, 1fr);
-gap: 10px;
-margin-bottom: 22px;
-}
-.adv-item {
-background: #0c1628 !important;
-border: 1px solid #1a3060 !important;
-border-radius: 7px;
-padding: 11px 13px;
-}
-.adv-head {
-font-family: ‘IBM Plex Mono’, monospace;
-font-size: 9px;
-letter-spacing: 1px;
-color: var(–text-dim);
-text-transform: uppercase;
-margin-bottom: 5px;
-}
-.adv-head .bn { font-family:‘Hind Siliguri’,sans-serif; font-size:11px; letter-spacing:0; color:var(–bn-accent); display:block; margin-top:2px; }
-.adv-item p { font-size: 11.5px; color: var(–text-mid); line-height: 1.55; }
-.adv-item p strong { color: var(–text); }
-.adv-item p .bn { font-family:‘Hind Siliguri’,sans-serif; font-size:12px; display:none; margin-top:4px; color:var(–text-mid); }
-.adv-item p .te { font-family:‘Noto Sans Telugu’,sans-serif; font-size:12px; display:none; margin-top:4px; color:var(–text-mid); }
-[data-lang=“bn”] .adv-item p .bn { display:block; }
-[data-lang=“te”] .adv-item p .te { display:block; }
-
-/* Withdrawal table */
-.wt-wrap { overflow-x: auto; }
-.wt {
-width: 100%;
-border-collapse: collapse;
-font-size: 11.5px;
-min-width: 600px;
-}
-.wt th {
-background: #101e38 !important;
-font-family: ‘IBM Plex Mono’, monospace;
-font-size: 9px;
-letter-spacing: 1px;
-color: var(–text-dim);
-text-transform: uppercase;
-padding: 7px 10px;
-text-align: left;
-border-bottom: 1px solid var(–border);
-}
-.wt td {
-padding: 6px 10px;
-border-bottom: 1px solid var(–border-lite);
-vertical-align: top;
-line-height: 1.45;
-}
-.wt tr:last-child td { border-bottom: none; }
-.wt td:first-child { color: var(–text); font-weight: 600; }
-.wt td:nth-child(2) { font-family:‘IBM Plex Mono’,monospace; color: var(–gold); font-size: 11px; }
-.wt td:nth-child(3) { color: var(–text-mid); }
-.wt td:nth-child(4) { color: var(–text-dim); font-size: 11px; font-family:‘Hind Siliguri’,sans-serif; }
-.banned { color: var(–ban-txt) !important; }
-
-/* ═══════════════════════════════════════════
-FOOTER
-═══════════════════════════════════════════ */
-footer {
-text-align: center;
-margin-top: 42px;
-font-size: 11px;
-color: var(–text-dim);
-line-height: 1.9;
-}
-footer strong { color: var(–text-mid); }
-footer .bn { font-family:‘Hind Siliguri’,sans-serif; font-size:12px; display:block; }
-footer .legal {
-margin-top: 10px;
-color: #2a4a6a;
-font-size: 10.5px;
-}
-
-/* ═══════════════════════════════════════════
-RESPONSIVE
-═══════════════════════════════════════════ */
-@media (max-width: 700px) {
-.pair { grid-template-columns: 1fr; }
-.seasons { grid-template-columns: 1fr 1fr; }
-.adv-grid { grid-template-columns: 1fr 1fr; }
-}
-@media (max-width: 440px) {
-.seasons { grid-template-columns: 1fr; }
-.adv-grid { grid-template-columns: 1fr; }
-}
-
-/* ═══════════════════════════════════════════
-LANGUAGE SWITCHER
-═══════════════════════════════════════════ */
-.lang-switcher {
-display: flex;
-align-items: center;
-gap: 10px;
-justify-content: center;
-margin: 14px 0 0;
-}
-.ls-label {
-font-family: ‘IBM Plex Mono’, monospace;
-font-size: 9px;
-letter-spacing: 2px;
-color: var(–text-dim);
-text-transform: uppercase;
-}
-.ls-pills {
-display: flex;
-background: #091430 !important;
-border: 1px solid #1a3060 !important;
-border-radius: 24px;
-padding: 3px;
-gap: 2px;
-}
-.ls-btn {
-padding: 5px 18px;
-border-radius: 20px;
-border: none;
-background: transparent;
-cursor: pointer;
-font-size: 14px;
-font-weight: 600;
-color: var(–text-dim);
-transition: all 0.18s ease;
-line-height: 1.4;
-}
-.ls-btn.active {
-background: var(–teal);
-color: #fff;
-box-shadow: 0 2px 8px rgba(18,196,208,0.35);
-}
-.ls-btn[data-lang=“te”].active {
-background: var(–purple);
-box-shadow: 0 2px 8px rgba(155,108,255,0.35);
-}
-.ls-btn:hover:not(.active) { color: var(–text); background: rgba(255,255,255,0.06); }
-
-/* ═══════════════════════════════════════════
-PRINT BUTTON (screen only)
-═══════════════════════════════════════════ */
-.print-bar {
-position: fixed;
-bottom: 24px;
-right: 24px;
-display: flex;
-flex-direction: column;
-gap: 8px;
-z-index: 999;
-}
-.print-btn {
-display: flex;
-align-items: center;
-gap: 7px;
-padding: 10px 18px;
-border-radius: 8px;
-border: none;
-cursor: pointer;
-font-family: ‘IBM Plex Mono’, monospace;
-font-size: 12px;
-font-weight: 700;
-letter-spacing: 1px;
-transition: all 0.15s ease;
-box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-}
-.print-btn.a4 {
-background: var(–teal);
-color: #fff;
-}
-.print-btn.a5 {
-background: var(–gold);
-color: #000;
-}
-.print-btn:hover { transform: translateY(-2px); filter: brightness(1.1); }
-.print-btn:active { transform: translateY(0); }
-.print-label {
-font-family: ‘IBM Plex Mono’, monospace;
-font-size: 9px;
-letter-spacing: 2px;
-color: var(–text-dim);
-text-align: center;
-text-transform: uppercase;
-margin-bottom: 4px;
-}
-
-/* ═══════════════════════════════════════════
-PAGE SIZE RULES
-═══════════════════════════════════════════ */
-@page { margin: 12mm 10mm; }
-body[data-print=“a4”] { –page-size: A4; }
-body[data-print=“a5”] { –page-size: A5; }
-
-/* ═══════════════════════════════════════════
-PRINT STYLES
-═══════════════════════════════════════════ */
-@media print {
-/* ── Page setup ── */
-@page          { size: A4 portrait; margin: 10mm 9mm; }
-@page :first   { margin-top: 8mm; }
-body[data-print=“a5”] { font-size: 11px !important; }
-@page.a5-page  { size: A5 portrait; margin: 8mm 7mm; }
-
-/* ── Guarantee background printing ── */
-*, *::before, *::after {
--webkit-print-color-adjust: exact !important;
-print-color-adjust: exact !important;
-}
-
-/* ── Light theme override ── */
-:root {
-–bg:           #ffffff;
-–panel:        #f5f7fa;
-–panel2:       #eef1f6;
-–border:       #c8d4e0;
-–border-lite:  #dde6ef;
-–teal:         #0a7f88;
-–gold:         #a07800;
-–red:          #c0392b;
-–green:        #1a7a4a;
-–orange:       #b85c10;
-–purple:       #6033b0;
-–sky:          #1a6fa0;
-–text:         #1a2533;
-–text-dim:     #4a6070;
-–text-mid:     #3a5060;
-–warn-bg:      #fffbea;
-–warn-bdr:     #c87000;
-–warn-txt:     #7a4500;
-–ban-bg:       #fff0f0;
-–ban-bdr:      #c03030;
-–ban-txt:      #8a1010;
-–tip-bg:       #edfafa;
-–tip-bdr:      #0a8888;
-–tip-txt:      #085858;
-–bn-accent:    #0a6a70;
-–bn-panel:     #f0f7fa;
-}
-
-/* ── Hide screen-only elements ── */
-.print-bar { display: none !important; }
-.lang-switcher { display: none !important; }
-
-/* ── Body ── */
-html, body {
-background: #f4f7fb !important;
-background-color: #f4f7fb !important;
-color: #101820 !important;
-padding: 0 !important;
-font-size: 10px !important;
-line-height: 1.5 !important;
-overflow-wrap: break-word !important;
-word-break: break-word !important;
-}
-.card { background: #edf2f8 !important; border-color: #b0c4dc !important; }
-.card.bn-card { background: #e4f2f8 !important; border-color: #6ab0c0 !important; }
-.card.te-card { background: #ece8f8 !important; border-color: #9070c0 !important; }
-.symp  { background: #e8eef6 !important; border-left-color: #9ab0c4 !important; }
-.warn-box { background: #fff8e0 !important; border-color: #b06000 !important; }
-.ban-box  { background: #ffe8e8 !important; border-color: #b02020 !important; }
-.tip-box  { background: #e4f8f8 !important; border-color: #087888 !important; }
-.ls-pills { background: #e0e8f4 !important; border-color: #b0c4dc !important; }
-.sp-tag   { background: #e4f8f8 !important; border-color: #6ab0bc !important; }
-.s-item   { background: #e8eef6 !important; }
-.season-wrap { background: #e6edf6 !important; }
-.advisory { background: #e6edf6 !important; }
-.adv-item { background: #edf2f8 !important; }
-.cause    { border-bottom-color: #c8d8ea !important; }
-.dl li    { border-bottom-color: #c8d8ea !important; }
-.wt th    { background: #d8e4f0 !important; }
-.cc-red    .ch { background: #ffe8e8 !important; }
-.cc-orange .ch { background: #fff4e8 !important; }
-.cc-purple .ch { background: #f4eeff !important; }
-.cc-teal   .ch { background: #e4f8f8 !important; }
-.cc-green  .ch { background: #e8f8ee !important; }
-.cc-gold   .ch { background: #fff8e4 !important; }
-.cc-sky    .ch { background: #e8f4ff !important; }
-.sec-label::after { background: #b0c4dc !important; }
-.header-rule-bottom { background: #b0c4dc !important; }
-
-/* ── Document header ── */
-.header { margin-bottom: 14px; }
-.header-rule {
-background: linear-gradient(90deg, transparent, #0a7f88 40%, #a07800 60%, transparent) !important;
-height: 2px;
-margin-bottom: 12px;
-}
-.header h1 { font-size: 16px; color: #1a2533 !important; }
-.header h1 .bn-title { font-size: 14px; color: #0a6a70 !important; }
-.eyebrow { color: #0a7f88 !important; }
-.header .sub { color: #4a6070 !important; }
-.header-rule-bottom { background: #c8d4e0 !important; }
-.sp-tag {
-background: #edfafa !important;
-border-color: #0a8888 !important;
-color: #085858 !important;
-}
-.sp-tag .bn { color: #0a6a70 !important; }
-
-/* ── Season bar — compact ── */
-.season-wrap {
-background: #e4edf6 !important;
-border-color: #a0b8cc !important;
-margin-bottom: 8px !important;
-padding: 7px 10px !important;
-}
-.seasons { gap: 5px !important; }
-.s-item { padding: 6px 8px !important; }
-.s-name { font-size: 10px !important; }
-.s-name .bn, .s-name .te { font-size: 10px !important; }
-.s-months { font-size: 9px !important; }
-.season-head { color: #4a6070 !important; margin-bottom: 8px; }
-.season-head .bn { color: #4a6070 !important; }
-.s-item {
-background: #e8eef6 !important;
-padding: 7px 9px;
-}
-.s-item.eus  { border-left-color: #c0392b !important; }
-.s-item.arg  { border-left-color: #b85c10 !important; }
-.s-item.gill { border-left-color: #6033b0 !important; }
-.s-item.gen  { border-left-color: #1a7a4a !important; }
-.eus  .s-label { color: #c0392b !important; }
-.arg  .s-label { color: #b85c10 !important; }
-.gill .s-label { color: #6033b0 !important; }
-.gen  .s-label { color: #1a7a4a !important; }
-.s-name       { color: #1a2533 !important; }
-.s-name .bn   { color: #0a6a70 !important; }
-.s-months     { color: #4a6070 !important; }
-.s-months .bn { color: #4a6070 !important; }
-
-/* ── Section labels ── */
-.sec-label { margin: 12px 0 8px; }
-.sec-label-text { color: #4a6070 !important; }
-.sec-label-text .bn { color: #4a6070 !important; }
-.sec-label::after { background: #c8d4e0 !important; }
-
-/* ── Pair layout: ONE PROBLEM PER PAGE, single column ── */
-.pair {
-display: grid !important;
-grid-template-columns: 1fr !important;
-gap: 6px !important;
-margin-bottom: 0 !important;
-padding: 0 !important;
-/* Every pair starts on a new page */
-break-before: page !important;
-page-break-before: always !important;
-break-inside: avoid !important;
-}
-/* First pair – header/calendar already fills page 1, pair-1 still starts new page */
-#pair-1 {
-break-before: page !important;
-page-break-before: always !important;
-}
-/* Section labels stay glued to the pair that follows */
-.sec-label {
-break-after: avoid !important;
-page-break-after: avoid !important;
-break-before: page !important;
-page-break-before: always !important;
-margin: 0 0 8px 0 !important;
-}
-/* First section label follows header — no extra page break before it */
-.sec-label:first-of-type {
-break-before: avoid !important;
-page-break-before: avoid !important;
-}
-/* Advisory panel on its own page */
-.advisory {
-break-before: page !important;
-page-break-before: always !important;
-}
-
-/* ── Cards: full width, visible content ── */
-.card {
-background: #edf2f8 !important;
-border-color: #b0c4dc !important;
-border-radius: 6px !important;
-break-inside: avoid !important;
-page-break-inside: avoid !important;
-overflow: visible !important;
-width: 100% !important;
-}
-.card.bn-card {
-background: #e4f2f8 !important;
-border-color: #6ab0c0 !important;
-}
-.card.te-card {
-background: #ece8f8 !important;
-border-color: #9070c0 !important;
-display: flex !important;
-}
-/* In print always show the active language */
-body[data-lang=“te”] .bn-card { display: none !important; }
-body[data-lang=“bn”] .te-card { display: none !important; }
-body:not([data-lang]) .te-card { display: none !important; }
-
-/* Card head colour bands */
-.ch { border-bottom-color: #c8d8ea !important; padding: 6px 10px 5px !important; flex-wrap: wrap !important; }
-.bn-card .ch { border-bottom-color: #9acfd8 !important; }
-.te-card .ch { border-bottom-color: #b090d8 !important; }
-.ch-title { font-size: 10px !important; min-width: 0 !important; word-break: break-word !important; }
-
-.cc-red    .ch { background: #fff0f0 !important; }
-.cc-red    .ch-title { color: #9b1c1c !important; }
-.cc-orange .ch { background: #fff7ed !important; }
-.cc-orange .ch-title { color: #8a3c00 !important; }
-.cc-purple .ch { background: #f5f0ff !important; }
-.cc-purple .ch-title { color: #4c1d95 !important; }
-.cc-teal   .ch { background: #edfafa !important; }
-.cc-teal   .ch-title { color: #065f70 !important; }
-.cc-green  .ch { background: #f0faf5 !important; }
-.cc-green  .ch-title { color: #145239 !important; }
-.cc-gold   .ch { background: #fffbeb !important; }
-.cc-gold   .ch-title { color: #78510a !important; }
-.cc-sky    .ch { background: #eff8ff !important; }
-.cc-sky    .ch-title { color: #1a4f7a !important; }
-
-.ch-title { font-size: 10px !important; }
-.bn-card .ch-title { font-size: 11.5px !important; color: #085868 !important; }
-
-/* Badges */
-.b-bact  { background: #fff0f0 !important; border-color: #c0392b !important; color: #8a1010 !important; }
-.b-para  { background: #fff7ed !important; border-color: #b85c10 !important; color: #8a3c00 !important; }
-.b-fung  { background: #f5f0ff !important; border-color: #6033b0 !important; color: #4c1d95 !important; }
-.b-water { background: #edfafa !important; border-color: #0a8888 !important; color: #065f70 !important; }
-.b-nut   { background: #f0faf5 !important; border-color: #1a7a4a !important; color: #145239 !important; }
-.b-crit  { background: #ffe4e4 !important; border-color: #9b1c1c !important; color: #7b0000 !important; }
-.b-myx   { background: #f5f0ff !important; border-color: #6033b0 !important; color: #4c1d95 !important; }
-
-/* Card body */
-.cb {
-padding: 7px 10px !important;
-overflow-wrap: break-word !important;
-word-break: break-word !important;
-min-width: 0 !important;
-}
-
-/* Causative agent */
-.cause {
-color: #3a5060 !important;
-border-bottom-color: #dde6ef !important;
-font-size: 10px !important;
-margin-bottom: 6px;
-padding-bottom: 6px;
-}
-.cause strong { color: #1a3a50 !important; }
-.bn-card .cause { color: #3a5060 !important; }
-.bn-card .cause strong { color: #1a3a50 !important; }
-
-/* Symptom box */
-.symp {
-background: #e4edf6 !important;
-border-left-color: #7090b0 !important;
-font-size: 9.5px !important;
-color: #202c38 !important;
-padding: 4px 7px !important;
-margin-bottom: 5px !important;
-overflow-wrap: break-word !important;
-word-break: break-word !important;
-}
-.symp-head { color: #385868 !important; font-size: 7.5px !important; }
-
-/* Step labels */
-.step { color: #385868 !important; font-size: 7.5px !important; margin: 5px 0 3px !important; letter-spacing: 0.8px !important; }
-
-/* Dose list */
-.dl li {
-border-bottom-color: #c8d8ea !important;
-padding: 3px 0;
-font-size: 10px !important;
-flex-wrap: wrap !important;
-align-items: flex-start !important;
-}
-.dl-chem { color: #101820 !important; font-size: 10px !important; }
-.dl-qty  { color: #604000 !important; font-size: 9.5px !important; white-space: normal !important; max-width: 40% !important; word-break: break-word !important; }
-.dl-note { color: #385868 !important; font-size: 9px !important; white-space: normal !important; }
-.bn-card .dl-chem { font-size: 10.5px !important; color: #101820 !important; }
-.te-card .dl-chem { font-size: 10.5px !important; color: #101820 !important; }
-.bn-card .dl-note { font-size: 9.5px !important; }
-.te-card .dl-note { font-size: 9.5px !important; }
-
-/* Info boxes */
-.warn-box {
-background: #fffbea !important;
-border-color: #c87000 !important;
-color: #7a4500 !important;
-font-size: 10px !important;
-padding: 5px 8px;
-margin-top: 6px;
-}
-.warn-box .bx-head { font-size: 9px !important; color: #8a4500 !important; }
-.ban-box {
-background: #fff0f0 !important;
-border-color: #c03030 !important;
-color: #8a1010 !important;
-font-size: 10px !important;
-padding: 5px 8px;
-margin-top: 6px;
-}
-.ban-box .bx-head { font-size: 9px !important; color: #7a0000 !important; }
-.tip-box {
-background: #edfafa !important;
-border-color: #0a8888 !important;
-color: #075050 !important;
-font-size: 10px !important;
-padding: 5px 8px;
-margin-top: 6px;
-}
-.tip-box .bx-head { color: #065f70 !important; font-size: 8px !important; }
-
-/* Advisory panel */
-.advisory {
-background: #eef1f6 !important;
-border-color: #c8d4e0 !important;
-padding: 12px 14px;
-margin-top: 12px;
-page-break-inside: avoid;
-break-inside: avoid;
-}
-.advisory-head { color: #7a5500 !important; font-size: 9px !important; margin-bottom: 10px; }
-.advisory-head .bn { color: #7a5500 !important; font-size: 11px !important; }
-.adv-head .bn,.adv-head .te,.adv-item p .bn,.adv-item p .te { font-size: 9.5px !important; }
-.adv-grid { gap: 6px !important; margin-bottom: 10px !important; grid-template-columns: repeat(2, 1fr) !important; }
-.adv-item {
-background: #e8eef6 !important;
-border-color: #b0c4dc !important;
-padding: 6px 8px !important;
-overflow-wrap: break-word !important;
-}
-.adv-head { color: #4a6070 !important; font-size: 8px !important; }
-.adv-head .bn { color: #085868 !important; font-size: 10px !important; }
-.adv-item p { color: #3a5060 !important; font-size: 10px !important; }
-.adv-item p strong { color: #1a2533 !important; }
-.adv-item p .bn { color: #3a5060 !important; font-size: 11px !important; }
-
-/* Withdrawal table */
-.wt-wrap { overflow: visible !important; width: 100% !important; }
-.wt { font-size: 8.5px !important; min-width: unset !important; width: 100% !important; table-layout: fixed !important; }
-.wt td, .wt th { word-break: break-word !important; overflow-wrap: break-word !important; }
-.wt th { font-size: 7.5px !important; padding: 4px 6px !important; }
-.wt td { padding: 3px 6px !important; font-size: 8.5px !important; }
-.wt th {
-background: #e0e8f0 !important;
-color: #3a5060 !important;
-font-size: 8px !important;
-padding: 5px 7px;
-border-bottom-color: #b0c4d4 !important;
-}
-.wt td {
-padding: 4px 7px;
-border-bottom-color: #dde6ef !important;
-color: #2a4050 !important;
-font-size: 9.5px !important;
-}
-.wt td:first-child { color: #1a2533 !important; }
-.wt td:nth-child(2) { color: #7a5500 !important; }
-.wt td:nth-child(3) { color: #3a5060 !important; }
-.wt td:nth-child(4) { color: #4a6070 !important; }
-.banned { color: #8a1010 !important; }
-
-/* Footer */
-footer {
-color: #4a6070 !important;
-font-size: 9px !important;
-margin-top: 14px;
-padding-top: 8px;
-border-top: 1px solid #c8d4e0;
-}
-footer strong { color: #1a2533 !important; }
-footer .legal { color: #4a6070 !important; font-size: 8.5px !important; }
-footer .bn { color: #4a6070 !important; }
-
-/* Page break helpers */
-.sec-label { page-break-before: auto; }
-.advisory  { page-break-before: auto; }
-}
-
-/* ── A5 override (set via JS data attribute before print) ── */
-body[data-print=“a5”] * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
-@media print {
-body[data-print=“a5”] { font-size: 9.5px !important; }
-body[data-print=“a5”] .pair { gap: 5px !important; }
-body[data-print=“a5”] .pair,
-body[data-print=“a5”] .card,
-body[data-print=“a5”] .advisory { page-break-inside: avoid; break-inside: avoid; }
-}
+/* DETAIL CONTENT — converted from original IMC CSS */
+.cause{background:rgba(18,196,208,.05);border:1px solid rgba(18,196,208,.14);border-radius:6px;padding:9px 11px;margin-bottom:8px;font-size:12px;color:var(–mid);line-height:1.6}
+.cause strong{color:var(–txt);font-size:11px;font-family:‘IBM Plex Mono’,monospace;text-transform:uppercase;letter-spacing:1px}
+.symp{background:var(–p2);border-radius:6px;padding:9px 11px;margin-bottom:8px;font-size:12px;color:var(–mid);line-height:1.6}
+.symp-head{display:block;font-family:‘IBM Plex Mono’,monospace;font-size:9px;letter-spacing:2px;color:var(–dim);text-transform:uppercase;margin-bottom:5px}
+.step{font-family:‘IBM Plex Mono’,monospace;font-size:9px;letter-spacing:2px;color:var(–teal);text-transform:uppercase;border-bottom:1px solid rgba(26,48,96,.5);padding-bottom:3px;margin:10px 0 6px}
+.dl{list-style:none;display:flex;flex-direction:column;gap:5px;margin:0;padding:0}
+.dl li{display:flex;align-items:baseline;gap:6px;font-size:12px;line-height:1.5;padding:5px 9px;background:var(–p2);border-radius:6px}
+.dlc{flex:1;color:var(–txt);font-weight:600}
+.dlq{font-family:‘IBM Plex Mono’,monospace;font-size:9px;color:var(–gold);background:rgba(230,176,32,.08);border-radius:4px;padding:2px 6px;white-space:nowrap;flex-shrink:0}
+.dln{font-size:10px;color:var(–dim);display:block;margin-top:2px;font-style:italic;padding-left:4px}
+.iw{background:#1e1000;border:1px solid #a05010;border-radius:6px;padding:7px 10px;font-size:12px;color:#ffd060;margin-top:8px;margin-bottom:8px}
+.ib{background:#180000;border:1px solid #901020;border-radius:6px;padding:7px 10px;font-size:12px;color:#ffb0b0;margin-top:8px;margin-bottom:8px}
+.it{background:rgba(18,196,208,.07);border:1px solid rgba(18,196,208,.25);border-radius:6px;padding:7px 10px;font-size:12px;color:#78d8e0;margin-top:8px;margin-bottom:8px}
+.bh{font-family:‘IBM Plex Mono’,monospace;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;display:inline-block;margin-right:4px}
+.iw .bh{color:var(–gold)}.ib .bh{color:var(–red)}.it .bh{color:var(–teal)}
 </style>
 
 </head>
-<body>
+<body class="L-en">
 
-<!-- ════════════════════════════════════════
-     HEADER
-════════════════════════════════════════ -->
-
-<div class="header">
-  <div class="header-rule"></div>
-  <div class="eyebrow">Field Reference</div>
-  <h1>
-    IMC Disease &amp; Health Management<br>
-    <span class="bn bn-title">আইএমসি রোগ ও স্বাস্থ্য ব্যবস্থাপনা</span><span class="te bn-title" style="font-family:'Noto Sans Telugu',sans-serif;font-size:19px;font-weight:600;color:var(--te-accent);">IMC చేపల రోగ నిర్వహణ</span>
-  </h1>
-  <p class="sub">Research-backed guide for composite carp culture<br>
-  <span class="bn" style="font-size:12px;color:var(--text-dim);">গবেষণা-ভিত্তিক নির্দেশিকা · মিশ্র কার্প চাষ</span><span class="te" style="font-family:'Noto Sans Telugu',sans-serif;font-size:12px;color:var(--text-dim);">పరిశోధన ఆధారిత మార్గదర్శి · మిశ్రమ కార్ప్ పెంపకం</span></p>
-  <div class="species-row">
-    <span class="sp-tag">Catla catla · <span class="bn">কাতলা</span><span class="te">కట్లా</span></span>
-    <span class="sp-tag">Labeo rohita · <span class="bn">রুই</span><span class="te">రోహు</span></span>
-    <span class="sp-tag">Cirrhinus mrigala · <span class="bn">মৃগেল</span><span class="te">మృగాల్</span></span>
-  </div>
-  <div class="lang-switcher">
-    <span class="ls-label">Language / <span class="bn">ভাষা</span><span class="te">భాష</span></span>
-    <div class="ls-pills">
-      <button class="ls-btn active" data-lang="bn" onclick="setLang('bn')">বাংলা</button>
-      <button class="ls-btn" data-lang="te" onclick="setLang('te')">తెలుగు</button>
+<div id="bar">
+  <div class="r1">
+    <div class="logo">IMC <span>/ BENGAL FISH HEALTH</span></div>
+    <div class="lps">
+      <button class="lb on" data-l="en">EN</button>
+      <button class="lb" data-l="bn">বাংলা</button>
+      <button class="lb" data-l="te">తె</button>
     </div>
   </div>
-  <div class="header-rule-bottom"></div>
-</div>
-
-<!-- ════════════════════════════════════════
-     SEASON CALENDAR
-════════════════════════════════════════ -->
-
-<div class="season-wrap">
-  <div class="season-head">
-    <span>Bengal Disease Seasonal Calendar</span>
-    <span class="bn">বাংলা রোগ-কাল ক্যালেন্ডার</span>
-    <span class="te">వ్యాధి క్యాలెండర్</span>
-  </div>
-  <div class="seasons">
-    <div class="s-item eus">
-      <div class="s-label">⚠ CRITICAL RISK</div>
-      <div class="s-name">EUS / Ulcers <span class="bn">ইইউএস / ক্ষত রোগ</span><span class="te">EUS / పుళ్ళు రోగం</span></div>
-      <div class="s-months">Oct – Feb <span class="bn">অক্টোবর – ফেব্রুয়ারি (শীতকাল)</span><span class="te">అక్టోబర్ – ఫిబ్రవరి (శీతాకాలం)</span></div>
-    </div>
-    <div class="s-item arg">
-      <div class="s-label">⚠ PEAK SEASON</div>
-      <div class="s-name">Argulus Lice <span class="bn">আরগুলাস উকুন</span><span class="te">అర్గులస్ పేన్లు</span></div>
-      <div class="s-months">Mar – May <span class="bn">মার্চ – মে (প্রাক-বর্ষা)</span><span class="te">మార్చి – మే (వర్షానికి ముందు)</span></div>
-    </div>
-    <div class="s-item gill">
-      <div class="s-label">⚠ WATCH</div>
-      <div class="s-name">Gill Rot · BGA Blooms <span class="bn">কানকোর পচন · শেওলা</span><span class="te">చేప మొప్పలు కుళ్ళు · పాచి</span></div>
-      <div class="s-months">Jun – Sep <span class="bn">জুন – সেপ্টেম্বর (বর্ষা)</span><span class="te">జూన్ – సెప్టెంబర్ (వర్షాకాలం)</span></div>
-    </div>
-    <div class="s-item gen">
-      <div class="s-label">✓ ROUTINE</div>
-      <div class="s-name">Water &amp; Health Checks <span class="bn">জল ও স্বাস্থ্য পরীক্ষা</span><span class="te">నీరు & చేప ఆరోగ్య తనిఖీ</span></div>
-      <div class="s-months">Year-round monthly <span class="bn">সারা বছর — প্রতি মাসে</span><span class="te">నెలకోసారి</span></div>
-    </div>
+  <div class="sw">
+    <span class="si">🔍</span>
+    <input id="srch" type="search" placeholder="Search diseases…" autocomplete="off">
   </div>
 </div>
 
-<!-- ════════════════════════════════════════
-     SECTION 1: BACTERIAL / ULCERATIVE
-════════════════════════════════════════ -->
-
-<div class="sec-label">
-  <span class="sec-label-text">Bacterial &amp; Ulcerative Diseases<span class="bn" style="display:none"> ব্যাকটেরিয়াজনিত ও ক্ষত রোগ</span><span class="te" style="display:none"> బాక్టీరియా & పుండు వ్యాధులు</span></span>
+<div id="strip">
+  <span id="strip-icon">🐟</span>
+  <span id="strip-txt">Indian Major Carps · Bengal Zone · 13 Conditions</span>
 </div>
 
-<div class="sec-label">
-  <span class="sec-label-text">Bacterial &amp; Ulcerative Diseases<span class="bn" style="display:none"> ব্যাকটেরিয়াজনিত ও ক্ষত রোগ</span><span class="te" style="display:none"> బాక్టీరియా & పుండు వ్యాధులు</span></span>
+<div id="list">
+  <div id="nores">🔎 No results</div>
 </div>
 
-<div class="pair" id="pair-1">
-  <!-- EN -->
-  <div class="card cc-red">
-    <div class="ch"><span class="ch-icon">🔴</span><span class="ch-title">EUS — Epizootic Ulcerative Syndrome</span><span class="ch-badge b-crit">CRITICAL</span></div>
-    <div class="cb">
-      <div class="cause"><strong>Causative Agent:</strong> Aphanomyces invadans (oomycete). Peaks Oct–Feb when water temp drops below 25°C. Mrigal &gt; Catla &gt; Rohu susceptibility.</div>
-      <div class="symp"><span class="symp-head">Symptoms</span>Small red spots → large coin-sized grey-centred necrotic ulcers on head, dorsal &amp; mid-body. Fish spin erratically &amp; surface frequently. High mortality if untreated.</div>
-      <div class="step">Prevention — Apply at start of October</div>
-      <ul class="dl">
-        <li><span class="dl-chem">CIFAX (ICAR-CIFA formulation)</span><span class="dl-qty">150 ml / acre</span></li>
-        <li><span class="dl-chem">Potassium Permanganate (KMnO₄)</span><span class="dl-qty">350–600 g / acre</span></li>
-        <li><span class="dl-chem">Agricultural Quicklime (CaO)</span><span class="dl-qty">200–250 kg / acre<span class="dl-note">Maintain pH 7.5–8.0 throughout winter. Apply lime fortnightly.</span></span></li>
-      </ul>
-      <div class="step">Treatment — Active Outbreak</div>
-      <ul class="dl">
-        <li><span class="dl-chem">CIFAX — dilute in water, spray evenly</span><span class="dl-qty">150–200 ml / acre</span></li>
-        <li><span class="dl-chem">KMnO₄ — pond water treatment</span><span class="dl-qty">1 ppm (1g / 1000 L)</span></li>
-        <li><span class="dl-chem">KMnO₄ — individual fish dip</span><span class="dl-qty">5 ppm · 2 min</span></li>
-        <li><span class="dl-chem">Bleaching Powder — surface only</span><span class="dl-qty">Single use only<span class="dl-note">⚠ Do NOT repeat. Aerate pond immediately after to prevent oxygen crash.</span></span></li>
-      </ul>
-      <div class="warn-box"><span class="bx-head">⚠ BIOSECURITY</span>Remove &amp; bury dead fish with quicklime far from pond. Never share nets between EUS-positive and healthy ponds — zoospores transmit via equipment.</div>
-    </div>
+<div id="det">
+  <div id="dh">
+    <button id="back">← Back</button>
+    <div id="dico"></div>
+    <div id="dtit"></div>
+    <div id="dsub"></div>
   </div>
-  <!-- BN -->
-<div class="card cc-red bn-card">
-    <div class="ch">
-      <span class="ch-icon">🔴</span>
-      <span class="ch-title bn">ইইউএস — ক্ষত মহামারী রোগ</span>
-      <span class="ch-badge b-crit">সংকটজনক</span>
-    </div>
-    <div class="cb">
-      <div class="cause"><strong>কারণকারী জীবাণু:</strong> অ্যাফানোমাইসেস ইনভেডানস (ওমাইসেট)। বাংলার সবচেয়ে বিপজ্জনক মৌসুমি রোগ। অক্টোবর–ফেব্রুয়ারি সর্বোচ্চ প্রকোপ — জলের তাপমাত্রা ২৫°C-এর নিচে নামলে। মৃগেল &gt; কাতলা &gt; রুই ঝুঁকিতে।</div>
-      <div class="symp"><span class="symp-head">Symptoms / লক্ষণ</span>ছোট লাল দাগ → বড় ধূসর কেন্দ্রযুক্ত পচা ঘা (মাথা, পিঠ ও মধ্যদেহে)। মাছ চক্রাকারে ঘোরে ও ঘনঘন ভাসে। চিকিৎসা না হলে মৃত্যু হার বেশি।</div>
-      <div class="step">প্রতিরোধ — অক্টোবরের শুরুতে প্রয়োগ করুন</div>
-      <ul class="dl">
-        <li><span class="dl-chem">সিফ্যাক্স (আইসিএআর-সিফা)</span><span class="dl-qty">১৫০ মিলি / বিঘা</span></li>
-        <li><span class="dl-chem">পটাশিয়াম পারম্যাঙ্গানেট (KMnO₄)</span><span class="dl-qty">৩৫০–৬০০ গ্রাম / বিঘা</span></li>
-        <li><span class="dl-chem">কৃষি চুন (CaO)</span><span class="dl-qty">২০০–২৫০ কেজি / একর<span class="dl-note">শীতকাল জুড়ে pH ৭.৫–৮.০ বজায় রাখুন। পক্ষে পক্ষে চুন দিন।</span></span></li>
-      </ul>
-      <div class="step">চিকিৎসা — সক্রিয় প্রাদুর্ভাবে</div>
-      <ul class="dl">
-        <li><span class="dl-chem">সিফ্যাক্স — জলে মিশিয়ে সমানভাবে স্প্রে</span><span class="dl-qty">১৫০–২০০ মিলি / বিঘা</span></li>
-        <li><span class="dl-chem">KMnO₄ — পুকুরের জল জীবাণুমুক্ত</span><span class="dl-qty">১ পিপিএম (১ গ্রাম / ১০০০ লি)</span></li>
-        <li><span class="dl-chem">KMnO₄ — আক্রান্ত মাছ ডুবিয়ে চিকিৎসা</span><span class="dl-qty">৫ পিপিএম · ২ মিনিট</span></li>
-        <li><span class="dl-chem">ব্লিচিং পাউডার — শুধু সারফেসে</span><span class="dl-qty">একবারই ব্যবহার করুন<span class="dl-note">⚠ পুনরায় দেবেন না। প্রয়োগের পর অবিলম্বে বায়ু সরবরাহ করুন।</span></span></li>
-      </ul>
-      <div class="warn-box"><span class="bx-head">⚠ জৈব নিরাপত্তা</span>মৃত মাছ দূরে নিয়ে চুন মিশিয়ে পুঁতুন। সুস্থ ও আক্রান্ত পুকুরের মধ্যে জাল ভাগ করবেন না — সরঞ্জামের মাধ্যমে রোগ ছড়ায়।</div>
-    </div>
-  </div>
-  <!-- TE: EUS -->
-<div class="card cc-red te-card">
-    <div class="ch"><span class="ch-icon">🔴</span><span class="ch-title">EUS — చేపలకు పుళ్ళు వచ్చే రోగం</span><span class="ch-badge b-crit">చాలా ప్రమాదకరం</span></div>
-    <div class="cb">
-      <div class="cause"><strong>రోగ కారణం  :</strong> ఒక రకం శిలీంధ్ర జీవి వల్ల వస్తుంది. అక్టోబర్ నుండి ఫిబ్రవరి వరకు నీరు చల్లబడినప్పుడు ఎక్కువగా వస్తుంది. మృగాల్ చేపలకు ముందు వస్తుంది, తర్వాత కట్లా, తర్వాత రోహుకు వస్తుంది.</div>
-      <div class="symp"><span class="symp-head">లక్షణాలు</span>ముందు చిన్న ఎర్రటి మచ్చలు వస్తాయి. తర్వాత తల, వీపు మీద పెద్ద పుళ్ళు అవుతాయి. చేప గిర్రున తిరుగుతుంది, నీటిపైకి తేలుతుంది. చికిత్స లేకుంటే చేప చనిపోతుంది.</div>
-      <div class="step">నివారణ — అక్టోబర్ మొదట్లో కొట్టండి </div>
-      <ul class="dl">
-        <li><span class="dl-chem">CIFAX</span><span class="dl-qty">150 ml / ఎకరాకి  </span></li>
-        <li><span class="dl-chem">పొటాషియం పర్మాంగనేట్ (PP)(KMnO₄)</span><span class="dl-qty">350–600 గ్రా / ఎకరాకి  </span></li>
-        <li><span class="dl-chem">వ్యవసాయ సున్నం</span><span class="dl-qty">200–250 కేజీ / ఎకరా<span class="dl-note">శీతాకాలంలో pH 7.5–8.0 ఉండేలా చూడండి. పదిహేను రోజులకోసారి సున్నం కొట్టండి .</span></span></li>
-      </ul>
-      <div class="step">చికిత్స — రోగం వచ్చినప్పుడు</div>
-      <ul class="dl">
-        <li><span class="dl-chem">CIFAX — నీటిలో కలిపి చెరువు  అంతా చల్లండి</span><span class="dl-qty">150–200 ml / ఎకరాకి  </span></li>
-        <li><span class="dl-chem">KMnO₄ — చెరువులో కొట్టండి </span><span class="dl-qty">1 గ్రా / 1000 లీటర్లు</span></li>
-        <li><span class="dl-chem">KMnO₄ — చేపను ముంచి తీయండి</span><span class="dl-qty">5 ppm · 2 నిమిషాలు</span></li>
-        <li><span class="dl-chem">బ్లీచింగ్ పౌడర్ — నీటి పైపొరపై మాత్రమే</span><span class="dl-qty">ఒక్కసారి మాత్రమే<span class="dl-note">⚠ మళ్ళీ కొట్టకండి. వేసిన వెంటనే ఏరియేషన్ ఇవ్వండి.</span></span></li>
-      </ul>
-      <div class="warn-box"><span class="bx-head">⚠ జాగ్రత్తలు</span>చనిపోయిన చేపలను సున్నం వేసి చెరువు కు దూరంగా పాతిపెట్టండి. ఒక చెరువు  నుండి మరొక చెరువు కు వలలు తీసుకెళ్ళకండి — అలా రోగం పాకుతుంది.</div>
-    </div>
-  </div>
-</div>
-
-<div class="pair" id="pair-2">
-  <!-- EN -->
-  <div class="card cc-red">
-    <div class="ch"><span class="ch-icon">🩸</span><span class="ch-title">Bacterial Ulcers &amp; Hemorrhagic Septicaemia</span><span class="ch-badge b-bact">BACTERIAL</span></div>
-    <div class="cb">
-      <div class="cause"><strong>Causative Agent:</strong> Aeromonas hydrophila, A. veronii, Pseudomonas fluorescens. Secondary infections follow EUS or physical injury. Distinguish from EUS: no grey necrotic centre — red-margined ulcers instead.</div>
-      <div class="symp"><span class="symp-head">Symptoms</span>Reddening at fin bases &amp; belly; scale loss; red-margined ulcers. Advanced: pop-eye (exophthalmia), fin erosion.</div>
-      <div class="step">Water Disinfection</div>
-      <ul class="dl">
-        <li><span class="dl-chem">Micro Pearl 80 (Benzalkonium Chloride)</span><span class="dl-qty">500 ml / acre</span></li>
-        <li><span class="dl-chem">Acriflavine</span><span class="dl-qty">25 g / acre</span></li>
-        <li><span class="dl-chem">Lime + Crystal Salt (preventive)</span><span class="dl-qty">50 + 50 kg / acre<span class="dl-note">Every 10–15 days during outbreak season.</span></span></li>
-      </ul>
-      <div class="step">Post-Antibiotic Recovery (vet-prescribed)</div>
-      <ul class="dl">
-        <li><span class="dl-chem">Steridol 20% — morning application</span><span class="dl-qty">500 ml / acre</span></li>
-        <li><span class="dl-chem">Acriflavine</span><span class="dl-qty">25 g / acre</span></li>
-        <li><span class="dl-chem">Fish Magic / Liver Tonic (mandatory)</span><span class="dl-qty">1–2 kg / ton · 10–15 days<span class="dl-note">All chemical/antibiotic use hardens the liver. Liver support after every course.</span></span></li>
-      </ul>
-      <div class="warn-box"><span class="bx-head">⚠ ANTIBIOTIC CAUTION</span>Antibiotics must be prescribed by a registered fish health veterinarian. Never use within 3–4 weeks of harvest. Overuse drives antimicrobial resistance (AMR).</div>
-    </div>
-  </div>
-  <!-- BN -->
-<div class="card cc-red bn-card">
-    <div class="ch">
-      <span class="ch-icon">🩸</span>
-      <span class="ch-title bn">ব্যাকটেরিয়াজনিত ক্ষত ও রক্তক্ষরণ পচন রোগ</span>
-      <span class="ch-badge b-bact">ব্যাকটেরিয়া</span>
-    </div>
-    <div class="cb">
-      <div class="cause"><strong>কারণকারী জীবাণু:</strong> অ্যারোমোনাস হাইড্রোফিলা, এ. ভেরোনাই, সিউডোমোনাস ফ্লুরেসেন্স। ইইউএস বা শারীরিক আঘাতের পর দ্বিতীয় সংক্রমণ। ইইউএস থেকে পার্থক্য: ধূসর কেন্দ্র নেই — লাল প্রান্তের ঘা।</div>
-      <div class="symp"><span class="symp-head">লক্ষণ</span>পাখনার গোড়া ও পেটে লাল হওয়া; আঁশ উঠে যাওয়া; লাল প্রান্তের ঘা। উন্নত পর্যায়ে: চোখ ফুলে ওঠা, পাখনা ক্ষয়।</div>
-      <div class="step">জল জীবাণুমুক্তকরণ</div>
-      <ul class="dl">
-        <li><span class="dl-chem">বিকেসি ৮০% (বেনজালকোনিয়াম ক্লোরাইড)</span><span class="dl-qty">৫০০ মিলি / একর</span></li>
-        <li><span class="dl-chem">অ্যাক্রিফ্লেভিন</span><span class="dl-qty">২৫ গ্রাম / একর</span></li>
-        <li><span class="dl-chem">চুন + ক্রিস্টাল লবণ (প্রতিরোধক)</span><span class="dl-qty">৫০ + ৫০ কেজি / একর<span class="dl-note">প্রাদুর্ভাবের মৌসুমে প্রতি ১০–১৫ দিনে।</span></span></li>
-      </ul>
-      <div class="step">অ্যান্টিবায়োটিক পরবর্তী পুনরুদ্ধার (পশু চিকিৎসকের পরামর্শে)</div>
-      <ul class="dl">
-        <li><span class="dl-chem">স্টেরিডল ২০% — সকালে প্রয়োগ</span><span class="dl-qty">৫০০ মিলি / একর</span></li>
-        <li><span class="dl-chem">অ্যাক্রিফ্লেভিন</span><span class="dl-qty">২৫ গ্রাম / একর</span></li>
-        <li><span class="dl-chem">বিকেসি ৮০%</span><span class="dl-qty">৫০০ মিলি / একর</span></li>
-        <li><span class="dl-chem">ফিশ ম্যাজিক / লিভার টনিক (অবশ্যই)</span><span class="dl-qty">১–২ কেজি / টন · ১০–১৫ দিন<span class="dl-note">সব ওষুধ মাছের যকৃত শক্ত করে। প্রতিটি কোর্সের পরে যকৃত সহায়ক খাদ্য দিন।</span></span></li>
-      </ul>
-      <div class="warn-box"><span class="bx-head">⚠ অ্যান্টিবায়োটিক সতর্কতা</span>নিবন্ধিত মৎস্য পশু চিকিৎসকের পরামর্শ ছাড়া অ্যান্টিবায়োটিক দেবেন না। ধরা ও বিক্রির ৩–৪ সপ্তাহ আগে ব্যবহার বন্ধ করুন।</div>
-    </div>
-  </div>
-  <!-- TE: Bacterial Ulcers -->
-<div class="card cc-red te-card">
-    <div class="ch"><span class="ch-icon">🩸</span><span class="ch-title">బాక్టీరియా వల్ల వచ్చే పుళ్ళు, రక్తం కారడం</span><span class="ch-badge b-bact">బాక్టీరియా రోగం</span></div>
-    <div class="cb">
-      <div class="cause"><strong>రోగ కారణం:</strong> EUS తర్వాత లేదా చేపకు దెబ్బ తగిలినప్పుడు బాక్టీరియా చేరుతుంది. EUS పుళ్ళకు తేడా ఏమిటంటే — ఇవి ఎర్రటి అంచులతో ఉంటాయి, బూడిద రంగు ఉండదు.</div>
-      <div class="symp"><span class="symp-head">లక్షణాలు</span>రెక్కల దగ్గర, పొట్ట మీద ఎరుపు వస్తుంది. పొలుసులు రాలిపోతాయి. ఎర్రటి అంచులతో పుళ్ళు వస్తాయి. తీవ్రంగా ఉంటే కళ్ళు పొంగుతాయి.</div>
-      <div class="step">చెరువులో మందు కొట్టండి </div>
-      <ul class="dl">
-        <li><span class="dl-chem">Micro Pearl 80</span><span class="dl-qty">500 ml / ఎకరా</span></li>
-        <li><span class="dl-chem">అక్రిఫ్లేవిన్</span><span class="dl-qty">25 గ్రా / ఎకరా</span></li>
-        <li><span class="dl-chem">సున్నం + ఉప్పు (నివారణకు)</span><span class="dl-qty">50 + 50 కేజీ / ఎకరా<span class="dl-note">రోగం వచ్చే కాలంలో పదిహేను రోజులకోసారి కొట్టండి .</span></span></li>
-      </ul>
-      <div class="step">యాంటీబయాటిక్ కోర్సు తర్వాత</div>
-      <ul class="dl">
-        <li><span class="dl-chem">Steridol 20% — ఉదయం కొట్టండి </span><span class="dl-qty">500 ml / ఎకరా</span></li>
-        <li><span class="dl-chem">అక్రిఫ్లేవిన్</span><span class="dl-qty">25 గ్రా / ఎకరా</span></li>
-        <li><span class="dl-chem">Fish Magic (తప్పకుండా ఇవ్వాలి)</span><span class="dl-qty">1–2 కేజీ / టన్ · 10–15 రోజులు<span class="dl-note">కెమికల్ మందులు వాడిన తర్వాత చేప కాలేయం దెబ్బతింటుంది. ఇది తప్పనిసరి.</span></span></li>
-      </ul>
-      <div class="warn-box"><span class="bx-head">⚠ యాంటీబయాటిక్ జాగ్రత్త</span>డాక్టర్ సలహా లేకుండా యాంటీబయాటిక్ వేయకండి. చేపలు పట్టే 3–4 వారాల ముందే మందులు ఆపాలి.</div>
-    </div>
-  </div>
-</div>
-
-<div class="pair" id="pair-3">
-  <!-- EN -->
-  <div class="card cc-orange">
-    <div class="ch"><span class="ch-icon">🐟</span><span class="ch-title">Tail &amp; Fin Rot (Columnaris)</span><span class="ch-badge b-bact">BACTERIAL</span></div>
-    <div class="cb">
-      <div class="cause"><strong>Causative Agent:</strong> Flavobacterium columnare, Aeromonas spp. Triggered by poor water quality, overcrowding, physical injury, or low DO. Common in dense Bengal polyculture ponds.</div>
-      <div class="symp"><span class="symp-head">Symptoms</span>Fraying &amp; whitening of fin rays; progressive tail erosion. "Saddleback" lesion at dorsal in Columnaris. Check for predatory catfish causing physical bite injury before medicating.</div>
-      <ul class="dl">
-        <li><span class="dl-chem">Steridol 20% — morning application</span><span class="dl-qty">500 ml / acre</span></li>
-        <li><span class="dl-chem">Acriflavine</span><span class="dl-qty">25 g / acre</span></li>
-        <li><span class="dl-chem">KMnO₄ dip — before releasing netted fish</span><span class="dl-qty">1 ppm · 1 min</span></li>
-        <li><span class="dl-chem">Check phosphorus — pond water</span><span class="dl-qty">Target &lt;0.5 mg/L<span class="dl-note">Excess phosphorus fuels bacterial growth. Reduce manure/fertiliser input.</span></span></li>
-      </ul>
-      <div class="tip-box"><span class="bx-head">DIAGNOSIS TIP</span>Net-check for predatory catfish (Clarias, Heteropneustes) — bites are often misread as fin rot. Remove predators before medicating.</div>
-    </div>
-  </div>
-  <!-- BN -->
-<div class="card cc-orange bn-card">
-    <div class="ch">
-      <span class="ch-icon">🐟</span>
-      <span class="ch-title bn">লেজ ও পাখনা পচা রোগ</span>
-      <span class="ch-badge b-bact">ব্যাকটেরিয়া</span>
-    </div>
-    <div class="cb">
-      <div class="cause"><strong>কারণকারী জীবাণু:</strong> ফ্ল্যাভোব্যাকটেরিয়াম কলামনারে, অ্যারোমোনাস। খারাপ জলমান, ঘনবসতি, শারীরিক আঘাত বা কম অক্সিজেনে হয়। বাংলার মিশ্র কার্প পুকুরে সাধারণ।</div>
-      <div class="symp"><span class="symp-head">লক্ষণ</span>পাখনার শিরা ছিঁড়ে সাদা হওয়া; লেজ ক্রমশ ক্ষয়। কলামনারিসে পিঠে "স্যাডলব্যাক" দাগ। ওষুধ দেওয়ার আগে শিকারি মাছের কামড়ের সম্ভাবনা যাচাই করুন।</div>
-      <ul class="dl">
-        <li><span class="dl-chem">স্টেরিডল ২০% — সকালে প্রয়োগ</span><span class="dl-qty">৫০০ মিলি / একর</span></li>
-        <li><span class="dl-chem">অ্যাক্রিফ্লেভিন</span><span class="dl-qty">২৫ গ্রাম / একর</span></li>
-        <li><span class="dl-chem">KMnO₄ স্নান — জাল টানার পর ছাড়ার আগে</span><span class="dl-qty">১ পিপিএম · ১ মিনিট</span></li>
-        <li><span class="dl-chem">ফসফরাস পরীক্ষা</span><span class="dl-qty">লক্ষ্যমাত্রা &lt;০.৫ মিগ্রা/লি<span class="dl-note">অতিরিক্ত ফসফরাস ব্যাকটেরিয়া বাড়ায়। সার ও গোবর কমান।</span></span></li>
-      </ul>
-      <div class="tip-box"><span class="bx-head">রোগ নির্ণয় পরামর্শ</span>পুকুরে শিকারি মাছ (ক্লারিয়াস, মাগুর) আছে কিনা জাল টেনে দেখুন — কামড়ের ক্ষতকে প্রায়ই পাখনা পচা ভাবা হয়। ওষুধ দেওয়ার আগে শিকারি মাছ সরান।</div>
-    </div>
-  </div>
-  <!-- TE: Tail & Fin Rot -->
-<div class="card cc-orange te-card">
-    <div class="ch"><span class="ch-icon">🐟</span><span class="ch-title">తోక, రెక్కలు కుళ్ళే రోగం</span><span class="ch-badge b-bact">బాక్టీరియా రోగం</span></div>
-    <div class="cb">
-      <div class="cause"><strong>రోగ కారణం:</strong> నీరు పాడైనప్పుడు, చెరువులో  చేపలు ఎక్కువైనప్పుడు, లేదా చేపకు దెబ్బ తగిలినప్పుడు వస్తుంది. మందులు వాడటానికి ముందు చెరువులో మాగురు, జేలేడు వంటి వేట చేపలు ఉన్నాయా అని తనిఖీ చేయండి.</div>
-      <div class="symp"><span class="symp-head">లక్షణాలు</span>రెక్కలు చీకిపోయి తెల్లపడతాయి. తోక అరిగిపోతుంది. వేట చేపలు కాటు వేయడం వల్ల కూడా ఇలా కనిపిస్తుంది —  మందులు వాడటానికి ముందు తేడా తెలుసుకోండి.</div>
-      <ul class="dl">
-        <li><span class="dl-chem">Steridol 20% — ఉదయం కొట్టండి </span><span class="dl-qty">500 ml / ఎకరా</span></li>
-        <li><span class="dl-chem">అక్రిఫ్లేవిన్</span><span class="dl-qty">25 గ్రా / ఎకరా</span></li>
-        <li><span class="dl-chem">PP (KMnO₄) — వల వేసిన తర్వాత చేపను ముంచండి</span><span class="dl-qty">1 ppm · 1 నిమిషం</span></li>
-        <li><span class="dl-chem">చెరువులో ఫాస్ఫరస్ తనిఖీ చేయండి</span><span class="dl-qty">0.5 mg/L కంటే తక్కువ ఉండాలి<span class="dl-note">ఎక్కువ ఫాస్ఫరస్ ఉంటే బాక్టీరియా పెరుగుతుంది. ఎరువులు, పేడ తగ్గించండి.</span></span></li>
-      </ul>
-      <div class="tip-box"><span class="bx-head">ముందు ఇది చూడండి</span>చెరువులో వల వేసి మాగురు, ఉయ్యాల జేలేడు ఉన్నాయా చూడండి — వాటి కాటుకు వచ్చిన గాయాలు తోక చితికినట్టు కనిపిస్తాయి. ముందు వాటిని తీయండి, తర్వాత మందులు వాడండి.</div>
-    </div>
-  </div>
-</div>
-
-<div class="pair" id="pair-4">
-  <!-- EN -->
-  <div class="card cc-red">
-    <div class="ch"><span class="ch-icon">💧</span><span class="ch-title">Red Disease &amp; Dropsy (Ascites)</span><span class="ch-badge b-bact">BACTERIAL · SYSTEMIC</span></div>
-    <div class="cb">
-      <div class="cause"><strong>Causative Agent:</strong> Aeromonas hydrophila systemic septicaemia. Red Disease = acute phase. Dropsy (body-cavity fluid) = late terminal stage indicating kidney failure. Dropsy prognosis is very poor.</div>
-      <div class="symp"><span class="symp-head">Symptoms</span><em>Red Disease:</em> reddening of fins, belly &amp; operculum; haemorrhagic spots; erratic swimming. <em>Dropsy:</em> pinecone scale protrusion, bloated belly, bilateral pop-eye.</div>
-      <div class="step">Early Intervention — Red Disease Phase</div>
-      <ul class="dl">
-        <li><span class="dl-chem">Ivermectin 1% in feed (if co-parasitism)</span><span class="dl-qty">100 g / ton · 7 days</span></li>
-        <li><span class="dl-chem">Micro Pearl 80</span><span class="dl-qty">500 ml / acre</span></li>
-        <li><span class="dl-chem">Steridol 20%</span><span class="dl-qty">500 ml / acre</span></li>
-        <li><span class="dl-chem">Fish Magic / Liver Tonic</span><span class="dl-qty">1–2 kg / ton · 10–15 days</span></li>
-      </ul>
-      <div class="ban-box"><span class="bx-head">✖ DROPSY — PROGNOSIS NOTE</span>Dropsy fish rarely recover. Remove immediately to prevent horizontal spread. Bury with quicklime. Protect healthy fish with prophylactic BKC + KMnO₄ treatment.</div>
-    </div>
-  </div>
-  <!-- BN -->
-<div class="card cc-red bn-card">
-    <div class="ch">
-      <span class="ch-icon">💧</span>
-      <span class="ch-title bn">লাল রোগ ও জলোদর (ড্রপসি)</span>
-      <span class="ch-badge b-bact">ব্যাকটেরিয়া · সিস্টেমিক</span>
-    </div>
-    <div class="cb">
-      <div class="cause"><strong>কারণকারী জীবাণু:</strong> অ্যারোমোনাস হাইড্রোফিলা (সিস্টেমিক সেপ্টিসেমিয়া)। লাল রোগ = তীব্র প্রাথমিক পর্যায়। ড্রপসি (জলোদর) = চূড়ান্ত দীর্ঘমেয়াদি পর্যায় — বৃক্ক বিকল হওয়ার লক্ষণ। ড্রপসিতে আক্রান্ত মাছ প্রায়ই মারা যায়।</div>
-      <div class="symp"><span class="symp-head">লক্ষণ</span><em>লাল রোগ:</em> পাখনা, পেট ও কানকোয় লাল ভাব; রক্তক্ষরণের দাগ; এলোমেলো সাঁতার। <em>ড্রপসি:</em> আঁশ পাইনকোনের মতো খাড়া; ফোলা পেট; উভয় চোখ বেরিয়ে আসা।</div>
-      <div class="step">প্রাথমিক হস্তক্ষেপ — লাল রোগের পর্যায়ে</div>
-      <ul class="dl">
-        <li><span class="dl-chem">আইভারমেকটিন ১% খাদ্যে (পরজীবী সহাবস্থানে)</span><span class="dl-qty">১০০ গ্রাম / টন · ৭ দিন</span></li>
-        <li><span class="dl-chem">বিকেসি ৮০%</span><span class="dl-qty">৫০০ মিলি / একর</span></li>
-        <li><span class="dl-chem">স্টেরিডল ২০%</span><span class="dl-qty">৫০০ মিলি / একর</span></li>
-        <li><span class="dl-chem">ফিশ ম্যাজিক / লিভার টনিক</span><span class="dl-qty">১–২ কেজি / টন · ১০–১৫ দিন</span></li>
-      </ul>
-      <div class="ban-box"><span class="bx-head">✖ ড্রপসি — রোগ পূর্বাভাস</span>ড্রপসি মাছ খুব কমই সুস্থ হয়। অবিলম্বে সরিয়ে চুন মিশিয়ে পুঁতুন। সুস্থ মাছকে বাঁচাতে বিকেসি + KMnO₄ দিয়ে পুকুর পরিষ্কার করুন।</div>
-    </div>
-  </div>
-  <!-- TE: Red Disease / Dropsy -->
-<div class="card cc-red te-card">
-    <div class="ch"><span class="ch-icon">💧</span><span class="ch-title">రెడ్ డిసీజ్ & చేప ఉబ్బే రోగం (డ్రాప్సీ)</span><span class="ch-badge b-bact">బాక్టీరియా రోగం</span></div>
-    <div class="cb">
-      <div class="cause"><strong>రోగ కారణం:</strong> బాక్టీరియా రక్తంలోకి చేరి మొత్తం శరీరాన్ని పాడు చేస్తుంది. ముందు రెడ్ డిసీజ్ వస్తుంది అది ముదిరితే డ్రాప్సీ. డ్రాప్సీ వస్తే మూత్రపిండాలు పాడైనట్టు — చేప బతకడం చాలా కష్టం.</div>
-      <div class="symp"><span class="symp-head">లక్షణాలు</span><em>రెడ్ డిసీజ్:</em> రెక్కలు, పొట్ట, మొప్పలు మీద ఎరుపు వస్తుంది. అడ్డంగా ఈదుతుంది. <em>డ్రాప్సీ:</em> పొలుసులు నిక్కబొడుచుకుంటాయి, పొట్ట ఉబ్బుతుంది, కళ్ళు పొంగుతాయి.</div>
-      <div class="step">ఎరుపు రోగం వచ్చిన వెంటనే ఇవి కొట్టండి </div>
-      <ul class="dl">
-        <li><span class="dl-chem">Ivermectin 1% — మేతలో కలపండి</span><span class="dl-qty">100 గ్రా / టన్ · 7 రోజులు</span></li>
-        <li><span class="dl-chem">Micro Pearl 80</span><span class="dl-qty">500 ml / ఎకరా</span></li>
-        <li><span class="dl-chem">Steridol 20%</span><span class="dl-qty">500 ml / ఎకరా</span></li>
-        <li><span class="dl-chem">Fish Magic</span><span class="dl-qty">1–2 కేజీ / టన్ · 10–15 రోజులు</span></li>
-      </ul>
-      <div class="ban-box"><span class="bx-head">✖ డ్రాప్సీ వచ్చిన చేప గురించి</span>డ్రాప్సీ వచ్చిన చేప సాధారణంగా బతకదు. అలాంటి చేపలను చెరువు నుండి వెంటనే వేరుచేయండి. సున్నం వేసి పాతిపెట్టండి. మిగతా ఆరోగ్యంగా ఉన్న చేపలకు మైక్రో పెర్ల్ 80 + KMnO₄ కొట్టండి .</div>
-    </div>
-  </div>
-</div>
-
-<div class="sec-label">
-  <span class="sec-label-text">Parasitic Diseases<span class="bn" style="display:none"> পরজীবী রোগ</span><span class="te" style="display:none"> పరాన్నజీవి వ్యాధులు</span></span>
-</div>
-
-<div class="pair" id="pair-5">
-  <!-- EN -->
-  <div class="card cc-orange">
-    <div class="ch"><span class="ch-icon">🦠</span><span class="ch-title">Argulus — Fish Lice (Argulosis)</span><span class="ch-badge b-para">ECTOPARASITE</span></div>
-    <div class="cb">
-      <div class="cause"><strong>Causative Agent:</strong> Argulus siamensis (dominant in Bengal), A. japonicus. Crustacean branchiuran ectoparasite. Peak: Mar–May. Estimated loss ₹40,000+/ha in Bengal. Secondary bacterial &amp; fungal infections at bite sites.</div>
-      <div class="symp"><span class="symp-head">Symptoms</span>Fish jump &amp; flash against pond edges. Pinpoint haemorrhages; scale loss; appetite reduction; visible disc-shaped lice on skin under bright light.</div>
-      <div class="step">Prevention — Fortnightly</div>
-      <ul class="dl">
-        <li><span class="dl-chem">Deltamethrin 1.8% EC</span><span class="dl-qty">100 ml / acre<span class="dl-note">Every 15 days. Reduce fish mucus first for better efficacy.</span></span></li>
-        <li><span class="dl-chem">Amitraz 12% — pond border vegetation</span><span class="dl-qty">100 ml / acre<span class="dl-note">Cut grass before spraying. Targets Argulus refuging on terrestrial plants.</span></span></li>
-      </ul>
-      <div class="step">Treatment — Active Infestation</div>
-      <ul class="dl">
-        <li><span class="dl-chem">CIFA M-Check (ICAR-CIFA validated)</span><span class="dl-qty">As label — single application<span class="dl-note">Tested in 20+ Bengal farmer ponds. Controls Argulus &amp; secondary wound infections.</span></span></li>
-        <li><span class="dl-chem">Ivermectin 1% in feed (early stage)</span><span class="dl-qty">100 g / ton · 7 days</span></li>
-        <li><span class="dl-chem">NaCl Salt Dip — fingerlings</span><span class="dl-qty">25–30 g/L · 10 min<span class="dl-note">Food-safe, no withdrawal period. Rinse in clean water after.</span></span></li>
-      </ul>
-      <div class="tip-box"><span class="bx-head">EFFICACY TIP</span>Lower fish mucus first (Deltamethrin 50 ml/acre), wait 3 days, then apply lice medication — thinner mucus allows better chemical contact.</div>
-    </div>
-  </div>
-  <!-- BN -->
-<div class="card cc-orange bn-card">
-    <div class="ch">
-      <span class="ch-icon">🦠</span>
-      <span class="ch-title bn">আরগুলাস — মাছের উকুন (আরগুলোসিস)</span>
-      <span class="ch-badge b-para">বহিঃপরজীবী</span>
-    </div>
-    <div class="cb">
-      <div class="cause"><strong>কারণকারী জীবাণু:</strong> আরগুলাস সিয়ামেনসিস (বাংলায় প্রধান), এ. জাপোনিকাস। ক্রাসটেশিয়ান শ্রেণির বহিঃপরজীবী। মার্চ–মে সর্বোচ্চ। বাংলায় প্রতি হেক্টরে ₹৪০,০০০+ ক্ষতি। কামড়ের জায়গায় দ্বিতীয় ব্যাকটেরিয়া ও ছত্রাক সংক্রমণ।</div>
-      <div class="symp"><span class="symp-head">লক্ষণ</span>মাছ লাফায় ও পুকুরের কিনারায় ঘষে। সূক্ষ্ম রক্তক্ষরণের দাগ; আঁশ খসে পড়া; খাওয়া কমে যাওয়া; উজ্জ্বল আলোয় ত্বকে চাকতির মতো উকুন দেখা যায়।</div>
-      <div class="step">প্রতিরোধ — পক্ষে পক্ষে</div>
-      <ul class="dl">
-        <li><span class="dl-chem">ডেলটামেথ্রিন ১.৮% ইসি</span><span class="dl-qty">১০০ মিলি / একর<span class="dl-note">প্রতি ১৫ দিনে একবার। কার্যকারিতার জন্য আগে শ্লেষ্মা কমান।</span></span></li>
-        <li><span class="dl-chem">অ্যামিট্রাজ ১২% — পুকুরের আল ও ঘাসে</span><span class="dl-qty">১০০ মিলি / একর<span class="dl-note">স্প্রে করার আগে ঘাস কেটে নিন।</span></span></li>
-      </ul>
-      <div class="step">চিকিৎসা — সক্রিয় সংক্রমণে</div>
-      <ul class="dl">
-        <li><span class="dl-chem">সিফা এম-চেক (আইসিএআর-সিফা পরীক্ষিত)</span><span class="dl-qty">লেবেল অনুযায়ী — একবার<span class="dl-note">বাংলার ২০টিরও বেশি কৃষক পুকুরে পরীক্ষিত ও কার্যকর।</span></span></li>
-        <li><span class="dl-chem">আইভারমেকটিন ১% খাদ্যে (প্রাথমিক পর্যায়ে)</span><span class="dl-qty">১০০ গ্রাম / টন · ৭ দিন</span></li>
-        <li><span class="dl-chem">সাধারণ লবণ স্নান — পোনার জন্য</span><span class="dl-qty">২৫–৩০ গ্রাম/লি · ১০ মিনিট<span class="dl-note">খাদ্য-নিরাপদ। কোনো বিরতি সময় নেই। পরে পরিষ্কার জলে ধুয়ে দিন।</span></span></li>
-      </ul>
-      <div class="tip-box"><span class="bx-head">কার্যকারিতার পরামর্শ</span>আগে শ্লেষ্মা কমান (ডেলটামেথ্রিন ৫০ মিলি/একর), ৩ দিন পর উকুনের ওষুধ দিন — পাতলা শ্লেষ্মায় ওষুধ বেশি কার্যকর।</div>
-    </div>
-  </div>
-  <!-- TE: Argulus -->
-<div class="card cc-orange te-card">
-    <div class="ch"><span class="ch-icon">🦠</span><span class="ch-title">చేపకు పేన్లు పట్టడం (అర్గులోసిస్)</span><span class="ch-badge b-para">బయట పరాన్నజీవి</span></div>
-    <div class="cb">
-      <div class="cause"><strong>రోగ కారణం:</strong> చేప శరీరానికి అతుక్కుని రక్తం తాగే చిన్న జీవులు. మార్చి–మే మధ్య ఎక్కువగా వస్తాయి. చెరువు పక్కన గడ్డిలో కూడా ఉంటాయి. కాటు వేసిన చోట పుళ్ళు వస్తాయి.</div>
-      <div class="symp"><span class="symp-head">లక్షణాలు</span>చేప గెంతుతుంది, చెరువు గట్టుకు వస్తుంది. చర్మం మీద చిన్న రక్తపు మచ్చలు, పొలుసులు రాలడం. వెలుతురులో చూస్తే బిళ్ళ ఆకారపు పేన్లు కనిపిస్తాయి.</div>
-      <div class="step">నివారణ — పదిహేను రోజులకోసారి</div>
-      <ul class="dl">
-        <li><span class="dl-chem">Deltamethrin 1.8% EC</span><span class="dl-qty">100 ml / ఎకరా<span class="dl-note">ముందు చేపలో జిగురు (mucus) తగ్గించండి — అప్పుడు మందులు బాగా పని చేస్తుంది.</span></span></li>
-        <li><span class="dl-chem">Amitraz 12% — చెరువు గట్టు గడ్డిపై చల్లండి</span><span class="dl-qty">100 ml / ఎకరా<span class="dl-note">చల్లడానికి ముందు గడ్డి కత్తిరించండి.</span></span></li>
-      </ul>
-      <div class="step">పేన్లు వచ్చినప్పుడు ఇవి కొట్టండి </div>
-      <ul class="dl">
-        <li><span class="dl-chem">CIFA M-Check (ICAR ధృవీకరించినది)</span></li>
-        <li><span class="dl-chem">Ivermectin 1% — మేతలో కలపండి (మొదట్లో వచ్చినప్పుడు)</span><span class="dl-qty">100 గ్రా / టన్ · 7 రోజులు</span></li>
-        <li><span class="dl-chem">ఉప్పు నీళ్ళలో ముంచండి — చేప పిల్లలకు</span><span class="dl-qty">25–30 గ్రా/లీ · 10 నిమిషాలు<span class="dl-note">సురక్షితమైన పద్ధతి. పట్టే ముందు వేయవచ్చు. తర్వాత మంచి నీళ్ళలో కడగండి.</span></span></li>
-      </ul>
-      <div class="tip-box"><span class="bx-head">మంచి పద్ధతి</span>ముందు Deltamethrin 50 ml/ఎకరా వేసి 3 రోజులు ఆగండి, తర్వాత పేన్ల మందులు కొట్టండి  — జిగురు తగ్గితే  మందులు బాగా పని చేస్తుంది.</div>
-    </div>
-  </div>
-</div>
-
-<div class="pair" id="pair-6">
-  <!-- EN -->
-  <div class="card cc-purple">
-    <div class="ch"><span class="ch-icon">🔬</span><span class="ch-title">Myxobolus / Myxozoan Infections</span><span class="ch-badge b-myx">MYXOZOAN SPORE</span></div>
-    <div class="cb">
-      <div class="cause"><strong>Causative Agent:</strong> Myxobolus spp., Thelohanellus spp. — spore-forming endoparasites. Prevalent in Bengal community ponds. Rohu most affected by Thelohanellus. Worse in overcrowded, low-chloride ponds.</div>
-      <div class="symp"><span class="symp-head">Symptoms</span>Firm white cysts on fins, gills &amp; muscle. Gill form causes respiratory distress &amp; anaemia. General weakness, emaciation. <em>NOT soft white pustules — those are Ich.</em></div>
-      <ul class="dl">
-        <li><span class="dl-chem">NaCl Saline Dip</span><span class="dl-qty">2–3% · 10 min<span class="dl-note">Repeat on alternate days × 3 cycles. Controls Myxobolus mrigalae &amp; gill parasites.</span></span></li>
-        <li><span class="dl-chem">Yeast in feed (ICAR validated)</span><span class="dl-qty">1 g/kg feed · 15 days<span class="dl-note">Improves immunity; reduces myxosporidian burden in overstocked ponds.</span></span></li>
-        <li><span class="dl-chem">Reduce stocking density</span><span class="dl-qty">Target ≤ 3,500 fish/ha<span class="dl-note">Overcrowding is the primary risk factor. Thin population at first sign.</span></span></li>
-        <li><span class="dl-chem">KMnO₄ — pond disinfection</span><span class="dl-qty">1 ppm</span></li>
-      </ul>
-      <div class="warn-box"><span class="bx-head">⚠ DO NOT CONFUSE WITH ICH</span>Myxobolus = firm embedded spore cysts. Ich = soft raised white pustules ("sprinkled salt" appearance). Completely different treatments. Microscopy recommended.</div>
-    </div>
-  </div>
-  <!-- BN -->
-<div class="card cc-purple bn-card">
-    <div class="ch">
-      <span class="ch-icon">🔬</span>
-      <span class="ch-title bn">মিক্সোবোলাস / মিক্সোজোয়ান স্পোর সংক্রমণ</span>
-      <span class="ch-badge b-myx">মিক্সোজোয়ান</span>
-    </div>
-    <div class="cb">
-      <div class="cause"><strong>কারণকারী জীবাণু:</strong> মিক্সোবোলাস প্রজাতি, থেলোহানেলাস প্রজাতি — স্পোর গঠনকারী অন্তঃপরজীবী। বাংলার সাধারণ পুকুরে ব্যাপক। রুই — থেলোহানেলাসে বেশি আক্রান্ত। ঘনবসতি ও কম ক্লোরাইডের জলে ঝুঁকি বেশি।</div>
-      <div class="symp"><span class="symp-head">লক্ষণ</span>পাখনা, কানকো ও মাংসে শক্ত সাদা সিস্ট। কানকোর রূপে শ্বাসকষ্ট ও রক্তাল্পতা। সাধারণ দুর্বলতা, শীর্ণতা। <em>নরম সাদা ফুসকুড়ি নয় — সেটি আইকে রোগ।</em></div>
-      <ul class="dl">
-        <li><span class="dl-chem">সাধারণ লবণ স্নান</span><span class="dl-qty">২–৩% · ১০ মিনিট<span class="dl-note">একদিন অন্তর × ৩ চক্র পুনরাবৃত্তি করুন।</span></span></li>
-        <li><span class="dl-chem">ইস্ট খাদ্যে (আইসিএআর পরীক্ষিত)</span><span class="dl-qty">১ গ্রাম/কেজি খাবার · ১৫ দিন<span class="dl-note">রোগ প্রতিরোধ ক্ষমতা বাড়ায়; ঘনবসতি পুকুরে স্পোরের ভার কমায়।</span></span></li>
-        <li><span class="dl-chem">মজুদ ঘনত্ব কমান</span><span class="dl-qty">লক্ষ্যমাত্রা ≤ ৩,৫০০ মাছ/হেক্টর<span class="dl-note">ঘনবসতি প্রধান ঝুঁকি। প্রথম লক্ষণেই পাতলা করুন।</span></span></li>
-        <li><span class="dl-chem">KMnO₄ — পুকুর জীবাণুমুক্তকরণ</span><span class="dl-qty">১ পিপিএম</span></li>
-      </ul>
-      <div class="warn-box"><span class="bx-head">⚠ আইকে রোগের সাথে গুলিয়ে ফেলবেন না</span>মিক্সোবোলাস = শক্ত সিস্ট। আইকে = নরম সাদা ফুসকুড়ি ("লবণ ছেটানোর" মতো দেখতে)। চিকিৎসা সম্পূর্ণ আলাদা। মাইক্রোস্কোপি পরামর্শযোগ্য।</div>
-    </div>
-  </div>
-  <!-- TE: Myxobolus -->
-<div class="card cc-purple te-card">
-    <div class="ch"><span class="ch-icon">🔬</span><span class="ch-title">Myxobolus — చేపలో తెల్లటి గడ్డలు</span><span class="ch-badge b-myx">లోపలి పరాన్నజీవి</span></div>
-    <div class="cb">
-      <div class="cause"><strong>రోగ కారణం:</strong> రోహు, కట్లా చేపలలో ఎక్కువగా వస్తుంది. చెరువులో చేపలు ఎక్కువగా ఉన్నప్పుడు వ్యాపిస్తుంది. ఈ గడ్డలు మందులుతో తొలగవు — నివారణే మేలు.</div>
-      <div class="symp"><span class="symp-head">లక్షణాలు</span>రెక్కలపై, మొప్పలుపై, గట్టి తెల్లటి గడ్డలు వస్తాయి. చేప నీరసంగా ఉంటుంది, తక్కువ తింటుంది. <em>గమనిక: ఇవి ICH రోగం కావు — ICH లో మెత్తటి తెల్లటి మచ్చలు వస్తాయి.</em></div>
-      <ul class="dl">
-        <li><span class="dl-chem">ఉప్పు నీళ్ళలో ముంచండి</span><span class="dl-qty">2–3% · 10 నిమిషాలు<span class="dl-note">ఒక రోజు వదిలి మళ్ళీ కొట్టండి  — ఇలా 3 సార్లు చేయండి.</span></span></li>
-        <li><span class="dl-chem">FISH MAGIC మేతలో కలపండి</span><span class="dl-qty">10 గ్రా/కేజీ మేత · 15 రోజులు<span class="dl-note">చేప రోగ నిరోధక శక్తి పెరుగుతుంది.</span></span></li>
-        <li><span class="dl-chem">చెరువులో చేపలు తగ్గించండి</span><span class="dl-qty">హెక్టారుకు 3,500 కంటే తక్కువ<span class="dl-note">ఎక్కువ చేపలు ఉంటే రోగం వేగంగా పాకుతుంది. మొదట్లోనే తగ్గించండి.</span></span></li>
-        <li><span class="dl-chem">KMnO₄ — చెరువులో  కొట్టండి </span><span class="dl-qty">1 ppm</span></li>
-      </ul>
-      <div class="warn-box"><span class="bx-head">⚠ ICH రోగంతో గందరగోళపడకండి</span>Myxobolus = గట్టి గడ్డలు, చేప లోపల. ICH = మెత్తటి తెల్లటి మచ్చలు, "ఉప్పు చల్లినట్టు" కనిపిస్తాయి. రెండింటికీ  మందులు వేరే వేరే. మైక్రోస్కోప్ తో చూపించమని అడగండి.</div>
-    </div>
-  </div>
-</div>
-
-<div class="pair" id="pair-7">
-  <!-- EN -->
-  <div class="card cc-purple">
-    <div class="ch"><span class="ch-icon">⚪</span><span class="ch-title">Ich — White Spot Disease</span><span class="ch-badge b-para">CILIATE PROTOZOAN</span></div>
-    <div class="cb">
-      <div class="cause"><strong>Causative Agent:</strong> Ichthyophthirius multifiliis — ciliate protozoan. Penetrates skin &amp; gills. Highly contagious; triggered by sudden temperature drop or transport stress. Distinct from Myxobolus.</div>
-      <div class="symp"><span class="symp-head">Symptoms</span>"Salt-sprinkled" soft white pustules across body &amp; fins; fish flash (rub against surfaces); heavy mucus; clamped fins; laboured breathing.</div>
-      <ul class="dl">
-        <li><span class="dl-chem">Formalin 37% — pond treatment</span><span class="dl-qty">25 ppm<span class="dl-note">Most effective. Apply morning. Aerate well; monitor DO closely.</span></span></li>
-        <li><span class="dl-chem">NaCl Salt Bath</span><span class="dl-qty">3% · 10–15 min<span class="dl-note">Repeat × 3 days. Kills free-swimming theronts. Safe for food fish.</span></span></li>
-        <li><span class="dl-chem">KMnO₄ Dip</span><span class="dl-qty">5 ppm · 2 min</span></li>
-        <li><span class="dl-chem">Malachite Green (nursery/fry ONLY)</span><span class="dl-qty">25 g / acre · daytime<span class="dl-note">⚠ BANNED for food fish above fingerling stage. 60-day minimum withdrawal.</span></span></li>
-      </ul>
-      <div class="tip-box"><span class="bx-head">LIFECYCLE NOTE</span>Ich is only treatable in free-swimming theront stage. Repeat every 3–4 days × 3 cycles to break lifecycle. Raising water temperature above 25°C speeds lifecycle for faster kill.</div>
-    </div>
-  </div>
-  <!-- BN -->
-<div class="card cc-purple bn-card">
-    <div class="ch">
-      <span class="ch-icon">⚪</span>
-      <span class="ch-title bn">আইকে — সাদা দাগ রোগ (ইকথিওফথিরিয়াস)</span>
-      <span class="ch-badge b-para">সিলিয়েট প্রোটোজোয়া</span>
-    </div>
-    <div class="cb">
-      <div class="cause"><strong>কারণকারী জীবাণু:</strong> ইকথিওফথিরিয়াস মাল্টিফিলিস — সিলিয়েট প্রোটোজোয়া। ত্বক ও কানকোয় প্রবেশ করে। অত্যন্ত সংক্রামক; হঠাৎ তাপমাত্রা হ্রাস বা পরিবহন চাপে হয়। মিক্সোবোলাস থেকে আলাদা।</div>
-      <div class="symp"><span class="symp-head">লক্ষণ</span>সারা শরীর ও পাখনায় "লবণ ছেটানোর" মতো নরম সাদা ফুসকুড়ি; মাছ পুকুরের কিনারায় ঘষে; বেশি শ্লেষ্মা; পাখনা সংকুচিত; শ্বাসকষ্ট।</div>
-      <ul class="dl">
-        <li><span class="dl-chem">ফর্মালিন ৩৭% — পুকুর চিকিৎসা</span><span class="dl-qty">২৫ পিপিএম<span class="dl-note">সবচেয়ে কার্যকর। সকালে দিন। বায়ু সরবরাহ করুন; DO নিবিড়ভাবে পর্যবেক্ষণ করুন।</span></span></li>
-        <li><span class="dl-chem">সাধারণ লবণ স্নান</span><span class="dl-qty">৩% · ১০–১৫ মিনিট<span class="dl-note">× ৩ দিন পুনরাবৃত্তি। মুক্ত-সাঁতারু থেরন্ট মারে। খাদ্য মাছে নিরাপদ।</span></span></li>
-        <li><span class="dl-chem">KMnO₄ স্নান</span><span class="dl-qty">৫ পিপিএম · ২ মিনিট</span></li>
-        <li><span class="dl-chem">ম্যালাকাইট গ্রিন (শুধু নার্সারি/পোনা পুকুরে)</span><span class="dl-qty">২৫ গ্রাম / একর · দিনের বেলায়<span class="dl-note">⚠ বড় মাছে নিষিদ্ধ। ন্যূনতম ৬০ দিন বিরতি সময়।</span></span></li>
-      </ul>
-      <div class="tip-box"><span class="bx-head">জীবনচক্র নোট</span>আইকে শুধু মুক্ত-সাঁতারু পর্যায়ে মারা যায়। জীবনচক্র ভাঙতে প্রতি ৩–৪ দিনে × ৩ চক্র চিকিৎসা দিন। জলের তাপমাত্রা ২৫°C-এর উপরে রাখলে জীবনচক্র দ্রুত হয়।</div>
-    </div>
-  </div>
-  <!-- TE: Ich -->
-<div class="card cc-purple te-card">
-    <div class="ch"><span class="ch-icon">⚪</span><span class="ch-title">ICH — తెల్ల మచ్చల రోగం</span><span class="ch-badge b-para">సూక్ష్మ జీవి</span></div>
-    <div class="cb">
-      <div class="cause"><strong>రోగ కారణం:</strong> హఠాత్తుగా నీరు చల్లబడినప్పుడు లేదా చేప బయటి నుండి తెచ్చినప్పుడు వస్తుంది. చాలా వేగంగా చెరువు అంతా పాకుతుంది. Myxobolus కంటే వేరే రోగం.</div>
-      <div class="symp"><span class="symp-head">లక్షణాలు</span>శరీరం మీద "ఉప్పు చల్లినట్టు" మెత్తటి తెల్ల మచ్చలు వస్తాయి. చేప చెరువు గట్టుకు రాస్తుంది. శ్వాస ఇబ్బందిగా ఉంటుంది. రెక్కలు మూసుకుంటాయి.</div>
-      <ul class="dl">
-        <li><span class="dl-chem">Formalin 37% — చెరువులో కొట్టండి </span><span class="dl-qty">25 ppm<span class="dl-note">బాగా పని చేస్తుంది. ఉదయం కొట్టండి . ఏరియేషన్; ఆక్సిజన్ తగ్గకుండా జాగ్రత్తగా ఉండండి.</span></span></li>
-        <li><span class="dl-chem">ఉప్పు నీళ్ళలో ముంచండి</span><span class="dl-qty">3% · 10–15 నిమిషాలు<span class="dl-note">3 రోజులు వరుసగా చేయండి. తినే చేపలకు సురక్షితం.</span></span></li>
-        <li><span class="dl-chem">KMnO₄ — ముంచి తీయండి</span><span class="dl-qty">5 ppm · 2 నిమిషాలు</span></li>
-      </ul>
-      <div class="tip-box"><span class="bx-head">ముఖ్యమైన విషయం</span>ఈ రోగం నీళ్ళలో విశాలంగా తిరిగే దశలో మాత్రమే మందులుకు పనిచేస్తాయి. 3–4 రోజులకోసారి 3 సార్లు మందులు కొట్టండి. నీరు కాస్త వెచ్చగా ఉంటే రోగం వేగంగా తగ్గుతుంది.</div>
-    </div>
-  </div>
-</div>
-
-<div class="pair" id="pair-8">
-  <!-- EN -->
-  <div class="card cc-purple">
-    <div class="ch"><span class="ch-icon">🫁</span><span class="ch-title">Gill Rot — Branchiomycosis</span><span class="ch-badge b-fung">FUNGAL</span></div>
-    <div class="cb">
-      <div class="cause"><strong>Causative Agent:</strong> Branchiomyces sanguinis — feeds on blood in gill capillaries. Occurs during Bengal monsoon (Jun–Sep): warm water, high organic load, low DO. Often follows algal bloom collapse.</div>
-      <div class="symp"><span class="symp-head">Symptoms</span>Fish gasp at surface; erratic swimming; gills mottled grey-white or brown ("marbled"); gill necrosis. Rapid mortality — can kill within 24–72 hrs.</div>
-      <ul class="dl">
-        <li><span class="dl-chem">Emergency Aeration — FIRST ACTION</span><span class="dl-qty">Immediate<span class="dl-note">Fish gasping = critical hypoxia. Aerate FIRST, medicate second. Stop all feeding.</span></span></li>
-        <li><span class="dl-chem">Quicklime (CaO)</span><span class="dl-qty">150–200 kg / acre<span class="dl-note">Raises pH rapidly — creates unfavourable environment for Branchiomyces.</span></span></li>
-        <li><span class="dl-chem">KMnO₄</span><span class="dl-qty">1 ppm</span></li>
-        <li><span class="dl-chem">Water exchange (20–30%)</span><span class="dl-qty">Fresh clean water only<span class="dl-note">Do not introduce water from other potentially affected ponds.</span></span></li>
-      </ul>
-    </div>
-  </div>
-  <!-- BN -->
-<div class="card cc-purple bn-card">
-    <div class="ch">
-      <span class="ch-icon">🫁</span>
-      <span class="ch-title bn">কানকোর পচন — ব্রাংকিওমাইকোসিস</span>
-      <span class="ch-badge b-fung">ছত্রাক</span>
-    </div>
-    <div class="cb">
-      <div class="cause"><strong>কারণকারী জীবাণু:</strong> ব্রাংকিওমাইসেস স্যাঙ্গুইনিস — কানকোর কৈশিক নালিতে রক্ত খায়। বর্ষায় (জুন–সেপ্টেম্বর) হয়: উষ্ণ জল, বেশি জৈব পদার্থ, কম অক্সিজেন। শেওলা বিপর্যয়ের পরে প্রায়ই দেখা যায়।</div>
-      <div class="symp"><span class="symp-head">লক্ষণ</span>মাছ জলের উপরে শ্বাস নেয়; এলোমেলো সাঁতার; কানকো ধূসর-সাদা বা বাদামী মেঘলা দেখায়; কানকো পচন। দ্রুত মৃত্যু — ২৪–৭২ ঘণ্টার মধ্যে হতে পারে।</div>
-      <ul class="dl">
-        <li><span class="dl-chem">জরুরি বায়ু সরবরাহ — প্রথম পদক্ষেপ</span><span class="dl-qty">তৎক্ষণাৎ<span class="dl-note">মাছ ভাসছে = মারাত্মক অক্সিজেন সংকট। আগে বায়ু দিন, তারপর ওষুধ। সব খাওয়ানো বন্ধ।</span></span></li>
-        <li><span class="dl-chem">তীব্র চুন (CaO)</span><span class="dl-qty">১৫০–২০০ কেজি / একর<span class="dl-note">দ্রুত pH বাড়ায় — ব্রাংকিওমাইসেসের প্রতিকূল পরিবেশ তৈরি।</span></span></li>
-        <li><span class="dl-chem">KMnO₄</span><span class="dl-qty">১ পিপিএম</span></li>
-        <li><span class="dl-chem">জল পরিবর্তন (২০–৩০%)</span><span class="dl-qty">শুধু পরিষ্কার জল<span class="dl-note">অন্য আক্রান্ত পুকুরের জল আনবেন না।</span></span></li>
-      </ul>
-    </div>
-  </div>
-  <!-- TE: Gill Rot -->
-<div class="card cc-purple te-card">
-    <div class="ch"><span class="ch-icon">🫁</span><span class="ch-title">చేప మొప్పలు కుళ్ళే రోగం</span><span class="ch-badge b-fung">శిలీంధ్ర రోగం</span></div>
-    <div class="cb">
-      <div class="cause"><strong>రోగ కారణం:</strong> వర్షాకాలంలో (జూన్–సెప్టెంబర్) నీరు వేడిగా ఉన్నప్పుడు, చెరువులో చెత్త ఎక్కువైనప్పుడు వస్తుంది. చెరువులో పచ్చ పాచి(గ్రీన్ ఆల్గే) చనిపోయిన తర్వాత తరచుగా వస్తుంది.</div>
-      <div class="symp"><span class="symp-head">లక్షణాలు</span>చేప నీటిపై నోరు తెరుచుకుని ఊపిరి తీసుకుంటుంది. అస్తవ్యస్తంగా ఈదుతుంది. చెవులు గోధుమ-తెలుపు రంగులో కనిపిస్తాయి. 24–72 గంటల్లో చేప చనిపోవచ్చు.</div>
-      <ul class="dl">
-        <li><span class="dl-chem">ఏరియేషన్ ఇవండి — మొదటి పని ఇది</span><span class="dl-qty">వెంటనే<span class="dl-note">చేప నీటిపై ఉంది అంటే అక్సిజన్ లేదు. ముందు ఏరియేషన్ ఇవండి, తర్వాత మందులు. మేత ఆపండి.</span></span></li>
-        <li><span class="dl-chem">సున్నం (CaO)</span><span class="dl-qty">150–200 కేజీ / ఎకరా<span class="dl-note">pH వేగంగా పెంచుతుంది.</span></span></li>
-        <li><span class="dl-chem">KMnO₄</span><span class="dl-qty">1 ppm</span></li>
-        <li><span class="dl-chem">నీటి మార్పు (20–30%)</span><span class="dl-qty">మంచి శుభ్రమైన నీరు మాత్రమే<span class="dl-note">వేరే చెరువు నీరు తీసుకోకండి.</span></span></li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<div class="sec-label">
-  <span class="sec-label-text">Water Quality &amp; Algae Management<span class="bn" style="display:none"> জলমান ও শেওলা ব্যবস্থাপনা</span><span class="te" style="display:none"> నీటి నాణ్యత & ఆల్గే నిర్వహణ</span></span>
-</div>
-
-<div class="pair" id="pair-9">
-  <!-- EN -->
-  <div class="card cc-teal">
-    <div class="ch"><span class="ch-icon">🟢</span><span class="ch-title">Blue-Green Algae (BGA / Cyanobacteria)</span><span class="ch-badge b-water">WATER QUALITY</span></div>
-    <div class="cb">
-      <div class="cause"><strong>Toxic species:</strong> Microcystis aeruginosa (produces microcystin — liver toxin). Also Anabaena, Oscillatoria. Distinguish from Spirulina (beneficial, filamentous — do not treat). Favoured by warm water &gt;27°C, high phosphorus, calm surface.</div>
-      <div class="symp"><span class="symp-head">Identify Microcystis</span>"Pea soup" surface scum; small granular spherical colonies floating. Confirm with plankton net. Microcystin damages fish liver &amp; kidneys even at sub-bloom levels.</div>
-      <div class="step">Step 1 — Identify bloom type first</div>
-      <ul class="dl">
-        <li><span class="dl-chem">Spirulina / Beneficial BGA → no action needed</span><span class="dl-qty">Do not treat</span></li>
-        <li><span class="dl-chem">Microcystis (granular colonies) → treat below</span><span class="dl-qty">Act immediately</span></li>
-      </ul>
-      <div class="step">Treatment — Microcystis</div>
-      <ul class="dl">
-        <li><span class="dl-chem">Copper Sulphate — <em>not for Catla ponds</em></span><span class="dl-qty">1 kg / acre<span class="dl-note">⚠ Only effective at pH &lt;8.6. Aerate immediately after — sudden bloom kill depletes DO.</span></span></li>
-        <li><span class="dl-chem">Bleaching Powder — surface scum only, <em>not for Catla</em></span><span class="dl-qty">Single application only</span></li>
-        <li><span class="dl-chem">KMnO₄</span><span class="dl-qty">1 kg / acre</span></li>
-        <li><span class="dl-chem">Ferric Chloride (next day after KMnO₄)</span><span class="dl-qty">500 g / acre</span></li>
-      </ul>
-      <div class="step">Prevention — Every 10 Days</div>
-      <ul class="dl">
-        <li><span class="dl-chem">Pond Life / Probiotic (beneficial bacteria)</span><span class="dl-qty">1 kg / acre<span class="dl-note">Competes with Microcystis; improves overall pond ecology.</span></span></li>
-      </ul>
-    </div>
-  </div>
-  <!-- BN -->
-<div class="card cc-teal bn-card">
-    <div class="ch">
-      <span class="ch-icon">🟢</span>
-      <span class="ch-title bn">নীলাভ-সবুজ শেওলা (সায়ানোব্যাকটেরিয়া)</span>
-      <span class="ch-badge b-water">জলমান</span>
-    </div>
-    <div class="cb">
-      <div class="cause"><strong>বিষাক্ত প্রজাতি:</strong> মাইক্রোসিস্টিস অ্যারুজিনোসা (মাইক্রোসিস্টিন — যকৃত বিষ তৈরি করে)। আনাবেনা, অসিলেটোরিয়াও ক্ষতিকর। স্পাইরুলিনা (উপকারী, সুতার মতো, নীলাভ-সবুজ) থেকে আলাদা করুন — চিকিৎসার দরকার নেই। ২৭°C-এর বেশি তাপমাত্রা ও বেশি ফসফরাসে হয়।</div>
-      <div class="symp"><span class="symp-head">মাইক্রোসিস্টিস চেনার উপায়</span>"মটরশুটি স্যুপের" মতো সবুজ আস্তরণ; ছোট গোলাকার দানাদার "গুস-গুস" কলোনি ভাসে। প্ল্যাংকটন জাল দিয়ে নিশ্চিত করুন। মাইক্রোসিস্টিন কম মাত্রাতেও মাছের যকৃত ও বৃক্ক ক্ষতি করে।</div>
-      <div class="step">ধাপ ১ — আগে শেওলার ধরন চিহ্নিত করুন</div>
-      <ul class="dl">
-        <li><span class="dl-chem">স্পাইরুলিনা / উপকারী শেওলা → কোনো ব্যবস্থা নয়</span><span class="dl-qty">চিকিৎসা করবেন না</span></li>
-        <li><span class="dl-chem">মাইক্রোসিস্টিস (দানাদার কলোনি) → নিচের চিকিৎসা</span><span class="dl-qty">অবিলম্বে ব্যবস্থা নিন</span></li>
-      </ul>
-      <div class="step">চিকিৎসা — মাইক্রোসিস্টিসে</div>
-      <ul class="dl">
-        <li><span class="dl-chem">কপার সালফেট — <em>কাতলা পুকুরে দেবেন না</em></span><span class="dl-qty">১ কেজি / একর<span class="dl-note">⚠ pH ৮.৬-এর নিচে কার্যকর। প্রয়োগের পর অবিলম্বে বায়ু দিন।</span></span></li>
-        <li><span class="dl-chem">ব্লিচিং পাউডার — শুধু উপরের আস্তরণে, <em>কাতলা ছাড়া</em></span><span class="dl-qty">একবারই প্রয়োগ</span></li>
-        <li><span class="dl-chem">KMnO₄</span><span class="dl-qty">১ কেজি / একর</span></li>
-        <li><span class="dl-chem">ফেরিক ক্লোরাইড (KMnO₄-এর পরের দিন)</span><span class="dl-qty">৫০০ গ্রাম / একর</span></li>
-      </ul>
-      <div class="step">প্রতিরোধ — প্রতি ১০ দিনে</div>
-      <ul class="dl">
-        <li><span class="dl-chem">পন্ড লাইফ / প্রোবায়োটিক (উপকারী ব্যাকটেরিয়া)</span><span class="dl-qty">১ কেজি / একর<span class="dl-note">মাইক্রোসিস্টিসের সাথে প্রতিযোগিতা করে; পুকুরের পরিবেশ উন্নত করে।</span></span></li>
-      </ul>
-    </div>
-  </div>
-  <!-- TE: BGA -->
-<div class="card cc-teal te-card">
-    <div class="ch"><span class="ch-icon">🟢</span><span class="ch-title">నీలం-ఆకుపచ్చ పాచి (హానికరమైన శేవాలు)</span><span class="ch-badge b-water">నీటి నాణ్యత</span></div>
-    <div class="cb">
-      <div class="cause"><strong>ముందు పాచి రకం తెలుసుకోండి:</strong> Microcystis అనే పాచి విషపూరితం — చేప కాలేయాన్ని పాడు చేస్తుంది. Spirulina మంచిది — చేపలకు ఆహారం. 27°C పైన నీరు వేడిగా ఉన్నప్పుడు, ఫాస్ఫరస్ ఎక్కువైనప్పుడు హానికరమైన పాచి పెరుగుతుంది.</div>
-      <div class="symp"><span class="symp-head">Microcystis ఎలా గుర్తించాలి</span>"బఠాని తొక్కు" రంగులో ఆకుపచ్చ పొర. చిన్న చిన్న గుళికలు నీటిపై తేలతాయి. ప్లాంక్టన్ వలతో నిర్ధారించుకోండి. Spirulina దారంలా ఉంటుంది — వాటిని చికిత్స చేయకండి.</div>
-      <div class="step">దశ 1 — ముందు పాచి ఏదో తెలుసుకోండి</div>
-      <ul class="dl">
-        <li><span class="dl-chem">Spirulina / మంచి పాచి → చికిత్స అవసరం లేదు</span><span class="dl-qty">వేయకండి</span></li>
-        <li><span class="dl-chem">Microcystis (గుళికల పాచి) → కింది చికిత్స</span><span class="dl-qty">వెంటనే చేయండి</span></li>
-      </ul>
-      <div class="step">Microcystis వచ్చినప్పుడు కొట్టండి </div>
-      <ul class="dl">
-        <li><span class="dl-chem">Copper Sulphate — <em>కట్లా చెరువు కు వేయకండి</em></span><span class="dl-qty">1 కేజీ / ఎకరా<span class="dl-note">⚠ pH 8.6 కంటే తక్కువ ఉన్నప్పుడే పని చేస్తుంది. వేసిన వెంటనే ఏరియేషన్ కొట్టండి .</span></span></li>
-        <li><span class="dl-chem">Bleaching Powder — పై పొరపై మాత్రమే, <em>కట్లా చెరువు కు వేయకండి</em></span><span class="dl-qty">ఒక్కసారే</span></li>
-        <li><span class="dl-chem">KMnO₄</span><span class="dl-qty">1 కేజీ / ఎకరా</span></li>
-        <li><span class="dl-chem">Ferric Chloride — KMnO₄ వేసిన మరుసటి రోజు</span><span class="dl-qty">500 గ్రా / ఎకరా</span></li>
-      </ul>
-      <div class="step">నివారణ — 10 రోజులకోసారి</div>
-      <ul class="dl">
-        <li><span class="dl-chem">Pond Life</span><span class="dl-qty">1 కేజీ / ఎకరా<span class="dl-note">హానికరమైన పాచి పెరగకుండా ఆపుతుంది.</span></span></li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<div class="pair" id="pair-10">
-  <!-- EN -->
-  <div class="card cc-sky">
-    <div class="ch"><span class="ch-icon">💧</span><span class="ch-title">Turbid, Black, Red-Brown &amp; Red Algae Water</span><span class="ch-badge b-water">WATER QUALITY</span></div>
-    <div class="cb">
-      <div class="step">Turbid Green Water — clay/particle suspension</div>
-      <ul class="dl">
-        <li><span class="dl-chem">Aqua Floc or Poly Aluminium Chloride (PAC)</span><span class="dl-qty">1 kg / acre<span class="dl-note">Apply morning; allow to settle. Check colour next day.</span></span></li>
-      </ul>
-      <div class="step">Black Water — severe organic load / H₂S</div>
-      <ul class="dl">
-        <li><span class="dl-chem">Magnesium Sulphate (MgSO₄)</span><span class="dl-qty">5 kg / acre</span></li>
-        <li><span class="dl-chem">Agricultural Lime Ca(OH)₂</span><span class="dl-qty">50 kg / acre</span></li>
-        <li><span class="dl-chem">Deoiled Groundnut Cake (soaked 4 hrs)</span><span class="dl-qty">5–10 kg / acre<span class="dl-note">Apply 10–11 AM. Reduce feeding by 50% immediately.</span></span></li>
-      </ul>
-      <div class="step">Red-Brown Water — tannins / iron / diatom bloom</div>
-      <ul class="dl">
-        <li><span class="dl-chem">Micro Pearl 80</span><span class="dl-qty">1 L / acre (&gt;4 ft depth)<br>500 ml / acre (≤4 ft)</span></li>
-        <li><span class="dl-chem">Agricultural Lime</span><span class="dl-qty">100 kg / acre</span></li>
-      </ul>
-      <div class="step">Red Algae — Euglena / organic overload indicator</div>
-      <ul class="dl">
-        <li><span class="dl-chem">Reduce feeding immediately</span><span class="dl-qty">50% cut × 5 days</span></li>
-        <li><span class="dl-chem">Water exchange (15–20%)</span><span class="dl-qty">Fresh water only</span></li>
-        <li><span class="dl-chem">Agricultural Lime + aeration</span><span class="dl-qty">100 kg / acre<span class="dl-note">Do NOT apply algaecide — bloom crash will crash oxygen. Address organic overload at root cause.</span></span></li>
-      </ul>
-    </div>
-  </div>
-  <!-- BN -->
-<div class="card cc-sky bn-card">
-    <div class="ch">
-      <span class="ch-icon">💧</span>
-      <span class="ch-title bn">ঘোলা, কালো, লাল-বাদামী ও লাল শেওলার জল</span>
-      <span class="ch-badge b-water">জলমান</span>
-    </div>
-    <div class="cb">
-      <div class="step">ঘোলা সবুজ জল — কাদা/কণা ভাসমান</div>
-      <ul class="dl">
-        <li><span class="dl-chem">অ্যাকুয়া ফ্লক বা পলি অ্যালুমিনিয়াম ক্লোরাইড</span><span class="dl-qty">১ কেজি / একর<span class="dl-note">সকালে দিন; থিতু হতে দিন। পরের দিন রং দেখুন।</span></span></li>
-      </ul>
-      <div class="step">কালো জল — মারাত্মক জৈব ভার / H₂S</div>
-      <ul class="dl">
-        <li><span class="dl-chem">ম্যাগনেশিয়াম সালফেট</span><span class="dl-qty">৫ কেজি / একর</span></li>
-        <li><span class="dl-chem">কৃষি চুন Ca(OH)₂</span><span class="dl-qty">৫০ কেজি / একর</span></li>
-        <li><span class="dl-chem">তৈলমুক্ত চিনাবাদামের খোল (৪ ঘণ্টা ভেজানো)</span><span class="dl-qty">৫–১০ কেজি / একর<span class="dl-note">সকাল ১০–১১টায় দিন। অবিলম্বে খাওয়ানো ৫০% কমান।</span></span></li>
-      </ul>
-      <div class="step">লাল-বাদামী জল — ট্যানিন / আয়রন / ডায়াটম শেওলা</div>
-      <ul class="dl">
-        <li><span class="dl-chem">বিকেসি ৮০%</span><span class="dl-qty">১ লিটার / একর (&gt;৪ ফুট গভীরতায়)<br>৫০০ মিলি / একর (≤৪ ফুট)</span></li>
-        <li><span class="dl-chem">কৃষি চুন</span><span class="dl-qty">১০০ কেজি / একর</span></li>
-      </ul>
-      <div class="step">লাল শেওলা — ইউগ্লেনা / জৈব অতিরিক্তের সংকেত</div>
-      <ul class="dl">
-        <li><span class="dl-chem">খাওয়ানো অবিলম্বে কমান</span><span class="dl-qty">৫০% হ্রাস × ৫ দিন</span></li>
-        <li><span class="dl-chem">জল পরিবর্তন (১৫–২০%)</span><span class="dl-qty">শুধু পরিষ্কার জল</span></li>
-        <li><span class="dl-chem">কৃষি চুন + বায়ু সরবরাহ</span><span class="dl-qty">১০০ কেজি / একর<span class="dl-note">শেওলানাশক দেবেন না — মৃত শেওলায় অক্সিজেন সংকট হবে। জৈব ভার কমানই সমাধান।</span></span></li>
-      </ul>
-    </div>
-  </div>
-  <!-- TE: Water Problems -->
-<div class="card cc-sky te-card">
-    <div class="ch"><span class="ch-icon">💧</span><span class="ch-title">చెరువు నీరు మారినప్పుడు — సమస్య & చికిత్స</span><span class="ch-badge b-water">నీటి నాణ్యత</span></div>
-    <div class="cb">
-      <div class="step">ఆకుపచ్చ మేఘలా నీరు — బురద/మట్టి తేలినప్పుడు</div>
-      <ul class="dl">
-        <li><span class="dl-chem">Aqua Floc లేదా Poly Aluminium Chloride</span><span class="dl-qty">1 కేజీ / ఎకరా<span class="dl-note">ఉదయం కొట్టండి . నీరు స్వచ్ఛంగా అవడానికి ఒక రోజు వేచి చూడండి.</span></span></li>
-      </ul>
-      <div class="step">నల్లటి నీరు — చెరువులో ఎక్కువ చెత్త, H₂S (కుళ్లిన కోడిగుడ్డు) వాసన</div>
-      <ul class="dl">
-        <li><span class="dl-chem">Magnesium Sulphate</span><span class="dl-qty">5 కేజీ / ఎకరా</span></li>
-        <li><span class="dl-chem">వ్యవసాయ సున్నం Ca(OH)₂</span><span class="dl-qty">50 కేజీ / ఎకరా</span></li>
-        <li><span class="dl-chem">నూనె తీసిన వేరుశెనగ చెక్క (4 గంటలు నానపెట్టి)</span><span class="dl-qty">5–10 కేజీ / ఎకరా<span class="dl-note">ఉదయం 10–11 గంటలకు కొట్టండి . మేత 50% తగ్గించండి.</span></span></li>
-      </ul>
-      <div class="step">ఎర్రగోధుమ నీరు — టానిన్, ఇనుము లేదా పాచి</div>
-      <ul class="dl">
-        <li><span class="dl-chem">Micro Pearl 80</span><span class="dl-qty">1 లీ / ఎకరా (4 అడుగులు లోతు అంతకంటే ఎక్కువ)<br>500 ml (4 అడుగులు లేదా తక్కువ)</span></li>
-        <li><span class="dl-chem">వ్యవసాయ సున్నం</span><span class="dl-qty">100 కేజీ / ఎకరా</span></li>
-      </ul>
-      <div class="step">ఎర్ర పాచి — చెరువులో  ఎరువు చాలా ఎక్కువైంది</div>
-      <ul class="dl">
-        <li><span class="dl-chem">మేత వెంటనే తగ్గించండి</span><span class="dl-qty">సగం తగ్గించండి · 5 రోజులు</span></li>
-        <li><span class="dl-chem">నీటి మార్పు (15–20%)</span><span class="dl-qty">మంచి నీరు మాత్రమే</span></li>
-        <li><span class="dl-chem">సున్నం + ఏరియేషన్ ఇవ్వండి </span><span class="dl-qty">100 కేజీ / ఎకరా<span class="dl-note">పాచి చంపే మందులు వేయకండి — ఆక్సిజన్ పడిపోతుంది. ఎరువులు, పేడ తగ్గించడమే పరిష్కారం.</span></span></li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<div class="sec-label">
-  <span class="sec-label-text">Mucus, Nutrition &amp; Fungal Management<span class="bn" style="display:none"> শ্লেষ্মা, পুষ্টি ও ছত্রাক ব্যবস্থাপনা</span><span class="te" style="display:none"> శ్లేష్మ, పోషణ & శిలీంధ్ర నిర్వహణ</span></span>
-</div>
-
-<div class="pair" id="pair-11">
-  <!-- EN -->
-  <div class="card cc-teal">
-    <div class="ch"><span class="ch-icon">🫧</span><span class="ch-title">Fish Gill &amp; Body Mucus (Gel) Management</span><span class="ch-badge b-water">HEALTH INDICATOR</span></div>
-    <div class="cb">
-      <div class="cause">Mucus is the fish's primary external immune barrier. Always assess after any chemical treatment. Low mucus = mineral depletion. High mucus = parasite/irritant pressure.</div>
-      <div class="step">Low Mucus — Post-Chemical Stress</div>
-      <ul class="dl">
-        <li><span class="dl-chem">Agriculture Super (dolomite/mineral blend)</span><span class="dl-qty">50 kg / acre<span class="dl-note">Replenishes mineral balance after chemical exposure.</span></span></li>
-      </ul>
-      <div class="step">High Mucus — Parasite / Irritant</div>
-      <ul class="dl">
-        <li><span class="dl-chem">Deltamethrin 1.8% EC</span><span class="dl-qty">50 ml / acre</span></li>
-        <li><span class="dl-chem">Formalin (if protozoan cause confirmed)</span><span class="dl-qty">25 ppm</span></li>
-      </ul>
-      <div class="step">Routine Maintenance — Every 15 Days</div>
-      <ul class="dl">
-        <li><span class="dl-chem">Deltamethrin 1.8% EC</span><span class="dl-qty">100 ml / acre</span></li>
-      </ul>
-    </div>
-  </div>
-  <!-- BN -->
-<div class="card cc-teal bn-card">
-    <div class="ch">
-      <span class="ch-icon">🫧</span>
-      <span class="ch-title bn">মাছের কানকো ও শরীরের শ্লেষ্মা ব্যবস্থাপনা</span>
-      <span class="ch-badge b-water">স্বাস্থ্য সূচক</span>
-    </div>
-    <div class="cb">
-      <div class="cause">শ্লেষ্মা মাছের প্রথম বহিরাগত রোগ প্রতিরোধ বাধা। যেকোনো রাসায়নিক প্রয়োগের পর সবসময় পরীক্ষা করুন। কম শ্লেষ্মা = খনিজ ঘাটতি। বেশি শ্লেষ্মা = পরজীবী/বিরক্তিকর চাপ।</div>
-      <div class="step">কম শ্লেষ্মা — রাসায়নিক পরবর্তী চাপে</div>
-      <ul class="dl">
-        <li><span class="dl-chem">অ্যাগ্রিকালচার সুপার (ডলোমাইট/খনিজ মিশ্রণ)</span><span class="dl-qty">৫০ কেজি / একর<span class="dl-note">রাসায়নিক প্রয়োগের পর খনিজ ভারসাম্য পুনরুদ্ধার করে।</span></span></li>
-      </ul>
-      <div class="step">বেশি শ্লেষ্মা — পরজীবী / বিরক্তিকর চাপে</div>
-      <ul class="dl">
-        <li><span class="dl-chem">ডেলটামেথ্রিন ১.৮% ইসি</span><span class="dl-qty">৫০ মিলি / একর</span></li>
-        <li><span class="dl-chem">ফর্মালিন (প্রোটোজোয়া নিশ্চিত হলে)</span><span class="dl-qty">২৫ পিপিএম</span></li>
-      </ul>
-      <div class="step">নিয়মিত রক্ষণাবেক্ষণ — প্রতি ১৫ দিনে</div>
-      <ul class="dl">
-        <li><span class="dl-chem">ডেলটামেথ্রিন ১.৮% ইসি</span><span class="dl-qty">১০০ মিলি / একর</span></li>
-      </ul>
-    </div>
-  </div>
-  <!-- TE: Mucus -->
-<div class="card cc-teal te-card">
-    <div class="ch"><span class="ch-icon">🫧</span><span class="ch-title">చేప శరీరంపై జిగురు (Mucus) — నిర్వహణ</span><span class="ch-badge b-water">ఆరోగ్య సూచన</span></div>
-    <div class="cb">
-      <div class="cause">చేప శరీరంపై జిగురు దానిని రోగాల నుండి కాపాడుతుంది. ఏ మందులు వేసినా తర్వాత జిగురు తగ్గిందా ఎక్కువైందా అని తనిఖీ చేయండి.</div>
-      <div class="step">జిగురు తక్కువైనప్పుడు —  మందులు వేసిన తర్వాత</div>
-      <ul class="dl">
-        <li><span class="dl-chem">Agriculture Super (Single Super Phosphate (SSP))</span><span class="dl-qty">50 కేజీ / ఎకరా<span class="dl-note"> మందులు వేసిన తర్వాత ఖనిజాలు తగ్గిపోతాయి — ఇవి తిరిగి నింపుతుంది.</span></span></li>
-      </ul>
-      <div class="step">జిగురు చాలా ఎక్కువైనప్పుడు — పేన్లు లేదా వేరే కారణం</div>
-      <ul class="dl">
-        <li><span class="dl-chem">Deltamethrin 1.8% EC</span><span class="dl-qty">50 ml / ఎకరా</span></li>
-        <li><span class="dl-chem">Formalin (సూక్ష్మ జీవి కారణమైతే)</span><span class="dl-qty">25 ppm</span></li>
-      </ul>
-      <div class="step">నిర్వహణ — పదిహేను రోజులకోసారి</div>
-      <ul class="dl">
-        <li><span class="dl-chem">Deltamethrin 1.8% EC</span><span class="dl-qty">100 ml / ఎకరా</span></li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<div class="pair" id="pair-12">
-  <!-- EN -->
-  <div class="card cc-green">
-    <div class="ch"><span class="ch-icon">🌾</span><span class="ch-title">Malnutrition &amp; Poor Growth</span><span class="ch-badge b-nut">NUTRITION</span></div>
-    <div class="cb">
-      <div class="cause">Net-sample 20 fish monthly. Weigh &amp; compare to expected SGR. Bengal ponds relying solely on rice bran (DOB) are high-risk — rice bran provides only 8–10% crude protein, inadequate for grow-out.</div>
-      <div class="step">Feed Composition</div>
-      <ul class="dl">
-        <li><span class="dl-chem">Crude Protein in DOB — minimum</span><span class="dl-qty">12%<span class="dl-note">Pure rice bran = 8–10% CP — insufficient alone. Supplement required.</span></span></li>
-        <li><span class="dl-chem">Soya DOC (40%) + Groundnut DOC — mix with DOB</span><span class="dl-qty">1:1 ratio<span class="dl-note">Target feed protein 28–32% for IMC grow-out. FCR target ≤2.0.</span></span></li>
-        <li><span class="dl-chem">Pellet feed — mix with DOB</span><span class="dl-qty">30–50% of ration<span class="dl-note">ICAR-CIFA Gram-Ca-Feed: FCR 1.47 achieved in Bengal field trials.</span></span></li>
-        <li><span class="dl-chem">Richmin / Vitamin-Mineral Premix</span><span class="dl-qty">1 kg / ton feed<span class="dl-note">Includes Vitamin C (prevents spine deformity) &amp; B-complex. Critical in intensive ponds.</span></span></li>
-      </ul>
-      <div class="tip-box"><span class="bx-head">FEEDING RATE</span>Feed at 2–3% of body weight/day. Stop feeding during disease outbreaks or water quality events. Overfeeding is the #1 cause of water quality deterioration in Bengal ponds.</div>
-    </div>
-  </div>
-  <!-- BN -->
-<div class="card cc-green bn-card">
-    <div class="ch">
-      <span class="ch-icon">🌾</span>
-      <span class="ch-title bn">অপুষ্টি ও দুর্বল বৃদ্ধি</span>
-      <span class="ch-badge b-nut">পুষ্টি</span>
-    </div>
-    <div class="cb">
-      <div class="cause">প্রতি মাসে ২০টি মাছ জাল টেনে ওজন করুন। কাঙ্ক্ষিত বৃদ্ধির সাথে তুলনা করুন। শুধু চালের কুঁড়া (ডিওবি) দেওয়া বাংলার পুকুরে বেশি ঝুঁকি। চালের কুঁড়ায় মাত্র ৮–১০% প্রোটিন — একা যথেষ্ট নয়।</div>
-      <div class="step">খাদ্যের গঠন</div>
-      <ul class="dl">
-        <li><span class="dl-chem">ডিওবিতে অপরিশোধিত প্রোটিন — ন্যূনতম</span><span class="dl-qty">১২%<span class="dl-note">খাঁটি চালের কুঁড়া = ৮–১০% — একা অপর্যাপ্ত। সম্পূরক খাদ্য লাগবে।</span></span></li>
-        <li><span class="dl-chem">সয়া খোল (৪০%) + চিনাবাদামের খোল — ডিওবির সাথে মিশিয়ে</span><span class="dl-qty">১:১ অনুপাত<span class="dl-note">আইএমসি বৃদ্ধিতে খাদ্যে লক্ষ্যমাত্রা ২৮–৩২% প্রোটিন। FCR লক্ষ্যমাত্রা ≤২.০।</span></span></li>
-        <li><span class="dl-chem">পিলেট খাদ্য — ডিওবির সাথে মিশিয়ে</span><span class="dl-qty">রেশনের ৩০–৫০%<span class="dl-note">আইসিএআর-সিফা গ্রাম-ক্যা-ফিড: বাংলার মাঠ পরীক্ষায় FCR ১.৪৭ পাওয়া গেছে।</span></span></li>
-        <li><span class="dl-chem">রিচমিন / ভিটামিন-খনিজ প্রিমিক্স</span><span class="dl-qty">১ কেজি / টন খাদ্য<span class="dl-note">ভিটামিন সি (মেরুদণ্ড বিকৃতি রোধ) ও বি-কমপ্লেক্স সহ। নিবিড় পুকুরে অত্যন্ত গুরুত্বপূর্ণ।</span></span></li>
-      </ul>
-      <div class="tip-box"><span class="bx-head">খাওয়ানোর হার</span>শরীরের ওজনের ২–৩% হারে প্রতিদিন দিন। রোগের প্রাদুর্ভাব বা জলমান সমস্যায় খাওয়ানো বন্ধ করুন। অতিরিক্ত খাওয়ানো বাংলার পুকুরে জলমান বিগড়ানোর প্রধান কারণ।</div>
-    </div>
-  </div>
-  <!-- TE: Malnutrition -->
-<div class="card cc-green te-card">
-    <div class="ch"><span class="ch-icon">🌾</span><span class="ch-title">మేత తగ్గటం, బరువు పెరగకపోవటం</span><span class="ch-badge b-nut">పోషకాహార లోపం</span></div>
-    <div class="cb">
-      <div class="cause">నెలకోసారి 20 చేపలను పట్టి తూకం కొట్టండి . ఆశించిన బరువుతో పోల్చండి. కేవలం తవుడు (DOB) ఇచ్చే చెరువులో బలహీనత ఎక్కువగా వస్తుంది — తవుడులో 8–10% మాత్రమే ప్రోటీన్ ఉంటుంది, అది చాలదు.</div>
-      <div class="step">మేత ఎలా తయారు చేయాలి</div>
-      <ul class="dl">
-        <li><span class="dl-chem">DOBలో తక్కువలో తక్కువ ప్రోటీన్</span><span class="dl-qty">12%<span class="dl-note">కేవలం తవుడు ఒక్కటే సరిపోదు. తప్పనిసరిగా కలపాలి.</span></span></li>
-        <li><span class="dl-chem">సోయా పిండి (40%) + వేరుశెనగ చెక్క — తవుడులో కలపండి</span><span class="dl-qty">సమాన భాగాలు<span class="dl-note">మేతలో 28–32% ప్రోటీన్ ఉండాలి. FCR 2.0 కంటే తక్కువ ఉండాలి.</span></span></li>
-        <li><span class="dl-chem">Pellet మేత — తవుడులో కలపండి</span><span class="dl-qty">రోజు మేతలో 30–50%</span></li>
-        <li><span class="dl-chem">Richmin</span><span class="dl-qty">1 కేజీ / టన్ మేత<span class="dl-note">Civitron 50 (వెన్నెముక వంకర నివారణ), B-కాంప్లెక్స్ సహా.</span></span></li>
-      </ul>
-      <div class="tip-box"><span class="bx-head">మేత వేయడానికి నియమాలు</span>రోజూ శరీర బరువులో 2–3% మేత కట్టండి. రోగం లేదా నీటి సమస్య వచ్చినప్పుడు మేత ఆపండి. ఎక్కువ మేత వేయడమే చెరువు నీరు పాడవడానికి ప్రధాన కారణం.</div>
-    </div>
-  </div>
-</div>
-
-<div class="pair" id="pair-13">
-  <!-- EN -->
-  <div class="card cc-gold">
-    <div class="ch"><span class="ch-icon">🍄</span><span class="ch-title">Fish Hard — Saprolegnia (Water Mould)</span><span class="ch-badge b-fung">FUNGAL</span></div>
-    <div class="cb">
-      <div class="cause"><strong>Causative Agent:</strong> Saprolegnia parasitica — oomycete water mould. Secondary infection at wound/stress sites. Triggered by cold water, injury, malnutrition, or post-transport stress.</div>
-      <div class="symp"><span class="symp-head">Symptoms</span>White-grey cotton-wool tufts on body, fins or head. Fish feels stiff/hard to touch in advanced cases. Often co-occurs with bacterial ulcers.</div>
-      <ul class="dl">
-        <li><span class="dl-chem">NaCl Salt Dip (grow-out fish — food-safe)</span><span class="dl-qty">3% · 10–15 min<span class="dl-note">Kills surface Saprolegnia. Repeat × 3 days. No withdrawal period.</span></span></li>
-        <li><span class="dl-chem">Yeast supplement in feed</span><span class="dl-qty">1–2 kg / ton · 10–15 days<span class="dl-note">Beta-glucans boost systemic immune response and reduce fungal vulnerability.</span></span></li>
-        <li><span class="dl-chem">KMnO₄ — pond treatment</span><span class="dl-qty">1 ppm</span></li>
-        <li><span class="dl-chem">Malachite Green (nursery/fingerlings ONLY)</span><span class="dl-qty">25 g / acre · daytime only<span class="dl-note">⚠ FSSAI restricted for food fish. 60-day minimum withdrawal. Apply in daylight only.</span></span></li>
-      </ul>
-    </div>
-  </div>
-  <!-- BN -->
-<div class="card cc-gold bn-card">
-    <div class="ch">
-      <span class="ch-icon">🍄</span>
-      <span class="ch-title bn">ফিশ হার্ড — স্যাপ্রোলেগনিয়া (জলের ছত্রাক)</span>
-      <span class="ch-badge b-fung">ছত্রাক</span>
-    </div>
-    <div class="cb">
-      <div class="cause"><strong>কারণকারী জীবাণু:</strong> স্যাপ্রোলেগনিয়া প্যারাসিটিকা — ওমাইসেট জল-ছাঁচ। ক্ষত বা চাপের জায়গায় দ্বিতীয় সংক্রমণ। ঠান্ডা জল, আঘাত, অপুষ্টি বা পরিবহন পরবর্তী চাপে হয়।</div>
-      <div class="symp"><span class="symp-head">লক্ষণ</span>শরীর, পাখনা বা মাথায় সাদা-ধূসর তুলার মতো আঁশ। উন্নত পর্যায়ে মাছ স্পর্শ করলে শক্ত লাগে। প্রায়ই ব্যাকটেরিয়াজনিত ক্ষতের সাথে একসাথে দেখা যায়।</div>
-      <ul class="dl">
-        <li><span class="dl-chem">সাধারণ লবণ স্নান (বড় মাছ — খাদ্য-নিরাপদ)</span><span class="dl-qty">৩% · ১০–১৫ মিনিট<span class="dl-note">স্যাপ্রোলেগনিয়া মারে। × ৩ দিন পুনরাবৃত্তি। কোনো বিরতি সময় নেই।</span></span></li>
-        <li><span class="dl-chem">ইস্ট সম্পূরক খাদ্যে</span><span class="dl-qty">১–২ কেজি / টন · ১০–১৫ দিন<span class="dl-note">বিটা-গ্লুকান রোগ প্রতিরোধ ক্ষমতা বাড়ায়; ছত্রাক সংবেদনশীলতা কমায়।</span></span></li>
-        <li><span class="dl-chem">KMnO₄ — পুকুর চিকিৎসা</span><span class="dl-qty">১ পিপিএম</span></li>
-        <li><span class="dl-chem">ম্যালাকাইট গ্রিন (শুধু নার্সারি/পোনা)</span><span class="dl-qty">২৫ গ্রাম / একর · দিনের বেলায়<span class="dl-note">⚠ এফএসএসএআই দ্বারা খাদ্য মাছে সীমাবদ্ধ। ন্যূনতম ৬০ দিন বিরতি।</span></span></li>
-      </ul>
-    </div>
-  </div>
-  <!-- TE: Fish Hard / Saprolegnia -->
-<div class="card cc-gold te-card">
-    <div class="ch"><span class="ch-icon">🍄</span><span class="ch-title">Fish Hard — నీటి పుట్టగొడుగు రోగం (Saprolegnia)</span><span class="ch-badge b-fung">శిలీంధ్ర రోగం</span></div>
-    <div class="cb">
-      <div class="cause"><strong>రోగ కారణం:</strong> చేపకు దెబ్బ తగిలినప్పుడు లేదా నీరు చల్లగా ఉన్నప్పుడు పుట్టగొడుగు జాతి జీవి అతుక్కుంటుంది. తక్కువ తిండి తింటున్న లేదా బయటి నుండి తెచ్చిన చేపలకు ఎక్కువగా వస్తుంది.</div>
-      <div class="symp"><span class="symp-head">లక్షణాలు</span>శరీరం, రెక్కలు, తలపై తెల్లటి దూది పోగులు అంటుకుంటాయి. చేపను పట్టుకుంటే గట్టిగా ఉంటుంది. తరచుగా పుళ్ళతో పాటు వస్తుంది.</div>
-      <ul class="dl">
-        <li><span class="dl-chem">ఉప్పు నీళ్ళలో ముంచండి (పెద్ద తినే చేపలకు)</span><span class="dl-qty">3% · 10–15 నిమిషాలు<span class="dl-note">3 రోజులు చేయండి. పట్టే ముందు వేయవచ్చు — ఎటువంటి నష్టం లేదు.</span></span></li>
-        <li><span class="dl-chem">FISH MAGIC మేతలో కలపండి</span><span class="dl-qty">1–2 కేజీ / టన్ · 10–15 రోజులు<span class="dl-note">చేప రోగ నిరోధక శక్తి పెరుగుతుంది, పుట్టగొడుగు అంటుకోదు.</span></span></li>
-        <li><span class="dl-chem">KMnO₄ — చెరువులో  కొట్టండి </span><span class="dl-qty">1 ppm</span></li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<div class="advisory">
-  <div class="advisory-head">
-    <span>⚠ General Advisory &amp; Post-Chemical Liver Care</span>
-    <span class="bn">সাধারণ নির্দেশিকা ও রাসায়নিক পরবর্তী যকৃত সহায়তা</span>
-    <span class="te">సాధారణ మార్గదర్శకత్వం & రసాయన తర్వాత కాలేయ సంరక్షణ</span>
-  </div>
-  <div class="adv-grid">
-    <div class="adv-item">
-      <div class="adv-head">Post-Chemical Liver Care <span class="bn">রাসায়নিক পরবর্তী যকৃত সহায়তা</span><span class="te"> మందులు తర్వాత కాలేయ సంరక్షణ</span></div>
-      <p>After any insecticide, organophosphate, or prolonged antibiotic — <strong>fish liver hardens (hepatopathy)</strong>. Feed <strong>Fish Magic / liver tonic at 1–2 kg/ton for 10–15 days</strong> after every chemical course. No exceptions.
-      <span class="bn">যেকোনো কীটনাশক, সংগঠিত ফসফেট বা দীর্ঘমেয়াদি অ্যান্টিবায়োটিকের পর — মাছের যকৃত শক্ত হয়। প্রতিটি কোর্সের পর ফিশ ম্যাজিক / লিভার টনিক ১–২ কেজি/টন × ১০–১৫ দিন অবশ্যই দিন।</span>
-      <span class="te">ఏ పురుగు మందులు లేదా యాంటీబయాటిక్ తర్వాత — చేప కాలేయం గట్టి అవుతుంది. ప్రతి కోర్సు తర్వాత ఫిష్ మ్యాజిక్   1–2 కి.గ్రా/టన్ × 10–15 రోజులు తప్పనిసరిగా ఇవ్వాలి.</span></p>
-    </div>
-    <div class="adv-item">
-      <div class="adv-head">DO Monitoring <span class="bn">দ্রবীভূত অক্সিজেন পর্যবেক্ষণ</span><span class="te">ఆక్సిజన్ పర్యవేక్షణ</span></div>
-      <p>Check DO <strong>every morning 5–6 AM</strong> (daily low). Target: <strong>&gt;5 mg/L</strong>. Below 3 mg/L = emergency. Any algaecide or bloom crash depletes DO overnight — have aerators on standby.
-      <span class="bn">প্রতিদিন ভোর ৫–৬টায় DO পরীক্ষা করুন। লক্ষ্য: &gt;৫ মিগ্রা/লি। ৩-এর নিচে = জরুরি। শেওলা মারলে সেই রাতেই অক্সিজেন কমে — বায়ু যন্ত্র প্রস্তুত রাখুন।</span>
-      <span class="te">రోజూ ఉదయం 5–6 గంటలకు D.O తనిఖీ చేయండి. 5 mg/L కంటే ఎక్కువ ఉండాలి. 3 కంటే తక్కువైతే అత్యవసరం.ప్లాంటన్ క్రాష్ ఐతే రాత్రే ఆక్సిజన్ తగ్గిపోతుంది — ఏరియేటర్లు సిద్ధంగా ఉంచండి.</span></p>
-    </div>
-    <div class="adv-item">
-      <div class="adv-head">Net Hygiene <span class="bn">জালের স্বাস্থ্যবিধি</span><span class="te">వల శుభ్రత</span></div>
-      <p>Disinfect nets in <strong>1 ppm KMnO₄ before and after every use</strong>. Dry in sunlight. Never share nets between EUS-positive and healthy ponds — #1 inter-pond disease vector.
-      <span class="bn">প্রতিবার ব্যবহারের আগে ও পরে ১ পিপিএম KMnO₄-এ জাল জীবাণুমুক্ত করুন। রোদে শুকান। আক্রান্ত ও সুস্থ পুকুরের মধ্যে কখনো জাল ভাগ করবেন না।</span>
-      <span class="te">ప్రతిసారి వాడే ముందు, తర్వాత 1 ppm KMnO₄లో వల శుభ్రం చేయండి. ఎండలో ఆరబెట్టండి. రోగం వచ్చిన, ఆరోగ్యంగా ఉన్న చెరువుల మధ్య వలలు పంచుకోవద్దు.</span></p>
-    </div>
-    <div class="adv-item">
-      <div class="adv-head">Pond pH <span class="bn">পুকুরের pH</span><span class="te">చెరువు  pH</span></div>
-      <p>Optimal: <strong>7.5–8.5</strong>. Apply lime fortnightly Oct–Feb at <strong>50–100 kg/acre</strong>. Below 6.8 = high EUS &amp; fungal risk. Above 9.5 = ammonia toxicity risk.
-      <span class="bn">সর্বোত্তম: ৭.৫–৮.৫। অক্টোবর–ফেব্রুয়ারিতে পক্ষে পক্ষে ৫০–১০০ কেজি/একর চুন দিন। ৬.৮-এর নিচে = ইইউএস ও ছত্রাকের উচ্চ ঝুঁকি।</span>
-      <span class="te">pH 7.5–8.5 ఉండాలి. అక్టోబర్–ఫిబ్రవరిలో పదిహేను రోజులకోసారి 50–100 కేజీ/ఎకరా సున్నం కొట్టండి . 6.8 కంటే తక్కువైతే EUS మరియు పుట్టగొడుగు రోగాల ముప్పు ఎక్కువ.</span></p>
-    </div>
-    <div class="adv-item">
-      <div class="adv-head">Stocking Density <span class="bn">মজুদ ঘনত্ব</span><span class="te">చేపల సాంద్రత</span></div>
-      <p>Optimal composite culture: <strong>5,000–7,500 fingerlings/ha</strong> at 40–60g. Overcrowding (&gt;10,000/ha without aeration) sharply raises Myxozoan, Argulus &amp; oxygen stress risk.
-      <span class="bn">সর্বোত্তম মিশ্র চাষ: ৪০–৬০ গ্রাম পোনায় ৫,০০০–৭,৫০০টি/হেক্টর। বায়ু সরবরাহ ছাড়া &gt;১০,০০০/হেক্টর মিক্সোজোয়ান, আরগুলাস ও অক্সিজেন সংকটের ঝুঁকি বাড়ায়।</span>
-      <span class="te">మిశ్రమ చేప పెంపకంలో హెక్టారుకు 5,000–7,500 పిల్లలు వేయండి (40–60 గ్రాముల పిల్లలు). ఏరియేషన్ లేకుండా >10,000/హెక్టారు వేస్తే పేన్లు, రోగాలు, ఆక్సిజన్ కష్టాలు పెరుగుతాయి.</span></p>
-    </div>
-    <div class="adv-item">
-      <div class="adv-head">Catla — Special Notes <span class="bn">কাতলা — বিশেষ নির্দেশ</span><span class="te">కట్లా — ప్రత్యేక జాగ్రత్తలు</span></div>
-      <p>Catla is a <strong>surface feeder — most sensitive</strong> to water column chemicals. Avoid bleaching powder, Quinalphos, Dichlorvos, high-dose Copper Sulphate. Catla is the pond's early-warning fish.
-      <span class="bn">কাতলা — সারফেস ফিডার — জলের রাসায়নিকে সবচেয়ে সংবেদনশীল। ব্লিচিং পাউডার, কুইনালফস, ডিক্লোরভস ও অতিরিক্ত কপার সালফেট দেবেন না। কাতলাই পুকুরের প্রথম সতর্কসংকেত।</span>
-      <span class="te">కట్లా నీటి పైభాగంలో తినే చేప — నీటి  మందులులకు చాలా సున్నితంగా ఉంటుంది. Bleaching Powder, Quinalphos, Dichlorvos వేయకండి. చెరువులో ఏదైనా తేడా వస్తే కట్లా మొదట చనిపోతుంది.</span></p>
-    </div>
-  </div>
-  <div class="step" style="margin-top:20px;">Chemical Withdrawal Periods &amp; Regulatory Status — ওষুধের বিরতি সময় — మందు వేయడం ఆపే కాలం</div>
-  <div class="wt-wrap">
-    <table class="wt">
-      <thead>
-        <tr>
-          <th>Chemical</th>
-          <th>Withdrawal</th>
-          <th>Status / Notes</th>
-          <th><span class="bn">বাংলা নোট</span><span class="te">తెలుగు నోట్</span></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>Deltamethrin 1.8% EC</td><td>14–21 days</td><td>Approved for aquaculture. Toxic to crustaceans — use carefully near prawn ponds.</td><td><span class="bn">জলজ চাষে অনুমোদিত। চিংড়ি পুকুরের কাছে সতর্কতার সাথে।</span><span class="te">అక్వాకల్చర్‌కు అనుమతి ఉంది. రొయ్యల చెరువు దగ్గర జాగ్రత్తగా వాడండి.</span></td></tr>
-        <tr><td>KMnO₄ (Potassium Permanganate)</td><td>None required</td><td>Rapidly degrades. Generally regarded safe at recommended doses.</td><td><span class="bn">দ্রুত ভেঙে যায়। নির্দেশিত মাত্রায় নিরাপদ।</span><span class="te">వేగంగా విచ్ఛిన్నమవుతుంది. సిఫార్సు మాత్రలో సురక్షితం.</span></td></tr>
-        <tr><td>Common Salt (NaCl)</td><td>None</td><td>Food-safe. No residue concern. Preferred option for food fish.</td><td><span class="bn">খাদ্য-নিরাপদ। কোনো অবশিষ্টাংশের চিন্তা নেই।</span><span class="te">ఆహార-సురక్షితం. అవశేష సమస్య లేదు. తినే చేపలకు మంచి ఎంపిక.</span></td></tr>
-        <tr><td>CIFAX (ICAR-CIFA)</td><td>Consult label</td><td>ICAR-CIFA approved formulation for EUS. Recommended first-line EUS treatment.</td><td><span class="bn">ইইউএস-এর জন্য আইসিএআর-সিফা অনুমোদিত।</span><span class="te">EUS కోసం ICAR-CIFA అనుమోదించినది. EUS మొదటి చికిత్స.</span></td></tr>
-        <tr><td>Formalin 37%</td><td>7 days minimum</td><td>Effective for Ich &amp; parasites. Aerate well. Do not exceed 25 ppm.</td><td><span class="bn">আইকে ও পরজীবীতে কার্যকর। বায়ু দিন। ২৫ পিপিএম-এর বেশি নয়।</span><span class="te">ICH మరియు పరాన్నజీవులకు కార్యకారితం. ఏరియేషన్ కొట్టండి. 25 ppm మించవద్దు.</span></td></tr>
-        <tr><td>Ivermectin 1%</td><td>28 days</td><td>Effective for Argulus &amp; internal parasites (ICAR validated). Do not use within 4 weeks of harvest.</td><td><span class="bn">আরগুলাস ও অন্তঃপরজীবীতে কার্যকর। ধরার ৪ সপ্তাহ আগে বন্ধ করুন।</span><span class="te">అర్గులస్ మరియు అంతర్గత పరాన్నజీవులకు పని చేస్తుంది. పట్టే 4 వారాల ముందే ఆపాలి.</span></td></tr>
-        <tr><td>Malachite Green</td><td class="banned">60+ days (fry only)</td><td class="banned">⛔ FSSAI restricted for food fish above fingerling stage. Suspected carcinogen.</td><td class="banned"><span class="bn">⛔ খাদ্য মাছে নিষিদ্ধ। সন্দেহজনক কার্সিনোজেন।</span><span class="te">⛔ తినే చేపలకు నిషేధం. అనుమానిత కార్సినోజెన్.</span></td></tr>
-        <tr><td>Ekalux / Quinalphos 25% EC</td><td class="banned">BANNED</td><td class="banned">⛔ Aquaculture use restricted/prohibited in multiple states. Food safety hazard.</td><td class="banned"><span class="bn">⛔ একাধিক রাজ্যে নিষিদ্ধ। খাদ্য নিরাপত্তা ঝুঁকি।</span><span class="te">⛔ అనేక రాష్ట్రాల్లో నిషేధం. ఆహార భద్రత ముప్పు.</span></td></tr>
-        <tr><td>Nuvan / Dichlorvos 76 EC</td><td class="banned">Restricted</td><td class="banned">⛔ Not approved for food fish production.</td><td class="banned"><span class="bn">⛔ খাদ্য মাছের উৎপাদনে অনুমোদিত নয়।</span><span class="te">⛔ తినే చేప ఉత్పత్తికి అనుమతి లేదు.</span></td></tr>
-        <tr><td>Antibiotics (any)</td><td>21–30+ days</td><td>Must be prescribed by registered veterinarian. Never use within 4 weeks of harvest.</td><td><span class="bn">নিবন্ধিত পশু চিকিৎসকের পরামর্শ ছাড়া দেবেন না।</span><span class="te">నమోదిత పశువైద్యుడి సూచన లేకుండా వేయకండి. పట్టే 4 వారాల ముందే ఆపాలి.</span></td></tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-<footer>
-  <p><strong>IMC Disease &amp; Health Management</strong></p>
-  <p class="bn">আইএমসি রোগ ও স্বাস্থ্য ব্যবস্থাপনা — বাংলা অঞ্চল মাঠ নির্দেশিকা</p>
-  <p class="te" style="font-family:'Noto Sans Telugu',sans-serif;font-size:12px;">IMC చేపల రోగ నిర్వహణ</p>
-  <p style="margin-top:8px;">Research basis: ICAR-CIFA · ICAR-CIFRI Barrackpore · Indian Journal of Animal Sciences 2024 · International Journal of Fisheries &amp; Aquatic Studies 2024 · OIE/WOAH EUS Manual · FAO Aquaculture Health Guidelines</p>
-  <p>Species: Catla catla · Labeo rohita · Cirrhinus mrigala | Composite culture pond systems </p>
-  <p class="legal">⚠ Field reference guide only. Always consult a registered fish health veterinarian for diagnosis and antibiotic prescription. Treatment responses vary by pond condition, season, and pathogen strain.<br>
-  <span class="bn" style="font-size:11px;color:#2a4a6a;">⚠ শুধুমাত্র মাঠ নির্দেশিকা। রোগ নির্ণয় ও অ্যান্টিবায়োটিক ব্যবস্থাপতার জন্য নিবন্ধিত মৎস্য পশু চিকিৎসকের পরামর্শ নিন।</span>
-  <span class="te" style="font-family:'Noto Sans Telugu',sans-serif;font-size:11px;color:#2a4a6a;">⚠ ఇది కేవలం సూచన కోసం మాత్రమే. రోగ నిర్ధారణకు మరియు మందులకు నమోదిత మత్స్య పశువైద్యుడిని సంప్రదించండి.</span></p>
-</footer>
-
-<!-- ════════════════════════════════════════
-     PRINT BAR (fixed, screen only)
-════════════════════════════════════════ -->
-
-<div class="print-bar" role="complementary" aria-label="Print options">
-  <div class="print-label">Print / <span class="bn">মুদ্রণ</span><span class="te">ముద్రణ</span></div>
-  <button class="print-btn a4" onclick="triggerPrint('a4')" title="Print full document in A4">
-    🖨 A4 Full Doc
-  </button>
-  <button class="print-btn a5" onclick="triggerPrint('a5')" title="Print A5 Compact">
-    🖨 A5 Compact
-  </button>
+  <div id="dscr"><div id="dbody"></div></div>
 </div>
 
 <script>
-/* Language switcher */
-/* ── Language switcher ──────────────────────────────── */
-function setLang(lang) {
-  // 1. Set data attribute
-  document.body.setAttribute('data-lang', lang);
+var D = [
+{
+  id:'eus', icon:'🔴', ac:'ac-red',
+  tags:[{c:'tk',t:{en:'CRITICAL · BENGAL',bn:'সংকটজনক',te:'చాలా ప్రమాదకరం'}}],
+  title:{en:'EUS — Epizootic Ulcerative Syndrome',bn:'ইইউএস — ক্ষত মহামারী রোগ',te:'EUS — చేపలకు పుళ్ళు వచ్చే రోగం'},
+  sub:{en:"Aphanomyces invadans · Bengal's #1 killer · Oct–Feb",bn:'অ্যাফানোমাইসেস ইনভেডানস · বাংলার সবচেয়ে বিপজ্জনক',te:'ఒక రకం శిలీంధ్ర జీవి · అక్టోబర్–ఫిబ్రవరి'},
+  en:`<div class='cause'><strong>Causative Agent:</strong> Aphanomyces invadans (oomycete). Bengal's #1 seasonal killer. Peaks Oct–Feb when water temp drops below 25°C. Mrigal &gt; Catla &gt; Rohu susceptibility.</div><div class='symp'><span class='symp-head'>Symptoms</span>Small red spots → large coin-sized grey-centred necrotic ulcers on head, dorsal &amp; mid-body. Fish spin erratically &amp; surface frequently. High mortality if untreated.</div><div class='step'>Prevention — Apply at start of October</div><ul class='dl'><li><span class='dlc'>CIFAX (ICAR-CIFA formulation)</span><span class='dlq'>150 ml / bigha</span></li><li><span class='dlc'>Potassium Permanganate (KMnO₄)</span><span class='dlq'>350–600 g / bigha</span></li><li><span class='dlc'>Agricultural Lime — Ca(OH)₂</span><span class='dlq'>15–25 kg / bigha</span><span class='dln'>Raise pH ≥7.5 to inhibit Aphanomyces. Apply fortnightly Oct–Feb.</span></li></ul><div class='step'>Active Outbreak Treatment</div><ul class='dl'><li><span class='dlc'>Potassium Permanganate (KMnO₄) bath</span><span class='dlq'>10–15 mg/L · 30 min</span></li><li><span class='dlc'>CIFAX pond treatment</span><span class='dlq'>250 ml / bigha · repeat in 7 days</span></li><li><span class='dlc'>NaCl salt bath</span><span class='dlq'>10 g/L · 10 min</span></li><li><span class='dlc'>Oxytetracycline in feed</span><span class='dlq'>50–75 mg/kg fish/day · 10 days</span><span class='dln'>Only under veterinary prescription. Prevents secondary bacterial infection.</span></li></ul><div class='iw'><span class='bh'>⚠ Season Alert</span>EUS can wipe out 60–80% of stock in 2 weeks if untreated. Begin prevention lime application in September before temperatures drop.</div>`,
+  bn:`<div class='cause'><strong>কারণকারী জীবাণু:</strong> অ্যাফানোমাইসেস ইনভেডানস (ওমাইসেট)। বাংলার সবচেয়ে বিপজ্জনক মৌসুমী রোগ। অক্টোবর–ফেব্রুয়ারিতে জলের তাপমাত্রা ২৫°C-এর নিচে নামলে সবচেয়ে বেশি হয়।</div><div class='symp'><span class='symp-head'>লক্ষণ</span>ছোট লাল দাগ → মাথা, পিঠ ও শরীরের মাঝখানে বড় ধূসর কেন্দ্রযুক্ত ঘা। মাছ এলোমেলোভাবে ঘোরে ও ঘন ঘন উপরে আসে। চিকিৎসা না করলে মৃত্যুহার বেশি।</div><div class='step'>প্রতিরোধ — অক্টোবরের শুরুতে প্রয়োগ করুন</div><ul class='dl'><li><span class='dlc'>CIFAX (ICAR-CIFA প্রণালী)</span><span class='dlq'>১৫০ মিলি / বিঘা</span></li><li><span class='dlc'>পটাশিয়াম পারম্যাঙ্গানেট (KMnO₄)</span><span class='dlq'>৩৫০–৬০০ গ্রা / বিঘা</span></li><li><span class='dlc'>কৃষি চুন — Ca(OH)₂</span><span class='dlq'>১৫–২৫ কেজি / বিঘা</span><span class='dln'>pH ≥৭.৫ করুন — অ্যাফানোমাইসেস বাধা পায়। অক্টোবর–ফেব্রুয়ারি পক্ষকালে প্রয়োগ।</span></li></ul><div class='step'>সক্রিয় সংক্রমণের চিকিৎসা</div><ul class='dl'><li><span class='dlc'>KMnO₄ স্নান</span><span class='dlq'>১০–১৫ মি.গ্রা/লি · ৩০ মিনিট</span></li><li><span class='dlc'>CIFAX পুকুরে প্রয়োগ</span><span class='dlq'>২৫০ মিলি / বিঘা · ৭ দিন পর আবার</span></li><li><span class='dlc'>NaCl লবণ স্নান</span><span class='dlq'>১০ গ্রা/লি · ১০ মিনিট</span></li><li><span class='dlc'>অক্সিটেট্রাসাইক্লিন খাবারে</span><span class='dlq'>৫০–৭৫ মি.গ্রা/কেজি মাছ/দিন · ১০ দিন</span><span class='dln'>শুধু পশু চিকিৎসকের পরামর্শে। গৌণ ব্যাকটেরিয়া সংক্রমণ প্রতিরোধ করে।</span></li></ul><div class='iw'><span class='bh'>⚠ মৌসুম সতর্কতা</span>চিকিৎসা না করলে EUS ২ সপ্তাহে ৬০–৮০% মাছ মেরে ফেলতে পারে। সেপ্টেম্বরেই চুন দিন।</div>`,
+  te:`<div class='cause'><strong>రోగం ఎలా వస్తుంది:</strong> అఫానోమైసెస్ ఇన్‌వేడాన్స్ అనే శిలీంధ్ర జీవి వల్ల వస్తుంది. బెంగాల్ జోన్‌లో #1 మారణ రోగం. అక్టోబర్–ఫిబ్రవరిలో నీటి ఉష్ణోగ్రత 25°C కంటే తక్కువ అయినప్పుడు ఎక్కువగా వస్తుంది.</div><div class='symp'><span class='symp-head'>లక్షణాలు</span>చిన్న ఎర్రని మచ్చలు → తల, వెన్ను, శరీరం మధ్య పెద్ద బూడిద రంగు పుళ్ళు. చేపలు అటూఇటూ తిరుగుతాయి, పైకి వస్తాయి. చికిత్స లేకుంటే చాలా చేపలు చనిపోతాయి.</div><div class='step'>నివారణ — అక్టోబర్ మొదట్లో వేయండి</div><ul class='dl'><li><span class='dlc'>CIFAX (ICAR-CIFA మందు)</span><span class='dlq'>150 ml / బిఘా</span></li><li><span class='dlc'>పొటాషియం పర్మాంగనేట్ (KMnO₄)</span><span class='dlq'>350–600 గ్రా / బిఘా</span></li><li><span class='dlc'>వ్యవసాయ సున్నం — Ca(OH)₂</span><span class='dlq'>15–25 కి.గ్రా / బిఘా</span><span class='dln'>pH ≥7.5 చేయండి — అఫానోమైసెస్ పెరగకుండా ఆపుతుంది. అక్టోబర్–ఫిబ్రవరి పక్షానికోసారి వేయండి.</span></li></ul><div class='step'>చురుకైన వ్యాప్తి చికిత్స</div><ul class='dl'><li><span class='dlc'>KMnO₄ స్నానం</span><span class='dlq'>10–15 mg/L · 30 నిమిషాలు</span></li><li><span class='dlc'>CIFAX చెరువులో</span><span class='dlq'>250 ml / బిఘా · 7 రోజుల తర్వాత మళ్ళీ</span></li><li><span class='dlc'>NaCl ఉప్పు స్నానం</span><span class='dlq'>10 g/L · 10 నిమిషాలు</span></li><li><span class='dlc'>ఆహారంలో ఆక్సీటెట్రాసైక్లిన్</span><span class='dlq'>50–75 mg/kg చేప/రోజు · 10 రోజులు</span><span class='dln'>పశువైద్యుని సూచన మేరకు మాత్రమే. ద్వితీయ బాక్టీరియా సంక్రమణ నివారిస్తుంది.</span></li></ul><div class='iw'><span class='bh'>⚠ మరొక హెచ్చరిక</span>చికిత్స లేకుంటే EUS 2 వారాల్లో 60–80% చేపలను చంపగలదు. సెప్టెంబర్‌లోనే సున్నం వేయండి.</div>`
+},
+{
+  id:'bact_ulcer', icon:'🩸', ac:'ac-red',
+  tags:[{c:'tb2',t:{en:'BACTERIAL',bn:'ব্যাকটেরিয়া',te:'బాక్టీరియా'}}],
+  title:{en:'Bacterial Ulcers & Hemorrhagic Septicaemia',bn:'ব্যাকটেরিয়াজনিত ক্ষত ও রক্তক্ষরণ পচন রোগ',te:'బాక్టీరియా వల్ల వచ్చే పుళ్ళు, రక్తం కారడం'},
+  sub:{en:'Aeromonas hydrophila · Secondary to EUS or injury',bn:'অ্যারোমোনাস হাইড্রোফিলা · EUS-পরবর্তী বা আঘাতের পরে',te:'EUS తర్వాత లేదా చేపకు దెబ్బ తగిలినప్పుడు'},
+  en:`<div class='cause'><strong>Causative Agent:</strong> Aeromonas hydrophila, A. sobria, Pseudomonas spp. Often secondary to EUS ulcers, crowding stress, or poor water quality. Haemorrhagic septicaemia = bacteria enter bloodstream and cause systemic bleeding.</div><div class='symp'><span class='symp-head'>Symptoms</span>Skin ulcers with red-rimmed edges and pale/white centres. Haemorrhagic patches (red blotches) on skin, fins, around vent. Fin erosion. Abdominal swelling (dropsy stage). Pop-eye (exophthalmia) in severe cases.</div><div class='step'>Treatment Protocol</div><ul class='dl'><li><span class='dlc'>KMnO₄ pond treatment</span><span class='dlq'>2–4 mg/L · whole pond</span></li><li><span class='dlc'>Salt (NaCl) bath</span><span class='dlq'>10–15 g/L · 10 min</span></li><li><span class='dlc'>Lime Ca(OH)₂ — raise pH</span><span class='dlq'>15–20 kg / bigha</span></li><li><span class='dlc'>Oxytetracycline in feed</span><span class='dlq'>50–75 mg/kg fish/day · 10 days</span><span class='dln'>Only with veterinary prescription. Do NOT use if fish are destined for harvest within 30 days.</span></li></ul><div class='step'>Prevention</div><ul class='dl'><li><span class='dlc'>Maintain DO &gt;5 mg/L at all times</span><span class='dlq'>Aeromonas thrives in low DO</span></li><li><span class='dlc'>Reduce stocking density during monsoon</span><span class='dlq'>&lt;5000 fish/bigha</span></li><li><span class='dlc'>Fortnightly lime application</span><span class='dlq'>8–10 kg / bigha</span></li></ul>`,
+  bn:`<div class='cause'><strong>কারণকারী জীবাণু:</strong> অ্যারোমোনাস হাইড্রোফিলা, এ. সোব্রিয়া, সিউডোমোনাস। প্রায়ই EUS ক্ষতের পরে বা ঘন মজুদ ও খারাপ জলমানে সেকেন্ডারি সংক্রমণ। হেমোরেজিক সেপ্টিসেমিয়া = ব্যাকটেরিয়া রক্তে ঢুকে সারা শরীরে ছড়ায়।</div><div class='symp'><span class='symp-head'>লক্ষণ</span>লাল প্রান্তযুক্ত ও ফ্যাকাশে কেন্দ্রের ত্বকের ক্ষত। ত্বকে, পাখনায় ও পায়ুর কাছে রক্তক্ষরণের দাগ। পাখনা ক্ষয়। পেট ফোলা। গুরুতর ক্ষেত্রে চোখ বেরিয়ে আসা।</div><div class='step'>চিকিৎসা প্রণালী</div><ul class='dl'><li><span class='dlc'>KMnO₄ পুকুরে প্রয়োগ</span><span class='dlq'>২–৪ মি.গ্রা/লি · পুরো পুকুর</span></li><li><span class='dlc'>NaCl লবণ স্নান</span><span class='dlq'>১০–১৫ গ্রা/লি · ১০ মিনিট</span></li><li><span class='dlc'>চুন Ca(OH)₂ — pH বাড়ান</span><span class='dlq'>১৫–২০ কেজি / বিঘা</span></li><li><span class='dlc'>অক্সিটেট্রাসাইক্লিন খাবারে</span><span class='dlq'>৫০–৭৫ মি.গ্রা/কেজি মাছ/দিন · ১০ দিন</span><span class='dln'>শুধু পশু চিকিৎসকের পরামর্শে। ধরার ৩০ দিনের মধ্যে ব্যবহার করবেন না।</span></li></ul><div class='step'>প্রতিরোধ</div><ul class='dl'><li><span class='dlc'>সর্বদা DO &gt;৫ মি.গ্রা/লি বজায় রাখুন</span><span class='dlq'>অ্যারোমোনাস কম অক্সিজেনে বাড়ে</span></li><li><span class='dlc'>বর্ষায় মজুদ কমান</span><span class='dlq'>&lt;৫০০০ মাছ/বিঘা</span></li><li><span class='dlc'>পক্ষকালে চুন দিন</span><span class='dlq'>৮–১০ কেজি / বিঘা</span></li></ul>`,
+  te:`<div class='cause'><strong>రోగం ఎలా వస్తుంది:</strong> అరోమోనాస్ హైడ్రోఫిలా, సూడోమోనాస్ జాతి బాక్టీరియా వల్ల వస్తుంది. తరచుగా EUS పుళ్ళ తర్వాత లేదా నీరు పాడైనప్పుడు వస్తుంది. హెమోరేజిక్ సెప్టిసెమియా = బాక్టీరియా రక్తంలోకి చేరి శరీరంలో రక్తస్రావం కలిగిస్తుంది.</div><div class='symp'><span class='symp-head'>లక్షణాలు</span>ఎర్రని అంచులతో లేత మధ్యభాగం ఉన్న చర్మ పుళ్ళు. చర్మంపై, రెక్కలపై, పాయువు చుట్టూ రక్తస్రావపు మచ్చలు. రెక్కలు అరిగిపోవడం. పొట్ట వాపు. తీవ్ర స్థితిలో కళ్ళు బయటకు వస్తాయి.</div><div class='step'>చికిత్స విధానం</div><ul class='dl'><li><span class='dlc'>KMnO₄ చెరువులో</span><span class='dlq'>2–4 mg/L · మొత్తం చెరువు</span></li><li><span class='dlc'>NaCl ఉప్పు స్నానం</span><span class='dlq'>10–15 g/L · 10 నిమిషాలు</span></li><li><span class='dlc'>సున్నం Ca(OH)₂ — pH పెంచండి</span><span class='dlq'>15–20 కి.గ్రా / బిఘా</span></li><li><span class='dlc'>ఆహారంలో ఆక్సీటెట్రాసైక్లిన్</span><span class='dlq'>50–75 mg/kg చేప/రోజు · 10 రోజులు</span><span class='dln'>పశువైద్యుని సూచన మేరకు మాత్రమే. పట్టుకోవడానికి 30 రోజుల ముందు వాడవద్దు.</span></li></ul><div class='step'>నివారణ</div><ul class='dl'><li><span class='dlc'>DO &gt;5 mg/L నిర్వహించండి</span><span class='dlq'>అరోమోనాస్ తక్కువ DO లో పెరుగుతుంది</span></li><li><span class='dlc'>వర్షాకాలంలో సాంద్రత తగ్గించండి</span><span class='dlq'>&lt;5000 చేపలు/బిఘా</span></li><li><span class='dlc'>పక్షానికోసారి సున్నం</span><span class='dlq'>8–10 కి.గ్రా / బిఘా</span></li></ul>`
+},
+{
+  id:'tail_fin_rot', icon:'🐟', ac:'ac-orange',
+  tags:[{c:'tb2',t:{en:'BACTERIAL',bn:'ব্যাকটেরিয়া',te:'బాక్టీరియా'}}],
+  title:{en:'Tail & Fin Rot (Columnaris)',bn:'লেজ ও পাখনা পচা রোগ',te:'తోక, రెక్కలు కుళ్ళే రోగం'},
+  sub:{en:'Flavobacterium columnare · Poor water quality trigger',bn:'ফ্ল্যাভোব্যাকটেরিয়াম · খারাপ জলমানে হয়',te:'నీరు పాడైనప్పుడు లేదా ఎక్కువ చేపలు ఉన్నప్పుడు'},
+  en:`<div class='cause'><strong>Causative Agent:</strong> Flavobacterium columnare, Aeromonas spp. Triggered by poor water quality, overcrowding, or mechanical injury. Very common in monsoon season and winter.</div><div class='symp'><span class='symp-head'>Symptoms</span>Fraying and erosion of tail and fins. White/yellow cottony growth at fin edges. Fins appear ragged and shorter. In severe cases, fin base becomes red and ulcerated. Can reach body if untreated.</div><div class='step'>Treatment</div><ul class='dl'><li><span class='dlc'>KMnO₄ bath</span><span class='dlq'>5–10 mg/L · 30–60 min · daily for 3 days</span></li><li><span class='dlc'>Salt (NaCl) bath</span><span class='dlq'>10 g/L · 10 min</span></li><li><span class='dlc'>KMnO₄ pond treatment</span><span class='dlq'>2–3 mg/L · whole pond</span></li><li><span class='dlc'>Agricultural lime</span><span class='dlq'>10–15 kg / bigha · raise pH</span></li></ul><div class='it'><span class='bh'>Prevention</span>Maintain good water quality (DO &gt;5 mg/L, pH 7–8.5). Avoid overcrowding. Handle fish gently during netting to minimise injuries.</div>`,
+  bn:`<div class='cause'><strong>কারণকারী জীবাণু:</strong> ফ্ল্যাভোব্যাকটেরিয়াম কলামনারে, অ্যারোমোনাস। খারাপ জলমান, ঘন মজুদ বা আঘাতে হয়। বর্ষা ও শীতে সবচেয়ে বেশি।</div><div class='symp'><span class='symp-head'>লক্ষণ</span>লেজ ও পাখনার প্রান্ত ছিঁড়ে যায় ও ক্ষয় হয়। পাখনার প্রান্তে সাদা/হলুদ তুলার মতো বৃদ্ধি। পাখনা ছেঁড়া ও ছোট দেখায়। গুরুতর হলে পাখনার গোড়া লাল ও ক্ষতযুক্ত হয়। চিকিৎসা না করলে শরীরে ছড়ায়।</div><div class='step'>চিকিৎসা</div><ul class='dl'><li><span class='dlc'>KMnO₄ স্নান</span><span class='dlq'>৫–১০ মি.গ্রা/লি · ৩০–৬০ মিনিট · ৩ দিন</span></li><li><span class='dlc'>NaCl লবণ স্নান</span><span class='dlq'>১০ গ্রা/লি · ১০ মিনিট</span></li><li><span class='dlc'>KMnO₄ পুকুরে প্রয়োগ</span><span class='dlq'>২–৩ মি.গ্রা/লি · পুরো পুকুর</span></li><li><span class='dlc'>কৃষি চুন</span><span class='dlq'>১০–১৫ কেজি / বিঘা · pH বাড়ান</span></li></ul><div class='it'><span class='bh'>প্রতিরোধ</span>ভালো জলমান বজায় রাখুন (DO &gt;৫ মি.গ্রা/লি, pH ৭–৮.৫)। ঘন মজুদ এড়ান। জাল দেওয়ার সময় মাছ সাবধানে সরান।</div>`,
+  te:`<div class='cause'><strong>రోగం ఎలా వస్తుంది:</strong> ఫ్లేవోబాక్టీరియమ్ కలమ్నారే, అరోమోనాస్ జాతి. నీరు పాడైనప్పుడు, చేపలు ఎక్కువైనప్పుడు, లేదా గాయమైనప్పుడు వస్తుంది. వర్షాకాలంలో మరియు శీతాకాలంలో ఎక్కువ.</div><div class='symp'><span class='symp-head'>లక్షణాలు</span>తోక మరియు రెక్కల అంచులు అరిగిపోవడం. రెక్కల అంచులలో తెల్లటి/పసుపు రంగు పత్తి లాంటి పదార్థం. రెక్కలు చిరిగినట్టు, చిన్నగా కనిపిస్తాయి. తీవ్రంగా ఉంటే రెక్కల మూల ఎర్రగా, పుళ్ళతో ఉంటుంది.</div><div class='step'>చికిత్స</div><ul class='dl'><li><span class='dlc'>KMnO₄ స్నానం</span><span class='dlq'>5–10 mg/L · 30–60 నిమి · 3 రోజులు</span></li><li><span class='dlc'>NaCl ఉప్పు స్నానం</span><span class='dlq'>10 g/L · 10 నిమిషాలు</span></li><li><span class='dlc'>KMnO₄ చెరువులో</span><span class='dlq'>2–3 mg/L · మొత్తం చెరువు</span></li><li><span class='dlc'>వ్యవసాయ సున్నం</span><span class='dlq'>10–15 కి.గ్రా / బిఘా · pH పెంచండి</span></li></ul><div class='it'><span class='bh'>నివారణ</span>మంచి నీటి నాణ్యత (DO &gt;5 mg/L, pH 7–8.5) నిర్వహించండి. అధిక సాంద్రత నివారించండి. వల వేసేటప్పుడు చేపలను జాగ్రత్తగా నిర్వహించండి.</div>`
+},
+{
+  id:'red_dropsy', icon:'💧', ac:'ac-red',
+  tags:[{c:'tb2',t:{en:'BACTERIAL · SYSTEMIC',bn:'ব্যাকটেরিয়া · সিস্টেমিক',te:'బాక్టీరియా · వ్యవస్థగత'}}],
+  title:{en:'Red Disease & Dropsy (Ascites)',bn:'লাল রোগ ও জলোদর (ড্রপসি)',te:'ఎరుపు రోగం & చేప ఉబ్బే రోగం (డ్రాప్సీ)'},
+  sub:{en:'Aeromonas hydrophila systemic · Abdominal swelling',bn:'অ্যারোমোনাস সিস্টেমিক সেপ্টিসেমিয়া · পেট ফোলা',te:'బాక్టీరియా రక్తంలోకి చేరి మొత్తం శరీరాన్ని పాడు చేస్తుంది'},
+  en:`<div class='cause'><strong>Causative Agent:</strong> Aeromonas hydrophila systemic septicaemia. Red disease = haemorrhages on fins and body surface. Dropsy (Ascites) = fluid accumulation in body cavity — a late-stage systemic infection. Rohu, Catla, Mrigal all affected.</div><div class='symp'><span class='symp-head'>Symptoms</span>Red disease: reddish patches on skin, base of fins and near vent. Dropsy: markedly swollen abdomen with raised scales (pinecone appearance). Pop-eye (exophthalmia). Very lethargic swimming. High mortality once dropsy stage reached.</div><div class='step'>Treatment</div><ul class='dl'><li><span class='dlc'>KMnO₄ pond treatment</span><span class='dlq'>2–4 mg/L</span></li><li><span class='dlc'>Agricultural lime</span><span class='dlq'>15–20 kg / bigha</span></li><li><span class='dlc'>Salt bath (NaCl)</span><span class='dlq'>10–15 g/L · 10–15 min</span></li><li><span class='dlc'>Oxytetracycline or Amoxicillin</span><span class='dlq'>50–75 mg/kg fish/day · 7–10 days</span><span class='dln'>Only under veterinary prescription. Dropsy stage has very poor prognosis — euthanise severe cases and remove from pond immediately.</span></li></ul><div class='iw'><span class='bh'>⚠ Note</span>Once ascites (dropsy) stage is reached, prognosis is very poor. Separate and remove affected fish immediately to prevent spread. Focus on prevention in remaining stock.</div>`,
+  bn:`<div class='cause'><strong>কারণকারী জীবাণু:</strong> অ্যারোমোনাস হাইড্রোফিলা (সিস্টেমিক সেপ্টিসেমিয়া)। লাল রোগ = পাখনায় ও ত্বকে রক্তক্ষরণ। ড্রপসি = শরীরের গহ্বরে তরল জমা — দেরিতে পাওয়া সিস্টেমিক সংক্রমণ। রুই, কাতলা, মৃগেল সব আক্রান্ত।</div><div class='symp'><span class='symp-head'>লক্ষণ</span>লাল রোগ: ত্বকে, পাখনার গোড়ায় ও পায়ুর কাছে লাল দাগ। ড্রপসি: পেট ফুলে ওঠে, আঁশ উঠে যায় (পাইনকোন দেখতে)। চোখ বেরিয়ে আসা। খুব ধীরে সাঁতার। ড্রপসি পর্যায়ে মৃত্যুহার বেশি।</div><div class='step'>চিকিৎসা</div><ul class='dl'><li><span class='dlc'>KMnO₄ পুকুরে প্রয়োগ</span><span class='dlq'>২–৪ মি.গ্রা/লি</span></li><li><span class='dlc'>কৃষি চুন</span><span class='dlq'>১৫–২০ কেজি / বিঘা</span></li><li><span class='dlc'>NaCl লবণ স্নান</span><span class='dlq'>১০–১৫ গ্রা/লি · ১০–১৫ মিনিট</span></li><li><span class='dlc'>অক্সিটেট্রাসাইক্লিন বা অ্যামোক্সিসিলিন</span><span class='dlq'>৫০–৭৫ মি.গ্রা/কেজি মাছ/দিন · ৭–১০ দিন</span><span class='dln'>শুধু পশু চিকিৎসকের পরামর্শে। ড্রপসি পর্যায়ে পূর্বাভাস খুবই খারাপ।</span></li></ul><div class='iw'><span class='bh'>⚠ সতর্কতা</span>ড্রপসি পর্যায়ে পূর্বাভাস খুবই খারাপ। আক্রান্ত মাছ অবিলম্বে আলাদা করুন এবং সরিয়ে দিন যাতে রোগ না ছড়ায়।</div>`,
+  te:`<div class='cause'><strong>రోగం ఎలా వస్తుంది:</strong> అరోమోనాస్ హైడ్రోఫిలా బాక్టీరియా రక్తంలోకి చేరి మొత్తం శరీరాన్ని పాడు చేస్తుంది. ఎరుపు రోగం = రెక్కలు మరియు చర్మంపై రక్తస్రావం. డ్రాప్సీ = శరీర గుహలో ద్రవం చేరడం. రోహు, కట్లా, మృగల్ అన్నీ ప్రభావితమవుతాయి.</div><div class='symp'><span class='symp-head'>లక్షణాలు</span>ఎరుపు రోగం: చర్మంపై, రెక్కల మూలలో, పాయువు దగ్గర ఎర్రని మచ్చలు. డ్రాప్సీ: పొట్ట విపరీతంగా ఉబ్బుతుంది, పొలుసులు పైకి లేస్తాయి (పైన్‌కోన్ లాగా కనిపిస్తాయి). కళ్ళు బయటకు వస్తాయి.</div><div class='step'>చికిత్స</div><ul class='dl'><li><span class='dlc'>KMnO₄ చెరువులో</span><span class='dlq'>2–4 mg/L</span></li><li><span class='dlc'>వ్యవసాయ సున్నం</span><span class='dlq'>15–20 కి.గ్రా / బిఘా</span></li><li><span class='dlc'>NaCl ఉప్పు స్నానం</span><span class='dlq'>10–15 g/L · 10–15 నిమిషాలు</span></li><li><span class='dlc'>ఆక్సీటెట్రాసైక్లిన్ లేదా అమోక్సిసిలిన్</span><span class='dlq'>50–75 mg/kg చేప/రోజు · 7–10 రోజులు</span><span class='dln'>పశువైద్యుని సూచన మేరకు మాత్రమే. డ్రాప్సీ దశలో ఫలితాలు చాలా తక్కువ.</span></li></ul><div class='iw'><span class='bh'>⚠ హెచ్చరిక</span>డ్రాప్సీ దశకు చేరిన తర్వాత చికిత్స ఫలించే అవకాశం చాలా తక్కువ. వెంటనే ప్రభావిత చేపలను వేరుచేయండి.</div>`
+},
+{
+  id:'argulus', icon:'🦠', ac:'ac-orange',
+  tags:[{c:'tp',t:{en:'ECTOPARASITE',bn:'বহিঃপরজীবী',te:'బయట పరాన్నజీవి'}}],
+  title:{en:'Argulus — Fish Lice (Argulosis)',bn:'আরগুলাস — মাছের উকুন (আরগুলোসিস)',te:'చేపకు పేన్లు పట్టడం (అర్గులోసిస్)'},
+  sub:{en:'Disc-shaped ectoparasite · Visible to naked eye · Monsoon peak',bn:'চাকতি আকারের বহিঃপরজীবী · খালি চোখে দেখা যায়',te:'వర్షాకాలంలో ఎక్కువ · నగ్నంగా కనిపించే పేను'},
+  en:`<div class='cause'><strong>Causative Agent:</strong> Argulus foliaceus, A. japonicus. Disc-shaped branchiuran crustacean ectoparasite — visible to the naked eye (5–8 mm). Attaches to skin with suckers. Feeds on blood, injects anticoagulant and toxic saliva. Peaks in June–September (monsoon).</div><div class='symp'><span class='symp-head'>Symptoms</span>Visible disc-shaped parasites on skin and fins. Intense irritation — fish flashing (rubbing against substrate), jumping. Haemorrhagic spots at attachment sites. Anaemia, lethargy. Entry wounds allow secondary bacterial/fungal infection.</div><div class='step'>Treatment</div><ul class='dl'><li><span class='dlc'>Dipterex (Trichlorfon / Dylox) pond treatment</span><span class='dlq'>0.25 mg/L (0.25 ppm) · whole pond</span><span class='dln'>Most effective. Repeat in 7–10 days. Withhold harvest for 21 days post-treatment.</span></li><li><span class='dlc'>Organophosphate: Ekalux (Quinalphos 25% EC)</span><span class='dlq'>0.5 ml/100L bath · 5–10 min</span></li><li><span class='dlc'>Nuvan (Dichlorvos 76 EC) bath</span><span class='dlq'>1 ml/100L · 5 min</span></li><li><span class='dlc'>Salt (NaCl) bath — mild alternative</span><span class='dlq'>10–15 g/L · 10 min</span></li></ul><div class='step'>Prevention</div><ul class='dl'><li><span class='dlc'>Drain &amp; dry pond between crops</span><span class='dlq'>Kills resting eggs and juveniles</span></li><li><span class='dlc'>Quicklime (CaO) on dry pond bottom</span><span class='dlq'>200 kg / bigha</span></li></ul><div class='ib'><span class='bh'>✖ Caution</span>Organophosphate treatments (Dipterex, Nuvan, Ekalux) require strict withholding periods. Do NOT treat fish destined for harvest within 21 days. Use only registered formulations under veterinary guidance.</div>`,
+  bn:`<div class='cause'><strong>কারণকারী জীবাণু:</strong> আরগুলাস ফোলিয়াসিয়াস, এ. জাপোনিকাস। চাকতি আকারের বহিঃপরজীবী — খালি চোখে দেখা যায় (৫–৮ মিমি)। চুষক দিয়ে ত্বকে লাগে। রক্ত চুষে নেয় ও বিষাক্ত লালা ঢুকিয়ে দেয়। জুন–সেপ্টেম্বরে সবচেয়ে বেশি।</div><div class='symp'><span class='symp-head'>লক্ষণ</span>ত্বকে ও পাখনায় দৃশ্যমান চাকতি আকৃতির পরজীবী। তীব্র বিরক্তি — মাছ ঘষে বেড়ায়, লাফ দেয়। সংযুক্তির জায়গায় রক্তের দাগ। রক্তশূন্যতা, ঝিমুনি। ক্ষতস্থানে ব্যাকটেরিয়া ও ছত্রাক ঢোকে।</div><div class='step'>চিকিৎসা</div><ul class='dl'><li><span class='dlc'>ডিপটেরেক্স (ট্রাইক্লোরফন/ডাইলক্স) পুকুরে</span><span class='dlq'>০.২৫ মি.গ্রা/লি · পুরো পুকুর</span><span class='dln'>সবচেয়ে কার্যকর। ৭–১০ দিন পর আবার দিন। চিকিৎসার ২১ দিন পর মাছ ধরুন।</span></li><li><span class='dlc'>একালাক্স (কুইনালফস ২৫% ইসি) স্নান</span><span class='dlq'>০.৫ মিলি/১০০লি · ৫–১০ মিনিট</span></li><li><span class='dlc'>নুভান (ডিক্লোরভস ৭৬ ইসি) স্নান</span><span class='dlq'>১ মিলি/১০০লি · ৫ মিনিট</span></li><li><span class='dlc'>NaCl লবণ স্নান — হালকা বিকল্প</span><span class='dlq'>১০–১৫ গ্রা/লি · ১০ মিনিট</span></li></ul><div class='step'>প্রতিরোধ</div><ul class='dl'><li><span class='dlc'>ফসলের মাঝে পুকুর শুকিয়ে নিন</span><span class='dlq'>ডিম ও বাচ্চা মরে যায়</span></li><li><span class='dlc'>শুকনো পুকুরে চুন (CaO)</span><span class='dlq'>২০০ কেজি / বিঘা</span></li></ul><div class='ib'><span class='bh'>✖ সাবধান</span>অর্গানোফসফেট চিকিৎসায় কঠোর নিষেধাজ্ঞা পালন করুন। চিকিৎসার ২১ দিনের মধ্যে মাছ ধরবেন না।</div>`,
+  te:`<div class='cause'><strong>రోగం ఎలా వస్తుంది:</strong> అర్గులస్ ఫోలియాసియస్, ఎ. జపోనికస్. చాపట్టు ఆకారపు బయట పరాన్నజీవి — నగ్నంగా కనిపిస్తుంది (5–8 mm). చేప చర్మంపై అంటుకొని రక్తం తాగుతుంది మరియు విష లాలాజలం చొప్పిస్తుంది. జూన్–సెప్టెంబర్‌లో ఎక్కువ.</div><div class='symp'><span class='symp-head'>లక్షణాలు</span>చర్మంపై మరియు రెక్కలపై కనిపించే చాపట్టు ఆకార పేలు. తీవ్రమైన చికాకు — చేపలు నేలకు రాసుకుంటాయి, గంతులు వేస్తాయి. అంటుకున్న చోట రక్తపు మచ్చలు. రక్తహీనత, మత్తుగా ఉండటం. గాయాల ద్వారా బాక్టీరియా చేరుతుంది.</div><div class='step'>చికిత్స</div><ul class='dl'><li><span class='dlc'>డిప్టెరెక్స్ (ట్రైక్లోర్ఫాన్) చెరువులో</span><span class='dlq'>0.25 mg/L · మొత్తం చెరువు</span><span class='dln'>అత్యంత ప్రభావవంతం. 7–10 రోజుల తర్వాత మళ్ళీ వేయండి. చికిత్స తర్వాత 21 రోజులు చేపలు పట్టుకోవద్దు.</span></li><li><span class='dlc'>ఎకలాక్స్ (క్వినల్‌ఫాస్ 25% EC) స్నానం</span><span class='dlq'>0.5 ml/100L · 5–10 నిమిషాలు</span></li><li><span class='dlc'>నువాన్ (డైక్లోర్‌వాస్ 76 EC) స్నానం</span><span class='dlq'>1 ml/100L · 5 నిమిషాలు</span></li><li><span class='dlc'>NaCl ఉప్పు స్నానం — తేలికైన ప్రత్యామ్నాయం</span><span class='dlq'>10–15 g/L · 10 నిమిషాలు</span></li></ul><div class='ib'><span class='bh'>✖ జాగ్రత్త</span>ఆర్గానోఫాస్ఫేట్ చికిత్సలకు కఠినమైన నిషేధ కాలాలు అవసరం. చికిత్స తర్వాత 21 రోజులు చేపలు పట్టుకోవద్దు.</div>`
+},
+{
+  id:'myxozoan', icon:'🔬', ac:'ac-purple',
+  tags:[{c:'tp',t:{en:'MYXOZOAN SPORE',bn:'মিক্সোজোয়ান',te:'లోపలి పరాన్నజీవి'}}],
+  title:{en:'Myxobolus / Myxozoan Infections',bn:'মিক্সোবোলাস / মিক্সোজোয়ান স্পোর সংক্রমণ',te:'Myxobolus — చేపలో తెల్లటి గడ్డలు'},
+  sub:{en:'Spore-forming endoparasite · White cysts in muscle/organs',bn:'স্পোর গঠনকারী অন্তঃপরজীবী · মাংসপেশিতে সাদা সিস্ট',te:'కండరాలలో తెల్లటి గడ్డలు — తినడానికి అనుకూలం కాదు'},
+  en:`<div class='cause'><strong>Causative Agent:</strong> Myxobolus spp., Myxobolus rohitae (in Rohu), M. catlaei (in Catla). Spore-forming endoparasites infecting muscle, gills, kidneys, and nervous system. Spores highly resistant — survive in pond mud for years.</div><div class='symp'><span class='symp-head'>Symptoms</span>White cysts (plasmodia) visible in muscle, gills, or organs on dissection. External deformities (bent spine, twisted body) in severe gill/brain infections. Reduced growth. Fish may appear normal externally — internal cysts discovered at processing. No effective treatment available.</div><div class='step'>Prevention & Management</div><ul class='dl'><li><span class='dlc'>Pond dry + CaO (quicklime)</span><span class='dlq'>200–400 kg CaO / bigha · 2 weeks dry</span><span class='dln'>Only effective way to reduce spore load in pond soil. Skip inter-crop drying = guaranteed re-infection.</span></li><li><span class='dlc'>Avoid sourcing fingerlings from affected ponds</span><span class='dlq'>Inspect gills at purchase</span></li><li><span class='dlc'>Probiotic pond treatment</span><span class='dlq'>Weekly — reduces organic load that harbours spores</span></li></ul><div class='iw'><span class='bh'>⚠ No Cure</span>No registered treatment exists. Infected fish can still be eaten (spores are harmless to humans) but market value drops. Prevention through dry-pond-lime rotation is the only effective strategy.</div>`,
+  bn:`<div class='cause'><strong>কারণকারী জীবাণু:</strong> মিক্সোবোলাস রোহিতে (রুইয়ে), এম. ক্যাটলাই (কাতলায়)। স্পোর-গঠনকারী অন্তঃপরজীবী — মাংসপেশি, কানকো, কিডনি ও স্নায়ুতন্ত্রে সংক্রমণ করে। স্পোর অত্যন্ত প্রতিরোধী — পুকুরের কাদায় বছরের পর বছর বেঁচে থাকে।</div><div class='symp'><span class='symp-head'>লক্ষণ</span>ব্যবচ্ছেদ করলে মাংসপেশি, কানকো বা অঙ্গে সাদা সিস্ট দেখা যায়। গুরুতর কানকো/মস্তিষ্ক সংক্রমণে বাহ্যিক বিকৃতি। বৃদ্ধি কম। বাইরে থেকে স্বাভাবিক দেখাতে পারে। কার্যকর চিকিৎসা নেই।</div><div class='step'>প্রতিরোধ ও ব্যবস্থাপনা</div><ul class='dl'><li><span class='dlc'>পুকুর শুকনো + CaO (চুন)</span><span class='dlq'>২০০–৪০০ কেজি CaO / বিঘা · ২ সপ্তাহ শুকনো</span><span class='dln'>পুকুরের মাটিতে স্পোর লোড কমানোর একমাত্র কার্যকর উপায়।</span></li><li><span class='dlc'>আক্রান্ত পুকুর থেকে পোনা আনবেন না</span><span class='dlq'>কেনার সময় কানকো পরীক্ষা করুন</span></li><li><span class='dlc'>প্রোবায়োটিক পুকুরে প্রয়োগ</span><span class='dlq'>সাপ্তাহিক — জৈব ভার কমায়</span></li></ul><div class='iw'><span class='bh'>⚠ কোনো চিকিৎসা নেই</span>কোনো নিবন্ধিত চিকিৎসা নেই। সংক্রমিত মাছ খাওয়া যায় (স্পোর মানুষের জন্য ক্ষতিকর নয়) তবে বাজারমূল্য কমে। একমাত্র কৌশল: শুকনো পুকুর-চুন পরিক্রমা।</div>`,
+  te:`<div class='cause'><strong>రోగం ఎలా వస్తుంది:</strong> మైక్సోబోలస్ రోహిటే (రోహులో), ఎం. కాట్లాయి (కట్లాలో). స్పోర్-ఉత్పత్తి చేసే లోపలి పరాన్నజీవులు — కండరాలు, చెవులు, మూత్రపిండాలు మరియు నాడీ వ్యవస్థను సంక్రమిస్తాయి. స్పోర్లు చాలా నిరోధకంగా ఉంటాయి.</div><div class='symp'><span class='symp-head'>లక్షణాలు</span>కోసి చూస్తే కండరాలు, చెవులు లేదా అవయవాలలో తెల్లని గడ్డలు కనిపిస్తాయి. తీవ్రమైన సంక్రమణలో శరీర వంపు, ఒత్తిగిలిన వెన్ను. పెరుగుదల తక్కువ. బయటికి సాధారణంగా కనిపించవచ్చు.</div><div class='step'>నివారణ & నిర్వహణ</div><ul class='dl'><li><span class='dlc'>చెరువు ఆరబెట్టడం + CaO (సున్నం)</span><span class='dlq'>200–400 కి.గ్రా CaO / బిఘా · 2 వారాలు</span><span class='dln'>చెరువు నేలలో స్పోర్ భారాన్ని తగ్గించడానికి ఏకైక ప్రభావవంతమైన మార్గం.</span></li><li><span class='dlc'>ప్రభావిత చెరువుల నుండి పిల్ల చేపలు తీసుకోవద్దు</span><span class='dlq'>కొనేటప్పుడు చెవులు పరీక్షించండి</span></li><li><span class='dlc'>ప్రొబయోటిక్ చెరువులో</span><span class='dlq'>వారంవారీ — సేంద్రియ భారం తగ్గిస్తుంది</span></li></ul><div class='iw'><span class='bh'>⚠ చికిత్స లేదు</span>నమోదిత చికిత్స లేదు. సంక్రమిత చేపలు తినవచ్చు (స్పోర్లు మానవులకు హానిరహితం) కానీ మార్కెట్ విలువ తగ్గుతుంది. ఏకైక వ్యూహం: ఆరబెట్టడం-సున్నం చక్రం.</div>`
+},
+{
+  id:'ich', icon:'⚪', ac:'ac-purple',
+  tags:[{c:'tp',t:{en:'CILIATE PROTOZOAN',bn:'সিলিয়েট প্রোটোজোয়া',te:'సూక్ష్మ జీవి'}}],
+  title:{en:'Ich — White Spot Disease',bn:'আইকে — সাদা দাগ রোগ (ইকথিওফথিরিয়াস)',te:'ICH — తెల్ల మచ్చల రోగం'},
+  sub:{en:'Ichthyophthirius multifiliis · Salt + heat treatment',bn:'ইকথিওফথিরিয়াস মাল্টিফিলিস · লবণ + তাপ চিকিৎসা',te:'లవణం + వేడి చికిత్స · వేగంగా వ్యాప్తి చెందుతుంది'},
+  en:`<div class='cause'><strong>Causative Agent:</strong> Ichthyophthirius multifiliis (ciliate protozoan). One of the most common fish diseases worldwide. The free-swimming theront stage infects fish skin and gills. Highly contagious — spreads rapidly in crowded ponds. Peaks in cool water (&lt;22°C).</div><div class='symp'><span class='symp-head'>Symptoms</span>Small white salt-like spots (1 mm) on skin, fins and gills — these are the trophont stage under the fish's mucus. Fish rub against substrate (flashing). Gills may be affected causing respiratory distress. Severe infestations cause mucus overproduction and skin sloughing.</div><div class='step'>Treatment</div><ul class='dl'><li><span class='dlc'>Salt (NaCl) bath</span><span class='dlq'>10–15 g/L · 10–15 min</span></li><li><span class='dlc'>KMnO₄ pond treatment</span><span class='dlq'>2–3 mg/L</span></li><li><span class='dlc'>Increase water temperature to &gt;28°C</span><span class='dlq'>Accelerates parasite lifecycle → theronts killed faster</span><span class='dln'>Heat treatment shortens the time theronts are vulnerable. At &lt;15°C the lifecycle slows dramatically — harder to treat.</span></li><li><span class='dlc'>Formalin bath</span><span class='dlq'>150–200 mg/L · 1 hour or 25 mg/L flow-through</span></li></ul><div class='it'><span class='bh'>Tip</span>Treat at least 3 times over 7–10 days to catch successive theront releases from cysts. Single treatment is never sufficient — the encysted tomont stage is insensitive to all treatments.</div>`,
+  bn:`<div class='cause'><strong>কারণকারী জীবাণু:</strong> ইকথিওফথিরিয়াস মাল্টিফিলিস (সিলিয়েট প্রোটোজোয়া)। বিশ্বের সবচেয়ে সাধারণ মাছের রোগগুলির মধ্যে একটি। মুক্ত সাঁতারকারী থেরন্ট পর্যায় ত্বক ও কানকোতে সংক্রমণ করে। অত্যন্ত সংক্রামক। ঠান্ডা জলে (&lt;২২°C) সবচেয়ে বেশি।</div><div class='symp'><span class='symp-head'>লক্ষণ</span>ত্বকে, পাখনায় ও কানকোতে ছোট সাদা লবণের দানার মতো দাগ (১ মিমি)। মাছ নিচের দিকে ঘষে। কানকো আক্রান্ত হলে শ্বাসকষ্ট। তীব্র সংক্রমণে অতিরিক্ত শ্লেষ্মা ও ত্বক উঠে যায়।</div><div class='step'>চিকিৎসা</div><ul class='dl'><li><span class='dlc'>NaCl লবণ স্নান</span><span class='dlq'>১০–১৫ গ্রা/লি · ১০–১৫ মিনিট</span></li><li><span class='dlc'>KMnO₄ পুকুরে প্রয়োগ</span><span class='dlq'>২–৩ মি.গ্রা/লি</span></li><li><span class='dlc'>জলের তাপমাত্রা &gt;২৮°C বাড়ান</span><span class='dlq'>পরজীবীর জীবনচক্র ত্বরান্বিত করে → থেরন্ট দ্রুত মরে</span></li><li><span class='dlc'>ফর্মালিন স্নান</span><span class='dlq'>১৫০–২০০ মি.গ্রা/লি · ১ ঘণ্টা</span></li></ul><div class='it'><span class='bh'>টিপস</span>৭–১০ দিনে অন্তত ৩ বার চিকিৎসা দিন। একক চিকিৎসা কখনো যথেষ্ট নয় — সিস্টে থাকা টোমন্ট পর্যায় সব চিকিৎসায় অপ্রভাবিত।</div>`,
+  te:`<div class='cause'><strong>రోగం ఎలా వస్తుంది:</strong> ఇచ్థియోఫ్థిరియస్ మల్టిఫిలిస్ (సిలియేట్ ప్రొటోజోవా). ప్రపంచంలో అత్యంత సాధారణ చేప వ్యాధులలో ఒకటి. స్వేచ్ఛగా ఈదే థెరాంట్ దశ చేప చర్మం మరియు చెవులను సంక్రమిస్తుంది. చల్లని నీటిలో (&lt;22°C) ఎక్కువ.</div><div class='symp'><span class='symp-head'>లక్షణాలు</span>చర్మం, రెక్కలు మరియు చెవులపై చిన్న తెల్లని ఉప్పు రేణువుల లాంటి మచ్చలు (1 mm). చేపలు నేలకు రాసుకుంటాయి. చెవులు ప్రభావితమైతే శ్వాస కష్టం. తీవ్రమైన సంక్రమణలో అధిక జిగురు మరియు చర్మం వలుస్తుంది.</div><div class='step'>చికిత్స</div><ul class='dl'><li><span class='dlc'>NaCl ఉప్పు స్నానం</span><span class='dlq'>10–15 g/L · 10–15 నిమిషాలు</span></li><li><span class='dlc'>KMnO₄ చెరువులో</span><span class='dlq'>2–3 mg/L</span></li><li><span class='dlc'>నీటి ఉష్ణోగ్రత &gt;28°C కి పెంచండి</span><span class='dlq'>పరాన్నజీవి జీవిత చక్రాన్ని వేగవంతం చేస్తుంది</span></li><li><span class='dlc'>ఫార్మాలిన్ స్నానం</span><span class='dlq'>150–200 mg/L · 1 గంట</span></li></ul><div class='it'><span class='bh'>చిట్కా</span>7–10 రోజులలో కనీసం 3 సార్లు చికిత్స చేయండి. ఒకే చికిత్స ఎప్పుడూ సరిపోదు — సిస్ట్ దశలో ఉన్న టోమాంట్ అన్ని చికిత్సలకు అందవు.</div>`
+},
+{
+  id:'gill_rot', icon:'🫁', ac:'ac-purple',
+  tags:[{c:'tf',t:{en:'FUNGAL',bn:'ছত্রাক',te:'శిలీంధ్ర రోగం'}}],
+  title:{en:'Gill Rot — Branchiomycosis',bn:'কানকোর পচন — ব্রাংকিওমাইকোসিস',te:'చేప చెవులు కుళ్ళే రోగం'},
+  sub:{en:'Branchiomyces sanguinis/demigrans · Summer monsoon fungal',bn:'ব্রাংকিওমাইসেস · গ্রীষ্ম-বর্ষার ছত্রাক রোগ',te:'వేసవి-వర్షాకాలపు శిలీంధ్ర రోగం'},
+  en:`<div class='cause'><strong>Causative Agent:</strong> Branchiomyces sanguinis, B. demigrans (aquatic fungi). Infects gill blood vessels causing necrosis — gills turn grey, brown, or black with characteristic mottled pattern. Peak: May–August (high temperature + organic load). Rohu most susceptible.</div><div class='symp'><span class='symp-head'>Symptoms</span>Gills appear mottled grey-brown-white. Dark patches of necrotic tissue alternating with pale areas. Fish surface-gasp (respiratory distress). Gills may crumble easily on touch. Severe mortality possible within days in acute outbreaks.</div><div class='step'>Treatment</div><ul class='dl'><li><span class='dlc'>KMnO₄ pond treatment</span><span class='dlq'>2–3 mg/L</span></li><li><span class='dlc'>Agricultural lime</span><span class='dlq'>15–25 kg / bigha · raise pH to 8+</span></li><li><span class='dlc'>Formalin bath</span><span class='dlq'>100–150 mg/L · 30–60 min</span></li><li><span class='dlc'>Water exchange — reduce organic load</span><span class='dlq'>25–30% immediately</span></li></ul><div class='step'>Prevention</div><ul class='dl'><li><span class='dlc'>Maintain good water quality — DO &gt;5 mg/L</span><span class='dlq'>Branchiomyces thrives in low DO + high organic</span></li><li><span class='dlc'>Fortnightly lime application May–August</span><span class='dlq'>10–15 kg / bigha</span></li><li><span class='dlc'>Reduce stocking density in summer</span><span class='dlq'>Prevents hypoxia which triggers outbreak</span></li></ul>`,
+  bn:`<div class='cause'><strong>কারণকারী জীবাণু:</strong> ব্রাংকিওমাইসেস সাংগুইনিস, বি. ডেমিগ্রান্স (জলজ ছত্রাক)। কানকোর রক্তনালীতে সংক্রমণ করে পচন তৈরি করে। মে–আগস্টে সবচেয়ে বেশি। রুই সবচেয়ে সংবেদনশীল।</div><div class='symp'><span class='symp-head'>লক্ষণ</span>কানকো ছাই-বাদামী-সাদা দেখায়। মৃত ও স্বাভাবিক টিস্যুর পর্যায়ক্রমিক প্যাটার্ন। মাছ উপরে এসে শ্বাস নেয়। গুরুতর প্রাদুর্ভাবে দিনের মধ্যে মৃত্যু।</div><div class='step'>চিকিৎসা</div><ul class='dl'><li><span class='dlc'>KMnO₄ পুকুরে প্রয়োগ</span><span class='dlq'>২–৩ মি.গ্রা/লি</span></li><li><span class='dlc'>কৃষি চুন</span><span class='dlq'>১৫–২৫ কেজি / বিঘা · pH ৮+ করুন</span></li><li><span class='dlc'>ফর্মালিন স্নান</span><span class='dlq'>১০০–১৫০ মি.গ্রা/লি · ৩০–৬০ মিনিট</span></li><li><span class='dlc'>পানি বদল — জৈব ভার কমান</span><span class='dlq'>তক্ষুনি ২৫–৩০%</span></li></ul><div class='step'>প্রতিরোধ</div><ul class='dl'><li><span class='dlc'>DO &gt;৫ মি.গ্রা/লি বজায় রাখুন</span><span class='dlq'>ব্রাংকিওমাইসেস কম DO + বেশি জৈব ভারে বাড়ে</span></li><li><span class='dlc'>মে–আগস্ট পক্ষকালে চুন</span><span class='dlq'>১০–১৫ কেজি / বিঘা</span></li></ul>`,
+  te:`<div class='cause'><strong>రోగం ఎలా వస్తుంది:</strong> బ్రాంకియోమైసెస్ సాంగ్వినిస్, బి. డెమిగ్రాన్స్ (జలచర శిలీంధ్రాలు). చేప చెవుల రక్తనాళాలను సంక్రమించి కుళ్ళిపోవడానికి కారణమవుతుంది. మే–ఆగస్ట్‌లో ఎక్కువ. రోహు చేప అత్యంత సున్నితంగా ఉంటుంది.</div><div class='symp'><span class='symp-head'>లక్షణాలు</span>చెవులు బూడిద-గోధుమ-తెలుపు మొత్తిక మచ్చలు కలిగి కనిపిస్తాయి. చేపలు పైకి వచ్చి శ్వాస తీసుకుంటాయి. తీవ్రమైన వ్యాప్తిలో రోజుల్లోనే మరణాలు.</div><div class='step'>చికిత్స</div><ul class='dl'><li><span class='dlc'>KMnO₄ చెరువులో</span><span class='dlq'>2–3 mg/L</span></li><li><span class='dlc'>వ్యవసాయ సున్నం</span><span class='dlq'>15–25 కి.గ్రా / బిఘా · pH 8+ కి పెంచండి</span></li><li><span class='dlc'>ఫార్మాలిన్ స్నానం</span><span class='dlq'>100–150 mg/L · 30–60 నిమిషాలు</span></li><li><span class='dlc'>నీటి మార్పు — సేంద్రియ భారం తగ్గించండి</span><span class='dlq'>వెంటనే 25–30%</span></li></ul><div class='step'>నివారణ</div><ul class='dl'><li><span class='dlc'>DO &gt;5 mg/L నిర్వహించండి</span><span class='dlq'>బ్రాంకియోమైసెస్ తక్కువ DO + అధిక సేంద్రియంలో పెరుగుతుంది</span></li><li><span class='dlc'>మే–ఆగస్ట్ పక్షానికోసారి సున్నం</span><span class='dlq'>10–15 కి.గ్రా / బిఘా</span></li></ul>`
+},
+{
+  id:'bga', icon:'🟢', ac:'ac-teal',
+  tags:[{c:'tw',t:{en:'WATER QUALITY',bn:'জলমান',te:'నీటి నాణ్యత'}}],
+  title:{en:'Blue-Green Algae (BGA / Cyanobacteria)',bn:'নীলাভ-সবুজ শেওলা (সায়ানোব্যাকটেরিয়া)',te:'నీలం-ఆకుపచ్చ పాచి (హానికరమైన శేవాలు)'},
+  sub:{en:'Microcystis · Musty odour · Liver damage in fish',bn:'মাইক্রোসিস্টিস · মাটির গন্ধ · মাছের যকৃতের ক্ষতি',te:'మట్టి వాసన · చేపలలో కాలేయ నష్టం'},
+  en:`<div class='cause'><strong>Causative Agent:</strong> Microcystis aeruginosa, Anabaena spp., Oscillatoria spp. Toxic cyanobacteria bloom when nitrogen:phosphorus ratio is high and water stagnates. Produces microcystin hepatotoxins — damages fish liver and kidneys. Dense surface scum, blue-green/olive colour, musty/earthy odour. Summer peak.</div><div class='symp'><span class='symp-head'>Symptoms</span>Dense blue-green surface scum (windward accumulation). Musty/earthy odour. Fish mortality (liver damage from microcystins). DO crashes at night (bloom respiration). Off-flavour in fish flesh (consumer complaint). Turbid green/brown water after bloom crash.</div><div class='step'>Management</div><ul class='dl'><li><span class='dlc'>Agricultural lime — raise pH</span><span class='dlq'>15–20 kg / bigha · suppresses BGA</span></li><li><span class='dlc'>Reduce fertiliser input — especially phosphorus</span><span class='dlq'>Stop urea + superphosphate during bloom</span></li><li><span class='dlc'>Water exchange</span><span class='dlq'>20–30% · dilute bloom density</span></li><li><span class='dlc'>Copper sulphate (CuSO₄)</span><span class='dlq'>0.5–1 mg/L · ONLY after lab species confirmation</span><span class='dln'>Warning: killing bloom in situ releases all toxins simultaneously — can cause mass fish mortality. Use only in targeted corner treatment, not whole pond.</span></li></ul><div class='iw'><span class='bh'>⚠ Do NOT kill entire bloom with CuSO₄</span>Sudden bloom kill releases all accumulated microcystins at once — can kill more fish than the bloom itself. Gradual water exchange + lime is safer.</div>`,
+  bn:`<div class='cause'><strong>কারণকারী জীবাণু:</strong> মাইক্রোসিস্টিস অ্যারুগিনোসা, অ্যানাবেনা, অসিলেটোরিয়া। নাইট্রোজেন:ফসফরাস অনুপাত বেশি হলে এবং জল স্থির থাকলে বিষাক্ত সায়ানোব্যাকটেরিয়া ব্লুম হয়। মাইক্রোসিস্টিন হেপাটোটক্সিন উৎপন্ন করে — মাছের যকৃত ও কিডনির ক্ষতি। গ্রীষ্মে সবচেয়ে বেশি।</div><div class='symp'><span class='symp-head'>লক্ষণ</span>ঘন নীলাভ-সবুজ উপরিভাগের ভাসমান স্তর। মাটির গন্ধ। মাছের মৃত্যু (মাইক্রোসিস্টিন থেকে যকৃতের ক্ষতি)। রাতে DO পড়ে যায়। মাছের মাংসে দুর্গন্ধ।</div><div class='step'>ব্যবস্থাপনা</div><ul class='dl'><li><span class='dlc'>কৃষি চুন — pH বাড়ান</span><span class='dlq'>১৫–২০ কেজি / বিঘা · BGA দমন করে</span></li><li><span class='dlc'>সার প্রয়োগ কমান — বিশেষত ফসফরাস</span><span class='dlq'>ব্লুমের সময় ইউরিয়া + সুপারফসফেট বন্ধ</span></li><li><span class='dlc'>পানি বদল</span><span class='dlq'>২০–৩০% · ব্লুম ঘনত্ব কমান</span></li><li><span class='dlc'>কপার সালফেট (CuSO₄)</span><span class='dlq'>০.৫–১ মি.গ্রা/লি · প্রজাতি নিশ্চিত হওয়ার পরেই</span><span class='dln'>সাবধান: পুরো ব্লুম মেরে ফেললে একসাথে সব টক্সিন নির্গত হয় — গণমৃত্যু।</span></li></ul><div class='iw'><span class='bh'>⚠ CuSO₄ দিয়ে পুরো ব্লুম মারবেন না</span>হঠাৎ ব্লুম ধ্বংসে একসাথে সব মাইক্রোসিস্টিন নির্গত হয় — মাছ বেশি মরতে পারে। ধীরে পানি বদল + চুন নিরাপদ।</div>`,
+  te:`<div class='cause'><strong>రోగం ఎలా వస్తుంది:</strong> మైక్రోసిస్టిస్ ఏరుగినోసా, అనాబేనా, ఆసిలటోరియా. నత్రజని:ఫాస్ఫరస్ నిష్పత్తి అధికంగా ఉండి నీరు నిలిచిపోయినప్పుడు విష సైనోబాక్టీరియా బ్లూమ్ వస్తుంది. మైక్రోసిస్టిన్ హెపటోటాక్సిన్లను ఉత్పత్తి చేస్తుంది. వేసవిలో ఎక్కువ.</div><div class='symp'><span class='symp-head'>లక్షణాలు</span>దట్టమైన నీలం-ఆకుపచ్చ ఉపరితల పొర. మట్టి వాసన. మైక్రోసిస్టిన్ నుండి కాలేయ నష్టం వల్ల చేపల మరణాలు. రాత్రి DO పడిపోతుంది. చేప మాంసంలో చెడు వాసన.</div><div class='step'>నిర్వహణ</div><ul class='dl'><li><span class='dlc'>వ్యవసాయ సున్నం — pH పెంచండి</span><span class='dlq'>15–20 కి.గ్రా / బిఘా · BGA నిరోధిస్తుంది</span></li><li><span class='dlc'>ఎరువు తగ్గించండి — ముఖ్యంగా ఫాస్ఫరస్</span><span class='dlq'>బ్లూమ్ సమయంలో యూరియా + సూపర్‌ఫాస్ఫేట్ ఆపండి</span></li><li><span class='dlc'>నీటి మార్పు</span><span class='dlq'>20–30% · బ్లూమ్ సాంద్రత తగ్గించండి</span></li><li><span class='dlc'>కాపర్ సల్ఫేట్ (CuSO₄)</span><span class='dlq'>0.5–1 mg/L · జాతి నిర్ధారణ తర్వాత మాత్రమే</span><span class='dln'>హెచ్చరిక: మొత్తం బ్లూమ్ ఒకేసారి చంపితే అన్ని టాక్సిన్లు ఒకేసారి విడుదలవుతాయి.</span></li></ul><div class='iw'><span class='bh'>⚠ CuSO₄ తో మొత్తం బ్లూమ్ చంపవద్దు</span>హఠాత్తు బ్లూమ్ నాశనం మైక్రోసిస్టిన్‌లను ఒకేసారి విడుదల చేస్తుంది — మరింత ఎక్కువ చేపలు చనిపోవచ్చు. క్రమంగా నీటి మార్పు + సున్నం సురక్షితం.</div>`
+},
+{
+  id:'turbid_water', icon:'💧', ac:'ac-sky',
+  tags:[{c:'tw',t:{en:'WATER QUALITY',bn:'জলমান',te:'నీటి నాణ్యత'}}],
+  title:{en:'Turbid, Black & Red-Brown Water',bn:'ঘোলা, কালো ও লাল-বাদামী জল',te:'పుకురు నీరు మారినప్పుడు — సమస్య & చికిత్స'},
+  sub:{en:'Suspended solids · Algae crashes · Plankton management',bn:'ভাসমান কণা · শেওলার ক্র্যাশ · প্ল্যাংকটন ব্যবস্থাপনা',te:'ప్లాంక్టన్ నిర్వహణ · నీటి రంగు మార్పులు'},
+  en:`<div class='cause'><strong>Turbid Brown (Clay/Silt):</strong> Heavy rainfall runoff carrying clay particles. Blocks sunlight → stops photosynthesis → kills phytoplankton → DO crash. Common in monsoon. Treatment: Agricultural gypsum CaSO₄ (5–10 kg/bigha) flocculates suspended clay particles.<br><strong>Black Water:</strong> Decomposing organic matter + H₂S from anaerobic bottom. Sign of severe organic overload. DO crash imminent. Treatment: Lime + aeration immediately.<br><strong>Red-Brown / Red Algae:</strong> Euglena, Dinoflagellate, or Diatom bloom — often preceded by heavy fertilisation.</div><div class='step'>Turbid Brown Treatment</div><ul class='dl'><li><span class='dlc'>Agricultural gypsum (CaSO₄)</span><span class='dlq'>5–10 kg / bigha · flocculates clay</span></li><li><span class='dlc'>Alum Al₂(SO₄)₃</span><span class='dlq'>2–5 kg / bigha · stronger flocculant</span></li><li><span class='dlc'>Lime Ca(OH)₂</span><span class='dlq'>10–15 kg / bigha</span></li></ul><div class='step'>Black Water Treatment</div><ul class='dl'><li><span class='dlc'>Lime (Ca(OH)₂) — emergency</span><span class='dlq'>20–25 kg / bigha · immediately</span></li><li><span class='dlc'>Run all aerators</span><span class='dlq'>24/7 until DO stabilises &gt;5 mg/L</span></li><li><span class='dlc'>Water exchange</span><span class='dlq'>20–30%</span></li></ul><div class='step'>Dense Green/Brown Phytoplankton Bloom</div><ul class='dl'><li><span class='dlc'>Stop all fertiliser input immediately</span><span class='dlq'>Cut nitrogen + phosphorus</span></li><li><span class='dlc'>Partial water exchange</span><span class='dlq'>15–20% · dilute nutrient load</span></li><li><span class='dlc'>Probiotic pond treatment</span><span class='dlq'>Weekly — competes with algae for nutrients</span></li></ul>`,
+  bn:`<div class='cause'><strong>ঘোলা বাদামী (মাটি/পলি):</strong> বর্ষার জলে মাটির কণা আসে। সূর্যালোক আটকায় → ফাইটোপ্ল্যাংকটন মরে → DO পড়ে যায়। চিকিৎসা: জিপসাম CaSO₄ (৫–১০ কেজি/বিঘা) মাটির কণা জমাট করে।<br><strong>কালো জল:</strong> অ্যানারোবিক তলে জৈব পদার্থ পচন + H₂S। জৈব ভারের গুরুতর চিহ্ন। চিকিৎসা: অবিলম্বে চুন + বায়ু সঞ্চালন।<br><strong>লাল-বাদামী / লাল শেওলা:</strong> ইউগ্লেনা, ডাইনোফ্ল্যাজেলেট বা ডায়াটম ব্লুম।</div><div class='step'>ঘোলা বাদামী জল চিকিৎসা</div><ul class='dl'><li><span class='dlc'>জিপসাম (CaSO₄)</span><span class='dlq'>৫–১০ কেজি / বিঘা · মাটি জমাট করে</span></li><li><span class='dlc'>ফিটকিরি Al₂(SO₄)₃</span><span class='dlq'>২–৫ কেজি / বিঘা · শক্তিশালী ফ্লকুল্যান্ট</span></li><li><span class='dlc'>চুন Ca(OH)₂</span><span class='dlq'>১০–১৫ কেজি / বিঘা</span></li></ul><div class='step'>কালো জল চিকিৎসা</div><ul class='dl'><li><span class='dlc'>চুন (Ca(OH)₂) — জরুরি</span><span class='dlq'>২০–২৫ কেজি / বিঘা · অবিলম্বে</span></li><li><span class='dlc'>সব এয়ারেটর চালু</span><span class='dlq'>DO &gt;৫ মি.গ্রা/লি হওয়া পর্যন্ত</span></li><li><span class='dlc'>পানি বদল</span><span class='dlq'>২০–৩০%</span></li></ul>`,
+  te:`<div class='cause'><strong>ఘోళా గోధుమ రంగు (మట్టి/పూడిక):</strong> వర్షాకాల ప్రవాహంలో మట్టి కణాలు వస్తాయి. సూర్యకాంతి అడ్డుకోబడుతుంది → ఫైటోప్లాంక్టన్ చనిపోతుంది → DO పడిపోతుంది. చికిత్స: జిప్సం CaSO₄ (5–10 కి.గ్రా/బిఘా) మట్టి కణాలను అవక్షేపిస్తుంది.<br><strong>నల్లని నీరు:</strong> అవాయు నేలలో సేంద్రియ పదార్థం కుళ్ళటం + H₂S. తీవ్రమైన సేంద్రియ అధిక భారం. చికిత్స: వెంటనే సున్నం + గాలి సంచలనం.<br><strong>ఎర్రని-గోధుమ / ఎర్రని పాచి:</strong> యూగ్లినా, డయాటమ్ బ్లూమ్.</div><div class='step'>ఘోళా గోధుమ నీరు చికిత్స</div><ul class='dl'><li><span class='dlc'>జిప్సం (CaSO₄)</span><span class='dlq'>5–10 కి.గ్రా / బిఘా · మట్టి అవక్షేపిస్తుంది</span></li><li><span class='dlc'>అలం Al₂(SO₄)₃</span><span class='dlq'>2–5 కి.గ్రా / బిఘా · శక్తివంతమైన అవక్షేపకం</span></li><li><span class='dlc'>సున్నం Ca(OH)₂</span><span class='dlq'>10–15 కి.గ్రా / బిఘా</span></li></ul><div class='step'>నల్లని నీరు చికిత్స</div><ul class='dl'><li><span class='dlc'>సున్నం (Ca(OH)₂) — అత్యవసరం</span><span class='dlq'>20–25 కి.గ్రా / బిఘా · వెంటనే</span></li><li><span class='dlc'>అన్ని ఏరేటర్లు ఆన్</span><span class='dlq'>DO &gt;5 mg/L స్థిరమయ్యేంత వరకు</span></li><li><span class='dlc'>నీటి మార్పు</span><span class='dlq'>20–30%</span></li></ul>`
+},
+{
+  id:'mucus', icon:'🫧', ac:'ac-teal',
+  tags:[{c:'tg2',t:{en:'HEALTH INDICATOR',bn:'স্বাস্থ্য সূচক',te:'ఆరోగ్య సూచన'}}],
+  title:{en:'Fish Gill & Body Mucus (Gel) Management',bn:'মাছের কানকো ও শরীরের শ্লেষ্মা ব্যবস্থাপনা',te:'చేప శరీరంపై జిగురు (Mucus) — నిర్వహణ'},
+  sub:{en:'Excess mucus = stress indicator · Gill health = fish health',bn:'অতিরিক্ত শ্লেষ্মা = চাপের সংকেত · কানকো = মাছের স্বাস্থ্য',te:'అధిక జిగురు = ఒత్తిడి సంకేతం'},
+  en:`<div class='cause'><strong>What is Mucus:</strong> Fish produce a protective mucus (gel) coat over skin and gills. Healthy mucus = thin, clear, slightly slippery. Excess/abnormal mucus = stress response to irritants (poor water quality, parasites, toxins, handling stress). Gill mucus overproduction is a critical early warning sign.</div><div class='symp'><span class='symp-head'>Signs of Abnormal Mucus</span>Thick, cloudy or brownish mucus on gills. Excess mucus sloughing off body during handling. Gills appear "coated" or clogged with mucus. Fish gasping at surface (gill function impaired). Foul-smelling mucus may indicate secondary infection.</div><div class='step'>Investigation Protocol</div><ul class='dl'><li><span class='dlc'>Test water quality first</span><span class='dlq'>DO, NH₃, pH, turbidity</span></li><li><span class='dlc'>Check for external parasites (Ich, Argulus, Trichodina)</span><span class='dlq'>Microscopic gill scraping examination</span></li><li><span class='dlc'>Assess stocking density and aeration</span><span class='dlq'>Crowding stress triggers mucus overproduction</span></li></ul><div class='step'>Treatment</div><ul class='dl'><li><span class='dlc'>Salt (NaCl) bath — soothing + osmotic regulation</span><span class='dlq'>5–10 g/L · 15–20 min</span></li><li><span class='dlc'>KMnO₄ bath — remove parasites + debris from gills</span><span class='dlq'>5–10 mg/L · 30 min</span></li><li><span class='dlc'>Lime — improve water quality</span><span class='dlq'>10–15 kg / bigha</span></li><li><span class='dlc'>Increase aeration — reduce crowding stress</span><span class='dlq'>Target DO &gt;5 mg/L</span></li></ul>`,
+  bn:`<div class='cause'><strong>শ্লেষ্মা কী:</strong> মাছ ত্বক ও কানকোতে প্রতিরক্ষামূলক শ্লেষ্মার আবরণ তৈরি করে। স্বাস্থ্যকর শ্লেষ্মা = পাতলা, স্বচ্ছ। অতিরিক্ত/অস্বাভাবিক শ্লেষ্মা = জলমান সমস্যা, পরজীবী বা পরিচালনার চাপের সংকেত। কানকোতে অতিরিক্ত শ্লেষ্মা একটি গুরুত্বপূর্ণ প্রাথমিক সতর্কতা চিহ্ন।</div><div class='symp'><span class='symp-head'>অস্বাভাবিক শ্লেষ্মার লক্ষণ</span>কানকোতে পুরু, মেঘলা বা বাদামী শ্লেষ্মা। সরানোর সময় শরীর থেকে অতিরিক্ত শ্লেষ্মা খুলে পড়া। কানকো "আবৃত" বা শ্লেষ্মায় আটকানো দেখায়। মাছ উপরে এসে শ্বাস নেয়। দুর্গন্ধযুক্ত শ্লেষ্মায় সেকেন্ডারি সংক্রমণ।</div><div class='step'>তদন্ত প্রণালী</div><ul class='dl'><li><span class='dlc'>প্রথমে জলমান পরীক্ষা</span><span class='dlq'>DO, NH₃, pH, ঘোলাত্ব</span></li><li><span class='dlc'>বহিঃপরজীবী (আইক, আরগুলাস, ট্রাইকোডিনা) পরীক্ষা</span><span class='dlq'>কানকোর মাইক্রোস্কোপিক পরীক্ষা</span></li><li><span class='dlc'>মজুদ ঘনত্ব ও বায়ু সঞ্চালন মূল্যায়ন</span><span class='dlq'>ঘন মজুদ শ্লেষ্মা বাড়ায়</span></li></ul><div class='step'>চিকিৎসা</div><ul class='dl'><li><span class='dlc'>NaCl লবণ স্নান</span><span class='dlq'>৫–১০ গ্রা/লি · ১৫–২০ মিনিট</span></li><li><span class='dlc'>KMnO₄ স্নান — কানকো পরিষ্কার</span><span class='dlq'>৫–১০ মি.গ্রা/লি · ৩০ মিনিট</span></li><li><span class='dlc'>চুন — জলমান উন্নত করুন</span><span class='dlq'>১০–১৫ কেজি / বিঘা</span></li><li><span class='dlc'>বায়ু সঞ্চালন বাড়ান — চাপ কমান</span><span class='dlq'>DO &gt;৫ মি.গ্রা/লি</span></li></ul>`,
+  te:`<div class='cause'><strong>జిగురు అంటే ఏమిటి:</strong> చేపలు చర్మం మరియు చెవులపై రక్షణ జిగురు (gel) పొర తయారుచేసుకుంటాయి. ఆరోగ్యకరమైన జిగురు = సన్నగా, పారదర్శకంగా. అధిక/అసాధారణ జిగురు = నీటి నాణ్యత సమస్యలు, పరాన్నజీవులు లేదా నిర్వహణ ఒత్తిడి యొక్క సంకేతం.</div><div class='symp'><span class='symp-head'>అసాధారణ జిగురు సంకేతాలు</span>చెవులపై దట్టమైన, మేఘావృతమైన లేదా గోధుమ రంగు జిగురు. నిర్వహించేటప్పుడు శరీరం నుండి అధికంగా జిగురు వలుస్తుంది. చెవులు జిగురుతో అడ్డుపడినట్లు కనిపిస్తాయి. చేపలు పైకి వచ్చి శ్వాస తీసుకుంటాయి.</div><div class='step'>పరిశోధన విధానం</div><ul class='dl'><li><span class='dlc'>ముందుగా నీటి నాణ్యత పరీక్షించండి</span><span class='dlq'>DO, NH₃, pH, నిగ్గుదనం</span></li><li><span class='dlc'>బయట పరాన్నజీవుల (ఇచ్, అర్గులస్, ట్రైకోడినా) పరీక్ష</span><span class='dlq'>మైక్రోస్కోప్ ద్వారా చెవి స్క్రేపింగ్ పరీక్ష</span></li><li><span class='dlc'>సాంద్రత మరియు గాలి సంచలనం మూల్యాంకనం</span><span class='dlq'>అధిక సాంద్రత జిగురు పెంచుతుంది</span></li></ul><div class='step'>చికిత్స</div><ul class='dl'><li><span class='dlc'>NaCl ఉప్పు స్నానం</span><span class='dlq'>5–10 g/L · 15–20 నిమిషాలు</span></li><li><span class='dlc'>KMnO₄ స్నానం — చెవులు శుభ్రం</span><span class='dlq'>5–10 mg/L · 30 నిమిషాలు</span></li><li><span class='dlc'>సున్నం — నీటి నాణ్యత మెరుగుపరచండి</span><span class='dlq'>10–15 కి.గ్రా / బిఘా</span></li><li><span class='dlc'>గాలి సంచలనం పెంచండి</span><span class='dlq'>DO &gt;5 mg/L లక్ష్యంగా</span></li></ul>`
+},
+{
+  id:'malnutrition', icon:'🌾', ac:'ac-green',
+  tags:[{c:'tg2',t:{en:'NUTRITION',bn:'পুষ্টি',te:'పోషణ'}}],
+  title:{en:'Malnutrition & Poor Growth',bn:'অপুষ্টি ও দুর্বল বৃদ্ধি',te:'తక్కువ తిండి, బలహీనంగా పెరగడం'},
+  sub:{en:'Feed quality · FCR management · Species-wise targets',bn:'খাদ্যের মান · FCR · প্রজাতিভিত্তিক লক্ষ্যমাত্রা',te:'తినే నిష్పత్తి · జాతుల ప్రకారం పెరుగుదల లక్ష్యాలు'},
+  en:`<div class='cause'><strong>Causes:</strong> Inadequate feed quantity, poor quality feed (low protein, rancid fat, aflatoxin), improper feed management (not checking trays, fixed schedules), species-specific deficiencies (Rohu needs more plant protein, Catla more zooplankton at fingerling stage), and competition for natural food organisms in polyculture.</div><div class='symp'><span class='symp-head'>Signs of Malnutrition</span>FCR &gt;2.5 for major carps (target &lt;1.8). Poor uniformity — large size variation between individuals (check trays: feed remaining = overfeeding; always empty = underfeeding). Pale/washed-out colour. Reduced immunity → increased disease incidence. Thin body profile, prominent vertebrae.</div><div class='step'>Feed Management Protocol</div><ul class='dl'><li><span class='dlc'>Protein content: 28–32% for fingerlings, 24–28% grow-out</span><span class='dlq'>Rohu needs 28%, Catla 26%, Mrigal 25%</span></li><li><span class='dlc'>Feed rate: 2–5% body weight/day</span><span class='dlq'>Adjust monthly based on sampling weight</span></li><li><span class='dlc'>Feed tray monitoring</span><span class='dlq'>Check trays 2 hours after feeding. Adjust accordingly.</span></li><li><span class='dlc'>Vitamin C supplementation</span><span class='dlq'>100–200 mg/kg feed · prevents scoliosis and improves immunity</span></li><li><span class='dlc'>Mineral premix</span><span class='dlq'>1–2% of feed · Ca, P, Zn, Mn balance</span></li></ul><div class='it'><span class='bh'>Natural Food Enhancement</span>Fortnightly organic manure (cow dung 20–25 kg/bigha) + chemical fertiliser (urea 2 kg + SSP 3 kg / bigha) maintains good phytoplankton and zooplankton bloom for Catla and Mrigal natural feeding.</div>`,
+  bn:`<div class='cause'><strong>কারণ:</strong> অপর্যাপ্ত খাবার, নিম্নমানের খাবার (কম প্রোটিন, বাসি চর্বি, আফ্লাটক্সিন), অনুচিত খাবার ব্যবস্থাপনা (ট্রে না দেখা, নির্দিষ্ট সময়সূচি), প্রজাতি-নির্দিষ্ট ঘাটতি (রুই বেশি উদ্ভিদ প্রোটিন, কাতলা পোনা পর্যায়ে বেশি জুপ্ল্যাংকটন প্রয়োজন), এবং পলিকালচারে প্রাকৃতিক খাবারে প্রতিযোগিতা।</div><div class='symp'><span class='symp-head'>অপুষ্টির লক্ষণ</span>মেজর কার্পে FCR &gt;২.৫ (লক্ষ্য &lt;১.৮)। আকারে বড় পার্থক্য। ফ্যাকাশে রং। রোগ প্রতিরোধ কমে যায়। পাতলা শরীর।</div><div class='step'>খাবার ব্যবস্থাপনা প্রণালী</div><ul class='dl'><li><span class='dlc'>প্রোটিন: পোনায় ২৮–৩২%, বৃদ্ধি পর্যায়ে ২৪–২৮%</span><span class='dlq'>রুই ২৮%, কাতলা ২৬%, মৃগেল ২৫%</span></li><li><span class='dlc'>খাবারের হার: শরীরের ওজনের ২–৫%/দিন</span><span class='dlq'>মাসিক নমুনা ওজনের ভিত্তিতে সমন্বয়</span></li><li><span class='dlc'>খাবার ট্রে পর্যবেক্ষণ</span><span class='dlq'>দেওয়ার ২ ঘণ্টা পর ট্রে দেখুন। অনুযায়ী সমন্বয় করুন।</span></li><li><span class='dlc'>ভিটামিন C সম্পূরক</span><span class='dlq'>১০০–২০০ মি.গ্রা/কেজি খাবার</span></li><li><span class='dlc'>মিনারেল প্রিমিক্স</span><span class='dlq'>খাবারের ১–২%</span></li></ul><div class='it'><span class='bh'>প্রাকৃতিক খাদ্য বৃদ্ধি</span>পক্ষকালে জৈব সার (গোবর ২০–২৫ কেজি/বিঘা) + রাসায়নিক সার (ইউরিয়া ২ + এসএসপি ৩ কেজি/বিঘা) ফাইটোপ্ল্যাংকটন ও জুপ্ল্যাংকটন ব্লুম বজায় রাখে।</div>`,
+  te:`<div class='cause'><strong>కారణాలు:</strong> తగిన ఆహారం లేకపోవడం, నిమ్న నాణ్యత ఆహారం (తక్కువ ప్రోటీన్, పాతపడిన కొవ్వు, అఫ్లాటాక్సిన్), సరైన ఆహార నిర్వహణ లేకపోవడం (ట్రేలు చూడకపోవడం), జాతి-నిర్దిష్ట లోపాలు (రోహుకు ఎక్కువ మొక్కల ప్రోటీన్ అవసరం) మరియు పాలీకల్చర్‌లో సహజ ఆహారానికి పోటీ.</div><div class='symp'><span class='symp-head'>పోషకాహార లోపం సంకేతాలు</span>మేజర్ కార్ప్‌లలో FCR &gt;2.5 (లక్ష్యం &lt;1.8). వ్యక్తుల మధ్య పెద్ద పరిమాణ వ్యత్యాసం. లేత/తేలిపోయిన రంగు. రోగనిరోధకత తగ్గడం. సన్నని శరీర ఆకృతి.</div><div class='step'>ఆహార నిర్వహణ విధానం</div><ul class='dl'><li><span class='dlc'>ప్రోటీన్: పిల్లలకు 28–32%, పెద్ద చేపలకు 24–28%</span><span class='dlq'>రోహు 28%, కట్లా 26%, మృగల్ 25%</span></li><li><span class='dlc'>ఆహారం రేటు: శరీర బరువులో 2–5%/రోజు</span><span class='dlq'>నెలవారీ నమూనా బరువు ఆధారంగా సర్దుబాటు</span></li><li><span class='dlc'>ఆహారపు ట్రే పర్యవేక్షణ</span><span class='dlq'>వేసిన 2 గంటల తర్వాత ట్రేలు తనిఖీ చేయండి.</span></li><li><span class='dlc'>విటమిన్ C అనుబంధం</span><span class='dlq'>100–200 mg/kg ఆహారం</span></li><li><span class='dlc'>మినరల్ ప్రీమిక్స్</span><span class='dlq'>ఆహారంలో 1–2%</span></li></ul><div class='it'><span class='bh'>సహజ ఆహారం మెరుగుదల</span>పక్షానికోసారి సేంద్రీయ ఎరువు (ఆవు పేడ 20–25 కి.గ్రా/బిఘా) + రసాయన ఎరువు (యూరియా 2 + SSP 3 కి.గ్రా/బిఘా) ఫైటోప్లాంక్టన్ మరియు జూప్లాంక్టన్ బ్లూమ్ నిర్వహిస్తుంది.</div>`
+},
+{
+  id:'saprolegnia', icon:'🍄', ac:'ac-gold',
+  tags:[{c:'tf',t:{en:'FUNGAL',bn:'ছত্রাক',te:'శిలీంధ్ర రోగం'}}],
+  title:{en:'Fish Hard — Saprolegnia (Water Mould)',bn:'ফিশ হার্ড — স্যাপ্রোলেগনিয়া (জলের ছত্রাক)',te:'Fish Hard — నీటి పుట్టగొడుగు రోగం (Saprolegnia)'},
+  sub:{en:'Cotton-wool white growth · Cold water peak · Injury trigger',bn:'সাদা তুলার মতো বৃদ্ধি · ঠান্ডা জলে সবচেয়ে বেশি',te:'తెల్లని పత్తి లాంటి పెరుగుదల · చల్లని నీటిలో ఎక్కువ'},
+  en:`<div class='cause'><strong>Causative Agent:</strong> Saprolegnia parasitica, S. diclina (water moulds/oomycetes). Secondary infection — always follows injury, stress, or another disease (especially EUS ulcers). Thrives in cold water (15–20°C). Peak: November–February. NOT a primary pathogen — indicates underlying problem.</div><div class='symp'><span class='symp-head'>Symptoms</span>White or grey cotton-wool growth on skin, fins, or gills. Most common around wounds, ulcers, or sites of mechanical injury. Appears as fluffy hyphae mass. Fish lethargic. Secondary bacterial infection follows rapidly.</div><div class='step'>Treatment</div><ul class='dl'><li><span class='dlc'>Salt (NaCl) bath</span><span class='dlq'>10–15 g/L · 10–15 min · daily until resolved</span><span class='dln'>Most practical field treatment. Salt dehydrates fungal hyphae osmotically.</span></li><li><span class='dlc'>KMnO₄ bath</span><span class='dlq'>10–15 mg/L · 30 min</span></li><li><span class='dlc'>KMnO₄ pond treatment</span><span class='dlq'>2–3 mg/L</span></li><li><span class='dlc'>Formalin bath</span><span class='dlq'>100–150 mg/L · 30–60 min</span></li></ul><div class='step'>Critical: Treat the Underlying Cause</div><ul class='dl'><li><span class='dlc'>Address EUS or bacterial ulcers first</span><span class='dlq'>Saprolegnia will return if primary cause not treated</span></li><li><span class='dlc'>Improve water quality — raise DO &gt;5 mg/L</span><span class='dlq'>Stress = susceptibility</span></li><li><span class='dlc'>Handle fish gently — prevent injuries</span><span class='dlq'>Any skin break = Saprolegnia entry point</span></li></ul><div class='it'><span class='bh'>Key Point</span>Saprolegnia is a saprophyte — it attacks weakened/injured tissue. If recurrent, investigate the primary problem (EUS, water quality, overcrowding) rather than repeating fungal treatment alone.</div>`,
+  bn:`<div class='cause'><strong>কারণকারী জীবাণু:</strong> স্যাপ্রোলেগনিয়া প্যারাসিটিকা, এস. ডাইক্লিনা (জলের ছত্রাক/ওমাইসেট)। সেকেন্ডারি সংক্রমণ — সর্বদা আঘাত, চাপ বা অন্য রোগের পরে (বিশেষত EUS ক্ষত)। ঠান্ডা জলে (১৫–২০°C) বাড়ে। নভেম্বর–ফেব্রুয়ারিতে সবচেয়ে বেশি।</div><div class='symp'><span class='symp-head'>লক্ষণ</span>ত্বকে, পাখনায় বা কানকোতে সাদা বা ধূসর তুলার মতো বৃদ্ধি। আঘাত বা ক্ষতের চারপাশে সবচেয়ে বেশি দেখা যায়। ঝিমুনি। দ্রুত সেকেন্ডারি ব্যাকটেরিয়া সংক্রমণ হয়।</div><div class='step'>চিকিৎসা</div><ul class='dl'><li><span class='dlc'>NaCl লবণ স্নান</span><span class='dlq'>১০–১৫ গ্রা/লি · ১০–১৫ মিনিট · সমাধান না হওয়া পর্যন্ত প্রতিদিন</span><span class='dln'>সবচেয়ে ব্যবহারিক মাঠ চিকিৎসা। লবণ অসমোটিক্যালি ছত্রাকের হাইফা শুকিয়ে দেয়।</span></li><li><span class='dlc'>KMnO₄ স্নান</span><span class='dlq'>১০–১৫ মি.গ্রা/লি · ৩০ মিনিট</span></li><li><span class='dlc'>KMnO₄ পুকুরে প্রয়োগ</span><span class='dlq'>২–৩ মি.গ্রা/লি</span></li><li><span class='dlc'>ফর্মালিন স্নান</span><span class='dlq'>১০০–১৫০ মি.গ্রা/লি · ৩০–৬০ মিনিট</span></li></ul><div class='step'>গুরুত্বপূর্ণ: মূল কারণ চিকিৎসা করুন</div><ul class='dl'><li><span class='dlc'>প্রথমে EUS বা ব্যাকটেরিয়াল ক্ষত চিকিৎসা করুন</span><span class='dlq'>মূল কারণ না সারালে স্যাপ্রোলেগনিয়া ফিরে আসবে</span></li><li><span class='dlc'>DO &gt;৫ মি.গ্রা/লি বজায় রাখুন</span><span class='dlq'>চাপ = সংবেদনশীলতা</span></li></ul><div class='it'><span class='bh'>মূল বিষয়</span>স্যাপ্রোলেগনিয়া একটি পচনশীল জীব — দুর্বল/আহত টিস্যু আক্রমণ করে। বারবার হলে মূল কারণ (EUS, জলমান, ঘন মজুদ) অনুসন্ধান করুন।</div>`,
+  te:`<div class='cause'><strong>రోగం ఎలా వస్తుంది:</strong> సాప్రోలెగ్నియా పారాసిటికా, ఎస్. డైక్లినా (నీటి పుట్టగొడుగులు/ఒమైసెట్లు). ద్వితీయ సంక్రమణ — ఎల్లప్పుడూ గాయం, ఒత్తిడి లేదా మరొక వ్యాధి (ముఖ్యంగా EUS పుళ్ళు) తర్వాత వస్తుంది. చల్లని నీటిలో (15–20°C) పెరుగుతుంది. నవంబర్–ఫిబ్రవరిలో ఎక్కువ.</div><div class='symp'><span class='symp-head'>లక్షణాలు</span>చర్మంపై, రెక్కలపై లేదా చెవులపై తెల్లని లేదా బూడిద రంగు పత్తి లాంటి పెరుగుదల. గాయాల లేదా పుళ్ళ చుట్టూ అత్యంత సాధారణం. మత్తుగా ఉండటం. తర్వాత వేగంగా బాక్టీరియా సంక్రమణ వస్తుంది.</div><div class='step'>చికిత్స</div><ul class='dl'><li><span class='dlc'>NaCl ఉప్పు స్నానం</span><span class='dlq'>10–15 g/L · 10–15 నిమి · పరిష్కారమయ్యేంత వరకు రోజూ</span><span class='dln'>అత్యంత ఆచరణాత్మక క్షేత్ర చికిత్స. ఉప్పు ఆస్మోటిక్ గా శిలీంధ్ర హైఫాను ఆరబెడుతుంది.</span></li><li><span class='dlc'>KMnO₄ స్నానం</span><span class='dlq'>10–15 mg/L · 30 నిమిషాలు</span></li><li><span class='dlc'>KMnO₄ చెరువులో</span><span class='dlq'>2–3 mg/L</span></li><li><span class='dlc'>ఫార్మాలిన్ స్నానం</span><span class='dlq'>100–150 mg/L · 30–60 నిమిషాలు</span></li></ul><div class='step'>ముఖ్యమైనది: అంతర్లీన కారణాన్ని చికిత్స చేయండి</div><ul class='dl'><li><span class='dlc'>ముందుగా EUS లేదా బాక్టీరియా పుళ్ళు చికిత్స చేయండి</span><span class='dlq'>మూల కారణం సరిదిద్దకుంటే సాప్రోలెగ్నియా తిరిగి వస్తుంది</span></li><li><span class='dlc'>DO &gt;5 mg/L నిర్వహించండి</span><span class='dlq'>ఒత్తిడి = సున్నితత్వం</span></li></ul><div class='it'><span class='bh'>కీలక విషయం</span>సాప్రోలెగ్నియా బలహీన/గాయపడిన కణజాలాన్ని మాత్రమే దాడి చేస్తుంది. పదే పదే వస్తే మూల కారణం (EUS, నీటి నాణ్యత, అధిక సాంద్రత) పరిశోధించండి.</div>`
+}
+];
 
-  // 2. Inject a <style> tag — always wins over GitHub's injected CSS
-  var el = document.getElementById('lang-style');
-  if (!el) {
-    el = document.createElement('style');
-    el.id = 'lang-style';
-    document.head.appendChild(el);
-  }
+// ── ALL lookup ──
+var ALL = {};
+D.forEach(function(c){ ALL[c.id] = c; });
 
-  // Every .bn and .te element across the ENTIRE document
-  var HIDE_BN =
-    // Cards
-    '.bn-card{display:none!important;}' +
-    // Inline .bn spans everywhere
-    '.eyebrow .bn{display:none!important;}' +
-    '.header .bn{display:none!important;}' +
-    '.bn-title{display:none!important;}' +
-    '.sub .bn{display:none!important;}' +
-    '.sp-tag .bn{display:none!important;}' +
-    '.season-head .bn{display:none!important;}' +
-    '.s-name .bn{display:none!important;}' +
-    '.s-months .bn{display:none!important;}' +
-    '.sec-label-text .bn{display:none!important;}' +
-    '.advisory-head .bn{display:none!important;}' +
-    '.adv-head .bn{display:none!important;}' +
-    '.adv-item p .bn{display:none!important;}' +
-    'footer .bn{display:none!important;}' +
-    'footer p.bn{display:none!important;}' +
-    '.ls-label .bn{display:none!important;}' +
-    '.print-label .bn{display:none!important;}' +
-    '.lang-switcher .bn{display:none!important;}';
+var TAB_ALL = D; // single tab — all diseases
+var LANG = 'en', CID = null, TX = 0;
+var FONTS = {en:"'IBM Plex Sans',sans-serif", bn:"'Hind Siliguri',sans-serif", te:"'Noto Sans Telugu',sans-serif"};
+var STRIP = {
+  en:'Indian Major Carps · Bengal Zone · 13 Conditions',
+  bn:'ভারতীয় প্রধান কার্প · বাংলা অঞ্চল · ১৩টি স্বাস্থ্য সমস্যা',
+  te:'భారతీయ ప్రధాన కార్ప్ · బెంగాల్ జోన్ · 13 ఆరోగ్య పరిస్థితులు'
+};
 
-  var SHOW_TE =
-    '.te-card{display:flex!important;flex-direction:column!important;}' +
-    '.eyebrow .te{display:inline!important;}' +
-    '.header .te{display:inline!important;}' +
-    '.te.bn-title{display:inline!important;}' +
-    '.sub .te{display:inline!important;}' +
-    '.sp-tag .te{display:inline!important;}' +
-    '.season-head .te{display:inline!important;}' +
-    '.s-name .te{display:inline!important;}' +
-    '.s-months .te{display:inline!important;}' +
-    '.sec-label-text .te{display:inline!important;}' +
-    '.advisory-head .te{display:inline!important;}' +
-    '.adv-head .te{display:inline!important;}' +
-    '.adv-item p .te{display:block!important;}' +
-    'footer .te{display:inline!important;}' +
-    'footer p.te{display:block!important;}' +
-    '.ls-label .te{display:inline!important;}' +
-    '.print-label .te{display:inline!important;}' +
-    '.lang-switcher .te{display:inline!important;}';
-
-  var HIDE_TE =
-    '.te-card{display:none!important;}' +
-    '.eyebrow .te{display:none!important;}' +
-    '.header .te{display:none!important;}' +
-    '.te.bn-title{display:none!important;}' +
-    '.sub .te{display:none!important;}' +
-    '.sp-tag .te{display:none!important;}' +
-    '.season-head .te{display:none!important;}' +
-    '.s-name .te{display:none!important;}' +
-    '.s-months .te{display:none!important;}' +
-    '.sec-label-text .te{display:none!important;}' +
-    '.advisory-head .te{display:none!important;}' +
-    '.adv-head .te{display:none!important;}' +
-    '.adv-item p .te{display:none!important;}' +
-    'footer .te{display:none!important;}' +
-    'footer p.te{display:none!important;}' +
-    '.ls-label .te{display:none!important;}' +
-    '.print-label .te{display:none!important;}' +
-    '.lang-switcher .te{display:none!important;}';
-
-  var SHOW_BN =
-    '.bn-card{display:flex!important;flex-direction:column!important;}' +
-    '.eyebrow .bn{display:inline!important;}' +
-    '.header .bn{display:inline!important;}' +
-    '.bn-title{display:inline!important;}' +
-    '.sub .bn{display:inline!important;}' +
-    '.sp-tag .bn{display:inline!important;}' +
-    '.season-head .bn{display:inline!important;}' +
-    '.s-name .bn{display:inline!important;}' +
-    '.s-months .bn{display:inline!important;}' +
-    '.sec-label-text .bn{display:inline!important;}' +
-    '.advisory-head .bn{display:inline!important;}' +
-    '.adv-head .bn{display:inline!important;}' +
-    '.adv-item p .bn{display:block!important;}' +
-    'footer .bn{display:inline!important;}' +
-    'footer p.bn{display:block!important;}' +
-    '.ls-label .bn{display:inline!important;}' +
-    '.print-label .bn{display:inline!important;}' +
-    '.lang-switcher .bn{display:inline!important;}';
-
-  el.textContent = (lang === 'te')
-    ? (HIDE_BN + SHOW_TE)
-    : (HIDE_TE + SHOW_BN);
-
-  // 3. Update pill active state
-  document.querySelectorAll('.ls-btn').forEach(function(b) {
-    b.classList.toggle('active', b.getAttribute('data-lang') === lang);
+function setLang(l) {
+  LANG = l;
+  document.body.style.fontFamily = FONTS[l]||FONTS.en;
+  document.querySelectorAll('.lb').forEach(function(b){
+    b.className = 'lb' + (b.getAttribute('data-l')===l?' on':'');
   });
-
-  // 4. Save preference
-  try { localStorage.setItem('imc-lang', lang); } catch(e) {}
+  document.getElementById('strip-txt').textContent = STRIP[l]||STRIP.en;
+  try{ localStorage.setItem('imcl',l); }catch(e){}
+  renderList(document.getElementById('srch').value||'');
+  if(CID){ openDetail(CID); }
 }
 
-/* ── Restore saved preference on load ── */
-(function() {
-  var saved = 'bn';
-  try { saved = localStorage.getItem('imc-lang') || 'bn'; } catch(e) {}
-  setLang(saved);
-})();
-
-function triggerPrint(size) {
-  // Remove previous dynamic page-size rule
-  var prev = document.getElementById('dyn-page');
-  if (prev) prev.remove();
-
-  var st = document.createElement('style');
-  st.id = 'dyn-page';
-  st.textContent = size === 'a5'
-    ? '@media print { @page { size: A5 portrait; margin: 8mm 7mm; } }'
-    : '@media print { @page { size: A4 portrait; margin: 10mm 9mm; } }';
-  document.head.appendChild(st);
-
-  document.body.setAttribute('data-print', size);
-
-  setTimeout(function() {
-    window.print();
-    setTimeout(function() {
-      document.body.removeAttribute('data-print');
-      st.remove();
-    }, 1500);
-  }, 80);
-}
-
-document.addEventListener('keydown', function(e) {
-  if ((e.ctrlKey || e.metaKey) && e.key === 'p') {
-    e.preventDefault();
-    triggerPrint('a4');
+function renderList(q) {
+  var sq = (q||'').toLowerCase().trim();
+  var html = '', n = 0;
+  for(var i=0; i<D.length; i++){
+    var c = D[i];
+    var tl = LANG==='bn'?c.title.bn:LANG==='te'?c.title.te:c.title.en;
+    var sl = LANG==='bn'?c.sub.bn:LANG==='te'?c.sub.te:c.sub.en;
+    var match = !sq
+      || c.title.en.toLowerCase().indexOf(sq)>=0
+      || c.sub.en.toLowerCase().indexOf(sq)>=0
+      || (c.title.bn && c.title.bn.indexOf(sq)>=0)
+      || (c.title.te && c.title.te.indexOf(sq)>=0)
+      || c.id.indexOf(sq)>=0;
+    if(!match) continue;
+    n++;
+    var tgtxt = LANG==='bn'?c.tags[0].t.bn:LANG==='te'?c.tags[0].t.te:c.tags[0].t.en;
+    html += '<div class="card '+c.ac+'" data-id="'+c.id+'">'
+      + '<div class="ci">'+c.icon+'</div>'
+      + '<div class="cb">'
+        + '<div class="ct">'+tl+'</div>'
+        + '<div class="cs">'+sl+'</div>'
+        + '<div class="ctg"><span class="tg '+c.tags[0].c+'">'+tgtxt+'</span></div>'
+      + '</div>'
+      + '<div class="ca">›</div>'
+    + '</div>';
   }
+  var listEl = document.getElementById('list');
+  listEl.innerHTML = html + '<div id="nores"'+(n?'':' style="display:block"')+'>🔎 No results</div>';
+  listEl.onclick = function(e){
+    var el = e.target;
+    while(el && el !== listEl){
+      if(el.getAttribute && el.getAttribute('data-id')){ openDetail(el.getAttribute('data-id')); return; }
+      el = el.parentElement;
+    }
+  };
+}
+
+function openDetail(id) {
+  var c = ALL[id]; if(!c) return;
+  CID = id;
+  var tl = LANG==='bn'?c.title.bn:LANG==='te'?c.title.te:c.title.en;
+  var sl = LANG==='bn'?c.sub.bn:LANG==='te'?c.sub.te:c.sub.en;
+  var bl = LANG==='bn'?c.bn:LANG==='te'?c.te:c.en;
+  document.getElementById('dico').textContent = c.icon;
+  document.getElementById('dtit').textContent = tl;
+  document.getElementById('dsub').textContent = sl;
+  document.getElementById('dbody').innerHTML = bl;
+  document.getElementById('dscr').scrollTop = 0;
+  var d = document.getElementById('det');
+  d.classList.remove('open');
+  void d.offsetWidth;
+  d.classList.add('open');
+}
+
+function closeDetail() {
+  document.getElementById('det').classList.remove('open');
+  CID = null;
+}
+
+// Events
+document.querySelectorAll('.lb').forEach(function(b){
+  b.addEventListener('click', function(){ setLang(b.getAttribute('data-l')); });
 });
+document.getElementById('back').addEventListener('click', closeDetail);
+document.getElementById('srch').addEventListener('input', function(e){ renderList(e.target.value); });
+
+// Swipe right to close
+var det = document.getElementById('det');
+det.addEventListener('touchstart', function(e){ TX = e.touches[0].clientX; }, {passive:true});
+det.addEventListener('touchend', function(e){
+  if(e.changedTouches[0].clientX - TX > 70 && TX < 50) closeDetail();
+}, {passive:true});
+
+// Init
+(function(){
+  var l='en';
+  try{ l=localStorage.getItem('imcl')||'en'; }catch(e){}
+  setLang(l);
+  renderList('');
+})();
 </script>
 
 </body>
