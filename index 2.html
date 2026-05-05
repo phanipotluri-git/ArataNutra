@@ -529,7 +529,18 @@ footer {
 <!-- ─── NAV ─── -->
 <nav>
   <a class="nav-logo" href="#">
-    <img class="brand-logo-img" src="arata-logo-color.png" alt="ARATA Nutraceuticals">
+    <svg class="brand-logo-img" viewBox="0 0 290 72" xmlns="http://www.w3.org/2000/svg" aria-label="ARATA Nutraceuticals">
+      <defs>
+        <linearGradient id="nav-a-grad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#A5FFE3"/>
+          <stop offset="100%" stop-color="#09C07A"/>
+        </linearGradient>
+      </defs>
+      <path d="M14,57 C14,35 24,15 35,7 C46,15 56,35 56,57" stroke="url(#nav-a-grad)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <circle cx="35" cy="64" r="6" fill="url(#nav-a-grad)"/>
+      <text x="80" y="43" font-family="Orbitron,Arial,sans-serif" font-size="28" font-weight="700" fill="#1d1d1f" letter-spacing="5">ARATA</text>
+      <text x="80" y="63" font-family="Montserrat,Arial,sans-serif" font-size="9.5" font-weight="200" fill="#0a8a5c" letter-spacing="5">NUTRACEUTICALS</text>
+    </svg>
   </a>
   <div class="nav-links">
     <a class="nav-link" href="#product-feature">AETERNYX</a>
@@ -838,7 +849,18 @@ footer {
 <footer>
   <div class="foot-top">
     <div class="foot-brand">
-      <img class="brand-logo-img foot" src="arata-logo-color.png" alt="ARATA Nutraceuticals">
+      <svg class="brand-logo-img foot" viewBox="0 0 290 72" xmlns="http://www.w3.org/2000/svg" aria-label="ARATA Nutraceuticals">
+        <defs>
+          <linearGradient id="foot-a-grad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#A5FFE3"/>
+            <stop offset="100%" stop-color="#09C07A"/>
+          </linearGradient>
+        </defs>
+        <path d="M14,57 C14,35 24,15 35,7 C46,15 56,35 56,57" stroke="url(#foot-a-grad)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <circle cx="35" cy="64" r="6" fill="url(#foot-a-grad)"/>
+        <text x="80" y="43" font-family="Orbitron,Arial,sans-serif" font-size="28" font-weight="700" fill="#1d1d1f" letter-spacing="5">ARATA</text>
+        <text x="80" y="63" font-family="Montserrat,Arial,sans-serif" font-size="9.5" font-weight="200" fill="#0a8a5c" letter-spacing="5">NUTRACEUTICALS</text>
+      </svg>
       <p>Science-backed cellular intelligence for those who refuse to accept decline as default.</p>
     </div>
     <div class="foot-col">
@@ -872,6 +894,7 @@ footer {
 </footer>
 
 <script>
+document.body.classList.add('js-rv');
 var rvEls = document.querySelectorAll('.rv');
 var io = new IntersectionObserver(function(entries){
   entries.forEach(function(entry){
