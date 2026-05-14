@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AETERNYX — Pulmonology Clinical Brochure v4</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300;1,400&family=DM+Sans:opsz,wght@9..40,200;9..40,300;9..40,400;9..40,500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bk:#08080B;--bk1:#0F0F13;--bk2:#151519;--bk3:#1D1D23;--bk4:#26262E;--bk5:#313139;
+  --go:#B08D57;--gol:#CBA870;--gop:#E0CDA0;--god:#7A5E35;--godim:rgba(176,141,87,.1);
+  --te:#1A7A68;--tel:#25A085;--tep:#84CFC3;--tedim:rgba(26,122,104,.12);
+  --rd:#9A3030;--rdl:#C04040;--rdp:#F0AAAA;--rddim:rgba(154,48,48,.13);
+  --am:#9A6A18;--aml:#C48A28;--amp:#EECA78;--amdim:rgba(154,106,24,.12);
+  --pu:#5E3490;--pul:#8050C0;--pup:#C8A8F0;--pudim:rgba(94,52,144,.13);
+  --bl:#1A4A9A;--blp:#A0B8F0;--bldim:rgba(26,74,154,.14);
+  --pl:#D8D5CD;--sv:#8E8B85;--wh:#EEEBE3;
+  --pw:794px;--ph:1123px;
+}
+body{background:#10101A;font-family:'DM Sans',sans-serif;font-weight:300;display:flex;flex-direction:column;align-items:center;padding:1.5rem 1rem;gap:1.25rem}
+.pbtn{font-family:'DM Sans',sans-serif;font-size:10px;font-weight:400;letter-spacing:.14em;text-transform:uppercase;background:var(--godim);color:var(--gop);border:.5px solid var(--god);padding:.4rem 1.4rem;border-radius:20px;cursor:pointer;transition:all .15s}
+.pbtn:hover{background:var(--go);color:#fff}
+.plbl{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--sv);margin-bottom:.3rem;text-align:center}
+.page{width:var(--pw);background:var(--bk);position:relative;overflow:hidden;box-shadow:0 20px 64px rgba(0,0,0,.8)}
+
+/* atoms */
+.ey{font-size:7px;letter-spacing:.2em;text-transform:uppercase;font-weight:400}
+.ey-g{color:var(--gol)}.ey-t{color:var(--tel)}.ey-r{color:var(--rdl)}.ey-a{color:var(--aml)}.ey-p{color:var(--pup)}.ey-b{color:var(--blp)}.ey-s{color:var(--sv)}
+.sb{display:flex;align-items:center;gap:6px;margin:10px 0 7px}
+.sb:first-child{margin-top:0}
+.sb .ln{flex:1;height:.5px;background:var(--bk4)}
+.ck{font-size:6.5px;padding:1.5px 6px;border-radius:4px;border:.5px solid}
+.ckt{background:var(--tedim);color:var(--tep);border-color:rgba(26,122,104,.3)}
+.ckg{background:var(--godim);color:var(--gop);border-color:rgba(176,141,87,.3)}
+.ckr{background:var(--rddim);color:var(--rdp);border-color:rgba(154,48,48,.3)}
+.cka{background:var(--amdim);color:var(--amp);border-color:rgba(154,106,24,.3)}
+.ckp{background:var(--pudim);color:var(--pup);border-color:rgba(94,52,144,.3)}
+.ckb{background:var(--bldim);color:var(--blp);border-color:rgba(26,74,154,.3)}
+.cks{display:flex;flex-wrap:wrap;gap:3px;margin-top:4px}
+.rf{font-size:6.5px;color:var(--bk5);font-family:'DM Mono',monospace;margin-top:2px;line-height:1.4}
+.divl{height:.5px;background:var(--bk4);margin:9px 0}
+.hl{background:rgba(176,141,87,.05);border:.5px solid rgba(176,141,87,.18);border-radius:3px;padding:9px 12px}
+.hl p{font-size:8px;color:var(--gop);line-height:1.7}
+.hl strong{font-weight:400;color:var(--wh)}
+
+/* shared header */
+.hd{padding:13px 26px 11px;display:flex;align-items:flex-end;justify-content:space-between;position:relative;background:var(--bk1)}
+.hd-brand{font-family:'Cormorant Garamond',serif;font-size:1.75rem;font-weight:200;letter-spacing:.2em;color:var(--wh);line-height:1}
+.hd-tag{font-size:7px;letter-spacing:.2em;text-transform:uppercase;color:var(--go);margin-top:3px}
+.hd-right{text-align:right}
+.hd-eye{font-size:7px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:3px}
+.hd-title{font-family:'Cormorant Garamond',serif;font-size:.95rem;font-weight:300;line-height:1.3}
+.hd-bar{height:2px;background:linear-gradient(90deg,var(--go),var(--tel) 45%,var(--rdl) 75%,var(--go))}
+
+/* shared footer */
+.ft{background:var(--bk1);border-top:.5px solid var(--bk3);padding:7px 26px;display:flex;align-items:center;justify-content:space-between}
+.ft-dis{font-size:6px;color:var(--bk5);max-width:500px;line-height:1.4}
+.ft-pg{font-family:'Cormorant Garamond',serif;font-size:.65rem;letter-spacing:.14em;color:var(--god)}
+.ft-final{background:var(--bk);border-top:1.5px solid var(--go);padding:7px 26px;display:flex;align-items:center;justify-content:space-between}
+.ft-final-t{font-family:'Cormorant Garamond',serif;font-size:.85rem;font-style:italic;color:var(--gop)}
+.ft-final-c{font-size:7px;color:var(--sv);text-align:right;line-height:1.6}
+
+.body{padding:12px 26px}
+
+/* cards */
+.g2{display:grid;grid-template-columns:repeat(2,1fr);gap:7px}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.card{background:var(--bk2);border:.5px solid var(--bk3);border-radius:3px;padding:10px 12px}
+.card.tl{border-left:2px solid var(--te)}
+.card.gl{border-left:2px solid var(--go)}
+.card.rl{border-left:2px solid var(--rd)}
+.card.al{border-left:2px solid var(--am)}
+.card.pl{border-left:2px solid var(--pu)}
+.card.bl{border-left:2px solid var(--bl)}
+.c-ey{font-size:7px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:3px;font-weight:400}
+.c-title{font-size:10.5px;font-weight:400;color:var(--wh);margin-bottom:4px;line-height:1.2}
+.c-body{font-size:8px;color:var(--sv);line-height:1.65}
+.c-pitch{font-family:'Cormorant Garamond',serif;font-size:9px;font-style:italic;color:var(--gop);margin-top:5px;padding-top:5px;border-top:.5px solid var(--bk4);line-height:1.5}
+
+/* molecule cards */
+.mol{background:var(--bk2);border:.5px solid var(--bk3);border-radius:3px;padding:10px 12px;margin-bottom:8px}
+.mol.tl{border-left:2.5px solid var(--te)}
+.mol.gl{border-left:2.5px solid var(--go)}
+.mol.al{border-left:2.5px solid var(--am)}
+.mol-hd{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:4px;padding-bottom:4px;border-bottom:.5px solid var(--bk4)}
+.mol-nm{font-size:11px;font-weight:400;color:var(--wh)}
+.mol-ds{font-family:'DM Mono',monospace;font-size:8px;color:var(--go)}
+.mol-mch{font-size:8.5px;color:var(--tep);font-style:italic;font-family:'Cormorant Garamond',serif;margin-bottom:4px;line-height:1.35}
+.mol-g2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.mol-ct{font-size:7.5px;font-weight:400;color:var(--gol);letter-spacing:.08em;text-transform:uppercase;margin-bottom:3px}
+.mol-bd{font-size:8px;color:var(--sv);line-height:1.65}
+.mol-ev{background:rgba(176,141,87,.05);border:.5px solid rgba(176,141,87,.15);border-radius:2px;padding:5px 8px;margin-top:5px}
+.mol-ev-l{font-size:7px;letter-spacing:.1em;text-transform:uppercase;color:var(--gol);margin-bottom:2px}
+.mol-ev-b{font-size:7.5px;color:var(--sv);line-height:1.6}
+.mol-ev-b strong{color:var(--gop);font-weight:400}
+
+/* tables */
+.t{width:100%;border-collapse:collapse}
+.t th{font-size:7px;letter-spacing:.1em;text-transform:uppercase;color:var(--sv);padding:4px 6px;border-bottom:.5px solid var(--bk4);text-align:left;font-weight:400;background:var(--bk3)}
+.t td{padding:5px 6px;border-bottom:.5px solid var(--bk3);font-size:7.5px;color:var(--sv);vertical-align:top;line-height:1.5}
+.t tr:last-child td{border-bottom:none}
+.t tr:hover td{background:var(--bk1)}
+.tnm{color:var(--wh);font-weight:400;font-size:8px}
+.tcat{font-family:'DM Mono',monospace;font-size:6.5px;color:var(--sv)}
+.tmol{color:var(--go);font-family:'DM Mono',monospace;font-size:6.5px;line-height:1.5}
+.tev{font-size:6.5px;color:var(--tep);font-style:italic}
+.tdur-l{background:var(--tedim);color:var(--tep);border-color:rgba(26,122,104,.3);font-size:6.5px;padding:2px 6px;border-radius:3px;border:.5px solid;display:inline-block}
+.tdur-s{background:var(--amdim);color:var(--amp);border-color:rgba(154,106,24,.3);font-size:6.5px;padding:2px 6px;border-radius:3px;border:.5px solid;display:inline-block}
+.tdur-a{background:var(--godim);color:var(--gop);border-color:rgba(176,141,87,.3);font-size:6.5px;padding:2px 6px;border-radius:3px;border:.5px solid;display:inline-block}
+
+/* synergy cards */
+.syn{background:var(--bk2);border:.5px solid var(--bk3);border-radius:3px;padding:9px 11px}
+.syn-pair{font-family:'DM Mono',monospace;font-size:7px;color:var(--go);margin-bottom:2px;line-height:1.4}
+.syn-ar{color:var(--tel);font-size:8px;display:block;margin:2px 0}
+.syn-eff{font-size:8.5px;color:var(--wh);font-family:'Cormorant Garamond',serif;font-style:italic;margin-bottom:3px}
+.syn-det{font-size:7.5px;color:var(--sv);line-height:1.5}
+
+/* stat band */
+.statband{display:grid;gap:1px;background:var(--bk4)}
+.sbi{background:var(--bk2);padding:10px 12px;text-align:center}
+.sbv{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:200;color:var(--gop);line-height:1;margin-bottom:3px}
+.sbl{font-size:7px;color:var(--sv);line-height:1.45}
+
+/* why unique box */
+.unique{background:linear-gradient(135deg,rgba(26,122,104,.08),rgba(176,141,87,.06));border:.5px solid rgba(176,141,87,.2);border-radius:4px;padding:12px 16px;margin-bottom:9px}
+.unique-title{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:300;color:var(--wh);margin-bottom:8px}
+.unique-title span{color:var(--gop)}
+.unique-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}
+.uq{background:var(--bk3);border:.5px solid var(--bk4);border-radius:3px;padding:8px 9px;text-align:center}
+.uq-v{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:200;color:var(--gop);margin-bottom:2px}
+.uq-l{font-size:7.5px;color:var(--sv);line-height:1.45}
+
+/* exposure deep cards */
+.exp{background:var(--bk2);border:.5px solid var(--bk3);border-radius:4px;overflow:hidden;margin-bottom:8px}
+.exp-hd{padding:8px 13px;border-bottom:.5px solid var(--bk3);display:flex;align-items:center;gap:9px}
+.exp-ic{width:26px;height:26px;border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.ic-tob{background:var(--rddim)}
+.ic-env{background:var(--tedim)}
+.ic-occ{background:var(--amdim)}
+.ic-imm{background:var(--pudim)}
+.ic-slp{background:var(--bldim)}
+.ic-dis{background:var(--godim)}
+.exp-title{font-size:11px;font-weight:400;color:var(--wh)}
+.exp-sub{font-size:7.5px;color:var(--sv);margin-top:1px}
+.exp-bd{padding:10px 13px}
+.exp-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.exp-ct{font-size:7.5px;font-weight:400;color:var(--gol);letter-spacing:.07em;text-transform:uppercase;margin-bottom:3px;padding-bottom:2px;border-bottom:.5px solid var(--bk4)}
+.exp-body{font-size:7.5px;color:var(--sv);line-height:1.65}
+.exp-mols{background:rgba(176,141,87,.04);border:.5px solid rgba(176,141,87,.14);border-radius:2px;padding:6px 9px;margin-top:6px}
+.exp-mols-t{font-size:7px;letter-spacing:.1em;text-transform:uppercase;color:var(--gol);margin-bottom:4px}
+.exp-mol-row{display:flex;gap:6px;align-items:baseline;padding:2px 0;border-bottom:.5px solid var(--bk4)}
+.exp-mol-row:last-child{border-bottom:none}
+.exp-mol-nm{font-family:'DM Mono',monospace;font-size:7px;color:var(--go);min-width:120px;flex-shrink:0}
+.exp-mol-why{font-size:7.5px;color:var(--sv);line-height:1.45}
+.exp-pitch{font-family:'Cormorant Garamond',serif;font-size:9.5px;font-style:italic;color:var(--gop);line-height:1.55;margin-top:7px;padding-top:6px;border-top:.5px solid var(--bk4)}
+
+@media print{
+  body{background:white;padding:0;gap:0}
+  .pbtn,.plbl{display:none}
+  .page{width:210mm;min-height:297mm;box-shadow:none;margin:0;page-break-after:always}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+<button class="pbtn" onclick="window.print()">⬇ Print / Save as PDF — 4 Pages</button>
+
+<!-- ═══════════════════════════════
+     PAGE 1 — COVER, CRISIS & PATIENT PROFILES
+═══════════════════════════════ -->
+<div class="plbl">Page 1 of 4 — Cover &amp; Patient Profiles</div>
+<div class="page" style="min-height:var(--ph)">
+<div class="hd">
+  <div>
+    <div class="hd-brand">AETERNYX</div>
+    <div class="hd-tag">Not a Supplement · Cellular Intelligence</div>
+  </div>
+  <div class="hd-right">
+    <div class="hd-eye ey-t">Clinical Communication — For Physician Use Only</div>
+    <div class="hd-title" style="color:var(--pl)">Pulmonology · Respiratory Medicine<br>Sleep Medicine · Occupational Lung · Critical Care</div>
+  </div>
+</div>
+<div class="hd-bar"></div>
+
+<div class="body" style="padding-bottom:70px">
+
+<!-- HERO -->
+<div style="padding:16px 0 14px;border-bottom:.5px solid var(--bk4);margin-bottom:12px;display:grid;grid-template-columns:1fr 200px;gap:20px;align-items:center">
+  <div>
+    <div style="font-family:'Cormorant Garamond',serif;font-size:1.95rem;font-weight:200;color:var(--wh);line-height:1.25;margin-bottom:9px">When every breath carries an <span style="color:var(--gop)">oxidative burden</span> —<br>cellular intelligence begins at the <span style="color:var(--tep)">alveolus.</span></div>
+    <div style="font-size:9px;color:var(--sv);line-height:1.8;max-width:460px">India's respiratory system faces a compounded assault that no single therapeutic agent can fully address: toxic inhalants, polluted urban air, immunological dysregulation, and the oxidative cycling of disordered sleep systematically overwhelm the lung's endogenous antioxidant defenses. Aeternyx Core is not a vitamin supplement. It is a 10-molecule, 5-pathway cellular protection system formulated at clinically validated doses — designed to address the oxidative substrate that conventional respiratory therapy cannot reach.</div>
+  </div>
+  <div>
+    <div class="statband" style="grid-template-columns:1fr 1fr;border-radius:4px;overflow:hidden;border:.5px solid var(--bk4)">
+      <div class="sbi"><div class="sbv">40%↓</div><div class="sbl">Glutathione in COPD lung vs healthy controls (Rahman 2006)</div></div>
+      <div class="sbi"><div class="sbv">93%</div><div class="sbl">COPD patients sub-optimal CoQ10 — correlates with FEV1% (Sakata 2015)</div></div>
+      <div class="sbi"><div class="sbv">4×↑</div><div class="sbl">8-isoprostane in untreated moderate-severe OSA. CPAP alone does not normalise.</div></div>
+      <div class="sbi"><div class="sbv">1 in 5</div><div class="sbl">Indian adults carries a chronic respiratory diagnosis driven by oxidative stress</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- WHY UNIQUE -->
+<div class="unique">
+  <div class="unique-title">Why Aeternyx is <span>not a me-too product</span> — five reasons this formulation is clinically distinct</div>
+  <div class="unique-grid">
+    <div class="uq"><div class="uq-v">98%</div><div class="uq-l">Trans-Resveratrol purity — most products use 50%. Only the trans-isomer activates SIRT1. Purity defines potency.</div></div>
+    <div class="uq"><div class="uq-v">100mg</div><div class="uq-l">CoQ10 — the therapeutic dose shown to restore mitochondrial function in COPD. Most supplements use 30–50mg.</div></div>
+    <div class="uq"><div class="uq-v">5</div><div class="uq-l">Simultaneous biological pathways. No antioxidant supplement in India covers all five in one tablet at these doses.</div></div>
+    <div class="uq"><div class="uq-v">Alu-Alu</div><div class="uq-l">Cold-form hermetic blister protects light-sensitive Astaxanthin, CoQ10, and Resveratrol. Generic products use PVC.</div></div>
+    <div class="uq"><div class="uq-v">Synergy</div><div class="uq-l">ALA recycles CoQ10. Selenium activates GPx. Resveratrol amplifies VDR. These interactions are designed-in, not incidental.</div></div>
+  </div>
+</div>
+
+<!-- 5 PATHWAYS -->
+<div class="sb"><div class="ey ey-t">5 Biological Pathways Simultaneously Addressed</div><div class="ln"></div></div>
+<div class="g4" style="grid-template-columns:repeat(5,1fr);margin-bottom:12px;gap:5px">
+  <div class="card tl" style="padding:8px 10px">
+    <div class="c-ey ey-t">Pathway 1</div>
+    <div class="c-title" style="font-size:9.5px">Mitochondrial Bioenergetics</div>
+    <div class="c-body">Restores ATP production and membrane potential in smoke- and hypoxia-damaged alveolar and pulmonary vascular cells.</div>
+    <div style="font-family:'DM Mono',monospace;font-size:7px;color:var(--go);margin-top:4px">CoQ10 100mg · ALA 50mg</div>
+  </div>
+  <div class="card tl" style="padding:8px 10px">
+    <div class="c-ey ey-t">Pathway 2</div>
+    <div class="c-title" style="font-size:9.5px">SIRT1 Longevity Gene Activation</div>
+    <div class="c-body">Cellular repair, anti-fibrotic TGF-β1 suppression, HDAC2 restoration, and reversal of smoke-induced steroid resistance.</div>
+    <div style="font-family:'DM Mono',monospace;font-size:7px;color:var(--go);margin-top:4px">Resveratrol 98% · Tocotrienol</div>
+  </div>
+  <div class="card tl" style="padding:8px 10px">
+    <div class="c-ey ey-t">Pathway 3</div>
+    <div class="c-title" style="font-size:9.5px">Carotenoid Antioxidant Defense</div>
+    <div class="c-body">Direct ROS quenching in bronchial epithelium — 6,000× more potent than Vit C. NF-κB suppression at bronchial surface.</div>
+    <div style="font-family:'DM Mono',monospace;font-size:7px;color:var(--go);margin-top:4px">Astaxanthin 4mg · Lycopene 4mg</div>
+  </div>
+  <div class="card tl" style="padding:8px 10px">
+    <div class="c-ey ey-t">Pathway 4</div>
+    <div class="c-title" style="font-size:9.5px">Master Antioxidant Cascade</div>
+    <div class="c-body">Restores the lung's endogenous GPx enzyme system — depleted by every toxic inhalant, pollutant, and oxidative stressor.</div>
+    <div style="font-family:'DM Mono',monospace;font-size:7px;color:var(--go);margin-top:4px">ALA · Selenium · Vitamin C</div>
+  </div>
+  <div class="card tl" style="padding:8px 10px">
+    <div class="c-ey ey-t">Pathway 5</div>
+    <div class="c-title" style="font-size:9.5px">Vascular-Bone Axis</div>
+    <div class="c-body">Prevents pulmonary arterial calcification, protects alveolar microvasculature, and supports structural integrity of lung tissue.</div>
+    <div style="font-family:'DM Mono',monospace;font-size:7px;color:var(--go);margin-top:4px">Vitamin D3 600IU · K2-7 MK-7 45mcg</div>
+  </div>
+</div>
+
+<!-- SIX PATIENT PROFILES -->
+<div class="sb"><div class="ey ey-r">Six High-Risk Respiratory Patient Profiles Addressed by Aeternyx</div><div class="ln"></div></div>
+
+<!-- PROFILE 1: TOBACCO & INHALANT -->
+<div class="exp">
+  <div class="exp-hd">
+    <div class="exp-ic ic-tob">🚬</div>
+    <div>
+      <div class="exp-title">Profile 1 — Tobacco, Vaping &amp; Hookah Inhalant Users</div>
+      <div class="exp-sub">Cigarette smokers (active + ex) · E-cigarette / vape users · Hookah / waterpipe smokers · Any combination — all generate distinct but overlapping oxidative pulmonary injury patterns</div>
+    </div>
+  </div>
+  <div class="exp-bd">
+    <div class="exp-3">
+      <div>
+        <div class="exp-ct">Pathobiological Mechanisms</div>
+        <div class="exp-body"><strong style="color:var(--wh)">Cigarettes:</strong> Each puff generates 10¹⁵ free radicals. Per-cigarette depletion: ~40mg Vitamin C, oxidation of CoQ10 to inactive ubiquinone, acrolein-mediated GSH-adduct formation destroying intracellular glutathione, and NF-κB activation in bronchial epithelium within minutes. Cumulative daily oxidative debt in a 20-cigarettes/day smoker exceeds dietary replenishment capacity. In ex-smokers, mitochondrial dysfunction and oxidative tissue damage persist for years post-cessation — active cellular repair is required, not merely cessation.<br><br><strong style="color:var(--wh)">E-cigarettes / Vaping:</strong> Aerosol acrolein forms covalent GSH-acrolein adducts — rapidly depleting pulmonary glutathione. Nickel and chromium nanoparticles from heated coils activate NF-κB. Diacetyl in flavourings causes mitochondrial dysfunction in bronchiolar epithelial cells (bronchiolitis obliterans). EVALI is driven by Vitamin E acetate-induced lipid peroxidation in alveolar macrophages. Not safer — differently toxic.<br><br><strong style="color:var(--wh)">Hookah / Waterpipe:</strong> Single session = 100–200× cigarette smoke volume. Charcoal combustion CO raises carboxyhemoglobin 10–20× above normal, directly inhibiting Cytochrome c Oxidase (Complex IV) — causing acute mitochondrial shutdown in alveolar, cardiac, and neural cells. PAHs from charcoal are potent lung carcinogens. Long-term hookah use independently causes COPD, PAH, and lung cancer in non-cigarette-smoking individuals.</div>
+      </div>
+      <div>
+        <div class="exp-ct">Aeternyx Molecular Response</div>
+        <div class="exp-mols">
+          <div class="exp-mols-t">Molecule-by-Molecule Rationale</div>
+          <div class="exp-mol-row"><div class="exp-mol-nm">Vit C 40mg (coated)</div><div class="exp-mol-why">Direct replenishment of the ~40mg/cigarette Vitamin C deficit. Restores airway lining fluid aqueous antioxidant capacity.</div></div>
+          <div class="exp-mol-row"><div class="exp-mol-nm">ALA 50mg (80%)</div><div class="exp-mol-why">Reverses acrolein-GSH adduct-driven glutathione depletion (cigarette + vape). Recycles CoQ10 from inactive ubiquinone to active ubiquinol. Dual-phase (lipid + aqueous) bronchial coverage.</div></div>
+          <div class="exp-mol-row"><div class="exp-mol-nm">Selenium 40mcg</div><div class="exp-mol-why">Restores GPx enzyme activity — the enzymatic glutathione recycling system destroyed by smoke and acrolein. Essential cofactor for all 5 GPx isoforms.</div></div>
+          <div class="exp-mol-row"><div class="exp-mol-nm">Astaxanthin 4mg</div><div class="exp-mol-why">Suppresses NF-κB activation from cigarette smoke ROS. Blocks heavy metal nanoparticle (vaping Ni/Cr) NF-κB triggering. Quenches PAH-generated ROS from hookah charcoal.</div></div>
+          <div class="exp-mol-row"><div class="exp-mol-nm">CoQ10 100mg</div><div class="exp-mol-why">Primary mitochondrial rescue for hookah CO-mediated Cytochrome c Oxidase (Complex IV) inhibition. Restores mitochondrial reserve capacity depleted by chronic smoke oxidative burden.</div></div>
+          <div class="exp-mol-row"><div class="exp-mol-nm">Tocotrienol 10mg</div><div class="exp-mol-why">Membrane-level protection for EVALI lipid peroxidation in alveolar macrophages. 40–60× more potent than tocopherol in bronchial epithelial membrane antioxidant activity.</div></div>
+          <div class="exp-mol-row"><div class="exp-mol-nm">Resveratrol 98% 100mg</div><div class="exp-mol-why">SIRT1 activation drives cellular repair cascade. Restores HDAC2 — reversing smoke-induced ICS steroid resistance. Anti-fibrotic TGF-β1 inhibition for progressive disease.</div></div>
+        </div>
+      </div>
+      <div>
+        <div class="exp-ct">Clinical Application &amp; Prescription Context</div>
+        <div class="exp-body">Aeternyx does not substitute cessation counselling. It addresses the irreversible oxidative cellular burden that persists regardless of smoking status. For <strong style="color:var(--wh)">active smokers</strong>: daily cellular protection protocol — reduces the oxidative mutagenic load contributing to COPD progression and lung carcinogenesis. For <strong style="color:var(--wh)">cessation-attempting patients</strong>: cellular support during the oxidative storm of withdrawal and early cessation. For <strong style="color:var(--wh)">ex-smokers</strong>: long-term lung recovery protocol — mitochondrial biogenesis and cellular repair continue for years. For <strong style="color:var(--wh)">vaping patients</strong>: specific EVALI-mechanism coverage (acrolein-GSH + Vit E acetate peroxidation). For <strong style="color:var(--wh)">hookah patients</strong> — especially younger patients in Hyderabad who consider this recreational — CoQ10 100mg is the only nutraceutical agent addressing CO-mediated Cytochrome c Oxidase inhibition specifically.</div>
+        <div class="exp-pitch">"Every patient who inhales any of these three products is accumulating a cellular oxidative debt that their body cannot repay through diet alone. Aeternyx is the daily pharmaceutical-grade repayment. It is not a lifestyle supplement — it is a multi-mechanism cellular protection protocol formulated for the specific chemistry of inhalant toxicity."</div>
+        <div class="cks" style="margin-top:4px"><span class="ckr">COPD</span><span class="ckr">Lung cancer prevention</span><span class="cka">EVALI</span><span class="ckp">CO toxicity (hookah)</span><span class="ckt">Post-cessation recovery</span><span class="ckr">Smokers' chronic bronchitis</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROFILE 2: LUNG DISEASES -->
+<div class="exp">
+  <div class="exp-hd">
+    <div class="exp-ic ic-dis">🫁</div>
+    <div>
+      <div class="exp-title">Profile 2 — Established Lung Diseases &amp; Disorders</div>
+      <div class="exp-sub">COPD · Asthma · IPF / ILD · PAH · Post-COVID pulmonary sequelae · Recurrent RTI · Bronchiectasis · Radiation pneumonitis</div>
+    </div>
+  </div>
+  <div class="exp-bd">
+    <div class="exp-3">
+      <div>
+        <div class="exp-ct">Why Oxidative Stress is Central to All Lung Diseases</div>
+        <div class="exp-body">Oxidative stress is not a secondary consequence of lung disease — it is a primary, independent driver of progression in every major respiratory condition. In <strong style="color:var(--wh)">COPD</strong>, 93% of patients have sub-optimal plasma CoQ10 inversely correlated with FEV1%, glutathione is 40% depleted, and smoke-induced loss of HDAC2 causes ICS steroid resistance at the molecular level. In <strong style="color:var(--wh)">Asthma</strong>, selenium deficiency independently predicts exacerbation frequency and severity — GPx activity is the rate-limiting antioxidant step in bronchial tissue. In <strong style="color:var(--wh)">IPF</strong>, TGF-β1/Smad-driven fibrotic remodelling is modulated by Resveratrol through SIRT1 — a mechanism now the subject of clinical investigation. In <strong style="color:var(--wh)">PAH</strong>, mitochondrial dysfunction in pulmonary arterial smooth muscle cells is addressable with CoQ10 at therapeutic 100mg dose. In <strong style="color:var(--wh)">Post-COVID lung</strong>, unresolved oxidative stress and persistent TGF-β fibrotic cascade drive long COVID breathlessness, diffusion capacity decline, and CT ground-glass persistence. In <strong style="color:var(--wh)">Radiation Pneumonitis</strong>, gamma-tocotrienol specifically reduces TGF-β and collagen I/III expression — the most targeted nutraceutical evidence in post-thoracic-radiation lung injury.</div>
+      </div>
+      <div>
+        <div class="exp-ct">Molecule-Disease Mapping</div>
+        <div class="exp-mols">
+          <div class="exp-mols-t">Key Molecular Actions by Disease</div>
+          <div class="exp-mol-row"><div class="exp-mol-nm">COPD</div><div class="exp-mol-why">CoQ10 (mitochondrial restoration) + Resveratrol (HDAC2 — steroid resistance reversal) + ALA (GSH restoration) + Selenium (GPx exacerbation prevention)</div></div>
+          <div class="exp-mol-row"><div class="exp-mol-nm">Asthma</div><div class="exp-mol-why">Selenium (GPx — exacerbation prediction + prevention) + Astaxanthin (mast cell inhibition) + Resveratrol (airway SM proliferation) + D3 (VDR anti-allergic)</div></div>
+          <div class="exp-mol-row"><div class="exp-mol-nm">IPF / ILD</div><div class="exp-mol-why">Resveratrol (TGF-β1/Smad anti-fibrotic) + ALA (collagen deposition ↓) + Tocotrienol (type II pneumocyte protection) + CoQ10 (fibroblast mitochondrial senescence)</div></div>
+          <div class="exp-mol-row"><div class="exp-mol-nm">PAH</div><div class="exp-mol-why">CoQ10 100mg (6MWT improvement, PASMC function) + K2-7 (MGP activation — pulmonary arterial calcification prevention) + Resveratrol (PASMC proliferation ↓)</div></div>
+          <div class="exp-mol-row"><div class="exp-mol-nm">Post-COVID Lung</div><div class="exp-mol-why">Resveratrol (SIRT1 anti-fibrotic — COVID-specific) + Selenium (GPx restoration post-viral GSH depletion) + CoQ10 (persistent mitochondrial dysfunction)</div></div>
+          <div class="exp-mol-row"><div class="exp-mol-nm">Radiation Pneumonitis</div><div class="exp-mol-why">Tocotrienol (gamma — TGF-β + collagen I/III ↓ in post-radiation models) + Resveratrol (Nrf2/HO-1 — radiation oxidative stress)</div></div>
+        </div>
+      </div>
+      <div>
+        <div class="exp-ct">Adjunct Positioning — Not a Replacement</div>
+        <div class="exp-body">Aeternyx is not prescribed instead of bronchodilators, ICS, pirfenidone, nintedanib, ERA, or PDE5 inhibitors. It is prescribed alongside them to address the oxidative pathobiological substrate that pharmaceutical therapy cannot reach.<br><br><strong style="color:var(--wh)">The Resveratrol-HDAC2-steroid resistance argument</strong> is one of the strongest evidence-based claims in this formulation: in patients with COPD who are on ICS but not achieving adequate anti-inflammatory control, the molecular mechanism is HDAC2 deacetylation loss — and Resveratrol at 100mg specifically restores this (Yao et al. 2013, Am J Physiol Lung). This is a mechanistically credible adjunct argument that positions Aeternyx at a level of clinical sophistication that no generic antioxidant product in India can claim.<br><br><strong style="color:var(--wh)">For IPF patients</strong>, the anti-fibrotic TGF-β1/Smad inhibition by Resveratrol + ALA combination provides a complementary, mechanistically orthogonal adjunct to pirfenidone (which acts on TGF-β downstream effectors) — potentially slowing fibrotic progression at a second pathway node.</div>
+        <div class="exp-pitch">"In every established lung disease, oxidative stress is not background noise — it is a primary disease driver. Aeternyx addresses this driver at five simultaneous pathway nodes. For your COPD patient on maximal bronchodilator and ICS therapy who is still exacerbating — the oxidative substrate is what you have not yet addressed."</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end body -->
+<div class="ft">
+  <div class="ft-dis">For physician use only. Educational scientific information. Aeternyx is a nutraceutical — adjunct to, not replacement for, standard therapeutic management. Not for patient distribution. References available at aeternyx.in/evidence.</div>
+  <div class="ft-pg">AETERNYX · Page 1 of 4</div>
+</div>
+</div><!-- end page 1 -->
+
+
+<!-- ═══════════════════════════════
+     PAGE 2 — PROFILES 3–6 (ENVIRONMENT, AUTOIMMUNE, SLEEP, OCCUPATIONAL)
+═══════════════════════════════ -->
+<div class="plbl">Page 2 of 4 — Patient Profiles 3–6</div>
+<div class="page" style="min-height:var(--ph)">
+<div class="hd" style="border-bottom:none">
+  <div><div class="hd-brand">AETERNYX</div><div class="hd-tag">Not a Supplement · Cellular Intelligence</div></div>
+  <div class="hd-right"><div class="hd-eye ey-t">Clinical Communication — Page 2 of 4</div><div class="hd-title" style="color:var(--pl)">Patient Profiles 3–6 · Environmental · Autoimmune · Sleep · Occupational</div></div>
+</div>
+<div class="hd-bar"></div>
+<div class="body" style="padding-bottom:70px">
+
+<!-- PROFILE 3: ENVIRONMENTAL -->
+<div class="exp">
+  <div class="exp-hd">
+    <div class="exp-ic ic-env">🌫️</div>
+    <div>
+      <div class="exp-title">Profile 3 — Environmental &amp; Air Quality Exposure</div>
+      <div class="exp-sub">Urban PM2.5 · Ozone / NOₓ · Biomass / indoor cooking smoke · Vehicular exhaust · Any patient in Indian Tier 1–3 cities with chronic AQI exposure above 100 µg/m³</div>
+    </div>
+  </div>
+  <div class="exp-bd">
+    <div class="exp-3">
+      <div>
+        <div class="exp-ct">Environmental Oxidative Pathobiology</div>
+        <div class="exp-body">India has 21 of the 30 most polluted cities globally (IQAir 2023). PM2.5 particles ≤2.5 µm penetrate to alveolar level, generating reactive oxygen species on bronchial epithelial surfaces that activate NF-κB within 30 minutes — triggering the same IL-6/IL-8/TNF-α cytokine cascade that drives COPD and lung cancer. Long-term PM2.5 exposure independently causes COPD in non-smokers, accelerates FEV1 decline, and increases lung cancer risk. This is your non-smoking, non-vaping patient with no obvious risk factor label — yet under daily oxidative pulmonary assault simply by commuting in Hyderabad, Delhi, or Mumbai.<br><br><strong style="color:var(--wh)">Ozone (O₃) and NOₓ</strong> from vehicular exhaust react with airway lining fluid lipids to generate lipid peroxidation chain reactions that damage bronchial surfactant, drive mucus hypersecretion, and cause bronchospasm. Ozone exposure is independently associated with hospitalisation for COPD and asthma exacerbation.<br><br><strong style="color:var(--wh)">Biomass and indoor cooking smoke</strong> (LPG, wood, crop residue) affects an estimated 700M Indians. Women who cook over biomass develop non-smoker COPD at rates approaching tobacco-attributable COPD. The small airway disease and diffusion capacity decline from indoor smoke is driven by the same NF-κB/oxidative pathway as tobacco smoke — without the social recognition as a risk factor. This is a profoundly underdiagnosed and underserved patient population.</div>
+      </div>
+      <div>
+        <div class="exp-ct">Molecule-Specific Environmental Rationale</div>
+        <div class="exp-mols">
+          <div class="exp-mols-t">Why These Specific Molecules at These Doses</div>
+          <div class="exp-mol-row"><div class="exp-mol-nm">Astaxanthin 4mg</div><div class="exp-mol-why">PM2.5-induced NF-κB suppression confirmed at doses achievable with 4mg oral supplementation. 60–70% reduction in IL-6/IL-8 in bronchial epithelial cell models (Park 2010, Kishimoto 2016). First-line NF-κB blocker at the bronchial surface.</div></div>
+          <div class="exp-mol-row"><div class="exp-mol-nm">Resveratrol 98% 100mg</div><div class="exp-mol-why">Nrf2/HO-1 pathway activation — the lung's master endogenous antioxidant transcription pathway. Nrf2 induces SOD, catalase, and glutathione synthesis gene expression in response to PM2.5 and ozone oxidative stress.</div></div>
+          <div class="exp-mol-row"><div class="exp-mol-nm">Tocotrienol 10mg + Vit C 40mg</div><div class="exp-mol-why">Dual-phase lipid-aqueous antioxidant cycle. Ozone generates both lipid-phase (membrane) and aqueous-phase (ALF) oxidants simultaneously. Tocotrienol intercepts lipid peroxyl radicals. Vitamin C regenerates the tocotrienol radical. Perpetual cycle of membrane protection.</div></div>
+          <div class="exp-mol-row"><div class="exp-mol-nm">ALA 50mg + Selenium 40mcg</div><div class="exp-mol-why">Glutathione system restoration — critically depleted in biomass COPD patients. ALA + Selenium restore the three components: GSH substrate, GPx enzyme activity, and co-substrate recycling. Addresses the same glutathione mechanism as tobacco smoke-induced lung disease.</div></div>
+          <div class="exp-mol-row"><div class="exp-mol-nm">Lycopene 4mg</div><div class="exp-mol-why">Highest-concentration carotenoid in human lung parenchyma. Superior lipid peroxidation chain termination in pulmonary tissue. Inverse association with lung cancer risk in PM2.5-exposed populations (He 2015).</div></div>
+        </div>
+      </div>
+      <div>
+        <div class="exp-ct">Prescribing Context</div>
+        <div class="exp-body">This is the most broadly applicable Aeternyx prescription — it requires no specific diagnosis. Any patient residing in an Indian Tier 1 city with chronic AQI exposure qualifies. The prescription argument is straightforward: their lungs are under daily oxidative assault that exceeds safe exposure limits, and their endogenous antioxidant system cannot keep pace. Aeternyx provides the daily cellular defense their environment demands.<br><br>Specifically prescribable for: non-smoker COPD patients with biomass exposure history · patients with unexplained FEV1 decline and high AQI exposure · urban women with cooking-related chronic bronchitis · patients with pollution-worsened asthma · any patient who asks "what can I do to protect my lungs" in an urban Indian clinic. This is also a powerful preventive prescription for the asymptomatic 45-year-old executive who commutes through Hyderabad traffic — long before lung function decline begins.</div>
+        <div class="exp-pitch">"The WHO considers any annual PM2.5 above 15 µg/m³ as unsafe. Every patient in your Hyderabad clinic who commutes is exposed to concentrations 5–15× this level, daily. Aeternyx is the cellular defense protocol their city does not provide and their body cannot produce alone."</div>
+        <div class="cks"><span class="ckt">Non-smoker COPD</span><span class="ckt">Biomass ILD</span><span class="ckt">PM2.5 bronchitis</span><span class="ckt">Pollution-worsened asthma</span><span class="ckt">Preventive — no diagnosis required</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROFILE 4: AUTOIMMUNE -->
+<div class="exp">
+  <div class="exp-hd">
+    <div class="exp-ic ic-imm">🧬</div>
+    <div>
+      <div class="exp-title">Profile 4 — Autoimmune &amp; Immune-Mediated Lung Conditions</div>
+      <div class="exp-sub">RA-ILD · Sarcoidosis · Hypersensitivity Pneumonitis · Connective Tissue Disease-ILD (CTD-ILD) · Sjögren's lung · SLE pulmonary manifestations · Inflammatory airway disease</div>
+    </div>
+  </div>
+  <div class="exp-bd">
+    <div class="exp-3">
+      <div>
+        <div class="exp-ct">Autoimmune Pulmonary Oxidative Pathobiology</div>
+        <div class="exp-body">In autoimmune lung conditions, dysregulated immune cell activation generates a persistent, self-amplifying oxidative-inflammatory cycle in pulmonary tissue. In <strong style="color:var(--wh)">RA-ILD</strong>, activated fibroblast-like synoviocytes and alveolar macrophages produce sustained ROS that drives the TGF-β1-mediated fibrotic remodelling progressing to UIP or NSIP patterns. NF-κB is constitutively activated in RA synovial tissue and extends this inflammatory signal to lung parenchyma. In <strong style="color:var(--wh)">Sarcoidosis</strong>, alveolar macrophage accumulation generates ACE and pro-inflammatory cytokines — oxidative stress is a key amplifier of granuloma formation and persistence. In <strong style="color:var(--wh)">HP</strong>, antigen-driven T-lymphocyte activation and macrophage recruitment create persistent oxidative bursts in alveolar tissue — contributing to fibrotic progression after antigen withdrawal. In <strong style="color:var(--wh)">CTD-ILD</strong> (SSc, PM/DM, Sjögren's), mitochondrial dysfunction in lung fibroblasts and myofibroblast differentiation driven by TGF-β and oxidative stress are primary fibrotic mechanisms independent of autoantibody status. Selenium deficiency — highly prevalent in autoimmune conditions including thyroid disease, RA, and SLE — further impairs the GPx antioxidant system, amplifying oxidative damage in already-inflamed tissue.</div>
+      </div>
+      <div>
+        <div class="exp-ct">Aeternyx Molecules in Autoimmune Lung</div>
+        <div class="exp-mols">
+          <div class="exp-mols-t">Targeted Molecular Actions</div>
+          <div class="exp-mol-row"><div class="exp-mol-nm">Resveratrol 100mg</div><div class="exp-mol-why">TGF-β1/Smad pathway inhibition — anti-fibrotic in RA-ILD, CTD-ILD, SSc-ILD models. SIRT1 deacetylates NF-κB p65 — attenuates constitutive NF-κB activation in autoimmune tissue. Also demonstrated anti-inflammatory in SLE and RA experimental models.</div></div>
+          <div class="exp-mol-row"><div class="exp-mol-nm">Astaxanthin 4mg</div><div class="exp-mol-why">Suppresses alveolar macrophage NF-κB — directly addresses the macrophage-driven inflammation in sarcoidosis and HP. Reduces TNF-α and IL-6 in macrophage activation models.</div></div>
+          <div class="exp-mol-row"><div class="exp-mol-nm">ALA 50mg</div><div class="exp-mol-why">Anti-fibrotic — attenuates collagen deposition in experimental models. Also demonstrated anti-inflammatory activity in RA fibroblast models. Universal antioxidant coverage in both compartments of inflamed lung tissue.</div></div>
+          <div class="exp-mol-row"><div class="exp-mol-nm">Selenium 40mcg</div><div class="exp-mol-why">Selenium deficiency is specifically associated with RA, SLE, and thyroid autoimmunity. Supplementation at 40mcg restores GPx activity and has demonstrated immune-modulating effects in autoimmune thyroid disease (well-powered RCTs — model for Selenium's immune role).</div></div>
+          <div class="exp-mol-row"><div class="exp-mol-nm">Tocotrienol 10mg</div><div class="exp-mol-why">Type II pneumocyte protection from fibrosis-inducing injury. Gamma-tocotrienol specifically reduces TGF-β and collagen I/III in lung fibrosis models — complementary to Resveratrol anti-fibrotic activity.</div></div>
+          <div class="exp-mol-row"><div class="exp-mol-nm">CoQ10 100mg</div><div class="exp-mol-why">Mitochondrial dysfunction is a key driver of myofibroblast differentiation in pulmonary fibrosis across all autoimmune-ILD subtypes. CoQ10 restores mitochondrial membrane potential in fibroblasts — addressing the metabolic-fibrotic interface.</div></div>
+        </div>
+      </div>
+      <div>
+        <div class="exp-ct">Clinical Adjunct Argument</div>
+        <div class="exp-body">In autoimmune-ILD patients, Aeternyx is positioned as an adjunct to disease-modifying therapy (mycophenolate, azathioprine, rituximab, anti-fibrotics). The mechanistic argument is that immunosuppressive therapy reduces immune-cell-driven inflammation — but does not address the oxidative stress component of fibrosis that operates independently of immune cell activation. Resveratrol TGF-β1 inhibition and ALA anti-fibrotic activity act on a mechanistically orthogonal pathway to immunosuppression — potentially synergistic in limiting fibrotic progression.<br><br>In <strong style="color:var(--wh)">Sarcoidosis</strong>, where corticosteroid therapy is the mainstay, Aeternyx addresses the oxidative amplification of granuloma formation not addressed by steroids alone. In <strong style="color:var(--wh)">HP after antigen withdrawal</strong>, the persistent oxidative stress that drives fibrotic progression even after antigen removal is the specific gap Aeternyx fills.<br><br>Important caveat: Resveratrol at high doses may theoretically modulate immune function — this is mechanistically documented in vitro. At 100mg clinical dose, no clinically significant immunosuppression has been reported. However, vigilance in patients on concurrent biological immunotherapy is appropriate.</div>
+        <div class="exp-pitch">"In your CTD-ILD or RA-ILD patient on mycophenolate — immunosuppression addresses the immune driver. Aeternyx addresses the TGF-β1 fibrotic driver that operates independently. The two mechanisms are orthogonal. The combination rationale is scientifically sound."</div>
+        <div class="cks"><span class="ckp">RA-ILD</span><span class="ckp">CTD-ILD / SSc</span><span class="ckp">Sarcoidosis</span><span class="ckp">HP post-antigen</span><span class="ckp">SLE pulmonary</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROFILE 5: SLEEP -->
+<div class="exp">
+  <div class="exp-hd">
+    <div class="exp-ic ic-slp">🌙</div>
+    <div>
+      <div class="exp-title">Profile 5 — Sleep Disorders &amp; Sleep-Related Oxidative Disease</div>
+      <div class="exp-sub">Obstructive Sleep Apnoea (OSA) — mild, moderate, severe · Central Sleep Apnoea · Overlap Syndrome (OSA + COPD) · Chronic Sleep Deprivation · Shift Work Sleep Disorder</div>
+    </div>
+  </div>
+  <div class="exp-bd">
+    <div class="exp-3">
+      <div>
+        <div class="exp-ct">Sleep Disorder Oxidative Pathobiology</div>
+        <div class="exp-body"><strong style="color:var(--wh)">OSA — Ischaemia-Reperfusion Cascade:</strong> Each apnoeic event creates a hypoxia-reoxygenation cycle that generates a burst of reactive oxygen species through xanthine oxidase activation and mitochondrial uncoupling — identical to the ischaemia-reperfusion injury pattern seen in cardiac surgery, occurring 15–100 times per hour in severe OSA. Urinary 8-isoprostane — the gold-standard lipid peroxidation biomarker — is elevated 3–4× above normal in moderate-severe OSA. CRP, IL-6, and TNF-α are chronically elevated. These drive the endothelial dysfunction, insulin resistance, hypertension, cardiac arrhythmias, and neurocognitive decline that define OSA's systemic complications. <strong style="color:var(--wh)">CPAP treats the apnoeic events — it does not fully normalise the oxidative burden</strong> in all patients (Grebe et al. 2006, AJRCCM).<br><br><strong style="color:var(--wh)">Overlap Syndrome (OSA + COPD)</strong>: The combination of COPD-related hypoxaemia and OSA-related intermittent hypoxia creates a compounded oxidative pulmonary burden that neither diagnosis alone predicts. Outcomes in overlap syndrome are significantly worse than either condition alone — Aeternyx's dual-pathway coverage of both conditions makes it particularly logical here.<br><br><strong style="color:var(--wh)">Chronic Sleep Deprivation (&lt;6 hrs/night):</strong> Independently elevates systemic IL-6, TNF-α, CRP, and urinary 8-isoprostane through circadian disruption of SIRT1/Nrf2 antioxidant gene expression — without any apnoeic events. The HITEC City software engineer working 12-hour days is accumulating oxidative burden that SIRT1 (Resveratrol) and CoQ10 specifically address.</div>
+      </div>
+      <div>
+        <div class="exp-ct">Molecule-Specific Sleep Rationale</div>
+        <div class="exp-mols">
+          <div class="exp-mols-t">Why This Combination for Sleep Disorders</div>
+          <div class="exp-mol-row"><div class="exp-mol-nm">CoQ10 100mg</div><div class="exp-mol-why">Protects cardiac and pulmonary mitochondria from nocturnal hypoxic cycling damage. Each reoxygenation event in OSA stresses mitochondrial Complex I–IV — CoQ10 maintains electron transport chain integrity and reserve capacity against this repetitive insult.</div></div>
+          <div class="exp-mol-row"><div class="exp-mol-nm">Astaxanthin 4mg</div><div class="exp-mol-why">Directly neutralises the ROS burst at reoxygenation. In reperfusion injury models, carotenoid antioxidants administered before reoxygenation significantly reduce oxidative tissue injury. For OSA, this means pre-emptive cellular ROS capture at each apnoea termination.</div></div>
+          <div class="exp-mol-row"><div class="exp-mol-nm">Resveratrol 98% 100mg</div><div class="exp-mol-why">SIRT1 is the master circadian antioxidant gene regulator — activated by Resveratrol. In chronic sleep deprivation, circadian disruption reduces SIRT1 activity → reduces Nrf2 → reduces SOD, catalase, GPx. Resveratrol at 100mg trans-isomer directly addresses this circadian-oxidative axis (Nakahata 2008, Cell).</div></div>
+          <div class="exp-mol-row"><div class="exp-mol-nm">Tocotrienol 10mg</div><div class="exp-mol-why">Protects endothelial cell membranes from lipid peroxidation during repetitive ROS bursts. Endothelial dysfunction is the primary cardiovascular complication of OSA — driven by lipid peroxidation at the vascular endothelial cell membrane level.</div></div>
+          <div class="exp-mol-row"><div class="exp-mol-nm">Selenium 40mcg</div><div class="exp-mol-why">Maintains GPx enzyme activity during the oxidative stress cycling. Unlike non-enzymatic antioxidants that are consumed by ROS, Selenium-activated GPx catalytically recycles GSH — providing sustained antioxidant capacity throughout repeated nightly oxidative events.</div></div>
+          <div class="exp-mol-row"><div class="exp-mol-nm">K2-7 MK-7 45mcg</div><div class="exp-mol-why">In OSA patients with comorbid PAH or pulmonary vascular disease (common in overlap syndrome and severe OSA), K2-7 activates MGP to prevent pulmonary arterial calcification driven by chronic hypoxia-induced vascular remodelling.</div></div>
+        </div>
+      </div>
+      <div>
+        <div class="exp-ct">CPAP + Aeternyx — The Combination Argument</div>
+        <div class="exp-body">The scientific rationale for prescribing Aeternyx alongside CPAP is well-defined by the evidence: CPAP reduces apnoea-hypopnoea index and daytime somnolence. It does not fully normalise urinary 8-isoprostane, endothelial function, or systemic inflammatory markers in a subset of patients. This is documented across multiple studies. The residual oxidative burden — the ischaemia-reperfusion injury fingerprint that persists even with CPAP compliance — is the specific gap Aeternyx fills. This is not theoretical — it is a mechanistically defined, evidence-supported adjunct prescription that positions Aeternyx as a clinically logical addition to the OSA management toolkit, particularly for patients with cardiovascular, metabolic, or neurocognitive comorbidities driven by OSA-related oxidative stress.<br><br>For <strong style="color:var(--wh)">shift workers and chronic sleep-deprived professionals</strong>: no CPAP applies. The prescription argument is even simpler — circadian disruption of SIRT1/Nrf2 antioxidant gene expression generates oxidative burden that Resveratrol + CoQ10 specifically address at the molecular level.</div>
+        <div class="exp-pitch">"CPAP closes the airway. Aeternyx heals the cellular damage each apnoea leaves behind. For your OSA patient with persistent elevated CRP or endothelial dysfunction despite CPAP compliance — the oxidative mechanism is what you have not yet addressed."</div>
+        <div class="cks"><span class="ckb">OSA — all grades</span><span class="ckb">Overlap syndrome</span><span class="ckb">Central sleep apnoea</span><span class="ckb">Shift work disorder</span><span class="ckb">Chronic sleep deprivation</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROFILE 6: OCCUPATIONAL -->
+<div class="exp">
+  <div class="exp-hd">
+    <div class="exp-ic ic-occ">⚙️</div>
+    <div>
+      <div class="exp-title">Profile 6 — Occupational Lung Exposures</div>
+      <div class="exp-sub">Silicosis · Coal workers' pneumoconiosis · Asbestosis · Welder's lung (siderosis) · Byssinosis · Agricultural lung (HP, mycotoxins) · Chemical plant / solvent exposure · India has 40M+ workers in high-exposure occupations</div>
+    </div>
+  </div>
+  <div class="exp-bd">
+    <div class="exp-3">
+      <div>
+        <div class="exp-ct">Occupational Oxidative Pathobiology</div>
+        <div class="exp-body">Occupational lung disease follows a characteristic dual-phase oxidative-fibrotic pattern: <strong style="color:var(--wh)">acute ROS phase</strong> — inhaled particles (silica, coal, metal fumes) activate alveolar macrophages to generate superoxide and hydrogen peroxide within hours; and <strong style="color:var(--wh)">chronic fibrotic phase</strong> — persistent macrophage activation triggers TGF-β1/Smad fibrotic remodelling, collagen I/III deposition, and progressive small airway obliteration.<br><br><strong style="color:var(--wh)">Crystalline silica</strong> generates persistent superoxide in alveolar macrophages through frustrated phagocytosis — the silica particle cannot be digested, so the macrophage sustains ROS production indefinitely. This progressive oxidative drive is the mechanism of silicosis progression even after silica exposure ceases.<br><br><strong style="color:var(--wh)">Welding fumes</strong> contain iron oxide, manganese, nickel, chromium — each a metal capable of Fenton reaction chemistry, generating hydroxyl radicals that cause direct DNA oxidative damage and NF-κB activation. Welder's siderosis progression to COPD and lung cancer is driven by this continuous metal-catalysed ROS production.<br><br>India's 40M+ occupationally exposed workers receive virtually no preventive cellular protection. These patients present to pulmonologists after fibrosis is already established. Aeternyx is most valuable as a <strong style="color:var(--wh)">preventive daily protocol for at-risk workers before disease onset</strong>, or as an adjunct to reduce progression once disease is established.</div>
+      </div>
+      <div>
+        <div class="exp-ct">Molecule-Specific Occupational Rationale</div>
+        <div class="exp-mols">
+          <div class="exp-mols-t">Specific Evidence in Occupational Models</div>
+          <div class="exp-mol-row"><div class="exp-mol-nm">ALA 50mg</div><div class="exp-mol-why">Direct experimental evidence: ALA attenuates silica-induced macrophage inflammatory response and collagen deposition in murine silicosis models (Ye 2009, Inhal Toxicol). Also reduces oxidative stress markers in silica-exposed cell culture. The only molecule in Aeternyx with direct silicosis-specific experimental evidence.</div></div>
+          <div class="exp-mol-row"><div class="exp-mol-nm">Resveratrol 100mg</div><div class="exp-mol-why">TGF-β1/Smad pathway inhibition — directly counteracts the primary fibrotic signal in all occupational lung diseases. SIRT1 activation drives Nrf2/HO-1 — the adaptive antioxidant response to occupational particle oxidative stress. Experimental anti-fibrotic evidence across multiple dust exposure models.</div></div>
+          <div class="exp-mol-row"><div class="exp-mol-nm">Selenium 40mcg</div><div class="exp-mol-why">Maintains alveolar macrophage GPx activity under chronic ROS production. In sustained macrophage activation (as in silicosis), GPx is consumed faster than it is replenished — Selenium at 40mcg ensures continuous GPx enzyme synthesis capacity.</div></div>
+          <div class="exp-mol-row"><div class="exp-mol-nm">Astaxanthin 4mg</div><div class="exp-mol-why">Blocks NF-κB activation triggered by metal fume heavy metal nanoparticles (Ni, Cr, Mn). Welders specifically benefit — reduces metal fume-induced bronchial inflammatory cascade.</div></div>
+          <div class="exp-mol-row"><div class="exp-mol-nm">CoQ10 100mg</div><div class="exp-mol-why">Preserves alveolar macrophage mitochondrial function under chronic oxidative stress. In chronically activated macrophages, mitochondrial CoQ10 depletion causes pro-inflammatory NLRP3 inflammasome activation — CoQ10 supplementation attenuates this pathway.</div></div>
+          <div class="exp-mol-row"><div class="exp-mol-nm">D3 600IU + Selenium</div><div class="exp-mol-why">Agricultural workers and outdoor construction workers are commonly Vitamin D3 deficient (low 25-OH-D3 in covered or underground workers). D3 deficiency increases mycotoxin susceptibility in agricultural lung and reduces alveolar macrophage anti-fungal capacity in HP patients.</div></div>
+        </div>
+      </div>
+      <div>
+        <div class="exp-ct">Preventive vs Therapeutic Prescription Rationale</div>
+        <div class="exp-body">The strongest argument for Aeternyx in occupational lung disease is <strong style="color:var(--wh)">primary prevention</strong> — prescribing to high-risk workers before disease is established. Silicosis and CWP are irreversible — once fibrosis is established, no intervention reverses it. A construction worker who takes Aeternyx daily may delay or prevent fibrosis onset. This is a cellular investment that standard occupational health protocols entirely miss.<br><br>For <strong style="color:var(--wh)">established occupational lung disease</strong>, the anti-fibrotic combination of Resveratrol (TGF-β1 inhibition) + ALA (collagen deposition reduction) + Tocotrienol (type II pneumocyte protection) provides mechanistically sound adjunct therapy to slow progression. There is no standard disease-modifying therapy for silicosis — Aeternyx's evidence base is among the strongest anti-fibrotic adjunct arguments available for this condition.<br><br>Consider identifying occupational health physicians, industrial clinicians, and factory doctors as a specific prescribing segment in Hyderabad — BHEL, pharmaceutical manufacturing, construction sector. This is a commercially underserved prescribing group with direct daily access to the highest-risk patients.</div>
+        <div class="exp-pitch">"For your silicosis patient — there is no approved disease-modifying therapy. Resveratrol + ALA provide the strongest evidence-based anti-fibrotic combination available as an adjunct. For your construction worker not yet diagnosed — this is the cellular prevention their occupation demands."</div>
+        <div class="cks"><span class="cka">Silicosis prevention + adjunct</span><span class="cka">CWP</span><span class="cka">Welder's lung</span><span class="cka">Asbestosis</span><span class="cka">Agricultural HP</span><span class="cka">Chemical plant lung</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+<div class="ft">
+  <div class="ft-dis">For physician use only. All clinical references at aeternyx.in/evidence. Aeternyx is adjunct to, not replacement for, standard therapeutic management. Not for patient distribution.</div>
+  <div class="ft-pg">AETERNYX · Page 2 of 4</div>
+</div>
+</div><!-- end page 2 -->
+
+
+<!-- ═══════════════════════════════
+     PAGE 3 — MOLECULE SCIENCE & SYNERGY
+═══════════════════════════════ -->
+<div class="plbl">Page 3 of 4 — Molecular Science &amp; Synergy</div>
+<div class="page" style="min-height:var(--ph)">
+<div class="hd" style="border-bottom:none">
+  <div><div class="hd-brand">AETERNYX</div><div class="hd-tag">Not a Supplement · Cellular Intelligence</div></div>
+  <div class="hd-right"><div class="hd-eye ey-t">Clinical Communication — Page 3 of 4</div><div class="hd-title" style="color:var(--pl)">Molecular Science · Each Ingredient · Combination Synergies</div></div>
+</div>
+<div class="hd-bar"></div>
+<div class="body" style="padding-bottom:70px">
+
+<div class="sb" style="margin-top:0"><div class="ey ey-g">Individual Molecule Science — Respiratory System Applications at Prescribed Doses</div><div class="ln"></div></div>
+
+<div class="mol tl">
+  <div class="mol-hd"><div class="mol-nm">Astaxanthin — 10% Standardised Extract · 4 mg</div><div class="mol-ds">Haematococcus pluvialis · marine-derived xanthophyll carotenoid</div></div>
+  <div class="mol-mch">Singlet oxygen quenching (6,000× > Vit C) · NF-κB suppression at 2 pathway nodes · Bronchial epithelial protection · Blood-brain barrier crossing</div>
+  <div class="mol-g2">
+    <div><div class="mol-ct">Mechanism in Respiratory Tissue</div><div class="mol-bd">Astaxanthin's polar-nonpolar-polar molecular architecture spans the full lipid bilayer — enabling it to protect both the inner and outer membrane leaflet simultaneously. In PM2.5-exposed bronchial epithelial cells, Astaxanthin suppresses NF-κB nuclear translocation by blocking IκB kinase (IKK) activation — the upstream trigger initiated by ROS. Reduces IL-6, IL-8, and TNF-α secretion by 60–70% in bronchial epithelial models at concentrations achievable with 4mg oral supplementation. Attenuates oxidative DNA damage in type II alveolar pneumocytes in cigarette smoke models. Uniquely crosses blood-brain barrier (relevant in OSA neurocognitive complications) and blood-retinal barrier without accumulation toxicity. 10% standardisation ensures dose consistency — most competing products use 1–2% extracts.</div></div>
+    <div><div class="mol-ct">Respiratory Applications by Condition</div><div class="mol-bd">COPD: bronchial NF-κB suppression without immunosuppression · Asthma: mast cell degranulation inhibition + eosinophil bronchial accumulation reduction · Smokers: direct intracellular ROS neutralisation in bronchial cells · Vaping: blocks heavy metal (Ni, Cr) NF-κB activation · Hookah: PAH-generated ROS quenching · Pollution: PM2.5 NF-κB cascade suppression — 30-min exposure window · Occupational (welding): metal fume NF-κB blockade · OSA: pre-emptive ROS capture at reoxygenation events · Autoimmune-ILD: macrophage NF-κB suppression in sarcoidosis and HP</div></div>
+  </div>
+  <div class="mol-ev"><div class="mol-ev-l">Key Evidence</div><div class="mol-ev-b">Park et al. 2010 (Eur J Pharmacol): <strong>60–70% reduction in PM2.5-induced IL-6/IL-8</strong> in bronchial epithelial cells. Kishimoto et al. 2016 (J Clin Biochem Nutr): Smoke-induced type II pneumocyte DNA damage attenuation. 10% standardisation delivers 4mg at 40mg extract — dose-verified potency.</div></div>
+</div>
+
+<div class="mol tl">
+  <div class="mol-hd"><div class="mol-nm">Trans-Resveratrol — 98% Purity · 100 mg</div><div class="mol-ds">Polygonum cuspidatum · stilbenoid polyphenol · biologically active trans-isomer only</div></div>
+  <div class="mol-mch">SIRT1/SIRT3 activation · Nrf2/HO-1 induction · TGF-β1/Smad inhibition (anti-fibrotic) · HDAC2 restoration · NF-κB p65 deacetylation · VDR upregulation</div>
+  <div class="mol-g2">
+    <div><div class="mol-ct">Why 98% Purity Matters Clinically</div><div class="mol-bd">The cis-isomer of Resveratrol has negligible biological activity. Only the trans-isomer activates SIRT1 with clinical relevance. Most commercial supplements use 50% standardised extracts — delivering 50mg trans-Resveratrol per 100mg labelled dose. Aeternyx uses 98% purity trans-Resveratrol, delivering the full 100mg biologically active trans-isomer. This doubles the effective SIRT1-activating dose vs standard 50% products. SIRT1 activation requires threshold concentrations — sub-threshold dosing produces minimal pathway engagement. This distinction is the single most important formulation differentiator in Aeternyx. For HDAC2 restoration in COPD steroid resistance — demonstrated at 100mg-equivalent trans-Resveratrol in Yao 2013 — dose accuracy is non-negotiable.</div></div>
+    <div><div class="mol-ct">Clinical Applications in Lung Disease</div><div class="mol-bd">COPD: HDAC2 restoration → reversal of ICS steroid resistance (Yao 2013) + NF-κB suppression + Nrf2 induction · IPF/ILD: TGF-β1/Smad inhibition — anti-fibrotic across multiple experimental models, studied as pirfenidone adjunct · Post-COVID lung: SIRT1 anti-fibrotic activity studied specifically in COVID-19 context (Hossain 2021) · Autoimmune-ILD: NF-κB p65 deacetylation reduces constitutive NF-κB in RA and SLE models · OSA / Sleep deprivation: SIRT1 restores circadian antioxidant gene expression disrupted by hypoxia cycling and sleep insufficiency · Occupational fibrosis: TGF-β1 inhibition across silica, coal, and asbestos fibrosis models</div></div>
+  </div>
+  <div class="mol-ev"><div class="mol-ev-l">Key Evidence</div><div class="mol-ev-b">Yao et al. 2013 (Am J Physiol Lung): <strong>Resveratrol restored HDAC2 activity in smoke-exposed macrophages, reversing steroid resistance.</strong> Knobloch et al. 2011 (Respir Res): NF-κB reduction in COPD airway inflammation models. Multiple IPF/ILD TGF-β1 inhibition studies confirmed. Hossain 2021 (Front Pharmacol): SIRT1 anti-fibrotic activity in post-COVID pulmonary fibrosis model.</div></div>
+</div>
+
+<div class="mol gl">
+  <div class="mol-hd"><div class="mol-nm">Coenzyme Q10 — 100 mg (Therapeutic Dose)</div><div class="mol-ds">Ubiquinone · mitochondrial electron transport chain cofactor · required for Complexes I, II, III ATP synthesis</div></div>
+  <div class="mol-mch">ATP synthesis (Complexes I–III) · Cytochrome c Oxidase (Complex IV) function preservation · CO antidote (hookah) · PASMC mitochondrial protection (PAH) · OSA nocturnal hypoxic cycling defense</div>
+  <div class="mol-g2">
+    <div><div class="mol-ct">Why 100mg — The Therapeutic Threshold</div><div class="mol-bd">Plasma CoQ10 is significantly and consistently reduced in 93% of COPD patients (Sakata 2015) — inversely correlated with FEV1% predicted and 6MWT. Studies demonstrate restoration of mitochondrial function markers at 90–120mg supplementation. Most commercial supplements provide 30–50mg — insufficient to cross the therapeutic threshold for mitochondrial restoration in disease-burdened tissue. Aeternyx provides exactly 100mg — the dose validated in pulmonary and cardiac studies. For hookah users: CO from charcoal inhibits Cytochrome c Oxidase (Complex IV) — the terminal electron acceptor in mitochondrial oxidative phosphorylation. CoQ10 at 100mg maintains mitochondrial membrane potential and electron transport chain function despite Complex IV inhibition, providing the primary mitochondrial rescue for this specific CO-mediated injury pattern. This is a mechanism no other nutraceutical product addresses.</div></div>
+    <div><div class="mol-ct">Clinical Applications</div><div class="mol-bd">COPD: mitochondrial restoration at FEV1-correlated plasma depletion · PAH: 100mg improves 6MWT + functional class in adjunct studies (Molyneux 2008) — preserves PASMC mitochondrial function · Hookah / CO exposure: Cytochrome c Oxidase rescue — primary mitochondrial rescue agent for CO toxicity · Vaping: metal nanoparticle mitochondrial dysfunction · OSA: cardiac mitochondrial protection against nocturnal hypoxic cycling · Occupational: alveolar macrophage mitochondrial function preservation under chronic ROS production · Sleep deprivation: circadian mitochondrial dysfunction — CoQ10 restores depleted mitochondrial reserve</div></div>
+  </div>
+  <div class="mol-ev"><div class="mol-ev-l">Key Evidence</div><div class="mol-ev-b">Sakata et al. 2015 (Pulm Pharmacol Ther): <strong>93% COPD patients sub-optimal CoQ10, inversely correlated with FEV1%.</strong> Supplementation at 90–120mg restored mitochondrial function markers. Molyneux 2008: CoQ10 100mg improved 6MWT in PAH. Mortensen 2014 (J Card Fail): High-dose CoQ10 reduced mortality in cardiac failure — relevant to cor pulmonale in COPD.</div></div>
+</div>
+
+<div class="mol gl">
+  <div class="mol-hd"><div class="mol-nm">Alpha Lipoic Acid — 80% Purity · 50 mg</div><div class="mol-ds">R/S-lipoic acid · universal antioxidant · mitochondrial matrix cofactor · only antioxidant active in both lipid and aqueous phases</div></div>
+  <div class="mol-mch">Dual-phase antioxidant (lipid + aqueous) · GSH regeneration from GSSG · CoQ10 recycling (ubiquinone → ubiquinol) · Anti-fibrotic · Mucociliary protection · ICAM-1 inhibition</div>
+  <div class="mol-g2">
+    <div><div class="mol-ct">The Universal Antioxidant — Clinical Significance</div><div class="mol-bd">ALA's unique ability to function as an antioxidant in both the hydrophobic cell membrane phase and the hydrophilic cytosolic and extracellular aqueous phase is unmatched. This makes it the essential bridge molecule in the Aeternyx formulation — connecting lipid-phase protection (Tocotrienol, Astaxanthin, CoQ10) with aqueous-phase protection (Vitamin C, Selenium-GPx). In COPD lungs, glutathione is 40% depleted — ALA regenerates intracellular GSH from GSSG, directly restoring the primary cellular antioxidant. ALA recycles CoQ10 from its oxidised ubiquinone form back to active ubiquinol — meaning ALA amplifies the CoQ10 dose effectiveness. In silicosis and occupational fibrosis models, ALA is the only molecule in this formulation with direct experimental evidence for attenuation of silica-induced collagen deposition — a mechanistically specific, disease-relevant action. Inhibits ICAM-1 expression — reduces leukocyte adhesion to pulmonary endothelium in all inflammatory respiratory conditions.</div></div>
+    <div><div class="mol-ct">Clinical Applications</div><div class="mol-bd">COPD: GSH restoration (40% depleted in COPD lung) + mucociliary cilia protection · Smokers: acrolein-GSH adduct reversal — both cigarette and e-cigarette specific · Vaping (EVALI): primary acrolein-induced GSH depletion mechanism — specific to EVALI pathobiology · Silicosis: direct experimental evidence for collagen deposition attenuation · ILD (all subtypes): reduces TGF-β-driven fibroblast collagen synthesis · OSA: aqueous-phase ROS neutralisation during cyclical oxidative events · Environmental exposure: dual-phase bronchial coverage against PM2.5 and indoor pollutants · Synergy: recycles CoQ10 → amplifies mitochondrial restoration without increasing CoQ10 dose</div></div>
+  </div>
+  <div class="mol-ev"><div class="mol-ev-l">Key Evidence</div><div class="mol-ev-b">Rahman et al. 2006 (Biochem Soc Trans): <strong>GSH 40% depleted in COPD lungs — ALA specifically restores via GSSG reduction.</strong> Ye et al. 2009 (Inhal Toxicol): ALA attenuates silica-induced macrophage inflammation and collagen deposition. Gurer-Orhan 2004 (Pharmacol Res): ALA dual-phase antioxidant activity confirmed in pulmonary models.</div></div>
+</div>
+
+<div class="g2" style="margin-bottom:8px">
+  <div class="mol tl" style="margin-bottom:0">
+    <div class="mol-hd"><div class="mol-nm">Tocotrienol — 50% Standardised · 10 mg</div><div class="mol-ds">Delta/gamma-tocotrienol · superior Vit E · 40–60× tocopherol potency in membranes</div></div>
+    <div class="mol-mch">Membrane lipid peroxidation termination · Surfactant phospholipid protection · Type II pneumocyte rescue · TGF-β/collagen reduction (gamma form)</div>
+    <div class="mol-bd" style="font-size:7.5px;color:var(--sv);line-height:1.65;margin:5px 0">The unsaturated side chain of tocotrienol enables rapid membrane recycling — 40–60× more effective than tocopherol. Intercepts lipid peroxyl radicals in bronchial epithelial membranes and pulmonary surfactant (DPPC phospholipid layer). Gamma-tocotrienol specifically reduces TGF-β and collagen I/III expression in post-radiation lung fibrosis models (Berbee 2011, Radiat Res) — the most directly anti-fibrotic evidence for any Vitamin E form. EVALI: Vitamin E acetate adulteration of vaping cartridges drives alveolar macrophage lipid peroxidation — tocotrienol's membrane-level activity provides site-specific protection. Synergy: Vitamin C regenerates the oxidised tocotrienol radical in aqueous phase — perpetual cycle.</div>
+    <div class="cks"><span class="ckr">EVALI (vaping)</span><span class="ckp">Radiation pneumonitis</span><span class="ckp">CTD-ILD</span><span class="ckt">Ozone/NOₓ exposure</span><span class="ckr">Smokers' membrane damage</span></div>
+    <div class="rf">Ref: Berbee 2011 Radiat Res | Ahsan 2014 Biomed Res Int</div>
+  </div>
+  <div class="mol al" style="margin-bottom:0">
+    <div class="mol-hd"><div class="mol-nm">Selenium · 40 mcg + Vitamin C (Coated) · 40 mg + Vitamin D3 · 600 IU + K2-7 MK-7 · 45 mcg</div></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:5px">
+      <div><div class="mol-ct">Selenium 40mcg — GPx Activation</div><div class="mol-bd">Essential cofactor for all 5 GPx isoforms. GPx activity inversely correlated with asthma severity and COPD exacerbation. Selenium deficiency linked to COVID-19 fatality (Moghaddam 2020). In EVALI: GPx restoration counters acrolein-induced GSH depletion cascade. In autoimmunity: Selenium deficiency specific to RA, SLE, Sjögren's. 40mcg — preventive dose, well below 400mcg toxicity threshold, corrects deficiency in majority of Indians where soil selenium is low.</div></div>
+      <div><div class="mol-ct">Vitamin C (coated) 40mg — Airway Lining Fluid</div><div class="mol-bd">Primary water-soluble antioxidant in airway lining fluid (ALF) — first contact defense against inhaled oxidants. Depleted 40mg per cigarette — direct replenishment role. Regenerates oxidised tocotrienol radical — completes the lipid-aqueous antioxidant cycle. Coated form: gastric stability ensures bioavailability is not sacrificed for tolerability. Collagen cofactor for alveolar wall structural integrity.</div></div>
+      <div><div class="mol-ct">Vitamin D3 600 IU + K2-7 MK-7 45mcg</div><div class="mol-bd">VDR on bronchial epithelium + alveolar macrophages — D3 deficiency (70–80% urban Indians) independently increases asthma exacerbation, COPD hospitalisation, TB susceptibility. D3 drives cathelicidin — alveolar macrophage anti-microbial peptide production. Resveratrol upregulates VDR → amplifying D3 effect beyond the 600 IU dose (designed synergy). K2-7 MK-7: activates Matrix GLA Protein in pulmonary arterial and alveolar microvascular walls — prevents calcification in PAH, CTEPH, and chronic hypoxia-driven vascular remodelling. 72-hour MK-7 half-life ensures sustained daily activity from single tablet.</div></div>
+      <div><div class="mol-ct">Lycopene 4mg — Lung Parenchyma</div><div class="mol-bd">Highest-concentration carotenoid in human lung parenchyma — evolutionary selection signal. Superior lipid peroxidation chain termination in pulmonary tissue vs other carotenoids. Inverse association with lung cancer risk in smokers + PM2.5-exposed populations (He 2015, Lung Cancer). Inhibits LDL oxidation in pulmonary vasculature — relevant in PAH and COPD cardiovascular comorbidity. Synergises with Astaxanthin for complete carotenoid spectrum bronchopulmonary protection.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- MOLECULAR SYNERGIES -->
+<div class="sb"><div class="ey ey-t">Critical Molecular Synergies — Why This Combination Cannot Be Replicated by Single Agents</div><div class="ln"></div></div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:10px">
+  <div class="syn"><div class="syn-pair">Astaxanthin + Resveratrol</div><span class="syn-ar">↓</span><div class="syn-eff">Dual-node NF-κB blockade</div><div class="syn-det">Astaxanthin blocks IKK (upstream node). Resveratrol deacetylates NF-κB p65 via SIRT1 (downstream node). Additive bronchial anti-inflammatory effect documented to exceed either molecule alone in smoke + PM2.5 models. Critical in every profile.</div></div>
+  <div class="syn"><div class="syn-pair">ALA → CoQ10 Recycling</div><span class="syn-ar">↓</span><div class="syn-eff">Perpetual mitochondrial restoration</div><div class="syn-det">Without ALA, supplemental CoQ10 is rapidly oxidised to inactive ubiquinone by the ROS it is combating — especially in high-burden environments (smoke, CO, hypoxia cycling). ALA recycles ubiquinone back to active ubiquinol continuously — amplifying the therapeutic 100mg CoQ10 dose. Without this synergy, the CoQ10 dose would need to be significantly higher.</div></div>
+  <div class="syn"><div class="syn-pair">Se + ALA + Vitamin C</div><span class="syn-ar">↓</span><div class="syn-eff">Master Glutathione Cascade Restoration</div><div class="syn-det">Selenium activates GPx enzyme. ALA regenerates GSH from GSSG (substrate). Vitamin C recycles co-substrates in aqueous phase. This three-molecule triad restores the entire glutathione system — enzyme, substrate, and recycling — that is destroyed in COPD lungs, smoke-exposed bronchi, EVALI, and occupational disease. No single molecule achieves system-level restoration.</div></div>
+  <div class="syn"><div class="syn-pair">Tocotrienol + Vitamin C</div><span class="syn-ar">↓</span><div class="syn-eff">Perpetual lipid-aqueous membrane cycle</div><div class="syn-det">Tocotrienol terminates lipid peroxyl radicals in the membrane (lipophilic phase) → generating a tocotrienol radical. Vitamin C in the aqueous ALF donates an electron to regenerate the tocotrienol radical back to active form. Perpetual protection cycle across the lipid-aqueous interface — critical against ozone + NOₓ which generate oxidants in both phases simultaneously.</div></div>
+  <div class="syn"><div class="syn-pair">Resveratrol + Vitamin D3</div><span class="syn-ar">↓</span><div class="syn-eff">Amplified anti-infective response beyond dose</div><div class="syn-det">Resveratrol upregulates VDR expression in bronchial epithelial cells via SIRT1 — the 600 IU D3 dose activates more receptors than it would without Resveratrol. Effectively amplifies D3's cathelicidin production and IgE-pathway downregulation. A designed pharmacodynamic synergy that justifies the 600 IU D3 dose without needing higher supplementation.</div></div>
+  <div class="syn"><div class="syn-pair">Lycopene + Astaxanthin</div><span class="syn-ar">↓</span><div class="syn-eff">Complete carotenoid lung shield</div><div class="syn-det">Astaxanthin: singlet oxygen quenching (initiating ROS). Lycopene: lipid peroxidation chain termination at lung parenchyma (propagating oxidative cascade). Complementary carotenoid coverage — Astaxanthin neutralises the trigger, Lycopene terminates the chain reaction. Together: complete carotenoid spectrum bronchopulmonary defence that smoke, PM2.5, and ozone exposure depletes.</div></div>
+</div>
+
+</div>
+<div class="ft">
+  <div class="ft-dis">All references available at aeternyx.in/evidence. This formulation contains no doping substances and no banned athletic or medical ingredients. Safe for concurrent use with all standard respiratory medications.</div>
+  <div class="ft-pg">AETERNYX · Page 3 of 4</div>
+</div>
+</div><!-- end page 3 -->
+
+
+<!-- ═══════════════════════════════
+     PAGE 4 — PRESCRIBING REFERENCE
+═══════════════════════════════ -->
+<div class="plbl">Page 4 of 4 — Complete Prescribing Reference</div>
+<div class="page" style="min-height:var(--ph)">
+<div class="hd" style="border-bottom:none">
+  <div><div class="hd-brand">AETERNYX</div><div class="hd-tag">Not a Supplement · Cellular Intelligence</div></div>
+  <div class="hd-right"><div class="hd-eye ey-t">Clinical Communication — Page 4 of 4</div><div class="hd-title" style="color:var(--pl)">Complete Prescribing Reference — Indications, Duration, Safety</div></div>
+</div>
+<div class="hd-bar"></div>
+<div class="body" style="padding-bottom:88px">
+
+<div class="sb" style="margin-top:0"><div class="ey ey-g">Master Indication Table — Respiratory Prescribing Reference</div><div class="ln"></div></div>
+<table class="t" style="margin-bottom:12px">
+  <thead>
+    <tr>
+      <th style="width:130px">Condition / Patient Group</th>
+      <th style="width:50px">Category</th>
+      <th style="width:120px">Primary Molecules</th>
+      <th>Mechanism &amp; Clinical Benefit</th>
+      <th style="width:55px">Evidence</th>
+      <th style="width:60px">Duration</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td class="tnm">COPD — Stable (GOLD I–IV)</td><td class="tcat">Obstructive</td><td class="tmol">CoQ10 100mg · Resveratrol · ALA · Selenium · Astaxanthin</td><td>93% sub-optimal CoQ10. ALA restores 40%-depleted GSH. Resveratrol restores HDAC2 — reverses ICS steroid resistance. Selenium maintains GPx. Astaxanthin suppresses NF-κB.</td><td class="tev">Multi-RCT + meta-analysis</td><td><span class="tdur-l">Long-term</span></td></tr>
+    <tr><td class="tnm">COPD Exacerbation Prevention</td><td class="tcat">Obstructive</td><td class="tmol">Selenium · Vit D3 · Resveratrol · Astaxanthin</td><td>Selenium deficiency predicts exacerbation frequency. D3 associated with hospitalisation risk. Resveratrol + Astaxanthin reduce inter-exacerbation NF-κB bronchial burden.</td><td class="tev">Prospective + RCT</td><td><span class="tdur-l">Long-term</span></td></tr>
+    <tr><td class="tnm">Bronchial Asthma — All grades</td><td class="tcat">Obstructive</td><td class="tmol">Selenium · Astaxanthin · Resveratrol · Vit D3</td><td>Selenium deficiency independently predicts asthma severity and exacerbation rate (GPx activity). Astaxanthin inhibits mast cell degranulation + eosinophil accumulation. D3 anti-allergic VDR pathway. Resveratrol: airway smooth muscle proliferation inhibition.</td><td class="tev">RCT (Shaheen 2001) + observational</td><td><span class="tdur-l">Long-term</span></td></tr>
+    <tr><td class="tnm">IPF / ILD — All subtypes</td><td class="tcat">Restrictive/Fibrotic</td><td class="tmol">Resveratrol · ALA · Tocotrienol · CoQ10</td><td>Resveratrol: TGF-β1/Smad inhibition — anti-fibrotic, pirfenidone-adjunct. ALA: collagen deposition reduction. Tocotrienol: type II pneumocyte protection + collagen I/III reduction. CoQ10: fibroblast mitochondrial senescence.</td><td class="tev">Preclinical + case series</td><td><span class="tdur-l">Long-term</span></td></tr>
+    <tr><td class="tnm">Post-COVID Pulmonary Fibrosis</td><td class="tcat">Post-infective</td><td class="tmol">Resveratrol · CoQ10 · Selenium · Astaxanthin</td><td>SIRT1 anti-fibrotic specific to COVID context. Selenium GPx restoration post-viral depletion. CoQ10 for persistent mitochondrial dysfunction. Astaxanthin for residual bronchial inflammation. Evidence growing.</td><td class="tev">Emerging clinical (Hossain 2021)</td><td><span class="tdur-a">3–12 months</span></td></tr>
+    <tr><td class="tnm">PAH — Adjunct to standard therapy</td><td class="tcat">Vascular</td><td class="tmol">CoQ10 · K2-7 · Resveratrol · Tocotrienol</td><td>CoQ10 100mg: 6MWT improvement + PASMC mitochondrial function. K2-7: MGP activation — prevents pulmonary arterial calcification. Resveratrol: PASMC proliferation via SIRT1/AMPK reduction.</td><td class="tev">Pilot RCTs (Molyneux 2008)</td><td><span class="tdur-l">Long-term</span></td></tr>
+    <tr><td class="tnm">Radiation Pneumonitis</td><td class="tcat">Iatrogenic</td><td class="tmol">Tocotrienol · Resveratrol · Astaxanthin</td><td>Gamma-tocotrienol significantly reduces TGF-β + collagen I/III post-radiation (Berbee 2011). Resveratrol Nrf2/HO-1 activation — radiation oxidative stress. Astaxanthin bronchial epithelial protection during and after radiation.</td><td class="tev">RCT (Berbee 2011) + mechanistic</td><td><span class="tdur-a">During + 6 months post</span></td></tr>
+    <tr><td class="tnm">OSA — All grades (CPAP adjunct)</td><td class="tcat">Sleep Disorder</td><td class="tmol">CoQ10 · Astaxanthin · Resveratrol · Tocotrienol · ALA · Selenium</td><td>CPAP treats AHI. Aeternyx treats the oxidative sequelae CPAP does not fully normalise: 8-isoprostane (4× elevated), endothelial dysfunction, mitochondrial hypoxic cycling, NF-κB reperfusion cascade. Cardiovascular and metabolic OSA complication prevention.</td><td class="tev">Observational + RCT adjunct (Grebe 2006)</td><td><span class="tdur-l">Long-term</span></td></tr>
+    <tr><td class="tnm">Overlap Syndrome (COPD + OSA)</td><td class="tcat">Sleep + Obstructive</td><td class="tmol">Full 10-molecule formulation</td><td>Dual-mechanism oxidative burden: COPD-specific GSH depletion + mitochondrial dysfunction PLUS OSA intermittent hypoxia-reperfusion ROS cascade. Aeternyx addresses both simultaneously across all 5 pathways. Worst outcomes in respiratory medicine — highest cellular protection need.</td><td class="tev">Mechanistic (strong rationale)</td><td><span class="tdur-l">Long-term</span></td></tr>
+    <tr><td class="tnm">Chronic Sleep Deprivation (&lt;6 hrs)</td><td class="tcat">Sleep Disorder</td><td class="tmol">Resveratrol · CoQ10 · Selenium · Astaxanthin</td><td>Circadian disruption reduces SIRT1/Nrf2 → SOD, catalase, GPx activity falls. Elevated systemic IL-6, TNF-α, 8-isoprostane. Resveratrol restores SIRT1-driven circadian antioxidant expression. CoQ10 addresses mitochondrial dysfunction from circadian disruption. Urban professional population — no respiratory diagnosis required.</td><td class="tev">Irwin 2016 + Nakahata 2008</td><td><span class="tdur-l">Long-term</span></td></tr>
+    <tr><td class="tnm">Active Smokers (Cellular protection)</td><td class="tcat">Toxic Exposure</td><td class="tmol">Vit C · ALA · Selenium · Astaxanthin · CoQ10 · Tocotrienol</td><td>Simultaneous replenishment of every cigarette-induced depletion: Vit C (~40mg/cigarette), CoQ10 (oxidised by smoke), GSH (acrolein adduct formation), GPx (Selenium), NF-κB (Astaxanthin), membrane integrity (Tocotrienol). Not a cessation aid. Cellular protection protocol alongside cessation efforts.</td><td class="tev">Mechanistic + epidemiological</td><td><span class="tdur-l">Until cessation + 1 year post</span></td></tr>
+    <tr><td class="tnm">Ex-Smokers — Post-cessation recovery</td><td class="tcat">Toxic Exposure</td><td class="tmol">Resveratrol · CoQ10 · ALA · Astaxanthin</td><td>Oxidative damage persists in lung tissue years post-cessation. Resveratrol SIRT1 drives mitochondrial biogenesis + cellular repair acceleration. CoQ10 restores depleted mitochondrial reserves. ALA + Astaxanthin reduce residual bronchial inflammatory burden. Long-term recovery protocol.</td><td class="tev">Mechanistic + cessation RCT data</td><td><span class="tdur-a">1–3 years post-cessation</span></td></tr>
+    <tr><td class="tnm">Vaping / EVALI Prevention</td><td class="tcat">Toxic Exposure</td><td class="tmol">ALA · Selenium · Tocotrienol · CoQ10 · Astaxanthin</td><td>Specific EVALI pathobiology coverage: ALA + Selenium (acrolein-GSH depletion), Tocotrienol (Vit E acetate macrophage lipid peroxidation), CoQ10 (diacetyl mitochondrial dysfunction), Astaxanthin (Ni/Cr NF-κB). Four EVALI mechanisms covered by one formulation.</td><td class="tev">Mechanistic (Muthumalage 2019 + Blount 2020)</td><td><span class="tdur-l">While vaping (cessation + 6 months)</span></td></tr>
+    <tr><td class="tnm">Hookah / Waterpipe Smokers</td><td class="tcat">Toxic Exposure</td><td class="tmol">CoQ10 100mg · Astaxanthin · ALA · Selenium · Resveratrol</td><td>CO at 20–30 ppm inhibits Cytochrome c Oxidase (Complex IV). CoQ10 100mg is the primary mitochondrial rescue agent — no other nutraceutical addresses this mechanism. PAH-driven ROS: Astaxanthin + Lycopene carotenoid pair. GSH depletion: ALA + Selenium triad.</td><td class="tev">Mechanistic (Kiter 2000 + Maziak 2004)</td><td><span class="tdur-l">While using + 6 months post</span></td></tr>
+    <tr><td class="tnm">Silicosis / CWP / Asbestosis</td><td class="tcat">Occupational</td><td class="tmol">ALA · Resveratrol · Selenium · CoQ10 · Astaxanthin</td><td>ALA direct experimental evidence: attenuates silica-induced macrophage inflammation + collagen deposition (Ye 2009). Resveratrol TGF-β1/Smad anti-fibrotic. Selenium macrophage GPx. CoQ10 for sustained macrophage mitochondrial function. No approved disease-modifying therapy for silicosis — this is the strongest evidence-based adjunct combination available.</td><td class="tev">Experimental (Ye 2009 + Gurer-Orhan 2004)</td><td><span class="tdur-l">Long-term preventive + adjunct</span></td></tr>
+    <tr><td class="tnm">Autoimmune-ILD (RA-ILD, CTD-ILD, SSc)</td><td class="tcat">Autoimmune</td><td class="tmol">Resveratrol · Astaxanthin · ALA · Selenium · Tocotrienol</td><td>TGF-β1 inhibition (Resveratrol) + NF-κB suppression (Astaxanthin) + collagen reduction (ALA + Tocotrienol) — mechanistically orthogonal to immunosuppressive DMARDs. Selenium deficiency specifically associated with RA and SLE — corrects GPx deficit in autoimmune disease. Adjunct to mycophenolate, rituximab.</td><td class="tev">Mechanistic + RA/SLE models</td><td><span class="tdur-l">Long-term adjunct</span></td></tr>
+    <tr><td class="tnm">Sarcoidosis / HP (post-antigen)</td><td class="tcat">Autoimmune / Granulomatous</td><td class="tmol">Astaxanthin · Resveratrol · ALA · Selenium</td><td>Alveolar macrophage NF-κB suppression (Astaxanthin) reduces granuloma amplification in sarcoidosis. Nrf2/HO-1 activation (Resveratrol) provides adaptive antioxidant response to persistent granulomatous ROS production. In HP post-antigen withdrawal: addresses persistent oxidative fibrotic cascade.</td><td class="tev">Mechanistic + macrophage models</td><td><span class="tdur-a">6 months+ adjunct to steroids</span></td></tr>
+    <tr><td class="tnm">Recurrent RTI / Post-Viral Recovery</td><td class="tcat">Infective</td><td class="tmol">Selenium · Vit D3 · Astaxanthin · Vit C</td><td>Selenium restores NK cell + T-cell antiviral activity. D3 drives cathelicidin production in alveolar macrophages (Resveratrol upregulates VDR). Astaxanthin reduces post-viral TNF-α inflammatory burden. Healthcare workers, educators, frequent travellers, immunocompromised patients.</td><td class="tev">Multiple RCTs (Moghaddam 2020)</td><td><span class="tdur-l">Preventive — long-term</span></td></tr>
+    <tr><td class="tnm">Urban AQI Exposure — Preventive</td><td class="tcat">Preventive</td><td class="tmol">Astaxanthin · Resveratrol · ALA · Selenium · Tocotrienol · Lycopene</td><td>Any patient with chronic AQI &gt;100 µg/m³. PM2.5 NF-κB in 30 min. Long-term: non-smoker COPD, FEV1 decline, lung cancer risk. Prescribable with no diagnosis required — cellular defense protocol for the urban Indian lung.</td><td class="tev">IQAir 2023 + Park 2010</td><td><span class="tdur-l">Long-term preventive</span></td></tr>
+    <tr><td class="tnm">Lung Cancer Prevention — High-risk</td><td class="tcat">Oncology-adjacent</td><td class="tmol">Lycopene · Astaxanthin · Resveratrol · Selenium</td><td>Inverse plasma carotenoid — lung cancer risk association (He 2015). Resveratrol SIRT1/p53 apoptosis in lung cancer cell lines. Selenium GPx reduces oxidative DNA mutagenic damage. High-risk: smokers &gt;20 PY, occupational, family history. Preventive — not a treatment.</td><td class="tev">Epidemiological + in vitro</td><td><span class="tdur-l">Long-term preventive</span></td></tr>
+  </tbody>
+</table>
+
+<!-- DURATION GUIDE + RX GUIDE + SAFETY -->
+<div class="g2" style="margin-bottom:9px">
+  <div>
+    <div class="sb" style="margin-top:0"><div class="ey ey-g">Duration-of-Use Guide</div><div class="ln"></div></div>
+    <div class="card tl" style="margin-bottom:6px">
+      <div class="c-ey ey-t">Long-Term / Indefinite Prescription</div>
+      <div class="c-body">COPD (all grades) · Asthma · PAH · OSA on CPAP · Overlap syndrome · Active tobacco/vaping/hookah users · Post-cessation recovery (1–3 years) · Urban AQI prevention · Autoimmune-ILD adjunct · Occupational lung disease (preventive + established) · Recurrent RTI prevention · Chronic sleep deprivation · Lung cancer prevention (high-risk) · All conditions where oxidative burden is ongoing and non-remitting.<br><br>Safety profile supports indefinite use — all 10 ingredients at doses within established safety margins. No dose accumulation or organ toxicity risk at these doses.</div>
+    </div>
+    <div class="card al">
+      <div class="c-ey ey-a">Short to Medium Term (3–12 Months)</div>
+      <div class="c-body">Post-COVID pulmonary fibrosis (3–6 months minimum, extend if ongoing functional decline) · Radiation pneumonitis (during + 6 months post-completion) · EVALI recovery (duration of vaping + 3–6 months post-cessation) · Post-viral RTI recovery (3 months minimum) · Sarcoidosis adjunct to steroid taper (reassess at 6 months) · HP post-antigen withdrawal (6 months+ depending on fibrosis trajectory).</div>
+    </div>
+    <div class="card gl" style="margin-top:6px">
+      <div class="c-ey ey-g">The 90-Day Rule</div>
+      <div class="c-body">For any first prescription, counsel the patient that meaningful cellular-level assessment requires a minimum of 90 days continuous daily use. Antioxidant pathway restoration — particularly glutathione system regeneration and mitochondrial CoQ10 replenishment — is a cumulative biological process. A 30-day trial is not a fair assessment of efficacy. Set this expectation at the first prescription.</div>
+    </div>
+  </div>
+  <div>
+    <div class="sb" style="margin-top:0"><div class="ey ey-g">Safety Profile, Contraindications &amp; Drug Interactions</div><div class="ln"></div></div>
+    <div class="card" style="margin-bottom:6px">
+      <div class="c-ey ey-g">Established Safety — All 10 Ingredients at These Doses</div>
+      <div class="c-body">All 10 active ingredients are at doses well within established safety margins from regulatory agencies (FDA, EFSA, FSSAI) and peer-reviewed safety literature:<br><br>• <strong style="color:var(--wh)">Astaxanthin 4mg:</strong> GRAS status. Safety established up to 24mg/day. No toxicity at 4mg.<br>• <strong style="color:var(--wh)">Trans-Resveratrol 98% 100mg:</strong> Human clinical trials demonstrate safety up to 5,000mg/day. 100mg is a low-moderate dose with no reported adverse events at this level.<br>• <strong style="color:var(--wh)">CoQ10 100mg:</strong> Safety established up to 1,200mg/day. 100mg has an extensive multi-decade human safety record.<br>• <strong style="color:var(--wh)">ALA 50mg:</strong> Therapeutic doses in diabetic neuropathy studies: 600–1,800mg/day. 50mg is a preventive dose with no safety concerns.<br>• <strong style="color:var(--wh)">Tocotrienol 10mg:</strong> Safety established up to 400mg/day. 10mg is a conservative protective dose.<br>• <strong style="color:var(--wh)">Selenium 40mcg:</strong> Tolerable upper intake level: 400mcg/day. 40mcg is the WHO recommended nutritional dose — far from any toxicity concern.<br>• <strong style="color:var(--wh)">Lycopene 4mg, Vit C 40mg, Vit D3 600 IU, K2-7 MK-7 45mcg:</strong> All at preventive nutritional doses with established safety records.</div>
+    </div>
+    <div class="card rl">
+      <div class="c-ey ey-r">Caution — Drug Interactions to Monitor</div>
+      <div class="c-body"><strong style="color:var(--amp)">Warfarin / Acenocoumarol:</strong> Vitamin K2-7 MK-7 at 45mcg may mildly influence INR. Monitor INR at initiation and at 4 weeks. Dose adjustment of anticoagulant may be required in some patients. Caution warranted — not an absolute contraindication.<br><br><strong style="color:var(--amp)">High-dose antiplatelet / thrombolytics:</strong> Resveratrol has mild antiplatelet activity at high doses. At 100mg this is not clinically significant, but theoretical caution is appropriate in patients on dual antiplatelet therapy or thrombolysis.<br><br><strong style="color:var(--gop)">No significant interactions documented with:</strong> SABA/LABA bronchodilators · Inhaled corticosteroids · Oral corticosteroids · Montelukast · Pirfenidone / Nintedanib · PAH therapies (ERA, PDE5i, prostacyclins) · CPAP therapy · Standard COPD triple therapy · Antibiotics · Immunosuppressants (mycophenolate, azathioprine) · Methotrexate · Oxygen therapy</div>
+    </div>
+    <div class="card" style="margin-top:6px">
+      <div class="c-ey ey-s">Contraindications</div>
+      <div class="c-body"><strong style="color:var(--rdp)">Absolute:</strong> Pregnancy · Lactation · Patients under 18 years.<br><strong style="color:var(--amp)">Relative:</strong> Known hypersensitivity to any listed ingredient. Consider Selenium content in patients on high-dose selenium supplementation from other sources.<br><strong style="color:var(--gop)">Administration:</strong> 1 tablet once daily with the largest meal. Fat-soluble components (Astaxanthin, Tocotrienol, CoQ10, Lycopene) require dietary fat for optimal absorption. Morning or evening meal — patient preference guides timing.</div>
+    </div>
+  </div>
+</div>
+
+<!-- CLOSING SCIENTIFIC STATEMENT -->
+<div class="hl">
+  <p><strong>The clinical case for Aeternyx in respiratory medicine is not built on a single ingredient, a single mechanism, or a single condition.</strong> It is built on the recognition that oxidative stress is a universal, primary driver of respiratory disease progression — and that addressing this driver requires a multi-pathway, precisely dosed, synergistically designed formulation. The 10 molecules in Aeternyx Core were selected not for convenience but for mechanistic necessity: each addresses a specific biological pathway that the others cannot. The doses were calibrated to therapeutic thresholds validated in peer-reviewed literature. The interactions between molecules — ALA recycling CoQ10, Resveratrol amplifying D3, the Selenium-ALA-Vitamin C glutathione triad — are designed synergies, not coincidences. <strong>This is not a generic antioxidant supplement. It is a cellular intelligence protocol built for the respiratory system your patients inhabit.</strong></p>
+</div>
+
+</div>
+<div class="ft-final">
+  <div class="ft-final-t">Cellular Intelligence. Not a Supplement.</div>
+  <div class="ft-final-c">AETERNYX · For physician enquiries contact your Aeternyx Clinical Partner · aeternyx.in<br>Complete clinical evidence database: aeternyx.in/evidence · All references available on request · ay · ter · nix</div>
+</div>
+</div><!-- end page 4 -->
+
+</body>
+</html>
