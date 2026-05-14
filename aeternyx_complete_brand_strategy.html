@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AETERNYX — Complete Brand Strategy</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,200;0,300;0,400;0,500;0,600;1,200;1,300;1,400&family=DM+Sans:opsz,wght@9..40,200;9..40,300;9..40,400;9..40,500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --onyx: #0E0E0F;
+  --onyx-soft: #161618;
+  --onyx-mid: #1E1E21;
+  --onyx-lt: #2A2A2E;
+  --gold: #B08D57;
+  --gold-lt: #C9A96E;
+  --gold-pale: #E8D5B0;
+  --gold-dim: #7A5E35;
+  --platinum: #E8E6E0;
+  --silver: #A8A6A0;
+  --white: #F5F3EE;
+  --muted: #6E6C68;
+  --r: 4px;
+  --rl: 8px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--onyx);
+  color: var(--platinum);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* NAV */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: var(--onyx);
+  border-bottom: 0.5px solid #2A2A2E;
+  padding: .85rem 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem; font-weight: 300;
+  letter-spacing: .2em; color: var(--gold-pale);
+}
+.nav-links {
+  display: flex; gap: .25rem; flex-wrap: wrap;
+}
+.nav-link {
+  font-size: 10px; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--muted); padding: .35rem .65rem; border-radius: var(--r);
+  cursor: pointer; transition: all .15s; border: none; background: none;
+  font-family: 'DM Sans', sans-serif;
+}
+.nav-link:hover, .nav-link.active { color: var(--gold); background: rgba(176,141,87,.08); }
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center;
+  padding: 6rem 2rem 4rem;
+  position: relative;
+  border-bottom: 0.5px solid var(--onyx-lt);
+}
+.hero-grid-lines {
+  position: absolute; inset: 0; pointer-events: none; opacity: .04;
+  background-image: linear-gradient(var(--gold) 1px, transparent 1px),
+    linear-gradient(90deg, var(--gold) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.hero-eyebrow {
+  font-size: 10px; letter-spacing: .3em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 2rem; font-weight: 400;
+  opacity: 0; animation: fadeUp .8s .2s forwards;
+}
+.hero-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3.5rem, 10vw, 7rem);
+  font-weight: 200; letter-spacing: .18em; color: var(--white);
+  line-height: 1; margin-bottom: .5rem;
+  opacity: 0; animation: fadeUp .8s .4s forwards;
+}
+.hero-rule {
+  width: 60px; height: 0.5px; background: var(--gold);
+  margin: 1.5rem auto;
+  opacity: 0; animation: fadeUp .8s .6s forwards;
+}
+.hero-tagline-top {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(.85rem, 2vw, 1rem);
+  letter-spacing: .22em; text-transform: uppercase;
+  color: var(--silver); margin-bottom: .5rem;
+  opacity: 0; animation: fadeUp .8s .8s forwards;
+}
+.hero-tagline-main {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.4rem, 4vw, 2.2rem);
+  font-weight: 300; font-style: italic; color: var(--gold-pale);
+  letter-spacing: .04em;
+  opacity: 0; animation: fadeUp .8s 1s forwards;
+}
+.hero-pron {
+  font-size: 11px; color: var(--muted); letter-spacing: .14em;
+  margin-top: 2.5rem;
+  opacity: 0; animation: fadeUp .8s 1.2s forwards;
+}
+.hero-pills {
+  display: flex; gap: .5rem; flex-wrap: wrap; justify-content: center;
+  margin-top: 2.5rem;
+  opacity: 0; animation: fadeUp .8s 1.4s forwards;
+}
+.hero-pill {
+  font-size: 10px; padding: .35rem 1rem; border-radius: 20px;
+  border: 0.5px solid var(--onyx-lt); color: var(--muted);
+  letter-spacing: .08em;
+}
+
+/* SECTIONS */
+.section { padding: 5rem 2rem; max-width: 1100px; margin: 0 auto; border-bottom: 0.5px solid var(--onyx-lt); }
+.section:last-child { border-bottom: none; }
+
+.sec-eyebrow {
+  font-size: 10px; letter-spacing: .25em; text-transform: uppercase;
+  color: var(--gold); font-weight: 400; margin-bottom: .75rem;
+}
+.sec-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  font-weight: 200; color: var(--white); line-height: 1.15;
+  margin-bottom: 1.5rem; letter-spacing: .02em;
+}
+.sec-intro {
+  font-size: 14px; color: var(--silver); max-width: 640px;
+  line-height: 1.8; margin-bottom: 3rem;
+}
+
+/* CARDS */
+.card-grid { display: grid; gap: 1rem; }
+.cg-2 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+.cg-3 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.cg-4 { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+
+.card {
+  background: var(--onyx-mid); border: 0.5px solid var(--onyx-lt);
+  border-radius: var(--rl); padding: 1.5rem;
+  transition: border-color .2s;
+}
+.card:hover { border-color: var(--gold-dim); }
+.card.gold-top { border-top: 2px solid var(--gold); }
+.card.gold-left { border-left: 2px solid var(--gold); }
+
+.card-eye {
+  font-size: 10px; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--gold); font-weight: 400; margin-bottom: .6rem;
+}
+.card-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem; font-weight: 300; color: var(--white); margin-bottom: .6rem;
+}
+.card-body { font-size: 13px; color: var(--silver); line-height: 1.7; }
+
+/* IDENTITY PALETTE */
+.palette-row { display: flex; gap: .5rem; margin-bottom: 1rem; flex-wrap: wrap; }
+.swatch { height: 60px; flex: 1; min-width: 80px; border-radius: var(--r); display: flex; align-items: flex-end; padding: .5rem; }
+.swatch-label { font-size: 10px; font-family: 'DM Mono', monospace; color: rgba(255,255,255,.6); }
+
+/* TYPOGRAPHY SHOWCASE */
+.type-block { margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 0.5px solid var(--onyx-lt); }
+.type-block:last-child { border-bottom: none; margin-bottom: 0; }
+.type-usage { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: .5rem; }
+.type-sample-display {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3rem; font-weight: 200; color: var(--white);
+  letter-spacing: .06em; line-height: 1.1;
+}
+.type-sample-body { font-size: 15px; color: var(--silver); line-height: 1.8; max-width: 560px; }
+.type-sample-caption { font-size: 11px; color: var(--muted); letter-spacing: .12em; }
+
+/* INGREDIENT TABLE */
+.ing-table { width: 100%; border-collapse: collapse; }
+.ing-table th {
+  font-size: 10px; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--muted); padding: .6rem .85rem; border-bottom: 0.5px solid var(--onyx-lt);
+  text-align: left; font-weight: 400;
+}
+.ing-table td {
+  padding: .75rem .85rem; border-bottom: 0.5px solid var(--onyx-lt);
+  font-size: 13px; color: var(--silver); vertical-align: top;
+}
+.ing-table tr:last-child td { border-bottom: none; }
+.ing-name { color: var(--white); font-weight: 400; }
+.ing-dose { color: var(--gold); font-family: 'DM Mono', monospace; font-size: 12px; }
+.ing-action { font-size: 12px; color: var(--muted); }
+
+/* STAT BLOCKS */
+.stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1px; background: var(--onyx-lt); border: 0.5px solid var(--onyx-lt); border-radius: var(--rl); overflow: hidden; margin-bottom: 2rem; }
+.stat { background: var(--onyx-mid); padding: 1.5rem; text-align: center; }
+.stat-val { font-family: 'Cormorant Garamond', serif; font-size: 2.4rem; font-weight: 200; color: var(--gold-pale); line-height: 1; margin-bottom: .35rem; }
+.stat-label { font-size: 11px; color: var(--muted); letter-spacing: .06em; line-height: 1.4; }
+
+/* CHANNEL CARDS */
+.channel-card {
+  background: var(--onyx-mid); border: 0.5px solid var(--onyx-lt);
+  border-radius: var(--rl); overflow: hidden; margin-bottom: 1rem;
+}
+.channel-header {
+  background: var(--onyx-lt); padding: .85rem 1.25rem;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.channel-name {
+  font-size: 12px; font-weight: 500; color: var(--white); letter-spacing: .04em;
+}
+.channel-tag {
+  font-size: 10px; padding: 2px 9px; border-radius: 10px;
+  background: rgba(176,141,87,.15); color: var(--gold); letter-spacing: .06em;
+}
+.channel-body { padding: 1.25rem; }
+.channel-body p { font-size: 13px; color: var(--silver); line-height: 1.7; margin-bottom: .75rem; }
+.channel-body p:last-child { margin-bottom: 0; }
+.channel-kv { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: .75rem; }
+.ckv { font-size: 11px; color: var(--muted); }
+.ckv span { color: var(--gold-pale); }
+
+/* ROADMAP */
+.roadmap-item { display: flex; gap: 1.25rem; padding: 1.25rem 0; border-bottom: 0.5px solid var(--onyx-lt); }
+.roadmap-item:last-child { border-bottom: none; }
+.rm-marker {
+  width: 36px; height: 36px; border-radius: 50%;
+  border: 0.5px solid var(--gold-dim); display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 400; color: var(--gold); flex-shrink: 0;
+  font-family: 'Cormorant Garamond', serif;
+}
+.rm-content {}
+.rm-phase { font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); margin-bottom: .2rem; }
+.rm-title { font-size: 14px; font-weight: 400; color: var(--white); margin-bottom: .35rem; }
+.rm-body { font-size: 12px; color: var(--silver); line-height: 1.65; }
+
+/* RX CARDS */
+.rx-card { border-left: 1.5px solid var(--gold-dim); padding: 1rem 1.25rem; margin-bottom: .75rem; background: var(--onyx-mid); border-radius: 0 var(--rl) var(--rl) 0; }
+.rx-specialty { font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); margin-bottom: .35rem; font-weight: 400; }
+.rx-narrative { font-size: 13px; color: var(--silver); line-height: 1.65; }
+.rx-pitch { font-size: 12px; color: var(--gold-pale); font-style: italic; margin-top: .4rem; font-family: 'Cormorant Garamond', serif; }
+
+/* PACKAGING VISUAL */
+.pkg-visual {
+  display: flex; align-items: center; justify-content: center;
+  padding: 3rem; background: var(--onyx-soft); border-radius: var(--rl);
+  border: 0.5px solid var(--onyx-lt); margin-bottom: 2rem;
+}
+.bottle {
+  width: 120px; text-align: center; position: relative;
+}
+.bottle-body {
+  width: 80px; height: 200px; background: #0A0A0B;
+  border-radius: 6px 6px 10px 10px; margin: 0 auto;
+  border: 0.5px solid #2A2A2A;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+}
+.bottle-body::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: var(--gold);
+}
+.bottle-neck {
+  width: 44px; height: 28px; background: #0A0A0B;
+  border-radius: 3px 3px 0 0; margin: 0 auto;
+  border: 0.5px solid #2A2A2A; border-bottom: none;
+}
+.bottle-cap {
+  width: 52px; height: 18px; background: var(--gold-dim);
+  border-radius: 3px 3px 0 0; margin: 0 auto;
+}
+.bottle-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: .7rem; letter-spacing: .2em; color: var(--gold);
+  text-transform: uppercase; margin-bottom: .35rem;
+}
+.bottle-tag {
+  font-size: .45rem; color: #555; letter-spacing: .12em; text-transform: uppercase;
+}
+.bottle-rule { width: 40px; height: 0.5px; background: #2A2A2A; margin: .5rem auto; }
+
+/* PACKAGING SPECS */
+.spec-list { list-style: none; }
+.spec-item {
+  display: flex; gap: .85rem; padding: .65rem 0;
+  border-bottom: 0.5px solid var(--onyx-lt); font-size: 13px;
+}
+.spec-item:last-child { border-bottom: none; }
+.spec-key { color: var(--muted); min-width: 160px; flex-shrink: 0; }
+.spec-val { color: var(--white); }
+
+/* DIGITAL STRATEGY */
+.platform-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: .75rem; margin-bottom: 2rem; }
+.platform-card { background: var(--onyx-mid); border: 0.5px solid var(--onyx-lt); border-radius: var(--rl); padding: 1.1rem 1.25rem; }
+.platform-name { font-size: 13px; font-weight: 400; color: var(--white); margin-bottom: .3rem; }
+.platform-role { font-size: 11px; color: var(--gold); margin-bottom: .4rem; letter-spacing: .04em; }
+.platform-desc { font-size: 12px; color: var(--silver); line-height: 1.55; }
+
+/* PRICING */
+.pricing-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+.price-card { background: var(--onyx-mid); border: 0.5px solid var(--onyx-lt); border-radius: var(--rl); padding: 1.5rem; text-align: center; }
+.price-card.featured { border-color: var(--gold-dim); }
+.price-sku { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: .5rem; }
+.price-count { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; font-weight: 200; color: var(--white); line-height: 1; }
+.price-unit { font-size: 12px; color: var(--muted); margin-bottom: .75rem; }
+.price-mrp { font-size: 1.6rem; color: var(--gold-pale); font-family: 'Cormorant Garamond', serif; margin-bottom: .35rem; }
+.price-note { font-size: 11px; color: var(--muted); line-height: 1.5; }
+.price-badge { font-size: 10px; padding: 3px 10px; background: rgba(176,141,87,.15); color: var(--gold); border-radius: 10px; display: inline-block; margin-top: .5rem; }
+
+/* CONTENT PILLARS */
+.pillar { display: grid; grid-template-columns: 48px 1fr; gap: 1.25rem; padding: 1.25rem 0; border-bottom: 0.5px solid var(--onyx-lt); align-items: start; }
+.pillar:last-child { border-bottom: none; }
+.pillar-num { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 200; color: var(--onyx-lt); line-height: 1; }
+.pillar-title { font-size: 14px; font-weight: 400; color: var(--white); margin-bottom: .3rem; }
+.pillar-desc { font-size: 12px; color: var(--silver); line-height: 1.65; }
+.pillar-tag { font-size: 10px; color: var(--gold); margin-top: .3rem; letter-spacing: .06em; }
+
+/* MANIFESTO */
+.manifesto {
+  background: var(--onyx-soft); border: 0.5px solid var(--onyx-lt);
+  border-radius: var(--rl); padding: 3rem; margin-bottom: 2rem;
+}
+.manifesto-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  font-weight: 200; color: var(--white); line-height: 1.85;
+  font-style: italic;
+}
+.manifesto-text em { color: var(--gold-pale); font-style: normal; }
+
+/* PRIORITY ACTION */
+.action-item { display: grid; grid-template-columns: 32px 1fr auto; gap: 1rem; padding: 1rem 1.25rem; background: var(--onyx-mid); border: 0.5px solid var(--onyx-lt); border-radius: var(--rl); margin-bottom: .6rem; align-items: start; }
+.action-num { width: 28px; height: 28px; border-radius: 50%; border: 0.5px solid var(--gold-dim); display: flex; align-items: center; justify-content: center; font-size: 11px; color: var(--gold); font-weight: 400; flex-shrink: 0; }
+.action-title { font-size: 13px; font-weight: 400; color: var(--white); margin-bottom: .2rem; }
+.action-desc { font-size: 12px; color: var(--silver); line-height: 1.6; }
+.action-urgency { font-size: 10px; padding: 2px 9px; border-radius: 9px; white-space: nowrap; font-weight: 400; height: fit-content; }
+.urgency-now { background: rgba(162,45,45,.2); color: #F09595; }
+.urgency-soon { background: rgba(186,117,23,.2); color: #FAC775; }
+.urgency-next { background: rgba(29,158,117,.15); color: #9FE1CB; }
+
+/* FINAL BRAND MARK */
+.final-mark {
+  text-align: center; padding: 6rem 2rem;
+  background: var(--onyx-soft);
+  border-top: 0.5px solid var(--onyx-lt);
+}
+.fm-eye { font-size: 10px; letter-spacing: .28em; text-transform: uppercase; color: var(--gold); margin-bottom: 2.5rem; }
+.fm-brand { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 8vw, 5rem); font-weight: 200; color: var(--white); letter-spacing: .22em; line-height: 1; }
+.fm-rule { width: 60px; height: 0.5px; background: var(--gold); margin: 1.75rem auto; }
+.fm-tag1 { font-family: 'Cormorant Garamond', serif; font-size: 1rem; letter-spacing: .2em; text-transform: uppercase; color: var(--silver); margin-bottom: .5rem; }
+.fm-tag2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.2rem, 3vw, 1.8rem); font-weight: 200; font-style: italic; color: var(--gold-pale); letter-spacing: .06em; }
+.fm-pron { font-size: 11px; color: var(--muted); letter-spacing: .14em; margin-top: 2rem; }
+.fm-est { font-size: 10px; color: #2A2A2E; margin-top: 1rem; letter-spacing: .16em; }
+
+/* UTILITIES */
+.gold-text { color: var(--gold); }
+.white-text { color: var(--white); }
+.muted-text { color: var(--muted); }
+.italic { font-style: italic; font-family: 'Cormorant Garamond', serif; }
+.mono { font-family: 'DM Mono', monospace; }
+.divider { height: 0.5px; background: var(--onyx-lt); margin: 2rem 0; }
+.tag-row { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .75rem; }
+.tag { font-size: 10px; padding: 2px 9px; border-radius: 9px; background: rgba(176,141,87,.1); color: var(--gold); letter-spacing: .04em; border: 0.5px solid rgba(176,141,87,.2); }
+.highlight-box { background: rgba(176,141,87,.06); border: 0.5px solid rgba(176,141,87,.2); border-radius: var(--rl); padding: 1.25rem 1.5rem; margin-bottom: 1rem; }
+.highlight-box p { font-size: 13px; color: var(--gold-pale); line-height: 1.7; }
+
+/* ANIMATIONS */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* PRINT / SECTION HIDDEN */
+.section-page { display: none; }
+.section-page.visible { display: block; }
+
+/* SCROLLBAR */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--onyx); }
+::-webkit-scrollbar-thumb { background: var(--onyx-lt); border-radius: 2px; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-brand">AETERNYX</div>
+  <div class="nav-links">
+    <button class="nav-link active" onclick="showSection('overview')">Overview</button>
+    <button class="nav-link" onclick="showSection('identity')">Identity</button>
+    <button class="nav-link" onclick="showSection('formulation')">Science</button>
+    <button class="nav-link" onclick="showSection('positioning')">Positioning</button>
+    <button class="nav-link" onclick="showSection('channels')">Channels</button>
+    <button class="nav-link" onclick="showSection('packaging')">Packaging</button>
+    <button class="nav-link" onclick="showSection('digital')">Digital</button>
+    <button class="nav-link" onclick="showSection('pricing')">Pricing</button>
+    <button class="nav-link" onclick="showSection('roadmap')">Roadmap</button>
+    <button class="nav-link" onclick="showSection('actions')">Actions</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div id="sec-overview" class="section-page visible">
+<div class="hero">
+  <div class="hero-grid-lines"></div>
+  <div class="hero-eyebrow">Complete Brand Strategy — Confidential</div>
+  <div class="hero-name">AETERNYX</div>
+  <div class="hero-rule"></div>
+  <div class="hero-tagline-top">Not a Supplement</div>
+  <div class="hero-tagline-main">Cellular Intelligence.</div>
+  <div class="hero-pron">ay · ter · nix &nbsp;·&nbsp; Founded by a Doctor. Forged by an Athlete.</div>
+  <div class="hero-pills">
+    <div class="hero-pill">Doctor-First Distribution</div>
+    <div class="hero-pill">Clinical-Luxury Positioning</div>
+    <div class="hero-pill">10-Pathway Formulation</div>
+    <div class="hero-pill">India · GCC · Global</div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="sec-eyebrow">Brand Foundation</div>
+  <div class="sec-title">What Aeternyx is.</div>
+  <div class="sec-intro">A doctor-founded, endurance athlete-tested, clinically formulated nutraceutical brand that rejects the supplement category entirely and stakes its claim on the science of cellular intelligence — the most advanced, most precise, most aspirational territory in modern preventive healthcare.</div>
+
+  <div class="manifesto">
+    <div class="manifesto-text">
+      "Aeternyx was not built to compete with supplements. <em>It was built to make the category irrelevant.</em> Every ingredient is chosen for its molecular precision. Every dose is calibrated for clinical outcome. Every interaction with this brand — from the first prescription to the last bottle — must feel like an encounter with <em>the highest standard science has ever produced.</em> This is not wellness. This is <em>Cellular Intelligence.</em>"
+    </div>
+  </div>
+
+  <div class="stat-row">
+    <div class="stat"><div class="stat-val">10</div><div class="stat-label">Precision ingredients<br>in one tablet</div></div>
+    <div class="stat"><div class="stat-val">5</div><div class="stat-label">Biological pathways<br>addressed</div></div>
+    <div class="stat"><div class="stat-val">98%</div><div class="stat-label">Trans-Resveratrol<br>purity</div></div>
+    <div class="stat"><div class="stat-val">100mg</div><div class="stat-label">CoQ10<br>therapeutic dose</div></div>
+    <div class="stat"><div class="stat-val">6+</div><div class="stat-label">Medical specialties<br>prescribing</div></div>
+    <div class="stat"><div class="stat-val">₹5K+</div><div class="stat-label">Target MRP<br>premium tier</div></div>
+  </div>
+
+  <div class="card-grid cg-2">
+    <div class="card gold-top">
+      <div class="card-eye">Brand Name</div>
+      <div class="card-title" style="font-size:1.8rem;font-family:'Cormorant Garamond',serif;font-weight:200;letter-spacing:.08em">Aeternyx</div>
+      <div class="card-body">Latin <em>aeternus</em> (eternal, everlasting) + Greek <em>nyx</em> (primordial goddess of night; onyx — the impenetrable gemstone). Eternal strength. Pronounced <strong>ay-ter-nix</strong>. Globally unique. Trademark-clean in nutraceuticals globally.</div>
+    </div>
+    <div class="card gold-top">
+      <div class="card-eye">Brand Tagline</div>
+      <div class="card-title" style="font-family:'Cormorant Garamond',serif;font-weight:200;font-style:italic;font-size:1.4rem">Not a Supplement.<br>Cellular Intelligence.</div>
+      <div class="card-body">A category rejection followed by the highest possible scientific claim. Intelligence is simultaneously clinical precision, adaptive biology, and aspirational identity. No competitor can claim this territory — because no competitor has the science to back it.</div>
+    </div>
+    <div class="card">
+      <div class="card-eye">Founder Identity</div>
+      <div class="card-title">Doctor · Endurance Athlete</div>
+      <div class="card-body">The brand's single most powerful differentiator. Every claim Aeternyx makes about performance, longevity, and cellular protection is validated by the founder's own life — a physician who competes in endurance sport. Irreplaceable. Unreplicable. This is the brand's founding truth.</div>
+    </div>
+    <div class="card">
+      <div class="card-eye">Brand Philosophy</div>
+      <div class="card-title">Precision over Promise</div>
+      <div class="card-body">Every other supplement brand leads with a benefit claim. Aeternyx leads with a mechanism. Not "feel better" — but "protect your mitochondria." Not "look younger" — but "defend your cellular DNA from oxidative decay." The science is the story.</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- IDENTITY -->
+<div id="sec-identity" class="section-page">
+<div class="section" style="padding-top:7rem">
+  <div class="sec-eyebrow">Visual Identity System</div>
+  <div class="sec-title">The aesthetic of eternity.</div>
+  <div class="sec-intro">Aeternyx's visual language is born from two sources — the Latin philosophical tradition of eternal time, and the geological permanence of onyx stone. Every visual decision must feel like it was made by a master craftsman who also held a doctorate in molecular biology.</div>
+
+  <div class="card-eye" style="margin-bottom:1rem">Color Palette</div>
+  <div class="palette-row">
+    <div class="swatch" style="background:#0E0E0F;min-width:100px"><span class="swatch-label">#0E0E0F<br>Onyx Black</span></div>
+    <div class="swatch" style="background:#1E1E21"><span class="swatch-label">#1E1E21<br>Deep Onyx</span></div>
+    <div class="swatch" style="background:#2A2A2E"><span class="swatch-label">#2A2A2E<br>Soft Onyx</span></div>
+  </div>
+  <div class="palette-row">
+    <div class="swatch" style="background:#B08D57;min-width:100px"><span class="swatch-label">#B08D57<br>Gold Primary</span></div>
+    <div class="swatch" style="background:#C9A96E"><span class="swatch-label">#C9A96E<br>Gold Light</span></div>
+    <div class="swatch" style="background:#7A5E35"><span class="swatch-label">#7A5E35<br>Gold Deep</span></div>
+    <div class="swatch" style="background:#E8D5B0"><span class="swatch-label">#E8D5B0<br>Gold Pale</span></div>
+  </div>
+  <div class="palette-row">
+    <div class="swatch" style="background:#E8E6E0;min-width:100px"><span class="swatch-label" style="color:#333">#E8E6E0<br>Platinum</span></div>
+    <div class="swatch" style="background:#A8A6A0"><span class="swatch-label" style="color:#333">#A8A6A0<br>Silver</span></div>
+    <div class="swatch" style="background:#F5F3EE"><span class="swatch-label" style="color:#333">#F5F3EE<br>White</span></div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="card-eye" style="margin-bottom:1rem">Typography System</div>
+  <div class="type-block">
+    <div class="type-usage">Display · Brand Name · Headlines</div>
+    <div class="type-sample-display">Cormorant Garamond</div>
+    <div class="type-sample-body" style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:200;margin-top:.5rem;color:#A8A6A0">The eternal typeface. Classical origins, modern restraint. Used for the brand name, all display headlines, and wherever gravitas is required. Weight 200–300 only — never bold.</div>
+  </div>
+  <div class="type-block">
+    <div class="type-usage">Body · Interface · Labels</div>
+    <div style="font-size:1.4rem;font-weight:300;color:#E8E6E0;letter-spacing:.04em">DM Sans — Light</div>
+    <div class="type-sample-body" style="margin-top:.5rem">Precision meets approachability. Used for all body text, navigation, and interface elements. Weight 300 only. Never bold except for critical data points.</div>
+  </div>
+  <div class="type-block">
+    <div class="type-usage">Data · Doses · Clinical Specifications</div>
+    <div style="font-size:1.2rem;color:#B08D57;font-family:'DM Mono',monospace">DM Mono — 100mg · 4mcg · 98%</div>
+    <div class="type-sample-body" style="margin-top:.5rem">Clinical precision made visible. Used exclusively for ingredient doses, measurements, and clinical data. The monospace treatment signals scientific exactitude.</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="card-eye" style="margin-bottom:1rem">Brand Voice & Tone</div>
+  <div class="card-grid cg-3">
+    <div class="card">
+      <div class="card-eye">Tone</div>
+      <div class="card-title">Calm Authority</div>
+      <div class="card-body">Never shouts. Never hypes. Never uses exclamation marks. Speaks the way the world's best physician speaks to a trusted patient — with absolute certainty and zero aggression.</div>
+    </div>
+    <div class="card">
+      <div class="card-eye">Language</div>
+      <div class="card-title">Precise Poetry</div>
+      <div class="card-body">Scientific vocabulary made beautiful. "Mitochondrial resilience" not "energy boost." "Oxidative mastery" not "antioxidant protection." "Cellular intelligence" not "immunity support."</div>
+    </div>
+    <div class="card">
+      <div class="card-eye">Never</div>
+      <div class="card-title">No Supplement Clichés</div>
+      <div class="card-body">Never: "boost," "supercharge," "amazing results," "feel the difference," "natural formula," "pure ingredients." These are the language of the category Aeternyx has rejected.</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="card-eye" style="margin-bottom:1rem">Logo Direction Brief</div>
+  <div class="highlight-box">
+    <p><strong>Concept:</strong> The Aeternyx logo mark should reference the geometry of the onyx crystal structure — hexagonal, precise, and deeply layered — without being literal. A wordmark in Cormorant Garamond at weight 200, all caps, with generous letter-spacing (0.22em). The "A" may carry a subtle geometric accent — a single diagonal line referencing both the crystalline structure of onyx and the angular precision of scientific measurement. No icon. No symbol. The name is the logo. Commission from a luxury identity specialist — the logo must look as if it was designed for a Zurich private bank that happened to formulate the world's most precise nutraceutical.</p>
+  </div>
+</div>
+</div>
+
+<!-- SCIENCE / FORMULATION -->
+<div id="sec-formulation" class="section-page">
+<div class="section" style="padding-top:7rem">
+  <div class="sec-eyebrow">The Science of Cellular Intelligence</div>
+  <div class="sec-title">Ten molecules.<br>Five pathways.<br>One doctrine.</div>
+  <div class="sec-intro">Aeternyx Core is a 10-ingredient multi-pathway cellular protection system operating simultaneously across mitochondrial bioenergetics, oxidative defense, longevity gene activation, bone-cardiovascular axis, and master antioxidant recycling. This is not a formulation. It is a cellular doctrine.</div>
+
+  <div class="card-eye" style="margin-bottom:1rem">Complete Formulation — Label Claim</div>
+  <table class="ing-table" style="margin-bottom:2rem">
+    <thead>
+      <tr>
+        <th>Ingredient</th>
+        <th>Dose</th>
+        <th>Pathway</th>
+        <th>Clinical role</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="ing-name">Astaxanthin (10%)</td><td class="ing-dose">4 mg</td><td><span class="tag">Antioxidant</span> <span class="tag">Neuro</span></td><td class="ing-action">6000× stronger than Vit C. Crosses blood-brain & retinal barrier. Skin photoprotection.</td></tr>
+      <tr><td class="ing-name">Lycopene (10% Powder)</td><td class="ing-dose">4 mg</td><td><span class="tag">Cardiovascular</span></td><td class="ing-action">LDL oxidation prevention. Prostate & skin carotenoid protection. Synergizes with Astaxanthin.</td></tr>
+      <tr><td class="ing-name">Trans-Resveratrol (98%)</td><td class="ing-dose">100 mg</td><td><span class="tag">Longevity</span> <span class="tag">Metabolic</span></td><td class="ing-action">SIRT1 sirtuin activation. Caloric restriction mimetic. NF-κB anti-inflammatory. 98% purity — gold standard.</td></tr>
+      <tr><td class="ing-name">Tocotrienol (50%)</td><td class="ing-dose">10 mg</td><td><span class="tag">Cardiovascular</span> <span class="tag">Neuro</span></td><td class="ing-action">Superior Vit E form. HMG-CoA inhibition (natural statin-like). 40× stronger antioxidant than tocopherol.</td></tr>
+      <tr><td class="ing-name">Alpha Lipoic Acid (80%)</td><td class="ing-dose">50 mg</td><td><span class="tag">Mitochondrial</span> <span class="tag">Metabolic</span></td><td class="ing-action">Universal antioxidant — lipid and aqueous. Recycles Vit C, E & glutathione. Critical for diabetic neuropathy.</td></tr>
+      <tr><td class="ing-name">Coenzyme Q10</td><td class="ing-dose">100 mg</td><td><span class="tag">Mitochondrial</span> <span class="tag">Cardiac</span></td><td class="ing-action">ATP synthesis in electron transport chain. Depleted by statins. Therapeutic dose at 100 mg.</td></tr>
+      <tr><td class="ing-name">Vitamin C (Coated)</td><td class="ing-dose">40 mg</td><td><span class="tag">Antioxidant</span> <span class="tag">Immune</span></td><td class="ing-action">Coated for gastric tolerability. Antioxidant recycler, collagen synthesis co-factor. Formulation signal.</td></tr>
+      <tr><td class="ing-name">Vitamin D3</td><td class="ing-dose">600 IU</td><td><span class="tag">Bone</span> <span class="tag">Immune</span></td><td class="ing-action">Critical for India — 70–80% urban deficiency. Calcium absorption, immune modulation, muscle function.</td></tr>
+      <tr><td class="ing-name">Vitamin K2-7 (MK-7)</td><td class="ing-dose">45 mcg</td><td><span class="tag">Bone</span> <span class="tag">Arterial</span></td><td class="ing-action">D3 synergist. Directs calcium to bone (osteocalcin), away from arteries (MGP). Gold standard pairing.</td></tr>
+      <tr><td class="ing-name">Selenium</td><td class="ing-dose">40 mcg</td><td><span class="tag">Antioxidant</span> <span class="tag">Thyroid</span></td><td class="ing-action">Anchors glutathione peroxidase system. DNA repair. Thyroid function. Master antioxidant enzyme support.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="card-eye" style="margin-bottom:1rem">Five Biological Pathways</div>
+  <div class="card-grid cg-2" style="margin-bottom:2rem">
+    <div class="card gold-left">
+      <div class="card-eye">Pathway 1</div>
+      <div class="card-title">Mitochondrial Bioenergetics</div>
+      <div class="card-body">CoQ10 (100mg) + Alpha Lipoic Acid (50mg). The engine room of cellular life. ATP synthesis, electron transport efficiency, and mitochondrial membrane integrity — protected and optimised simultaneously.</div>
+    </div>
+    <div class="card gold-left">
+      <div class="card-eye">Pathway 2</div>
+      <div class="card-title">Longevity Gene Activation</div>
+      <div class="card-body">Trans-Resveratrol (98%, 100mg) activates SIRT1 sirtuins — the longevity genes identified by David Sinclair. Mimics caloric restriction. Tocotrienol provides secondary epigenetic antioxidant support.</div>
+    </div>
+    <div class="card gold-left">
+      <div class="card-eye">Pathway 3</div>
+      <div class="card-title">Carotenoid Antioxidant Defense</div>
+      <div class="card-body">Astaxanthin (4mg) + Lycopene (4mg). The most powerful carotenoid pairing available. Marine + botanical origin. Crosses blood-brain barrier. Provides oral photoprotection and cardiovascular carotenoid coverage.</div>
+    </div>
+    <div class="card gold-left">
+      <div class="card-eye">Pathway 4</div>
+      <div class="card-title">Bone-Cardiovascular Axis</div>
+      <div class="card-body">Vitamin D3 (600 IU) + K2-7 MK-7 (45mcg). The gold standard clinical pairing. Calcium directed to bone via osteocalcin, away from arteries via MGP. Prevents vascular calcification while building bone density.</div>
+    </div>
+    <div class="card gold-left">
+      <div class="card-eye">Pathway 5</div>
+      <div class="card-title">Master Antioxidant Recycling</div>
+      <div class="card-body">ALA + Vitamin C + Selenium → Glutathione cascade. ALA recycles Vitamins C and E. Selenium anchors glutathione peroxidase. Together they activate the body's endogenous antioxidant network — not just supplementing it.</div>
+    </div>
+    <div class="card" style="border-color:rgba(176,141,87,.3);background:rgba(176,141,87,.04)">
+      <div class="card-eye">The Synergy Claim</div>
+      <div class="card-title">Greater than the sum</div>
+      <div class="card-body">No ingredient in Aeternyx works alone. ALA recycles the Vitamin C that protects the Vitamin E (Tocotrienol) that preserves the CoQ10 that powers the mitochondria that the Resveratrol protects via SIRT1. This is not a formula. It is a system. This is Cellular Intelligence.</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- POSITIONING -->
+<div id="sec-positioning" class="section-page">
+<div class="section" style="padding-top:7rem">
+  <div class="sec-eyebrow">Market Positioning</div>
+  <div class="sec-title">The category<br>Aeternyx defines alone.</div>
+  <div class="sec-intro">Aeternyx does not compete in the supplement market. It creates a new category — Cellular Intelligence — and occupies it entirely. Every competitor is left describing what they contain. Aeternyx alone describes what it does at the molecular level of life itself.</div>
+
+  <div class="highlight-box">
+    <p><strong>Whitespace claim:</strong> No Indian nutraceutical brand owns the intersection of doctor-prescribed clinical science, ultra-luxury aesthetics, endurance athlete credibility, and cellular longevity narrative simultaneously. Aeternyx owns all four. This is not a positioning strategy — it is a monopoly on a category that did not exist until now.</p>
+  </div>
+
+  <div class="card-grid cg-3" style="margin-bottom:2rem">
+    <div class="card">
+      <div class="card-eye">Against mass supplements</div>
+      <div class="card-title">They sell ingredients. We sell intelligence.</div>
+      <div class="card-body">Himalaya, Cipla, and Sun Pharma OTC brands are ingredient lists. Aeternyx is a biological system. A doctor does not prescribe an ingredient — they prescribe an outcome. Aeternyx is the outcome.</div>
+    </div>
+    <div class="card">
+      <div class="card-eye">Against imported brands</div>
+      <div class="card-title">They sell heritage. We sell precision.</div>
+      <div class="card-body">Thorne, Life Extension, and Solgar sell American wellness heritage. Aeternyx sells Indian scientific precision with global ambition. Same ingredients, same purity standards, half the landed cost, and a founder story no import can match.</div>
+    </div>
+    <div class="card">
+      <div class="card-eye">Against pharma nutraceuticals</div>
+      <div class="card-title">They sell treatment. We sell prevention.</div>
+      <div class="card-body">Abbott, Pfizer, and Sanofi nutraceutical lines are disease-adjacent reactive products. Aeternyx is proactive — the cellular investment made before the problem requires treatment. Prevention at the level of cellular intelligence.</div>
+    </div>
+  </div>
+
+  <div class="card-eye" style="margin-bottom:1rem">Consumer Archetypes — Who Aeternyx Serves</div>
+  <div class="card-grid cg-2">
+    <div class="card"><div class="card-eye">The Conscious Physician-Patient</div><div class="card-title">Age 38–58 · ₹30L+ income</div><div class="card-body">Urban. Reads Sinclair and Attia. Already takes Thorne or Life Extension. Wants an Indian brand with the same science at honest pricing. Trusts their own doctor's recommendation above all advertising. Will become a lifetime subscriber within 90 days.</div><div class="tag-row"><span class="tag">D2C subscriber</span><span class="tag">Doctor-referred</span><span class="tag">Longevity-aware</span></div></div>
+    <div class="card"><div class="card-eye">The Elite Specialist's Patient</div><div class="card-title">Age 45–70 · Multiple comorbidities</div><div class="card-body">Cardiologist's post-statin patient needing CoQ10. Diabetologist's patient with oxidative neuropathy risk. Neurologist's early-cognitive-aging patient. Not seeking wellness — seeking clinical precision. Will take whatever their specialist prescribes without price objection.</div><div class="tag-row"><span class="tag">Rx-dependent</span><span class="tag">High compliance</span><span class="tag">Clinical need</span></div></div>
+    <div class="card"><div class="card-eye">The Endurance Athlete</div><div class="card-title">Age 28–50 · Performance-obsessed</div><div class="card-body">Ironman, ultra-marathon, competitive cyclist. Understands oxidative stress intuitively from training. Wants mitochondrial protection and recovery science, not marketing. The founder's own tribe. Will become a brand ambassador organically if the product delivers.</div><div class="tag-row"><span class="tag">Performance channel</span><span class="tag">Organic advocacy</span><span class="tag">High spend</span></div></div>
+    <div class="card"><div class="card-eye">The Ultra-Wealthy Self-Optimizer</div><div class="card-title">Age 40–65 · HNI / UHNI</div><div class="card-body">Buys Valmont skincare and Aesop body products. Flies business class for annual health checks. Wants supplements that match their aesthetic standard and their intellectual standard simultaneously. Price is never the objection — mediocrity is.</div><div class="tag-row"><span class="tag">Ultra-premium SKU</span><span class="tag">Gift channel</span><span class="tag">Luxury positioning</span></div></div>
+    <div class="card"><div class="card-eye">The Ageless Woman</div><div class="card-title">Age 38–60 · Dermatology-aware</div><div class="card-body">Perimenopause or post-menopausal. Invests heavily in skin, bone, and energy. The Astaxanthin + Lycopene oral photoprotection story, D3+K2 bone narrative, and the Tocotrienol skin antioxidant story are all written for her. Dermatologist's referral will be the entry point.</div><div class="tag-row"><span class="tag">Derm channel</span><span class="tag">Beauty-longevity</span><span class="tag">High lifetime value</span></div></div>
+    <div class="card"><div class="card-eye">The Longevity Biohacker</div><div class="card-title">Age 30–50 · Data-driven</div><div class="card-body">Tracks VO2 max, HRV, biological age. Takes NMN, Resveratrol, and CoQ10 separately. Aeternyx gives them all five pathways in one tablet — with clinical-grade purity they can verify via the COA QR code on every bottle. Will evangelize online.</div><div class="tag-row"><span class="tag">Social amplifier</span><span class="tag">Science-first</span><span class="tag">Supplement-savvy</span></div></div>
+  </div>
+</div>
+</div>
+
+<!-- CHANNELS -->
+<div id="sec-channels" class="section-page">
+<div class="section" style="padding-top:7rem">
+  <div class="sec-eyebrow">Distribution & Channel Strategy</div>
+  <div class="sec-title">Sold through trust.<br>Not through advertising.</div>
+  <div class="sec-intro">Aeternyx reaches its buyers exclusively through professionals they already trust — physicians, specialists, longevity experts, elite coaches, and wellness centers. This is not a limitation. It is the brand's greatest strength. Every sale is endorsed by a credentialed professional. No supplement brand can buy that authority.</div>
+
+  <div class="channel-card">
+    <div class="channel-header"><div class="channel-name">Channel 1 — Medical Specialist Network</div><span class="channel-tag">Primary · 45% revenue</span></div>
+    <div class="channel-body">
+      <p>Direct prescription through cardiologists, diabetologists, neurologists, dermatologists, orthopedic surgeons, geriatricians, endocrinologists, oncologists, rheumatologists, and all superspecialty physicians. Excluding only Pediatrics and Obstetrics-Gynecology (pregnancy). Every other specialty is an Aeternyx specialty.</p>
+      <p><strong>Approach:</strong> Medical Representative network in Tier 1 cities (Mumbai, Delhi, Bangalore, Chennai, Hyderabad). CME (Continuing Medical Education) events branded as "Aeternyx Cellular Intelligence Symposium." Physician sample kits — 10-tablet sample in full packaging with clinical monograph. WhatsApp clinical newsletter — weekly ingredient science updates, peer-reviewed abstracts, case studies.</p>
+      <div class="channel-kv">
+        <div class="ckv">Launch cities: <span>Mumbai · Delhi · Bangalore</span></div>
+        <div class="ckv">Target doctors Y1: <span>500+</span></div>
+        <div class="ckv">Sample cost per doctor: <span>₹350</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="channel-card">
+    <div class="channel-header"><div class="channel-name">Channel 2 — Longevity Experts & Wellness Physicians</div><span class="channel-tag">Strategic · 15% revenue</span></div>
+    <div class="channel-body">
+      <p>Anti-aging clinics, longevity centers, functional medicine practitioners, integrative medicine doctors. These professionals are the bridge between the clinical world and the affluent consumer market. They prescribe Aeternyx as part of a complete longevity protocol, significantly increasing per-patient spend.</p>
+      <p><strong>Approach:</strong> Longevity Protocol Partnership — provide co-branded diagnostic + supplement bundles (oxidative stress panel + 90-day Aeternyx Core). Position the brand as the clinical backbone of their longevity offering. Revenue-share model on co-branded protocols.</p>
+    </div>
+  </div>
+
+  <div class="channel-card">
+    <div class="channel-header"><div class="channel-name">Channel 3 — Elite Fitness & Performance</div><span class="channel-tag">Performance · 15% revenue</span></div>
+    <div class="channel-body">
+      <p>Certified fitness coaches, sports medicine physicians, elite gyms (Cult Pro, Gold's Gym, premium independents), endurance sports communities (Ironman, TCS Mumbai Marathon ecosystem), and sports nutrition specialists. The founder's own athletic identity makes this channel deeply authentic.</p>
+      <p><strong>Approach:</strong> Aeternyx "Performance Protocol" — specialized athlete-facing narrative centered on mitochondrial protection, oxidative debt management, and recovery science. Founder's race results and athletic story used as the primary credibility asset. No paid athlete endorsement needed — the founder is the endorsement.</p>
+    </div>
+  </div>
+
+  <div class="channel-card">
+    <div class="channel-header"><div class="channel-name">Channel 4 — Premium Wellness Centers & Spas</div><span class="channel-tag">Luxury · 10% revenue</span></div>
+    <div class="channel-body">
+      <p>Five-star hotel spas, Ayurvedic wellness resorts, premium dermatology clinics, aesthetic medicine centers, and ultra-luxury wellness boutiques. Aeternyx is the oral cellular intelligence protocol that sits alongside the topical treatments these centers provide. The packaging must be beautiful enough to sit on a spa shelf.</p>
+      <p><strong>Approach:</strong> "Inside Out Beauty Protocol" — Aeternyx as the cellular foundation of every external treatment offered. Partner with 10 premium dermatology clinics in Year 1 as "Aeternyx Cellular Intelligence Centers."</p>
+    </div>
+  </div>
+
+  <div class="channel-card">
+    <div class="channel-header"><div class="channel-name">Channel 5 — Premium D2C (Subscription)</div><span class="channel-tag">Digital · 15% revenue</span></div>
+    <div class="channel-body">
+      <p>Direct-to-consumer website with subscription model. Not the primary channel — the professional channels drive awareness and trust. The D2C channel captures the longevity-aware, science-literate buyer who has been referred or self-educated. No Amazon. No Flipkart. No 1mg. The brand controls its own distribution and never appears beside commodity supplements.</p>
+      <p><strong>Approach:</strong> Subscription at 15% discount. Quarterly diagnostic add-on (oxidative stress biomarker panel). Free teleconsultation with Aeternyx-partnered physician on subscription enrollment.</p>
+      <div class="channel-kv">
+        <div class="ckv">Subscription discount: <span>15%</span></div>
+        <div class="ckv">Target LTV: <span>₹48,000/year</span></div>
+        <div class="ckv">Churn target: <span>&lt;8%/month</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="card-eye" style="margin-bottom:1rem">Doctor Prescription Narrative — By Specialty</div>
+  <div class="rx-card"><div class="rx-specialty">Cardiology</div><div class="rx-narrative">CoQ10 100mg (therapeutic for statin-induced depletion) + Tocotrienol (natural HMG-CoA inhibition) + K2-7 MK-7 (arterial calcification prevention) + Lycopene (LDL oxidation reduction).</div><div class="rx-pitch">"For post-statin cardiac patients with high oxidative cardiovascular risk — the only multi-pathway cardio-antioxidant with a therapeutic CoQ10 dose."</div></div>
+  <div class="rx-card"><div class="rx-specialty">Diabetology / Endocrinology</div><div class="rx-narrative">Alpha Lipoic Acid 50mg (peripheral neuropathy, insulin sensitivity via AMPK) + Resveratrol (metabolic insulin mimetic) + Selenium (glutathione peroxidase, thyroid support).</div><div class="rx-pitch">"For Type 2 diabetics with oxidative neuropathy risk and systemic inflammatory load — ALA + Resveratrol + Selenium in one clinical-grade tablet."</div></div>
+  <div class="rx-card"><div class="rx-specialty">Neurology / Geriatrics</div><div class="rx-narrative">Astaxanthin (blood-brain barrier crossing, neuroprotection) + Tocotrienol (40× stronger than tocopherol neuro-antioxidant) + ALA (mitochondrial neuro-protection) + Resveratrol (SIRT1 neuroinflammation).</div><div class="rx-pitch">"Neuroprotective antioxidant protocol for early cognitive aging, post-stroke recovery, and Parkinson's adjunct support."</div></div>
+  <div class="rx-card"><div class="rx-specialty">Dermatology</div><div class="rx-narrative">Astaxanthin 4mg (oral photoprotection, elastin preservation) + Lycopene (skin carotenoid shield) + Vitamin C (collagen synthesis) + Tocotrienol + Selenium (glutathione-driven skin glow).</div><div class="rx-pitch">"The oral cellular intelligence protocol for photoprotection, skin longevity, and beauty from within. Science your patients will thank you for recommending."</div></div>
+  <div class="rx-card"><div class="rx-specialty">Orthopedics / Rheumatology</div><div class="rx-narrative">Vitamin D3 600 IU + K2-7 MK-7 45mcg — the gold standard bone-vascular clinical pairing. Calcium to bone via osteocalcin. Calcium away from arteries via MGP.</div><div class="rx-pitch">"In early osteopenia and osteoporosis prevention — the D3+K2 combination that ensures calcium investment reaches the bone, not the artery."</div></div>
+  <div class="rx-card"><div class="rx-specialty">Oncology (Survivorship)</div><div class="rx-narrative">Lycopene + Astaxanthin + Selenium (antioxidant enzyme activation) + Resveratrol (apoptosis modulation, SIRT1). Caution: avoid during active chemotherapy — discuss timing with treating oncologist.</div><div class="rx-pitch">"Adjunctive antioxidant support for cancer survivorship — reducing oxidative burden and supporting immune surveillance between treatment cycles."</div></div>
+</div>
+</div>
+
+<!-- PACKAGING -->
+<div id="sec-packaging" class="section-page">
+<div class="section" style="padding-top:7rem">
+  <div class="sec-eyebrow">Packaging Design</div>
+  <div class="sec-title">The bottle must earn<br>its place on the shelf.</div>
+  <div class="sec-intro">Aeternyx packaging is designed to sit comfortably between a Valmont skincare bottle and a Leica camera. Precision engineered, deeply considered, and completely unlike anything currently on the Indian nutraceutical market.</div>
+
+  <div class="pkg-visual">
+    <div>
+      <div class="bottle-cap"></div>
+      <div class="bottle-neck"></div>
+      <div class="bottle-body">
+        <div class="bottle-brand">AETERNYX</div>
+        <div class="bottle-rule"></div>
+        <div class="bottle-tag">CELLULAR INTELLIGENCE</div>
+        <div class="bottle-rule"></div>
+        <div class="bottle-tag" style="font-size:.4rem;color:#333">60 TABLETS · CORE</div>
+      </div>
+    </div>
+    <div style="margin-left:3rem;max-width:300px">
+      <div class="card-eye" style="margin-bottom:.75rem">Primary SKU — 60 Tablet</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:#E8D5B0;margin-bottom:.75rem;font-style:italic">The hero product.</div>
+      <div style="font-size:13px;color:#A8A6A0;line-height:1.7">Matte black glass bottle. Gold embossed brand name. No illustrations, no colour beyond black and gold. The formulation is the beauty. The packaging simply refuses to be anything less than the product inside it.</div>
+    </div>
+  </div>
+
+  <div class="card-eye" style="margin-bottom:1rem">Packaging Specifications</div>
+  <ul class="spec-list" style="background:var(--onyx-mid);border:0.5px solid var(--onyx-lt);border-radius:var(--rl);padding:1.25rem 1.5rem;margin-bottom:2rem">
+    <li class="spec-item"><span class="spec-key">Primary container</span><span class="spec-val">Matte black glass bottle — amber glass inside, matte black exterior coating. Not plastic at any price point.</span></li>
+    <li class="spec-item"><span class="spec-key">Closure</span><span class="spec-val">Deep matte black aluminium child-resistant cap with gold inner ring. Weight and feel must communicate premium quality on first touch.</span></li>
+    <li class="spec-item"><span class="spec-key">Label treatment</span><span class="spec-val">No paper label. Brand name hot-foil gold stamped directly onto glass. Tagline silk-screened in platinum at minimum 6pt Cormorant Garamond. No label peel = no premium erosion.</span></li>
+    <li class="spec-item"><span class="spec-key">QR code</span><span class="spec-val">Single elegant QR on base of bottle — links to batch-specific Certificate of Analysis, ingredient sourcing report, and founder's note. Transparency as luxury.</span></li>
+    <li class="spec-item"><span class="spec-key">Inner leaflet</span><span class="spec-val">8-page matte black booklet. Full clinical references for each ingredient. Founder's letter on Page 1. Pronunciation guide ("ay-ter-nix") on Page 2. Not a legal document — a brand experience.</span></li>
+    <li class="spec-item"><span class="spec-key">Outer box</span><span class="spec-val">Rigid matte black carton. Magnetic closure. Gold foil stamp only — no colour printing. Interior: matte black foam insert perfectly formed to hold bottle. Unboxing designed for social sharing without instruction.</span></li>
+    <li class="spec-item"><span class="spec-key">Physician sample</span><span class="spec-val">10-tablet sample in miniature glass vial — same matte black, same gold stamp, same 8-page booklet but in A6 format. Never a plastic blister pack. Never.</span></li>
+    <li class="spec-item"><span class="spec-key">Refill system (Gen 2)</span><span class="spec-val">Matte black kraft refill pouch — reduces COGS by 40%, signals environmental consciousness without compromising premium identity.</span></li>
+  </ul>
+
+  <div class="card-eye" style="margin-bottom:1rem">SKU Architecture</div>
+  <div class="pricing-row">
+    <div class="price-card">
+      <div class="price-sku">Aeternyx Core</div>
+      <div class="price-count">30</div>
+      <div class="price-unit">tablets · trial & gifting</div>
+      <div class="price-mrp">₹2,499</div>
+      <div class="price-note">Entry point. Physician sampling gateway. Premium gifting SKU. Converts to 60-tab on reorder.</div>
+    </div>
+    <div class="price-card featured">
+      <div class="price-sku">Aeternyx Core</div>
+      <div class="price-count">60</div>
+      <div class="price-unit">tablets · standard monthly</div>
+      <div class="price-mrp">₹4,499</div>
+      <div class="price-note">Primary sell. Monthly supply. The hero SKU that lives on every doctor's sample shelf and every subscriber's bedside table.</div>
+      <div class="price-badge">Primary SKU</div>
+    </div>
+    <div class="price-card">
+      <div class="price-sku">Aeternyx Core</div>
+      <div class="price-count">90</div>
+      <div class="price-unit">tablets · subscription anchor</div>
+      <div class="price-mrp">₹5,999</div>
+      <div class="price-note">Subscription anchor. Best COGS margin. 15% discount vs 60-tab rate. Drives quarterly commitment and highest LTV.</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- DIGITAL -->
+<div id="sec-digital" class="section-page">
+<div class="section" style="padding-top:7rem">
+  <div class="sec-eyebrow">Digital & Content Strategy</div>
+  <div class="sec-title">Science communicated<br>like luxury.</div>
+  <div class="sec-intro">Aeternyx's digital presence must feel like the Financial Times ran a wellness supplement brand — rigorous, beautifully designed, and completely free of the breathless hype that defines the supplement social media landscape. The intelligence of the content must match the Cellular Intelligence of the product.</div>
+
+  <div class="card-eye" style="margin-bottom:1rem">Content Pillars — What Aeternyx Publishes</div>
+  <div style="background:var(--onyx-mid);border:0.5px solid var(--onyx-lt);border-radius:var(--rl);padding:1.25rem 1.5rem;margin-bottom:2rem">
+    <div class="pillar">
+      <div class="pillar-num">01</div>
+      <div><div class="pillar-title">The Cellular Intelligence Series</div><div class="pillar-desc">Long-form Instagram carousels and YouTube essays explaining one biological concept per week — mitochondrial decay, sirtuin activation, oxidative debt, telomere biology. Written at the level a physician would respect, designed so a curious 35-year-old can follow. This is the cornerstone content that builds brand authority over time.</div><div class="pillar-tag">Instagram · YouTube · LinkedIn</div></div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-num">02</div>
+      <div><div class="pillar-title">Founder's Protocol</div><div class="pillar-desc">The doctor-athlete's personal training and clinical life — race preparation, recovery science, clinical practice, the intersection of medicine and endurance performance. No fitness influencer content. This is a physician who runs ultramarathons sharing what cellular protection looks like from the inside. Authentic, earned, unreplicable.</div><div class="pillar-tag">Instagram Reels · Long-form Blog</div></div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-num">03</div>
+      <div><div class="pillar-title">The Ingredient Origins</div><div class="pillar-desc">Documentary-style content about where each ingredient comes from — Astaxanthin from Haematococcus algae in Iceland, Resveratrol from ancient grape varieties in Japan and France, Lycopene from heirloom tomatoes. Each origin story reinforces the brand's commitment to sourcing precision and natural intelligence.</div><div class="pillar-tag">YouTube · Website Long-form</div></div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-num">04</div>
+      <div><div class="pillar-title">Clinical Evidence Archive</div><div class="pillar-desc">A permanent, publicly accessible database of peer-reviewed research supporting every ingredient in Aeternyx. Not marketing copy — actual PubMed abstracts with lay summaries. This is the brand's scientific credibility made visible and searchable. Updated monthly. Referenced by every physician who researches the brand before recommending it.</div><div class="pillar-tag">Website · Doctor Channel</div></div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-num">05</div>
+      <div><div class="pillar-title">The Longevity Dialogues</div><div class="pillar-desc">Long-form conversations with cardiologists, geriatricians, dermatologists, and endurance sport scientists. Not celebrity wellness interviews — clinician conversations that happen to also serve as the brand's implicit medical endorsement. Each participant is a specialist the brand already works with clinically.</div><div class="pillar-tag">YouTube · Podcast · LinkedIn</div></div>
+    </div>
+  </div>
+
+  <div class="card-eye" style="margin-bottom:1rem">Platform Architecture</div>
+  <div class="platform-grid">
+    <div class="platform-card"><div class="platform-name">Instagram</div><div class="platform-role">Primary Consumer Channel</div><div class="platform-desc">Science carousels, founder reels, ingredient origin stories. Aesthetic: all black and gold. Every post feels like a page from a luxury science journal.</div></div>
+    <div class="platform-card"><div class="platform-name">LinkedIn</div><div class="platform-role">Doctor & Professional Channel</div><div class="platform-desc">Clinical evidence posts, medical conference coverage, founder's medical perspective. Targets physicians, longevity experts, corporate wellness buyers.</div></div>
+    <div class="platform-card"><div class="platform-name">YouTube</div><div class="platform-role">Long-form Science Authority</div><div class="platform-desc">Ingredient documentaries, clinical dialogues, founder's training logs. The brand's deepest content — builds SEO authority and physician trust simultaneously.</div></div>
+    <div class="platform-card"><div class="platform-name">Website</div><div class="platform-role">The Brand Cathedral</div><div class="platform-desc">Full clinical evidence database. Ingredient COA database. Subscription portal. Founder's story. The destination for anyone who has been referred to Aeternyx and wants to verify the science before purchasing.</div></div>
+    <div class="platform-card"><div class="platform-name">WhatsApp</div><div class="platform-role">Doctor Communication</div><div class="platform-desc">Weekly clinical newsletter to prescribing physicians. Peer-reviewed abstracts, ingredient science updates. Warm, collegial, never promotional. Builds the relationship that drives prescription loyalty.</div></div>
+  </div>
+
+  <div class="card-eye" style="margin-bottom:1rem">Influencer Philosophy</div>
+  <div class="card-grid cg-2">
+    <div class="card gold-top">
+      <div class="card-eye">Who Aeternyx works with</div>
+      <div class="card-title">Credentialed, not celebrated</div>
+      <div class="card-body">Only physicians, clinical researchers, and credentialed endurance athletes. No Bollywood celebrity. No fitness influencer without medical or scientific grounding. Every partner must be someone whose credibility in their field is independent of Aeternyx. The brand elevates them — they do not elevate the brand.</div>
+    </div>
+    <div class="card">
+      <div class="card-eye">The anti-influencer campaign</div>
+      <div class="card-title">"We don't need a famous face."</div>
+      <div class="card-body">A deliberate campaign celebrating the absence of celebrity endorsement. "Our formula doesn't need a celebrity. Your cells don't either." Run as a 60-second digital film. The formula — ingredient by ingredient — is the celebrity. This positions Aeternyx's transparency as the brand's identity, not just a value.</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- PRICING -->
+<div id="sec-pricing" class="section-page">
+<div class="section" style="padding-top:7rem">
+  <div class="sec-eyebrow">Commercial Architecture</div>
+  <div class="sec-title">Priced for those who<br>understand value.</div>
+  <div class="sec-intro">Aeternyx is priced at the premium tier of the Indian nutraceutical market — above domestic brands, competitive with imported brands, and below the ultra-premium international imports. The price is a signal of quality, not a barrier to access for the right buyer.</div>
+
+  <div class="pricing-row">
+    <div class="price-card">
+      <div class="price-sku">Trial · Gifting</div>
+      <div class="price-count">30</div>
+      <div class="price-unit">tablets</div>
+      <div class="price-mrp">₹2,499</div>
+      <div class="price-note">Doctor sample gateway. Premium gifting. First trial. Converts 68%+ to 60-tab on month 2.</div>
+    </div>
+    <div class="price-card featured">
+      <div class="price-sku">Standard · Hero SKU</div>
+      <div class="price-count">60</div>
+      <div class="price-unit">tablets</div>
+      <div class="price-mrp">₹4,499</div>
+      <div class="price-note">Monthly supply. Primary prescription unit. Primary D2C sell. The number every doctor writes on the prescription pad.</div>
+      <div class="price-badge">Primary SKU</div>
+    </div>
+    <div class="price-card">
+      <div class="price-sku">Subscription Anchor</div>
+      <div class="price-count">90</div>
+      <div class="price-unit">tablets</div>
+      <div class="price-mrp">₹5,999</div>
+      <div class="price-note">Quarterly commitment. Best COGS efficiency. Highest LTV patient. Subscription model adds 15% further discount.</div>
+    </div>
+  </div>
+
+  <div class="card-eye" style="margin-bottom:1rem">Revenue Model</div>
+  <div class="card-grid cg-3" style="margin-bottom:2rem">
+    <div class="card"><div class="card-eye">Rx Channel Margin</div><div class="card-title">52–58% gross margin</div><div class="card-body">Doctor channel pricing maintains 52–58% gross margin after COGS, MR costs, and sample investment. Physician detailing pays back within 4 months of prescription conversion.</div></div>
+    <div class="card"><div class="card-eye">D2C Subscription</div><div class="card-title">₹48,000 annual LTV</div><div class="card-body">90-tab quarterly subscriber at ₹5,099 (15% sub discount) generates ₹20,396/year in direct revenue. With diagnostic add-on: ₹28,000+/year LTV target.</div></div>
+    <div class="card"><div class="card-eye">Year 1 Revenue Target</div><div class="card-title">₹3–5 Cr</div><div class="card-body">500 prescribing doctors × 20 patients/month × ₹4,499 average × 6 months ramp = ₹2.7 Cr Rx revenue. Plus D2C: ₹60L target. Total: ₹3.3 Cr Year 1.</div></div>
+  </div>
+
+  <div class="card-eye" style="margin-bottom:1rem">Competitive Price Positioning</div>
+  <div style="background:var(--onyx-mid);border:0.5px solid var(--onyx-lt);border-radius:var(--rl);overflow:hidden;margin-bottom:2rem">
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;border-bottom:0.5px solid var(--onyx-lt)">
+      <div style="padding:.6rem .85rem;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)">Brand</div>
+      <div style="padding:.6rem .85rem;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)">MRP (60-tab)</div>
+      <div style="padding:.6rem .85rem;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)">Origin</div>
+      <div style="padding:.6rem .85rem;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)">Positioning</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;border-bottom:0.5px solid var(--onyx-lt)">
+      <div style="padding:.65rem .85rem;font-size:13px;color:var(--muted)">Himalaya / Cipla</div>
+      <div style="padding:.65rem .85rem;font-size:13px;color:var(--muted)">₹400–800</div>
+      <div style="padding:.65rem .85rem;font-size:13px;color:var(--muted)">India</div>
+      <div style="padding:.65rem .85rem;font-size:12px;color:var(--muted)">Mass market</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;border-bottom:0.5px solid var(--onyx-lt)">
+      <div style="padding:.65rem .85rem;font-size:13px;color:var(--muted)">Swisse / Solgar</div>
+      <div style="padding:.65rem .85rem;font-size:13px;color:var(--muted)">₹1,500–2,500</div>
+      <div style="padding:.65rem .85rem;font-size:13px;color:var(--muted)">Import</div>
+      <div style="padding:.65rem .85rem;font-size:12px;color:var(--muted)">Mid-premium</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;border-bottom:0.5px solid var(--onyx-lt);background:rgba(176,141,87,.06)">
+      <div style="padding:.65rem .85rem;font-size:13px;color:var(--gold-pale);font-weight:400">AETERNYX</div>
+      <div style="padding:.65rem .85rem;font-size:13px;color:var(--gold)">₹4,499</div>
+      <div style="padding:.65rem .85rem;font-size:13px;color:var(--gold-pale)">India</div>
+      <div style="padding:.65rem .85rem;font-size:12px;color:var(--gold)">Clinical-Luxury</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr">
+      <div style="padding:.65rem .85rem;font-size:13px;color:var(--muted)">Thorne / Life Ext.</div>
+      <div style="padding:.65rem .85rem;font-size:13px;color:var(--muted)">₹6,000–12,000</div>
+      <div style="padding:.65rem .85rem;font-size:13px;color:var(--muted)">Import</div>
+      <div style="padding:.65rem .85rem;font-size:12px;color:var(--muted)">Ultra-premium import</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ROADMAP -->
+<div id="sec-roadmap" class="section-page">
+<div class="section" style="padding-top:7rem">
+  <div class="sec-eyebrow">Brand Roadmap</div>
+  <div class="sec-title">From a single tablet<br>to a longevity ecosystem.</div>
+  <div class="sec-intro">Aeternyx launches as a single, perfect product and expands into a complete cellular intelligence ecosystem over 48 months. Every extension is earned by the credibility of the phase before it. Nothing is launched before its time.</div>
+
+  <div class="roadmap-item">
+    <div class="rm-marker">I</div>
+    <div class="rm-content">
+      <div class="rm-phase">Phase 1 — Months 1 to 6</div>
+      <div class="rm-title">The Foundation: Aeternyx Core Launch</div>
+      <div class="rm-body">Single product. Three cities (Mumbai, Delhi, Bangalore). Trademark filed. Regulatory approved. 500 target doctors seeded with samples and clinical monographs. D2C website live. First 100 subscribers enrolled. Founder's brand story published. Clinical evidence database live. Target: ₹50 Lakh monthly revenue by Month 6. The brand makes no noise. It makes believers.</div>
+    </div>
+  </div>
+
+  <div class="roadmap-item">
+    <div class="rm-marker">II</div>
+    <div class="rm-content">
+      <div class="rm-phase">Phase 2 — Months 7 to 18</div>
+      <div class="rm-title">Specialization: Line Extensions by Pathway</div>
+      <div class="rm-body">Launch three specialist sub-formulations under the Aeternyx brand: Aeternyx Cardis (CoQ10-elevated, Omega-3 added, for cardiologists), Aeternyx Dermis (Astaxanthin + Lycopene + Collagen + Biotin, for dermatologists), Aeternyx Kinex (L-Carnitine + Creatine + CoQ10, for athletes and sports medicine). Each sub-brand speaks to one specialist channel with targeted clinical monographs. National city expansion to 8 cities. Target: ₹2 Crore monthly revenue.</div>
+    </div>
+  </div>
+
+  <div class="roadmap-item">
+    <div class="rm-marker">III</div>
+    <div class="rm-content">
+      <div class="rm-phase">Phase 3 — Months 19 to 30</div>
+      <div class="rm-title">The Protocol: Diagnostic + Supplement Integration</div>
+      <div class="rm-body">Launch Aeternyx Protocol — a 90-day longevity program combining product + diagnostic biomarker panel (oxidative stress markers, hs-CRP, D3 levels, telomere length) + physician teleconsultation. Priced at ₹12,999 per quarter. Partner with Redcliffe Labs or Metropolis for co-branded diagnostic kits. India's first "measurable longevity program." Target: 2,000 protocol subscribers. ₹5 Crore monthly revenue.</div>
+    </div>
+  </div>
+
+  <div class="roadmap-item">
+    <div class="rm-marker">IV</div>
+    <div class="rm-content">
+      <div class="rm-phase">Phase 4 — Months 31 to 48</div>
+      <div class="rm-title">The Ecosystem: Aeternyx Longevity Membership</div>
+      <div class="rm-body">Launch Aeternyx LIFE — a premium longevity membership at ₹19,999 per quarter. Includes: personalized supplement protocol based on biomarker results, quarterly diagnostic panels, access to Aeternyx-partnered longevity physicians, exclusive content library, and annual founder-hosted longevity retreat. GCC and Singapore market entry with same brand positioning. Target: 5,000 members. ₹15+ Crore monthly revenue.</div>
+    </div>
+  </div>
+
+  <div class="roadmap-item">
+    <div class="rm-marker">V</div>
+    <div class="rm-content">
+      <div class="rm-phase">Phase 5 — Month 48 onwards</div>
+      <div class="rm-title">Global: India's Longevity Science Brand for the World</div>
+      <div class="rm-body">Register Aeternyx in UAE, UK, Singapore, and US. Position as "India's cellular intelligence brand for the global longevity market." Pursue EU Novel Food regulatory pathway for Astaxanthin-forward product line. Explore white-label clinical nutrition licensing to hospital networks globally. IPO or strategic acquisition readiness. Aeternyx is not a supplement brand. It is India's first longevity science platform.</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="card-eye" style="margin-bottom:1rem">Product Line Ecosystem — Full Architecture</div>
+  <div class="card-grid cg-3">
+    <div class="card gold-top"><div class="card-eye">Aeternyx Core</div><div class="card-title">The Hero</div><div class="card-body">The founding formulation. All 10 ingredients. All 5 pathways. The cellular intelligence standard. Every other product is measured against this one.</div></div>
+    <div class="card"><div class="card-eye">Aeternyx Cardis</div><div class="card-title">Cardiac Longevity</div><div class="card-body">CoQ10 200mg + Omega-3 + Tocotrienol. For cardiologists. The post-statin, post-MI, cardiac prevention protocol.</div></div>
+    <div class="card"><div class="card-eye">Aeternyx Dermis</div><div class="card-title">Skin Longevity</div><div class="card-body">Astaxanthin + Lycopene + Marine Collagen + Biotin + Tocotrienol. For dermatologists. Oral cellular skin intelligence.</div></div>
+    <div class="card"><div class="card-eye">Aeternyx Neura</div><div class="card-title">Cognitive Longevity</div><div class="card-body">Lion's Mane + Bacopa + Tocotrienol + ALA + Resveratrol. For neurologists. The neuroprotective cellular intelligence protocol.</div></div>
+    <div class="card"><div class="card-eye">Aeternyx Kinex</div><div class="card-title">Performance Longevity</div><div class="card-body">L-Carnitine + Creatine + CoQ10 + Astaxanthin + ALA. For athletes. Mitochondrial performance and cellular recovery.</div></div>
+    <div class="card"><div class="card-eye">Aeternyx Ossea</div><div class="card-title">Bone-Vascular</div><div class="card-body">D3 2000 IU + K2-7 MK-7 + Calcium + Magnesium + Boron. For orthopedics. The eternal skeleton protocol.</div></div>
+  </div>
+</div>
+</div>
+
+<!-- ACTIONS -->
+<div id="sec-actions" class="section-page">
+<div class="section" style="padding-top:7rem">
+  <div class="sec-eyebrow">Priority Action Plan</div>
+  <div class="sec-title">What happens next.<br>In exact order.</div>
+  <div class="sec-intro">The strategy is complete. The brand is defined. What follows is execution — and execution has only one rule: the most important actions happen first, and nothing is done before its predecessor is complete.</div>
+
+  <div class="action-item">
+    <div class="action-num">1</div>
+    <div><div class="action-title">File trademark — Aeternyx — this week</div><div class="action-desc">Classes 5 (pharmaceuticals/nutraceuticals) and 35 (retail/distribution). India (CGPDTM) first. Then PCT international filing covering UAE, US (USPTO), EU (EUIPO), Singapore (IPOS). Engage a trademark attorney with pharma/FMCG experience. Budget: ₹1.5–3L for full international filing. This is non-negotiable and non-deferrable.</div></div>
+    <span class="action-urgency urgency-now">This week</span>
+  </div>
+
+  <div class="action-item">
+    <div class="action-num">2</div>
+    <div><div class="action-title">Engage FSSAI regulatory consultant — claims mapping</div><div class="action-desc">A regulatory consultant specializing in nutraceuticals under FSSAI Schedule 6 and the Nutraceuticals, Functional Foods, Novel Foods Regulations 2022 must define exactly what Aeternyx can claim on packaging, in detailing materials, and in digital content. "Cellular Intelligence" is a philosophical brand claim, not a health claim — but the boundary must be formally drawn. Budget: ₹2–4L for complete regulatory roadmap.</div></div>
+    <span class="action-urgency urgency-now">This week</span>
+  </div>
+
+  <div class="action-item">
+    <div class="action-num">3</div>
+    <div><div class="action-title">Commission visual identity — logo and brand system</div><div class="action-desc">Briefing this document to a premium brand identity designer or boutique branding studio with luxury and healthcare experience. The brief is clear — matte black, gold, Cormorant Garamond, onyx-crystal geometry, Zurich-private-bank-meets-molecular-biology. Budget: ₹8–15L for complete identity system including logo, typography, color palette, packaging design, and brand guidelines document. Do not cut corners here. This is the brand's face.</div></div>
+    <span class="action-urgency urgency-now">Month 1</span>
+  </div>
+
+  <div class="action-item">
+    <div class="action-num">4</div>
+    <div><div class="action-title">Develop clinical monograph — all 10 ingredients</div><div class="action-desc">A peer-reviewed-referenced clinical document supporting every ingredient at its specific dose in Aeternyx Core. Written at the standard of a medical journal supplement. Designed in the Aeternyx visual language. This is the primary doctor-facing credibility document — the difference between a physician saying "interesting" and a physician prescribing. Budget: ₹1.5–3L (medical writer + designer).</div></div>
+    <span class="action-urgency urgency-now">Month 1</span>
+  </div>
+
+  <div class="action-item">
+    <div class="action-num">5</div>
+    <div><div class="action-title">Finalize manufacturing — GMP-certified partner</div><div class="action-desc">Confirm API sourcing (Trans-Resveratrol 98% supplier verification, CoQ10 form specification — Ubiquinol vs Ubiquinone), identify WHO-GMP or ISO 22000 certified contract manufacturer. Negotiate minimum order quantities for 3 SKUs. Request batch COA templates for QR-linked transparency system. Timeline: manufacturer confirmed by Month 2, first batch by Month 4.</div></div>
+    <span class="action-urgency urgency-soon">Month 2</span>
+  </div>
+
+  <div class="action-item">
+    <div class="action-num">6</div>
+    <div><div class="action-title">Build the physician seed network — 50 champions</div><div class="action-desc">Identify 50 key opinion leaders across cardiology, diabetology, neurology, dermatology, and geriatrics in Mumbai, Delhi, and Bangalore. Provide full sample kits and clinical monographs. Request 30-day trial prescription of 10 patients each. This 50-doctor seed network becomes the brand's first 500 prescribing physicians within 90 days through collegial referral. The founder's medical network is the starting point — this is the brand's single most valuable asset.</div></div>
+    <span class="action-urgency urgency-soon">Month 2–3</span>
+  </div>
+
+  <div class="action-item">
+    <div class="action-num">7</div>
+    <div><div class="action-title">Launch website and D2C infrastructure</div><div class="action-desc">Aeternyx.com — clinical evidence database, ingredient COA viewer, subscription portal, founder's story, and secure checkout. No marketplace listings. Shopify Plus or custom build. Full Razorpay integration. Subscription management (Recharge or similar). The website is the brand cathedral — it must feel as premium as the product. Budget: ₹5–8L for full design and development.</div></div>
+    <span class="action-urgency urgency-soon">Month 3</span>
+  </div>
+
+  <div class="action-item">
+    <div class="action-num">8</div>
+    <div><div class="action-title">Official brand launch event</div><div class="action-desc">A private, invitation-only brand launch for 100 physicians, 20 longevity experts, 15 selected fitness and wellness professionals, and 10 carefully chosen press/media contacts. Venue: a premium hotel or longevity clinic space. No product launch noise — a scientific symposium that happens to also be a brand introduction. The Aeternyx Cellular Intelligence Inaugural Symposium. No coverage invited — let the attendees carry the story.</div></div>
+    <span class="action-urgency urgency-next">Month 4–5</span>
+  </div>
+
+  <div class="action-item">
+    <div class="action-num">9</div>
+    <div><div class="action-title">Content machine — first 90 days of publishing</div><div class="action-desc">Launch the Cellular Intelligence Series on Instagram and LinkedIn. First 12 posts already designed, approved, and scheduled before the brand goes live. Founder's Protocol — first 4 Reels filmed and edited. Clinical Evidence Archive — first 10 ingredient pages live on website. WhatsApp newsletter — first edition sent to physician network on launch day. The brand arrives with a full voice, not an empty page.</div></div>
+    <span class="action-urgency urgency-next">Month 4–6</span>
+  </div>
+</div>
+
+<div class="final-mark">
+  <div class="fm-eye">The Complete Brand. Locked. Permanent.</div>
+  <div class="fm-brand">AETERNYX</div>
+  <div class="fm-rule"></div>
+  <div class="fm-tag1">Not a Supplement</div>
+  <div class="fm-tag2">Cellular Intelligence.</div>
+  <div class="fm-pron">ay · ter · nix</div>
+  <div class="fm-est">Founded by a Doctor. Forged by an Athlete. Built for those who understand.</div>
+</div>
+</div>
+</div>
+
+<script>
+function showSection(id) {
+  document.querySelectorAll('.section-page').forEach(s => s.classList.remove('visible'));
+  document.querySelectorAll('.nav-link').forEach(b => b.classList.remove('active'));
+  document.getElementById('sec-' + id).classList.add('visible');
+  event.target.classList.add('active');
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+</script>
+</body>
+</html>
