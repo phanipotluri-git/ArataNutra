@@ -140,11 +140,19 @@
     cursor: pointer; transition: all 0.2s; white-space: nowrap;
   }
   .notify-btn:hover { background: var(--gold-light); border-color: var(--gold-light); }
-  .notify-btn:disabled { opacity: 0.6; cursor: default; }
   .notify-note {
     font-size: 9px; font-weight: 300; letter-spacing: 0.15em;
     text-transform: uppercase; color: rgba(255,255,255,0.25);
     margin-top: 12px;
+  }
+  .notify-note.success { color: rgba(184,146,42,0.8); }
+
+  /* success state applied when redirected back with ?notified=1 */
+  .form-success .notify-input { display: none; }
+  .form-success .notify-btn {
+    background: #2A6B2A; border-color: #2A6B2A; color: #fff;
+    cursor: default; pointer-events: none;
+    letter-spacing: 0.15em;
   }
 
   .product-pill {
@@ -274,13 +282,15 @@
       Arata Nutraceuticals is preparing to launch Aeternyx&trade; &mdash; a precision longevity formulation built on landmark clinical trials, engineered for India's most discerning health seekers.
     </p>
 
-    <form class="notify-form" id="notifyForm" novalidate>
+    <form class="notify-form" id="notifyForm"
+          action="https://formsubmit.co/aratanutra@gmail.com"
+          method="POST">
       <input type="email" class="notify-input" placeholder="Enter your email address"
              name="email" id="emailInput" autocomplete="email">
-      <!-- formsubmit.co configuration -->
       <input type="hidden" name="_subject" value="New signup — Arata Nutraceuticals launch list">
       <input type="hidden" name="_captcha" value="false">
       <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_next" value="https://phanipotluri-git.github.io/ArataNutra/?notified=1">
       <button type="submit" class="notify-btn">Notify Me</button>
     </form>
     <div class="notify-note" id="notifyNote">Be the first to know when we launch</div>
@@ -304,54 +314,29 @@
 </div>
 
 <script>
-  document.getElementById('notifyForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
+  // Client-side validation before submit
+  document.getElementById('notifyForm').addEventListener('submit', function(e) {
     const input = document.getElementById('emailInput');
-    const note  = document.getElementById('notifyNote');
-    const btn   = this.querySelector('.notify-btn');
     const email = input.value.trim();
-
     if (!email || !/^[^@]+@[^@]+\.[^@]+$/.test(email)) {
+      e.preventDefault();
       input.style.borderColor = 'rgba(200,80,80,0.6)';
       setTimeout(() => input.style.borderColor = '', 1500);
-      return;
-    }
-
-    btn.textContent = 'Sending…';
-    btn.disabled = true;
-    input.disabled = true;
-
-    try {
-      const data = new FormData(this);
-      const res = await fetch('https://formsubmit.co/ajax/aratanutra@gmail.com', {
-        method: 'POST',
-        headers: { 'Accept': 'application/json' },
-        body: data
-      });
-      const json = await res.json();
-
-      if (json.success === 'true' || json.success === true) {
-        btn.textContent = 'Registered ✓';
-        btn.style.background = '#2A6B2A';
-        btn.style.borderColor = '#2A6B2A';
-        btn.style.color = '#fff';
-        note.textContent = 'Thank you — we’ll be in touch.';
-        note.style.color = 'rgba(184,146,42,0.8)';
-      } else {
-        throw new Error('rejected');
-      }
-    } catch (_) {
-      btn.textContent = 'Try Again';
-      btn.disabled = false;
-      input.disabled = false;
-      note.textContent = 'Something went wrong — please try again.';
-      note.style.color = 'rgba(200,80,80,0.7)';
     }
   });
 
-  document.getElementById('emailInput').addEventListener('keydown', function(e) {
-    if (e.key === 'Enter') this.closest('form').requestSubmit();
-  });
+  // Show success state if redirected back after submission
+  if (new URLSearchParams(location.search).get('notified') === '1') {
+    const form = document.getElementById('notifyForm');
+    const note = document.getElementById('notifyNote');
+    const btn  = form.querySelector('.notify-btn');
+    form.classList.add('form-success');
+    btn.textContent = 'Registered ✓';
+    note.textContent = 'Thank you — we’ll be in touch.';
+    note.classList.add('success');
+    // Clean the URL without reload
+    history.replaceState(null, '', location.pathname);
+  }
 </script>
 </body>
 </html>
