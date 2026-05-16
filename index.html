@@ -145,15 +145,6 @@
     text-transform: uppercase; color: rgba(255,255,255,0.25);
     margin-top: 12px;
   }
-  .notify-note.success { color: rgba(184,146,42,0.8); }
-
-  /* success state applied when redirected back with ?notified=1 */
-  .form-success .notify-input { display: none; }
-  .form-success .notify-btn {
-    background: #2A6B2A; border-color: #2A6B2A; color: #fff;
-    cursor: default; pointer-events: none;
-    letter-spacing: 0.15em;
-  }
 
   .product-pill {
     display: flex; align-items: center; gap: 20px;
@@ -244,6 +235,9 @@
 </head>
 <body>
 
+<!-- Hidden iframe — Google Form submits into this, visitor never leaves the page -->
+<iframe name="gform-iframe" style="display:none" aria-hidden="true"></iframe>
+
 <div class="bg">
   <img src="https://images.unsplash.com/photo-1576671081837-49000212a370?w=1600&q=80" alt="" aria-hidden="true">
   <div class="bg-overlay"></div>
@@ -283,15 +277,12 @@
     </p>
 
     <form class="notify-form" id="notifyForm"
-          action="https://formsubmit.co/aratanutra@gmail.com"
-          method="POST">
+          action="https://docs.google.com/forms/d/e/1FAIpQLSfaEMfCsM6RBg5O_rGwSWk4GMLsQO_7wO6LFqJti4ZpyGXO9w/formResponse"
+          method="POST"
+          target="gform-iframe">
       <input type="email" class="notify-input" placeholder="Enter your email address"
-             name="email" id="emailInput" autocomplete="email">
-      <input type="hidden" name="_subject" value="New signup — Arata Nutraceuticals launch list">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_template" value="table">
-      <input type="hidden" name="_next" value="https://phanipotluri-git.github.io/ArataNutra/?notified=1">
-      <button type="submit" class="notify-btn">Notify Me</button>
+             name="entry.1686012661" id="emailInput" autocomplete="email">
+      <button type="submit" class="notify-btn" id="notifyBtn">Notify Me</button>
     </form>
     <div class="notify-note" id="notifyNote">Be the first to know when we launch</div>
 
@@ -314,29 +305,31 @@
 </div>
 
 <script>
-  // Client-side validation before submit
   document.getElementById('notifyForm').addEventListener('submit', function(e) {
     const input = document.getElementById('emailInput');
+    const note  = document.getElementById('notifyNote');
+    const btn   = document.getElementById('notifyBtn');
     const email = input.value.trim();
+
     if (!email || !/^[^@]+@[^@]+\.[^@]+$/.test(email)) {
       e.preventDefault();
       input.style.borderColor = 'rgba(200,80,80,0.6)';
       setTimeout(() => input.style.borderColor = '', 1500);
+      return;
     }
-  });
 
-  // Show success state if redirected back after submission
-  if (new URLSearchParams(location.search).get('notified') === '1') {
-    const form = document.getElementById('notifyForm');
-    const note = document.getElementById('notifyNote');
-    const btn  = form.querySelector('.notify-btn');
-    form.classList.add('form-success');
-    btn.textContent = 'Registered ✓';
-    note.textContent = 'Thank you — we’ll be in touch.';
-    note.classList.add('success');
-    // Clean the URL without reload
-    history.replaceState(null, '', location.pathname);
-  }
+    // Form submits into hidden iframe — show success immediately
+    setTimeout(() => {
+      btn.textContent = 'Registered ✓';
+      btn.style.background = '#2A6B2A';
+      btn.style.borderColor = '#2A6B2A';
+      btn.style.color = '#fff';
+      btn.style.pointerEvents = 'none';
+      input.disabled = true;
+      note.textContent = 'Thank you — we’ll be in touch.';
+      note.style.color = 'rgba(184,146,42,0.8)';
+    }, 400);
+  });
 </script>
 </body>
 </html>
